@@ -9,7 +9,7 @@ export default function Footer() {
           
           {/* Logo & Address */}
           <div className="flex flex-col items-center md:items-start gap-8">
-            <div className="h-20 w-40 relative flex items-center justify-center md:justify-start">
+            <div className="h-20 w-20 relative flex items-center justify-center md:justify-start">
               <Logo />
             </div>
             <div className="text-center md:text-left space-y-2">

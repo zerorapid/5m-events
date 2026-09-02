@@ -6,7 +6,7 @@ export default function HeritageSection() {
       <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
         <div className="md:col-span-5 md:col-start-2 reveal">
           <span className="font-label-caps text-label-caps text-champagne-gold block mb-stack-md">OUR VIRASAT (LEGACY)</span>
-          <h2 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-midnight-navy mb-stack-lg">The Philosophy of 'Khaas' Hospitality.</h2>
+          <h2 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-midnight-navy mb-stack-lg">The Philosophy of &apos;Khaas&apos; Hospitality.</h2>
           <p className="font-body-lg text-body-lg text-navy-muted mb-stack-md">
             We believe true luxury is found not in abundance, but in deliberate curation and deep cultural resonance. A friendly, detail-obsessed crew that listens first and plans with clarity—so your event feels uniquely yours and execution feels effortless.
           </p>

@@ -3,9 +3,8 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { ArrowRight, Briefcase, HeartHandshake, Music, MapPin } from "lucide-react";
-import clsx from "clsx";
 
 const featuredEvents = [
   {
