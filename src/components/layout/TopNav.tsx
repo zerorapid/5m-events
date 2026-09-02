@@ -45,7 +45,7 @@ export default function TopNav() {
         </div>
         <div className="hidden md:flex items-center gap-10">
           <Link className="font-label-caps text-label-caps text-pearl-white/70 hover:text-champagne-gold transition-colors duration-300 interactive" href="https://www.5meventss.com/">Home</Link>
-          <Link className="font-label-caps text-label-caps text-pearl-white/70 hover:text-champagne-gold transition-colors duration-300 interactive" href="#about">About</Link>
+          <Link className="font-label-caps text-label-caps text-pearl-white/70 hover:text-champagne-gold transition-colors duration-300 interactive" href="/about">About</Link>
           <Link className="font-label-caps text-label-caps text-pearl-white/70 hover:text-champagne-gold transition-colors duration-300 interactive" href="#services">Services</Link>
           <Link className="font-label-caps text-label-caps text-pearl-white/70 hover:text-champagne-gold transition-colors duration-300 interactive" href="#team">Our Team</Link>
           <Link className="font-label-caps text-label-caps text-pearl-white/70 hover:text-champagne-gold transition-colors duration-300 interactive" href="#gallery">Gallery</Link>
@@ -66,7 +66,7 @@ export default function TopNav() {
         className="fixed inset-0 bg-midnight-navy z-40 overflow-hidden flex flex-col items-center justify-center gap-8 md:hidden"
       >
         <Link onClick={() => setIsOpen(false)} className="font-headline-sm text-headline-sm-mobile text-pearl-white hover:text-champagne-gold transition-colors" href="https://www.5meventss.com/">Home</Link>
-        <Link onClick={() => setIsOpen(false)} className="font-headline-sm text-headline-sm-mobile text-pearl-white hover:text-champagne-gold transition-colors" href="#about">About</Link>
+        <Link onClick={() => setIsOpen(false)} className="font-headline-sm text-headline-sm-mobile text-pearl-white hover:text-champagne-gold transition-colors" href="/about">About</Link>
         <Link onClick={() => setIsOpen(false)} className="font-headline-sm text-headline-sm-mobile text-pearl-white hover:text-champagne-gold transition-colors" href="#services">Services</Link>
         <Link onClick={() => setIsOpen(false)} className="font-headline-sm text-headline-sm-mobile text-pearl-white hover:text-champagne-gold transition-colors" href="#team">Our Team</Link>
         <Link onClick={() => setIsOpen(false)} className="font-headline-sm text-headline-sm-mobile text-pearl-white hover:text-champagne-gold transition-colors" href="#gallery">Gallery</Link>
