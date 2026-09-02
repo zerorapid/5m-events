@@ -99,7 +99,7 @@ export default function ServicesSection() {
         <div className="sticky top-0 h-screen flex items-center justify-between gap-24">
           
           {/* Left side: Text content */}
-          <div className="w-1/2 flex flex-col justify-center">
+          <div className="w-1/2 h-[70vh] flex flex-col justify-center relative">
             {featuredEvents.map((event, index) => (
               <motion.div 
                 key={event.id}
@@ -141,7 +141,7 @@ export default function ServicesSection() {
                   fill
                   className="object-cover"
                   sizes="50vw"
-                  priority={index === 0}
+                  priority={true}
                 />
               </motion.div>
             ))}
