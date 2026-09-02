@@ -36,7 +36,7 @@ export default function ServicesSection() {
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start center", "end center"]
+    offset: ["start start", "end end"]
   });
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
