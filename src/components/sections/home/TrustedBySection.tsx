@@ -7,7 +7,7 @@ export default function TrustedBySection() {
       <div className="px-edge-margin-mobile md:px-edge-margin-desktop max-w-container-max mx-auto relative z-10">
         <p className="text-center font-label-caps text-label-caps text-navy-muted mb-12">TRUSTED BY VISIONARIES AT</p>
         <div className="flex overflow-hidden group">
-          <div className="flex space-x-16 md:space-x-24 animate-marquee whitespace-nowrap opacity-60 hover:opacity-100 transition-opacity duration-500 items-center">
+          <div className="flex space-x-16 md:space-x-32 animate-marquee whitespace-nowrap opacity-40 blur-[1px] hover:blur-none hover:opacity-90 transition-all duration-700 items-center">
             <div className="flex items-center gap-3"><Crown className="w-6 h-6 text-champagne-gold" /><span className="font-headline-sm text-champagne-gold uppercase tracking-widest">Atelier</span></div>
             <div className="flex items-center gap-3"><Gem className="w-6 h-6 text-champagne-gold" /><span className="font-headline-sm text-champagne-gold uppercase tracking-widest">Lumière</span></div>
             <div className="flex items-center gap-3"><Building2 className="w-6 h-6 text-champagne-gold" /><span className="font-headline-sm text-champagne-gold uppercase tracking-widest">Maison</span></div>

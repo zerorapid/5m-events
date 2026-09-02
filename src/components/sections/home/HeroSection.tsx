@@ -12,7 +12,7 @@ export default function HeroSection() {
           Step into experiences where imagination meets meticulous craft stage by stage, light by light, story by story.
         </p>
         <MagneticButton>
-          <Link className="inline-block border border-champagne-gold/60 text-champagne-gold px-12 py-5 font-label-caps text-label-caps hover:bg-champagne-gold hover:text-midnight-navy transition-all duration-700 tracking-[0.2em] rounded-sm backdrop-blur-sm" href="#contact">
+          <Link className="inline-block border border-champagne-gold/60 text-champagne-gold px-12 py-5 font-label-caps text-label-caps hover:bg-champagne-gold hover:text-midnight-navy hover:shadow-[0_0_25px_rgba(179,153,109,0.4)] transition-all duration-700 tracking-[0.2em] rounded-sm backdrop-blur-sm" href="#contact">
             COMMENCE THE JOURNEY
           </Link>
         </MagneticButton>

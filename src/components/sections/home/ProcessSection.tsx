@@ -18,20 +18,20 @@ export default function ProcessSection() {
           <span className="font-label-caps text-label-caps text-champagne-gold block mb-stack-md">OUR APPROACH</span>
           <h2 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-midnight-navy mb-16">The 5M Journey</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-4xl mx-auto">
-            <div className="flex flex-col items-center hover-gold-glow p-4 rounded-sm">
-              <div className="w-16 h-16 rounded-full border-2 border-champagne-gold flex items-center justify-center text-champagne-gold font-headline-md mb-6">1</div>
+            <div className="flex flex-col items-center hover-gold-glow p-4 rounded-sm transition-all duration-500 interactive">
+              <div className="w-16 h-16 rounded-full border-2 border-champagne-gold flex items-center justify-center text-champagne-gold font-headline-md mb-6 shadow-[0_0_15px_rgba(179,153,109,0.2)]">1</div>
               <h4 className="font-headline-sm text-headline-sm text-midnight-navy mb-3">Siddhat (Intent)</h4>
               <p className="font-body-md text-navy-muted">Understanding the profound purpose and vision behind your gathering.</p>
             </div>
-            <div className="flex flex-col items-center relative hover-gold-glow p-4 rounded-sm">
+            <div className="flex flex-col items-center relative hover-gold-glow p-4 rounded-sm transition-all duration-500 interactive">
               <div className="hidden md:block absolute top-8 -left-[20%] w-[40%] h-[1px] bg-champagne-gold/30"></div>
-              <div className="w-16 h-16 rounded-full border-2 border-champagne-gold flex items-center justify-center text-champagne-gold font-headline-md mb-6 bg-pearl-white z-10">2</div>
+              <div className="w-16 h-16 rounded-full border-2 border-champagne-gold flex items-center justify-center text-champagne-gold font-headline-md mb-6 bg-pearl-white z-10 shadow-[0_0_15px_rgba(179,153,109,0.2)]">2</div>
               <div className="hidden md:block absolute top-8 -right-[20%] w-[40%] h-[1px] bg-champagne-gold/30"></div>
               <h4 className="font-headline-sm text-headline-sm text-midnight-navy mb-3">Tayaari (Preparation)</h4>
               <p className="font-body-md text-navy-muted">Meticulous orchestration and uncompromising attention to detail.</p>
             </div>
-            <div className="flex flex-col items-center hover-gold-glow p-4 rounded-sm">
-              <div className="w-16 h-16 rounded-full border-2 border-champagne-gold flex items-center justify-center text-champagne-gold font-headline-md mb-6">3</div>
+            <div className="flex flex-col items-center hover-gold-glow p-4 rounded-sm transition-all duration-500 interactive">
+              <div className="w-16 h-16 rounded-full border-2 border-champagne-gold flex items-center justify-center text-champagne-gold font-headline-md mb-6 shadow-[0_0_15px_rgba(179,153,109,0.2)]">3</div>
               <h4 className="font-headline-sm text-headline-sm text-midnight-navy mb-3">Jashn (Celebration)</h4>
               <p className="font-body-md text-navy-muted">Flawless execution, leaving you free to immerse in the moment.</p>
             </div>
