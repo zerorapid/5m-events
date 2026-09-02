@@ -100,8 +100,8 @@ export default function CanvasBackground() {
     const resolutionLocation = gl.getUniformLocation(program, "u_resolution");
     const mouseLocation = gl.getUniformLocation(program, "u_mouse");
 
-    let mouseX = 0.5 * canvas.width;
-    let mouseY = 0.5 * canvas.height;
+    let mouseX = 0.5 * canvas!.width;
+    let mouseY = 0.5 * canvas!.height;
 
     const handleMouseMove = (e: MouseEvent) => {
       mouseX = e.clientX;
@@ -109,6 +109,7 @@ export default function CanvasBackground() {
     };
 
     const handleResize = () => {
+      if (!canvas) return;
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       gl.viewport(0, 0, canvas.width, canvas.height);
@@ -119,13 +120,14 @@ export default function CanvasBackground() {
 
     let animationFrameId: number;
     function render(time: number) {
+      if (!canvas || !gl) return;
       time *= 0.001;
 
-      gl!.uniform1f(timeLocation, time);
-      gl!.uniform2f(resolutionLocation, canvas.width, canvas.height);
-      gl!.uniform2f(mouseLocation, mouseX, mouseY);
+      gl.uniform1f(timeLocation, time);
+      gl.uniform2f(resolutionLocation, canvas.width, canvas.height);
+      gl.uniform2f(mouseLocation, mouseX, mouseY);
 
-      gl!.drawArrays(gl!.TRIANGLES, 0, 6);
+      gl.drawArrays(gl.TRIANGLES, 0, 6);
       animationFrameId = requestAnimationFrame(render);
     }
 
