@@ -115,6 +115,9 @@ export default function CanvasBackground() {
       gl.viewport(0, 0, canvas.width, canvas.height);
     };
 
+    // Call once to initialize viewport correctly
+    handleResize();
+
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("resize", handleResize);
 
