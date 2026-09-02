@@ -12,6 +12,8 @@ const outfit = Outfit({
   subsets: ["latin"],
 });
 
+import CustomCursor from "@/components/ui/CustomCursor";
+
 export const metadata: Metadata = {
   title: "5M Events - Shubh Aarambh",
   description: "Premier Event Management in Hyderabad",
@@ -25,9 +27,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${outfit.variable} h-full antialiased scroll-smooth`}
+      className={`${inter.variable} ${outfit.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col cursor-none">
+        <CustomCursor />
+        {children}
+      </body>
     </html>
   );
 }

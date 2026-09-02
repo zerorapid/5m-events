@@ -58,15 +58,15 @@
   --radius-xl: 0.5rem;
   --radius-full: 0.75rem;
 
-  --spacing-section-padding: 120px;
-  --spacing-stack-md: 1rem;
-  --spacing-stack-lg: 2rem;
+  --spacing-section-padding: 160px;
+  --spacing-stack-md: 1.5rem;
+  --spacing-stack-lg: 3rem;
   --spacing-container-max: 1440px;
-  --spacing-edge-margin-desktop: 80px;
+  --spacing-edge-margin-desktop: 4rem;
   --spacing-stack-sm: 0.5rem;
-  --spacing-gutter: 32px;
+  --spacing-gutter: 2rem;
   --spacing-stack-xl: 4rem;
-  --spacing-edge-margin-mobile: 24px;
+  --spacing-edge-margin-mobile: 1.5rem;
 
   --font-headline-lg-mobile: "Outfit", sans-serif;
   --font-headline-sm: "Outfit", sans-serif;
