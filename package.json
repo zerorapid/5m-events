@@ -1,19 +1,26 @@
 {
-  "name": "5m-events-website",
-  "version": "1.0.0",
-  "description": "A full custom WordPress theme converted from the original single-page `champaa.html` design.",
-  "main": "index.js",
+  "name": "temp-app",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "wp-scripts start",
-    "build": "wp-scripts build"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "dependencies": {
+    "next": "16.3.4",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
   "devDependencies": {
-    "@wordpress/scripts": "^34.2.0",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.4",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }
