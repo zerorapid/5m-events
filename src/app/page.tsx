@@ -1,76 +1,17 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import CanvasBackground from "./components/CanvasBackground";
-import { Menu, ChevronRight, Briefcase, HeartHandshake, Music, MapPin, ArrowRight, Crown, Gem, Building2, Feather, Shield, Compass, Quote } from "lucide-react";
+import TopNav from "./components/TopNav";
+import ClientSetup from "./components/ClientSetup";
+import TestimonialCarousel from "./components/TestimonialCarousel";
+import { ChevronRight, Briefcase, HeartHandshake, Music, MapPin, ArrowRight, Crown, Gem, Building2, Feather, Shield, Compass } from "lucide-react";
 
 export default function Home() {
-  const [activeSlide, setActiveSlide] = useState(0);
-
-  // Scroll reveal animation effect
-  useEffect(() => {
-    const reveals = document.querySelectorAll(".reveal");
-
-    const revealOnScroll = () => {
-      const windowHeight = window.innerHeight;
-      const elementVisible = 150;
-
-      reveals.forEach((reveal) => {
-        const elementTop = reveal.getBoundingClientRect().top;
-        if (elementTop < windowHeight - elementVisible) {
-          reveal.classList.add("active");
-        }
-      });
-    };
-
-    window.addEventListener("scroll", revealOnScroll);
-    revealOnScroll(); // Trigger once on load
-
-    return () => window.removeEventListener("scroll", revealOnScroll);
-  }, []);
-
-  // Carousel effect
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % 3);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <div className="text-midnight-navy font-body-md antialiased overflow-x-hidden selection:bg-champagne-gold selection:text-midnight-navy relative min-h-screen">
+      <ClientSetup />
       <CanvasBackground />
-
-      {/* TopNavBar */}
-      <header className="bg-transparent dark:bg-midnight-navy fixed top-0 w-full z-50 border-b border-champagne-gold/20 backdrop-blur-md reveal">
-        <nav className="flex justify-between items-center w-full px-edge-margin-mobile md:px-edge-margin-desktop py-6 max-w-container-max mx-auto">
-          <div className="cursor-pointer">
-            <div className="h-10 w-auto flex items-center">
-              <img
-                alt="5M Events Logo"
-                className="h-full w-auto object-contain"
-                src="https://lh3.googleusercontent.com/aida/AEtjO1W6VbbaamX_Oa-v4_ws-DO6ldwpwhLHXYASrNF6qiEmGG4i5AJQZIMUL_SiSVmybgUmkwnzbGpvp5K3peJSwIPOIHTkEM2aQmWHpUj6pdCSbgGSibAE84uNHjJtWQdcXiK2tW_S14C51vfy8eYSaIyYSKx9PxQDtMgJag1cK7612P66kH8rzcxJfzyB19S3FXRnqT84-dbkjH8EGY1VT5Oz2NBNUru1m6j4g2mMLg-Ihkt7cP02JAtwxAY"
-              />
-            </div>
-          </div>
-          <div className="hidden md:flex items-center gap-8">
-            <Link className="font-label-caps text-label-caps text-on-surface-variant dark:text-on-primary/70 hover:text-champagne-gold transition-colors duration-300" href="#weddings">Portfolio</Link>
-            <Link className="font-label-caps text-label-caps text-on-surface-variant dark:text-on-primary/70 hover:text-champagne-gold transition-colors duration-300" href="#services">Services</Link>
-            <Link className="font-label-caps text-label-caps text-on-surface-variant dark:text-on-primary/70 hover:text-champagne-gold transition-colors duration-300" href="#concierge">Concierge</Link>
-            <Link className="font-label-caps text-label-caps text-on-surface-variant dark:text-on-primary/70 hover:text-champagne-gold transition-colors duration-300" href="#archive">The Archive</Link>
-            <Link className="font-label-caps text-label-caps text-on-surface-variant dark:text-on-primary/70 hover:text-champagne-gold transition-colors duration-300" href="#contact">Contact</Link>
-          </div>
-          <button className="hidden md:block bg-champagne-gold text-midnight-navy font-label-caps text-label-caps px-8 py-4 hover:bg-midnight-navy hover:text-champagne-gold transition-colors cursor-pointer border border-transparent hover:border-champagne-gold rounded-sm btn-hover">
-            Inquire
-          </button>
-          {/* Mobile Menu Toggle */}
-          <button aria-label="Open Menu" className="md:hidden text-on-surface dark:text-on-primary p-2">
-            <Menu />
-          </button>
-        </nav>
-      </header>
+      <TopNav />
 
       <main className="pt-[100px]">
         {/* Hero Section */}
@@ -124,9 +65,15 @@ export default function Home() {
                 By weaving together heritage and modern refinement, we reveal the profound essence of your celebration, creating environments that feel both intimately personal and architecturally significant.
               </p>
             </div>
-            <div className="md:col-span-4 md:col-start-8 reveal relative mt-12 md:mt-0 hover-gold-glow">
+            <div className="md:col-span-4 md:col-start-8 reveal relative mt-12 md:mt-0 hover-gold-glow aspect-[3/4]">
               <div className="absolute inset-0 bg-champagne-gold/20 -translate-x-4 translate-y-4 rounded-sm"></div>
-              <img className="relative w-full h-auto object-cover border border-champagne-gold p-2 bg-pearl-white rounded-sm" src="https://lh3.googleusercontent.com/aida/AEtjO1WlOR1G7jfbVyAt_z4CqwrEafA1L0HNeW4011AC-PKzjgeAOdtdEDiMyNX1VxgNa2_4x-mzkukgFdwIVS2HCC59MtFesIta38tpG8WqzPBtvrFUwwX1ZbNTLJXh-rYOepSPRPOXBUmyWHHfPR8_XXhiC209xvOrRWcydqxf_ph-TvMttyMOSPUfB7pfasM9VNZjQxPmZgkVnPHxUKeIDDc2HzFR_kjngvYxni3EzAHOqtGkbO-r45DX6zBn" alt="Heritage" />
+              <Image
+                src="https://lh3.googleusercontent.com/aida/AEtjO1WlOR1G7jfbVyAt_z4CqwrEafA1L0HNeW4011AC-PKzjgeAOdtdEDiMyNX1VxgNa2_4x-mzkukgFdwIVS2HCC59MtFesIta38tpG8WqzPBtvrFUwwX1ZbNTLJXh-rYOepSPRPOXBUmyWHHfPR8_XXhiC209xvOrRWcydqxf_ph-TvMttyMOSPUfB7pfasM9VNZjQxPmZgkVnPHxUKeIDDc2HzFR_kjngvYxni3EzAHOqtGkbO-r45DX6zBn"
+                alt="Heritage"
+                fill
+                className="relative object-cover border border-champagne-gold p-2 bg-pearl-white rounded-sm"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
             </div>
           </div>
         </section>
@@ -190,8 +137,14 @@ export default function Home() {
                   EXPLORE <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-2" />
                 </Link>
               </div>
-              <div className="order-1 md:order-2 hover-gold-glow rounded-sm">
-                <img className="w-full h-auto object-cover border border-champagne-gold p-1 bg-midnight-navy rounded-sm shadow-md" src="https://lh3.googleusercontent.com/aida/AEtjO1WDPxFAHjpkBe_wPDRigXmDZlJnPUtV-wISTn_leW-OHOEkX9vIum1T7b7szZ7y4OjtRgvw-yIQZwrYXrnSSyh6mN2C_9QFnQmfsDlCtn3HsVh7CCy2UBPqD85hvG3OnbE0PQFbIJfcvu3SzVv_b8fVTH_d-XA_fSu6WfVh0J5Qgv2FVccoOZ81O0Vh3e7ftC45NR8flhI_8uKgiIob3vT_mbO-sGTfTRc_EpmmoDV1RPId8zulvj5bJ5iU" alt="Shaadi" />
+              <div className="order-1 md:order-2 hover-gold-glow rounded-sm aspect-[4/3] relative">
+                <Image
+                  src="https://lh3.googleusercontent.com/aida/AEtjO1WDPxFAHjpkBe_wPDRigXmDZlJnPUtV-wISTn_leW-OHOEkX9vIum1T7b7szZ7y4OjtRgvw-yIQZwrYXrnSSyh6mN2C_9QFnQmfsDlCtn3HsVh7CCy2UBPqD85hvG3OnbE0PQFbIJfcvu3SzVv_b8fVTH_d-XA_fSu6WfVh0J5Qgv2FVccoOZ81O0Vh3e7ftC45NR8flhI_8uKgiIob3vT_mbO-sGTfTRc_EpmmoDV1RPId8zulvj5bJ5iU"
+                  alt="Shaadi"
+                  fill
+                  className="object-cover border border-champagne-gold p-1 bg-midnight-navy rounded-sm shadow-md"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
               </div>
             </div>
           </div>
@@ -222,32 +175,7 @@ export default function Home() {
               <span className="font-label-caps text-label-caps text-champagne-gold block mb-stack-md">VOICES OF ELEGANCE</span>
               <h2 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-pearl-white">Client Testimonials</h2>
             </div>
-            <div className="relative w-full max-w-3xl mx-auto min-h-[400px] md:min-h-[350px]" id="testimonial-carousel">
-              {[
-                { name: "PATRIARCH", role: "Global Horizons Family", text: `"The grandeur was breathtaking, but it was the quiet grace... that truly defined the 5M experience."` },
-                { name: "ANANYA S.", role: "CEO, Vanguard Corp", text: `"Their meticulous attention to detail transformed our corporate summit into an immersive experience."` },
-                { name: "MEERA R.", role: "Founder, Silk & Heritage", text: `"Our brand launch was nothing short of magical. The cultural nuances they wove... perfectly captured the essence of our new collection."` },
-              ].map((testimonial, i) => (
-                <div key={i} className={`testimonial-slide absolute inset-0 transition-opacity duration-1000 flex ${activeSlide === i ? "active-slide" : ""}`}>
-                  <div className="bg-navy-muted p-8 rounded-sm border border-champagne-gold/20 flex flex-col w-full h-full hover-gold-glow">
-                    <Quote className="text-champagne-gold w-8 h-8 mb-6" />
-                    <p className="font-body-lg text-body-lg italic font-light mb-8 flex-grow text-pearl-white/90">{testimonial.text}</p>
-                    <div className="flex items-center gap-4 mt-auto">
-                      <div className="w-12 h-12 rounded-full bg-champagne-gold/20 flex items-center justify-center text-champagne-gold font-headline-sm">{testimonial.name[0]}</div>
-                      <div>
-                        <p className="font-label-caps text-label-caps text-champagne-gold tracking-widest">{testimonial.name}</p>
-                        <p className="font-body-md text-sm text-pearl-white/60">{testimonial.role}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-              <div className="absolute -bottom-10 left-0 right-0 flex justify-center gap-3">
-                {[0, 1, 2].map((i) => (
-                  <button key={i} onClick={() => setActiveSlide(i)} className={`w-2.5 h-2.5 rounded-full bg-champagne-gold transition-opacity duration-300 carousel-dot ${activeSlide === i ? "opacity-100" : "opacity-30"}`}></button>
-                ))}
-              </div>
-            </div>
+            <TestimonialCarousel />
           </div>
         </section>
 
@@ -257,8 +185,14 @@ export default function Home() {
       <footer className="bg-midnight-navy/90 w-full py-section-padding border-t border-champagne-gold/10 flat reveal">
         <div className="flex flex-col md:flex-row justify-between items-start w-full px-edge-margin-desktop max-w-container-max mx-auto gap-8">
           <div>
-            <div className="h-12 w-auto mx-auto md:mx-0 flex items-center">
-              <img alt="5M Events Logo" className="h-full w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1W6VbbaamX_Oa-v4_ws-DO6ldwpwhLHXYASrNF6qiEmGG4i5AJQZIMUL_SiSVmybgUmkwnzbGpvp5K3peJSwIPOIHTkEM2aQmWHpUj6pdCSbgGSibAE84uNHjJtWQdcXiK2tW_S14C51vfy8eYSaIyYSKx9PxQDtMgJag1cK7612P66kH8rzcxJfzyB19S3FXRnqT84-dbkjH8EGY1VT5Oz2NBNUru1m6j4g2mMLg-Ihkt7cP02JAtwxAY" />
+            <div className="h-12 w-32 relative mx-auto md:mx-0 flex items-center">
+              <Image
+                alt="5M Events Logo"
+                className="object-contain"
+                fill
+                sizes="128px"
+                src="https://lh3.googleusercontent.com/aida/AEtjO1W6VbbaamX_Oa-v4_ws-DO6ldwpwhLHXYASrNF6qiEmGG4i5AJQZIMUL_SiSVmybgUmkwnzbGpvp5K3peJSwIPOIHTkEM2aQmWHpUj6pdCSbgGSibAE84uNHjJtWQdcXiK2tW_S14C51vfy8eYSaIyYSKx9PxQDtMgJag1cK7612P66kH8rzcxJfzyB19S3FXRnqT84-dbkjH8EGY1VT5Oz2NBNUru1m6j4g2mMLg-Ihkt7cP02JAtwxAY"
+              />
             </div>
           </div>
           <div className="flex flex-col md:flex-row gap-6 md:gap-12 w-full md:w-auto">
