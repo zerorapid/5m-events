@@ -15,7 +15,7 @@ import NewsletterSection from "@/components/sections/home/NewsletterSection";
 
 export default function Home() {
   return (
-    <div className="text-midnight-navy font-body-md antialiased overflow-x-hidden selection:bg-champagne-gold selection:text-midnight-navy relative min-h-screen">
+    <div className="text-midnight-navy font-body-md antialiased overflow-clip selection:bg-champagne-gold selection:text-midnight-navy relative min-h-screen">
       <ClientSetup />
       <CanvasBackground />
       <TopNav />

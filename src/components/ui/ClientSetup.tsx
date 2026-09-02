@@ -20,22 +20,33 @@ export default function ClientSetup() {
     // because we will migrate to framer-motion components where appropriate,
     // but for now we'll keep the basic CSS reveal active for sections we haven't converted yet.
     const reveals = document.querySelectorAll(".reveal");
-    const revealOnScroll = () => {
-      const windowHeight = window.innerHeight;
-      const elementVisible = 150;
-      reveals.forEach((reveal) => {
-        const elementTop = reveal.getBoundingClientRect().top;
-        if (elementTop < windowHeight - elementVisible) {
-          reveal.classList.add("active");
-        }
-      });
-    };
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+            // Optional: stop observing once revealed
+            // observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        rootMargin: "0px 0px -100px 0px", // triggers 100px before element enters viewport
+        threshold: 0.1,
+      }
+    );
 
-    window.addEventListener("scroll", revealOnScroll);
-    revealOnScroll(); // Trigger once on load
+    reveals.forEach((reveal) => {
+      observer.observe(reveal);
+      // Fallback: immediately show if already in viewport on load
+      const rect = reveal.getBoundingClientRect();
+      if (rect.top < window.innerHeight) {
+        reveal.classList.add("active");
+      }
+    });
 
     return () => {
-      window.removeEventListener("scroll", revealOnScroll);
+      observer.disconnect();
       lenis.destroy();
     };
   }, []);
