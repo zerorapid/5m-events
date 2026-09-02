@@ -13,6 +13,7 @@ const outfit = Outfit({
 });
 
 import CustomCursor from "@/components/ui/CustomCursor";
+import ClientSetup from "@/components/ui/ClientSetup";
 
 export const metadata: Metadata = {
   title: "5M Events - Shubh Aarambh",
@@ -30,6 +31,7 @@ export default function RootLayout({
       className={`${inter.variable} ${outfit.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col cursor-none">
+        <ClientSetup />
         <CustomCursor />
         {children}
       </body>

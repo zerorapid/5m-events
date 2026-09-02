@@ -1,6 +1,5 @@
 import TopNav from "@/components/layout/TopNav";
 import Footer from "@/components/layout/Footer";
-import ClientSetup from "@/components/ui/ClientSetup";
 import CanvasBackground from "@/components/ui/CanvasBackground";
 import TestimonialCarousel from "@/components/ui/TestimonialCarousel";
 
@@ -16,7 +15,6 @@ import NewsletterSection from "@/components/sections/home/NewsletterSection";
 export default function Home() {
   return (
     <div className="text-midnight-navy font-body-md antialiased overflow-clip selection:bg-champagne-gold selection:text-midnight-navy relative min-h-screen">
-      <ClientSetup />
       <CanvasBackground />
       <TopNav />
 

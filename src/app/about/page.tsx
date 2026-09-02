@@ -7,12 +7,16 @@ import FounderPerspective from "@/components/sections/about/FounderPerspective";
 import OurCrew from "@/components/sections/about/OurCrew";
 import GlobalReach from "@/components/sections/about/GlobalReach";
 import AboutCTA from "@/components/sections/about/AboutCTA";
+import TopNav from "@/components/layout/TopNav";
+import Footer from "@/components/layout/Footer";
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen">
-      <AboutHero />
-      <NorthStar />
+    <div className="flex flex-col min-h-screen overflow-clip selection:bg-champagne-gold selection:text-midnight-navy">
+      <TopNav />
+      <main className="flex-1">
+        <AboutHero />
+        <NorthStar />
       <Essence />
       
       {/* Impact Stats */}
@@ -45,6 +49,8 @@ export default function AboutPage() {
       <OurCrew />
       <GlobalReach />
       <AboutCTA />
-    </main>
+      </main>
+      <Footer />
+    </div>
   );
 }
