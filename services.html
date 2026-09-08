@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Our Services — BKU | Crafting Unforgettable Experiences</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root{
+    --white: #FFFFFF;
+    --cream: #F5F1E8;
+    --beige: #E8DFD0;
+    --sand: #D4C4B0;
+    --black: #0A0A0A;
+    --charcoal: #1A1A1A;
+    --dark-gray: #2A2A2A;
+    --gray: #5A5A5A;
+    --light-gray: #8A8A8A;
+    --muted: #A8A29A;
+    --gold: #B8945F;
+    --gold-light: #D4B886;
+    --shadow-sm: 0 4px 12px rgba(10,10,10,0.06);
+    --shadow-md: 0 12px 40px rgba(10,10,10,0.10);
+    --shadow-lg: 0 30px 80px rgba(10,10,10,0.18);
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'Inter', system-ui, sans-serif;
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 32px;
+  }
+  
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    background:var(--white);
+    color:var(--charcoal);
+    line-height:1.7;
+    font-weight:400;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none;transition:all .35s ease}
+  
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.15;letter-spacing:-0.01em}
+  p{font-size:16px;line-height:1.75;color:var(--gray)}
+  
+  .container{max-width:1360px;margin:0 auto;padding:0 60px}
+  
+  /* ========== SCROLL PROGRESS ========== */
+  .scroll-progress{
+    position:fixed;top:0;left:0;height:2px;
+    background:linear-gradient(90deg, var(--gold), var(--gold-light));
+    z-index:9999;width:0%;transition:width .1s ease;
+  }
+  
+  /* ========== NAVIGATION ========== */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:1000;
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+    border-bottom:1px solid transparent;
+    transition:all .4s ease;
+  }
+  .nav.scrolled{
+    background:rgba(255,255,255,0.98);
+    border-bottom-color:rgba(10,10,10,0.06);
+  }
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 60px;max-width:1600px;margin:0 auto;
+  }
+  .logo{
+    font-family:var(--serif);
+    display:flex;align-items:center;gap:14px;
+  }
+  .logo-mark{
+    width:38px;height:38px;
+    background:var(--black);
+    color:var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--serif);
+    font-size:16px;font-weight:600;
+    letter-spacing:1px;
+    border-radius:8px;
+    transition:transform .4s ease;
+  }
+  .logo:hover .logo-mark{transform:rotate(-8deg) scale(1.05)}
+  .logo-text{font-size:26px;letter-spacing:3px;font-weight:600}
+  
+  .nav-links{display:flex;gap:40px;list-style:none}
+  .nav-links a{
+    font-size:13px;letter-spacing:1.5px;
+    font-weight:500;text-transform:uppercase;
+    color:var(--charcoal);
+    position:relative;padding:6px 0;
+  }
+  .nav-links a::after{
+    content:'';position:absolute;left:0;bottom:0;
+    width:0;height:1px;background:var(--gold);
+    transition:width .35s ease;
+  }
+  .nav-links a:hover{color:var(--black)}
+  .nav-links a:hover::after{width:100%}
+  .nav-links a.active{color:var(--gold)}
+  .nav-links a.active::after{width:100%;background:var(--gold)}
+  
+  .nav-cta{display:flex;align-items:center;gap:20px}
+  
+  .btn{
+    display:inline-flex;align-items:center;gap:12px;
+    padding:14px 28px;font-size:12px;letter-spacing:2px;
+    font-weight:600;text-transform:uppercase;
+    cursor:pointer;border:none;
+    transition:all .4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family:var(--sans);
+    border-radius:100px;
+  }
+  .btn-black{background:var(--black);color:var(--white)}
+  .btn-black:hover{background:var(--gold);transform:translateY(-2px);box-shadow:0 10px 30px rgba(184,148,95,0.3)}
+  .btn-outline{background:transparent;color:var(--black);border:1.5px solid var(--black)}
+  .btn-outline:hover{background:var(--black);color:var(--white)}
+  .btn-outline-light{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,0.4)}
+  .btn-outline-light:hover{background:var(--white);color:var(--black);border-color:var(--white)}
+  
+  .menu-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--charcoal)}
+  .mobile-menu-overlay{
+    position:fixed;inset:0;background:rgba(10,10,10,0.5);
+    backdrop-filter:blur(4px);z-index:999;
+    opacity:0;visibility:hidden;transition:all .3s ease;
+  }
+  .mobile-menu-overlay.active{opacity:1;visibility:visible}
+
+  /* ========== PAGE HERO ========== */
+  .page-hero{
+    padding:200px 0 100px;
+    background:var(--cream);
+    position:relative;
+    overflow:hidden;
+  }
+  .page-hero-grid{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:80px;align-items:center;
+    position:relative;z-index:2;
+  }
+  .breadcrumb{
+    display:flex;align-items:center;gap:12px;
+    font-size:12px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--gray);
+    margin-bottom:28px;
+  }
+  .breadcrumb a{color:var(--gray)}
+  .breadcrumb a:hover{color:var(--gold)}
+  .breadcrumb-sep{color:var(--gold)}
+  .breadcrumb-current{color:var(--black);font-weight:500}
+  
+  .page-hero-label{
+    display:inline-flex;align-items:center;gap:12px;
+    font-size:12px;letter-spacing:4px;
+    text-transform:uppercase;color:var(--gold);
+    font-weight:600;margin-bottom:24px;
+  }
+  .page-hero h1{
+    font-size:clamp(44px,5.5vw,72px);
+    font-weight:400;line-height:1.08;
+    margin-bottom:28px;color:var(--black);
+  }
+  .page-hero h1 em{font-style:italic;color:var(--gold)}
+  .page-hero-text{
+    font-size:18px;color:var(--gray);
+    line-height:1.8;max-width:520px;
+  }
+
+  .page-hero-image img{
+    width:100%;height:500px;
+    object-fit:cover;
+    border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-lg);
+  }
+
+  /* ========== SERVICES GRID ========== */
+  .section{padding:120px 0;position:relative}
+  .section-white{background:var(--white)}
+  .section-cream{background:var(--cream)}
+  .section-black{background:var(--black);color:var(--white)}
+  
+  .section-header{max-width:720px;margin-bottom:70px}
+  .section-header.center{text-align:center;margin-left:auto;margin-right:auto}
+  .section-label{
+    font-size:12px;letter-spacing:4px;
+    text-transform:uppercase;color:var(--gold);
+    font-weight:600;margin-bottom:20px;
+    display:inline-flex;align-items:center;gap:12px;
+  }
+  .section-title{
+    font-size:clamp(32px,4vw,52px);
+    margin-bottom:24px;color:var(--black);
+    font-weight:400;
+  }
+  .section-black .section-title{color:var(--white)}
+  .section-subtitle{font-size:17px;color:var(--gray);line-height:1.8}
+
+  .services-detail-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:32px;
+  }
+  .service-detail-card{
+    background:var(--white);
+    border:1px solid rgba(10,10,10,0.06);
+    border-radius:var(--radius-lg);
+    padding:44px 36px;
+    transition:all .4s ease;
+    display:flex;flex-direction:column;
+    justify-content:space-between;
+    box-shadow:var(--shadow-sm);
+  }
+  .service-detail-card:hover{
+    transform:translateY(-8px);
+    box-shadow:var(--shadow-lg);
+    border-color:var(--gold);
+  }
+  .service-num{
+    font-family:var(--serif);font-size:28px;
+    color:var(--gold);margin-bottom:28px;
+    font-style:italic;
+  }
+  .service-detail-card h3{
+    font-size:26px;margin-bottom:16px;
+    color:var(--black);
+  }
+  .service-detail-card p{
+    font-size:15px;color:var(--gray);
+    line-height:1.8;margin-bottom:28px;
+  }
+  .service-features{
+    list-style:none;margin-bottom:32px;
+    border-top:1px solid var(--beige);
+    padding-top:20px;
+  }
+  .service-features li{
+    font-size:14px;color:var(--charcoal);
+    margin-bottom:10px;display:flex;align-items:center;gap:10px;
+  }
+  .service-features li i{color:var(--gold)}
+
+  /* ========== PROCESS STEPS ========== */
+  .process-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:28px;
+  }
+  .process-card{
+    background:var(--cream);
+    border-radius:var(--radius-lg);
+    padding:40px 32px;
+    position:relative;
+  }
+  .process-step-num{
+    font-family:var(--serif);font-size:48px;
+    color:rgba(10,10,10,0.12);line-height:1;
+    margin-bottom:20px;font-weight:600;
+  }
+  .process-card h3{
+    font-size:22px;margin-bottom:14px;color:var(--black);
+  }
+  .process-card p{
+    font-size:15px;color:var(--gray);line-height:1.75;
+  }
+
+  /* ========== NEWSLETTER ========== */
+  .newsletter-split{
+    display:grid;grid-template-columns:1fr 1fr;
+    background:var(--black);
+    border-radius:var(--radius-xl);
+    overflow:hidden;
+    min-height:440px;
+  }
+  .newsletter-image img{width:100%;height:100%;object-fit:cover}
+  .newsletter-content{
+    padding:70px 60px;
+    display:flex;flex-direction:column;justify-content:center;
+    color:var(--white);
+  }
+  .newsletter-content h2{font-size:clamp(28px,3vw,40px);margin-bottom:16px;color:var(--white)}
+  .newsletter-content p{color:rgba(245,241,232,0.7);margin-bottom:28px}
+  .newsletter-form{display:flex;flex-direction:column;gap:16px;max-width:400px}
+  .newsletter-input-group{
+    display:flex;background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:100px;overflow:hidden;
+  }
+  .newsletter-input-group input{
+    flex:1;padding:16px 24px;background:transparent;
+    border:none;color:var(--white);outline:none;
+    font-family:var(--sans);font-size:14px;
+  }
+  .newsletter-input-group button{
+    padding:16px 28px;background:var(--gold);
+    color:var(--black);border:none;cursor:pointer;
+    font-family:var(--sans);font-size:12px;font-weight:600;
+    letter-spacing:2px;text-transform:uppercase;
+  }
+
+  /* ========== FOOTER ========== */
+  footer{background:var(--black);color:var(--white);padding:90px 0 40px}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:60px;margin-bottom:60px}
+  .footer-brand .logo{margin-bottom:24px;color:var(--white)}
+  .footer-brand .logo-mark{background:var(--gold);color:var(--black)}
+  .footer-brand p{color:rgba(245,241,232,0.65);line-height:1.8;max-width:340px;margin-bottom:28px;font-size:14px}
+  .footer-social{display:flex;gap:12px;flex-wrap:wrap}
+  .footer-social a{
+    width:40px;height:40px;
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--white);transition:all .3s ease;
+  }
+  .footer-social a:hover{background:var(--gold);border-color:var(--gold);color:var(--black);transform:translateY(-3px)}
+  .footer-col h5{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-bottom:24px;color:var(--gold-light)}
+  .footer-col ul{list-style:none}
+  .footer-col li{margin-bottom:12px}
+  .footer-col a{color:rgba(245,241,232,0.65);font-size:14px;transition:all .3s ease;display:inline-flex;align-items:center;gap:8px}
+  .footer-col a:hover{color:var(--white);transform:translateX(4px)}
+  .footer-bottom{
+    display:flex;justify-content:space-between;align-items:center;
+    padding-top:32px;border-top:1px solid rgba(255,255,255,0.08);
+    font-size:13px;color:rgba(245,241,232,0.5);flex-wrap:wrap;gap:20px;
+  }
+  .footer-bottom-links{display:flex;gap:28px}
+  .footer-bottom-links a:hover{color:var(--gold)}
+
+  .back-to-top{
+    position:fixed;bottom:32px;right:32px;
+    width:50px;height:50px;border-radius:50%;
+    background:var(--black);color:var(--white);
+    border:none;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    opacity:0;visibility:hidden;
+    transition:all .4s ease;z-index:999;
+  }
+  .back-to-top.visible{opacity:1;visibility:visible}
+  .back-to-top:hover{background:var(--gold)}
+
+  .reveal{opacity:0;transform:translateY(36px);transition:all .8s cubic-bezier(0.4, 0, 0.2, 1)}
+  .reveal.active{opacity:1;transform:translateY(0)}
+
+  /* ========== GLOBAL RESPONSIVE MEDIA QUERIES ========== */
+  @media (max-width: 1200px){
+    .container{padding:0 40px}
+    .nav-inner{padding:20px 40px}
+    .services-detail-grid{grid-template-columns:repeat(2,1fr)}
+    .process-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width: 1024px){
+    .container{padding:0 32px}
+    .nav-inner{padding:18px 32px}
+    .page-hero-grid{grid-template-columns:1fr;gap:40px}
+    .page-hero-image img{height:380px}
+    .footer-grid{grid-template-columns:1fr 1fr;gap:40px}
+    .newsletter-split{grid-template-columns:1fr}
+    .newsletter-image{height:240px}
+  }
+  @media (max-width: 768px){
+    .container{padding:0 20px}
+    .nav-inner{padding:16px 20px}
+    .nav-links,.nav-cta .btn{display:none}
+    .menu-toggle{display:block}
+    .page-hero{padding:140px 0 60px}
+    .services-detail-grid{grid-template-columns:1fr;gap:20px}
+    .process-grid{grid-template-columns:1fr;gap:20px}
+    .section{padding:80px 0}
+    .footer-grid{grid-template-columns:1fr;gap:32px}
+    .newsletter-content{padding:40px 24px}
+    .newsletter-input-group{flex-direction:column;border-radius:16px;background:transparent;border:none}
+    .newsletter-input-group input{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:100px;margin-bottom:12px}
+    .newsletter-input-group button{border-radius:100px;justify-content:center}
+    .footer-bottom{flex-direction:column;align-items:flex-start;gap:12px}
+  }
+</style>
+</head>
+<body>
+
+<!-- Scroll Progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu-overlay" id="mobileOverlay"></div>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">B</span>
+      <span class="logo-text">BKU</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="index.html#journal">Journal</a></li>
+      <li><a href="index.html#gallery">Gallery</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="index.html#contact" class="btn btn-black">
+        <span>Contact Us</span>
+        <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><i data-lucide="menu"></i></button>
+    </div>
+  </div>
+</nav>
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-grid">
+      <div class="reveal">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="breadcrumb-sep">—</span>
+          <span class="breadcrumb-current">Services</span>
+        </div>
+        <div class="page-hero-label">What We Do</div>
+        <h1>End-to-end <em>event</em> & PR solutions.</h1>
+        <p class="page-hero-text">
+          From concept development and spatial 3D design to logistics, technical production, and live showcalling — BKU turns your ambitious visions into unforgettable live experiences.
+        </p>
+      </div>
+      <div class="page-hero-image reveal">
+        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=900&auto=format&fit=crop" alt="BKU Services">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Grid Section -->
+<section class="section section-white">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="section-label center">Our Capabilities</div>
+      <h2 class="section-title">Six core disciplines. One crew.</h2>
+      <p class="section-subtitle">We bring together strategy, design, production, and storytelling under one roof to deliver seamless shows nationwide.</p>
+    </div>
+    
+    <div class="services-detail-grid">
+      <div class="service-detail-card reveal">
+        <div>
+          <div class="service-num">01</div>
+          <h3>Corporate Summits & Conferences</h3>
+          <p>High-stakes corporate gatherings, product launches, keynote stages, and global partner meets designed to reflect your brand's authority.</p>
+          <ul class="service-features">
+            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> Stage Fabrication & LED Displays</li>
+            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> Keynote Speaker & VIP Hospitality</li>
+            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> Live Webcasting & Broadcast AV</li>
+          </ul>
+        </div>
+        <a href="index.html#contact" class="btn btn-outline">Inquire Service</a>
+      </div>
+
+      <div class="service-detail-card reveal" style="transition-delay:0.1s">
+        <div>
+          <div class="service-num">02</div>
+          <h3>Luxury Destination Weddings</h3>
+          <p>Bespoke celebrations in iconic locations worldwide. We handle mood boards, floral installations, artist curation, and multi-day run-of-show.</p>
+          <ul class="service-features">
+            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> Venue Sourcing & Spatial Layouts</li>
+            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> Celebrity & Musical Artist Booking</li>
+            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> Guest Management & Concierge</li>
+          </ul>
+        </div>
+        <a href="index.html#contact" class="btn btn-outline">Inquire Service</a>
+      </div>
+
+      <div class="service-detail-card reveal" style="transition-delay:0.2s">
+        <div>
+          <div class="service-num">03</div>
+          <h3>Brand Activations & Pop-ups</h3>
+          <p>Immersive pop-up environments, interactive installations, and experiential brand touchpoints built for high social shareability.</p>
+          <ul class="service-features">
+            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> 3D Environmental Design</li>
+            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> Mall & Public Space Permits</li>
+            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> Interactive AR/VR Tech Integration</li>
+          </ul>
+        </div>
+        <a href="index.html#contact" class="btn btn-outline">Inquire Service</a>
+      </div>
+
+      <div class="service-detail-card reveal">
+        <div>
+          <div class="service-num">04</div>
+          <h3>Concerts & Music Festivals</h3>
+          <p>Massive arena-scale sound, intelligent lighting rigs, stage engineering, and crowd management for live music performances.</p>
+          <ul class="service-features">
+            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> Concert Grade Audio (L-Acoustics)</li>
+            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> Pyrotechnics & Laser Displays</li>
+            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> Artist Rider Compliance & Security</li>
+          </ul>
+        </div>
+        <a href="index.html#contact" class="btn btn-outline">Inquire Service</a>
+      </div>
+
+      <div class="service-detail-card reveal" style="transition-delay:0.1s">
+        <div>
+          <div class="service-num">05</div>
+          <h3>PR & Media Management</h3>
+          <p>Strategic media relations, press conferences, influencer guest lists, and national publication coverage for your major events.</p>
+          <ul class="service-features">
+            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> Press Release Drafting & Wire Distribution</li>
+            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> On-site Red Carpet Media Desk</li>
+            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> Post-event Coverage Reports</li>
+          </ul>
+        </div>
+        <a href="index.html#contact" class="btn btn-outline">Inquire Service</a>
+      </div>
+
+      <div class="service-detail-card reveal" style="transition-delay:0.2s">
+        <div>
+          <div class="service-num">06</div>
+          <h3>Technical Production & AV Rigs</h3>
+          <p>State-of-the-art rigging, trussing, LED video walls, sound design, and power backup management for any scale venue.</p>
+          <ul class="service-features">
+            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> High Refresh Rate Curved LED Screens</li>
+            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> Certified Structural Rigging</li>
+            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> Uninterrupted Generator Backups</li>
+          </ul>
+        </div>
+        <a href="index.html#contact" class="btn btn-outline">Inquire Service</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Production Process Section -->
+<section class="section section-cream">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">How We Work</div>
+      <h2 class="section-title">Our four-step production workflow.</h2>
+      <p class="section-subtitle">A disciplined approach to creative production that turns initial ideas into flawless show execution.</p>
+    </div>
+    
+    <div class="process-grid">
+      <div class="process-card reveal">
+        <div class="process-step-num">01</div>
+        <h3>Discovery & Strategy</h3>
+        <p>We deep-dive into your objectives, audience demographics, budget parameters, and venue specifications to set clear targets.</p>
+      </div>
+
+      <div class="process-card reveal" style="transition-delay:0.1s">
+        <div class="process-step-num">02</div>
+        <h3>3D Visual & Spatial Design</h3>
+        <p>Our creative team renders photorealistic 3D stage layouts, lighting plots, and spatial walk-throughs before fabrication begins.</p>
+      </div>
+
+      <div class="process-card reveal" style="transition-delay:0.2s">
+        <div class="process-step-num">03</div>
+        <h3>On-Ground Showcalling</h3>
+        <p>Our technical directors manage set builds, sound checks, vendor timing, hospitality, and live showcalling minute by minute.</p>
+      </div>
+
+      <div class="process-card reveal" style="transition-delay:0.3s">
+        <div class="process-step-num">04</div>
+        <h3>Content & Amplification</h3>
+        <p>Live photo/video editing teams deliver instant social highlights during the event, followed by official 4K showreels.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="section section-white" style="padding-top:0">
+  <div class="container">
+    <div class="newsletter-split reveal">
+      <div class="newsletter-image">
+        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1000&auto=format&fit=crop" alt="Newsletter">
+      </div>
+      <div class="newsletter-content">
+        <div class="section-label" style="color:var(--gold)">Stay Inspired</div>
+        <h2>Join the <em>BKU</em> community.</h2>
+        <p>Subscribe to receive the latest insights, event trends, and creative inspiration delivered to your inbox. No spam — just stories worth reading.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+          <div class="newsletter-input-group">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit">
+              <span>Subscribe</span>
+              <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
+            </button>
+          </div>
+          <p class="newsletter-note">By subscribing, you agree to our Privacy Policy. Unsubscribe anytime.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <span class="logo-mark">B</span>
+          <span class="logo-text">BKU</span>
+        </a>
+        <p>A full-scale event management and creative production company that transforms ideas into unforgettable experiences. From corporate summits to celebrity concerts and private celebrations.</p>
+        <div class="footer-social">
+          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://wa.me/917981636962" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="index.html#gallery">Gallery</a></li>
+          <li><a href="index.html#journal">Journal</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h5>Our Agency</h5>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h5>Get in Touch</h5>
+        <ul>
+          <li><a href="tel:+917981636962"><i data-lucide="phone" style="width:16px;height:16px"></i> +91 79816 36962</a></li>
+          <li><a href="mailto:hello@bku.com"><i data-lucide="mail" style="width:16px;height:16px"></i> hello@bku.com</a></li>
+          <li><a href="#"><i data-lucide="map-pin" style="width:16px;height:16px"></i> Mumbai, India</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div>2026 © Developed by <strong style="color:rgba(245,241,232,0.85)">Akhi Digitals & Entertainments Pvt Ltd</strong></div>
+      <div class="footer-bottom-links">
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Privacy & Policy</a>
+        <a href="#">Help</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <i data-lucide="arrow-up" style="width:20px;height:20px"></i>
+</button>
+
+<script>
+  lucide.createIcons();
+  
+  // Scroll Progress
+  const scrollProgress = document.getElementById('scrollProgress');
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = (scrollTop / docHeight) * 100;
+    scrollProgress.style.width = progress + '%';
+  });
+  
+  // Navigation
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
+  
+  // Mobile Menu
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+  
+  function toggleMobileMenu() {
+    const isOpen = navLinks.classList.contains('active');
+    if (isOpen) {
+      navLinks.classList.remove('active');
+      mobileOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+      navLinks.style.display = '';
+    } else {
+      navLinks.classList.add('active');
+      mobileOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      Object.assign(navLinks.style, {
+        display: 'flex', position: 'fixed', top: '0', right: '0',
+        width: '300px', height: '100vh', flexDirection: 'column',
+        background: 'var(--white)', padding: '100px 36px 36px',
+        gap: '24px', boxShadow: 'var(--shadow-lg)', zIndex: '1000'
+      });
+    }
+  }
+  menuToggle.addEventListener('click', toggleMobileMenu);
+  mobileOverlay.addEventListener('click', toggleMobileMenu);
+
+  // Reveal on scroll
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  
+  // Back to Top
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 500);
+  });
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+</body>
+</html>

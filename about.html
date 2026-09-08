@@ -696,32 +696,6 @@
   }
   .footer-social a:hover{background:var(--gold);border-color:var(--gold);color:var(--black);transform:translateY(-3px)}
 
-  /* Floating Social Sidebar */
-  .floating-socials{
-    position:fixed;left:24px;top:50%;
-    transform:translateY(-50%);
-    display:flex;flex-direction:column;gap:12px;
-    z-index:998;
-  }
-  .floating-social-link{
-    width:40px;height:40px;border-radius:50%;
-    background:rgba(255,255,255,0.9);
-    border:1px solid rgba(10,10,10,0.08);
-    box-shadow:0 4px 16px rgba(10,10,10,0.08);
-    backdrop-filter:blur(12px);
-    display:flex;align-items:center;justify-content:center;
-    color:var(--black);
-    transition:all .35s cubic-bezier(0.4,0,0.2,1);
-  }
-  .floating-social-link:hover{
-    background:var(--black);
-    color:var(--gold);
-    transform:scale(1.15) translateX(4px);
-    box-shadow:0 8px 24px rgba(10,10,10,0.18);
-  }
-  @media (max-width: 1100px){
-    .floating-socials{display:none}
-  }
   .footer-col h5{font-size:12px;letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-bottom:28px;color:var(--gold)}
   .footer-col ul{list-style:none}
   .footer-col li{margin-bottom:14px}
@@ -779,7 +753,12 @@
     .page-hero-badge{position:relative;bottom:auto;left:auto;margin-top:20px;display:inline-flex}
     .founder-image-badge{position:relative;bottom:auto;left:auto;margin-top:20px;display:inline-flex}
     .story-split-meta{flex-wrap:wrap;gap:24px}
+  .mobile-menu-overlay{
+    position:fixed;inset:0;background:rgba(10,10,10,0.5);
+    backdrop-filter:blur(4px);z-index:999;
+    opacity:0;visibility:hidden;transition:all .3s ease;
   }
+  .mobile-menu-overlay.active{opacity:1;visibility:visible}
 </style>
 </head>
 <body>
@@ -787,14 +766,8 @@
 <!-- Scroll Progress -->
 <div class="scroll-progress" id="scrollProgress"></div>
 
-<!-- Floating Social Sidebar -->
-<div class="floating-socials">
-  <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="floating-social-link"><i class="fa-brands fa-instagram" style="font-size:16px"></i></a>
-  <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook" class="floating-social-link"><i class="fa-brands fa-facebook-f" style="font-size:15px"></i></a>
-  <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube" class="floating-social-link"><i class="fa-brands fa-youtube" style="font-size:15px"></i></a>
-  <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn" class="floating-social-link"><i class="fa-brands fa-linkedin-in" style="font-size:15px"></i></a>
-  <a href="https://wa.me/917981636962" target="_blank" rel="noopener" aria-label="WhatsApp" class="floating-social-link"><i class="fa-brands fa-whatsapp" style="font-size:16px"></i></a>
-</div>
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu-overlay" id="mobileOverlay"></div>
 
 <!-- Navigation -->
 <nav class="nav" id="nav">
@@ -803,10 +776,10 @@
       <span class="logo-mark">B</span>
       <span class="logo-text">BKU</span>
     </a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
       <li><a href="index.html">Home</a></li>
-      <li><a href="about.html" class="active">About</a></li>
-      <li><a href="index.html#services">Services</a></li>
+      <li><a href="about.html" class="active">About Us</a></li>
+      <li><a href="services.html">Services</a></li>
       <li><a href="index.html#journal">Journal</a></li>
       <li><a href="index.html#gallery">Gallery</a></li>
       <li><a href="index.html#contact">Contact</a></li>
@@ -816,7 +789,7 @@
         <span>Contact Us</span>
         <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
       </a>
-      <button class="menu-toggle"><i data-lucide="menu"></i></button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu"><i data-lucide="menu"></i></button>
     </div>
   </div>
 </nav>
@@ -1293,7 +1266,7 @@
         <h5>Our Agency</h5>
         <ul>
           <li><a href="about.html">About Us</a></li>
-          <li><a href="index.html#services">Services</a></li>
+          <li><a href="services.html">Services</a></li>
           <li><a href="index.html#contact">Contact</a></li>
           <li><a href="#">Careers</a></li>
         </ul>
@@ -1344,20 +1317,31 @@
   });
   
   // Mobile Menu
-  const menuToggle = document.querySelector('.menu-toggle');
-  const navLinks = document.querySelector('.nav-links');
-  menuToggle.addEventListener('click', () => {
-    const isOpen = navLinks.style.display === 'flex';
-    navLinks.style.display = isOpen ? 'none' : 'flex';
-    if (!isOpen) {
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+  
+  function toggleMobileMenu() {
+    const isOpen = navLinks.classList.contains('active');
+    if (isOpen) {
+      navLinks.classList.remove('active');
+      mobileOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+      navLinks.style.display = '';
+    } else {
+      navLinks.classList.add('active');
+      mobileOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
       Object.assign(navLinks.style, {
-        position:'absolute', top:'100%', left:'0', right:'0',
-        flexDirection:'column', background:'var(--white)',
-        padding:'32px', gap:'20px', boxShadow:'var(--shadow-lg)',
-        borderTop:'1px solid rgba(10,10,10,0.06)'
+        display: 'flex', position: 'fixed', top: '0', right: '0',
+        width: '300px', height: '100vh', flexDirection: 'column',
+        background: 'var(--white)', padding: '100px 36px 36px',
+        gap: '24px', boxShadow: 'var(--shadow-lg)', zIndex: '1000'
       });
     }
-  });
+  }
+  menuToggle.addEventListener('click', toggleMobileMenu);
+  mobileOverlay.addEventListener('click', toggleMobileMenu);
   
   // Reveal on scroll
   const revealObserver = new IntersectionObserver((entries) => {
