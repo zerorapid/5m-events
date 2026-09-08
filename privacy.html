@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Privacy Policy — BKU | Event Management & Production</title>
+<meta name="description" content="Read the privacy policy for BKU to understand how we collect, use, and protect your personal information.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  /* ========== 1. RESET & BASE ========== */
+  :root{
+    --white: #FFFFFF;
+    --cream: #F5F1E8;
+    --beige: #E8DFD0;
+    --sand: #D4C4B0;
+    --black: #0A0A0A;
+    --charcoal: #1A1A1A;
+    --dark-gray: #2A2A2A;
+    --gray: #5A5A5A;
+    --light-gray: #8A8A8A;
+    --muted: #A8A29A;
+    --gold: #B8945F;
+    --gold-light: #D4B886;
+    --shadow-sm: 0 4px 12px rgba(10,10,10,0.06);
+    --shadow-md: 0 12px 40px rgba(10,10,10,0.10);
+    --shadow-lg: 0 30px 80px rgba(10,10,10,0.18);
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'Inter', system-ui, sans-serif;
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 32px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: var(--sans);
+    background: var(--white);
+    color: var(--charcoal);
+    line-height: 1.7;
+    font-weight: 400;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: inherit; text-decoration: none; transition: all 0.35s ease; }
+  ul { list-style: none; }
+  h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; line-height: 1.15; letter-spacing: -0.01em; color: var(--black); }
+  p { font-size: 16px; line-height: 1.8; color: var(--gray); margin-bottom: 20px; }
+  .container { max-width: 1360px; margin: 0 auto; padding: 0 60px; width: 100%; }
+  .content-wrapper { max-width: 840px; margin: 0 auto; padding: 64px 24px 80px; }
+
+  /* ========== SCROLL PROGRESS ========== */
+  .scroll-progress{
+    position:fixed;top:0;left:0;height:2px;
+    background:linear-gradient(90deg, var(--gold), var(--gold-light));
+    z-index:9999;width:0%;transition:width .1s ease;
+  }
+
+  /* ========== 2. NAVIGATION ========== */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid transparent;
+    transition: all 0.4s ease;
+  }
+  .nav.scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    border-bottom-color: rgba(10, 10, 10, 0.06);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 60px; max-width: 1600px; margin: 0 auto;
+  }
+  .logo {
+    font-family: var(--serif);
+    display: flex; align-items: center; gap: 14px;
+  }
+  .logo-mark {
+    width: 38px; height: 38px;
+    background: var(--black);
+    color: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif);
+    font-size: 16px; font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 8px;
+    transition: transform 0.4s ease;
+  }
+  .logo:hover .logo-mark { transform: rotate(-8deg) scale(1.05); }
+  .logo-text { font-size: 26px; letter-spacing: 3px; font-weight: 600; color: var(--black); }
+  .nav-links { display: flex; gap: 40px; }
+  .nav-links a {
+    font-size: 13px; letter-spacing: 1.5px; font-weight: 500;
+    text-transform: uppercase; color: var(--charcoal); position: relative;
+    padding: 6px 0;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; left: 0; bottom: 0;
+    width: 0; height: 1px; background: var(--gold); transition: width 0.35s ease;
+  }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-links a:hover { color: var(--black); }
+  
+  .nav-cta { display: flex; align-items: center; gap: 20px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 14px 28px; font-size: 12px; letter-spacing: 2px;
+    font-weight: 600; text-transform: uppercase;
+    cursor: pointer; border: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: var(--sans);
+    border-radius: 100px;
+  }
+  .btn-black { background: var(--black); color: var(--white); }
+  .btn-black:hover { background: var(--gold); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(184,148,95,0.3); }
+
+  .menu-toggle { display: none; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--charcoal); }
+  .mobile-menu-overlay {
+    position: fixed; inset: 0; background: rgba(10,10,10,0.5);
+    backdrop-filter: blur(4px); z-index: 999;
+    opacity: 0; visibility: hidden; transition: all 0.3s ease;
+  }
+  .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
+
+  @media (max-width: 1024px) {
+    .nav-inner { padding: 20px 32px; }
+    .container { padding: 0 32px; }
+    .nav-links { display: none; }
+    .menu-toggle { display: block; }
+  }
+  @media (max-width: 600px) {
+    .nav-inner { padding: 16px 20px; }
+    .container { padding: 0 20px; }
+    .logo-text { font-size: 22px; }
+    .logo-mark { width: 34px; height: 34px; font-size: 14px; }
+  }
+
+  /* ========== 3. PAGE HERO ========== */
+  .page-hero {
+    padding: 180px 0 56px;
+    background: linear-gradient(135deg, var(--cream) 0%, var(--white) 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-hero::before {
+    content: ''; position: absolute; top: -40%; right: -10%;
+    width: 60%; height: 180%;
+    background: radial-gradient(circle, rgba(184, 148, 95, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .breadcrumb {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gray); margin-bottom: 24px; position: relative; z-index: 1;
+  }
+  .breadcrumb a { color: var(--gray); }
+  .breadcrumb a:hover { color: var(--gold); }
+  .breadcrumb-sep { color: var(--gold); }
+  .breadcrumb-current { color: var(--black); font-weight: 500; }
+
+  .page-hero h1 {
+    font-size: clamp(38px, 5vw, 64px);
+    font-weight: 400; margin-bottom: 20px; color: var(--black); position: relative; z-index: 1;
+  }
+  .page-hero h1 em { font-style: italic; color: var(--gold); }
+  .page-hero p {
+    font-size: 17px; max-width: 660px; margin: 0 auto;
+    color: var(--gray); line-height: 1.8; position: relative; z-index: 1;
+  }
+  @media (max-width: 600px) {
+    .page-hero { padding: 140px 0 40px; }
+  }
+
+  /* ========== 4. LEGAL CONTENT ========== */
+  .legal-content h2 { font-size: 28px; margin: 44px 0 18px; font-weight: 500; color: var(--black); }
+  .legal-content h3 { font-size: 20px; margin: 32px 0 14px; font-weight: 500; color: var(--black); }
+  .legal-content ul { margin: 0 0 24px 28px; list-style-type: disc; }
+  .legal-content ul li { margin-bottom: 12px; color: var(--gray); line-height: 1.75; }
+  .legal-content strong { color: var(--black); font-weight: 600; }
+  .last-updated { font-size: 14px; color: var(--light-gray); font-style: italic; margin-bottom: 36px; display: block; }
+
+  /* ========== 5. FOOTER ========== */
+  footer {
+    background: var(--black); color: var(--white);
+    padding: 80px 0 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    gap: 48px; margin-bottom: 48px;
+  }
+  .footer-brand .logo { margin-bottom: 20px; }
+  .footer-brand .logo-text { color: var(--white); }
+  .footer-brand p {
+    color: rgba(245, 241, 232, 0.55);
+    line-height: 1.75; font-size: 14px; margin-bottom: 24px;
+  }
+  .footer-social { display: flex; gap: 12px; flex-wrap: wrap; }
+  .footer-social a {
+    width: 38px; height: 38px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--white); transition: all 0.3s ease;
+    font-size: 15px;
+  }
+  .footer-social a:hover {
+    background: var(--gold); border-color: var(--gold);
+    color: var(--black); transform: translateY(-3px);
+  }
+  .footer-col h5 {
+    font-family: var(--sans);
+    font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; font-weight: 600;
+    margin-bottom: 20px; color: var(--gold);
+  }
+  .footer-col li { margin-bottom: 12px; }
+  .footer-col a {
+    color: rgba(245, 241, 232, 0.55);
+    font-size: 14px; transition: all 0.3s ease;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .footer-col a:hover { color: var(--white); transform: translateX(4px); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 12px; color: rgba(245, 241, 232, 0.45);
+    flex-wrap: wrap; gap: 16px;
+  }
+  .footer-bottom-links { display: flex; gap: 24px; flex-wrap: wrap; }
+  .footer-bottom-links a:hover { color: var(--gold); }
+  
+  .back-to-top {
+    position: fixed; bottom: 32px; right: 32px;
+    width: 48px; height: 48px;
+    background: var(--black); color: var(--gold);
+    border: 1px solid var(--gold); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; opacity: 0; visibility: hidden;
+    transition: all 0.35s ease; z-index: 900;
+  }
+  .back-to-top.visible { opacity: 1; visibility: visible; }
+  .back-to-top:hover { background: var(--gold); color: var(--black); transform: translateY(-4px); }
+
+  @media (max-width: 900px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+  }
+  @media (max-width: 600px) {
+    footer { padding: 56px 0 24px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; margin-bottom: 36px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .footer-bottom-links { justify-content: center; }
+  }
+
+  /* ========== 6. ANIMATIONS ========== */
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.active { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- Scroll Progress Bar -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu-overlay" id="mobileOverlay"></div>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">B</span>
+      <span class="logo-text">BKU</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="blogs.html">Journal</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="contact.html" class="btn btn-black">
+        <span>Contact Us</span>
+        <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="main-content">
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="reveal">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="breadcrumb-sep">—</span>
+          <span class="breadcrumb-current">Legal</span>
+        </div>
+        <h1>Privacy <em>Policy</em></h1>
+        <p>Your privacy is important to us. This policy outlines how BKU collects, uses, and safeguards your personal information.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Legal Content -->
+  <div class="container">
+    <div class="content-wrapper legal-content reveal">
+      <span class="last-updated">Last Updated: September 8, 2026</span>
+
+      <h2>1. Information We Collect</h2>
+      <p>We collect information you provide directly to us when you fill out an inquiry form, request an event quote, subscribe to our Journal newsletter, or enter a service agreement. This may include:</p>
+      <ul>
+        <li><strong>Personal Contact Information:</strong> Full name, email address, phone number, company name, and billing details.</li>
+        <li><strong>Event Specification Data:</strong> Event dates, venue preferences, guest counts, design themes, and budget ranges.</li>
+        <li><strong>Payment Details:</strong> Processed securely through PCI-DSS compliant third-party payment gateways. BKU does not store raw credit card numbers.</li>
+      </ul>
+
+      <h2>2. How We Use Your Information</h2>
+      <p>We use the information we collect to:</p>
+      <ul>
+        <li>Design, coordinate, and execute end-to-end event management services.</li>
+        <li>Process invoices, retainer payments, and send related financial receipts.</li>
+        <li>Send technical production updates, run-of-show schedules, and operational notices.</li>
+        <li>Respond to your comments, inquiries, and custom project requests.</li>
+        <li>Deliver curated Journal newsletters and industry insights (with your explicit consent).</li>
+      </ul>
+
+      <h2>3. Sharing of Information</h2>
+      <p>We do not sell, rent, or trade your personally identifiable information to third parties. We may share necessary event parameters with vetted production partners, venue authorities, and caterers strictly to execute your event, provided those parties agree to keep your information confidential.</p>
+
+      <h2>4. Cookies and Web Technologies</h2>
+      <p>Our website utilizes essential cookies and analytics tools to evaluate page performance, smooth scroll interactions, and overall user experience. You may configure your browser settings to decline non-essential cookies; however, certain site features may function with reduced performance.</p>
+
+      <h2>5. Data Security</h2>
+      <p>We implement rigorous technical, organizational, and physical security measures to guard your personal data against unauthorized access, disclosure, or alteration. All client information is stored on encrypted, access-restricted servers.</p>
+
+      <h2>6. Your Rights</h2>
+      <p>You maintain full rights to inspect, update, correct, or request the erasure of your personal data stored by BKU. To exercise these rights or request data removal, please contact our team at hello@bku.com.</p>
+
+      <h2>7. Third-Party Links</h2>
+      <p>Our website may include links to third-party partners or venue websites. These external sites operate under independent privacy policies. BKU accepts no responsibility or liability for the content or privacy practices of external web resources.</p>
+
+      <h2>8. Policy Updates</h2>
+      <p>We may update this Privacy Policy periodically to reflect evolving legal or operational standards. Any updates will be posted on this page with a revised "Last Updated" timestamp.</p>
+
+      <h2>9. Contact Us</h2>
+      <p>If you have any questions or concerns regarding this Privacy Policy, please reach out to us at:</p>
+      <p><strong>BKU Events & Production</strong><br>Email: hello@bku.com<br>Phone: +91 79816 36962<br>Address: Mumbai, India</p>
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <span class="logo-mark">B</span>
+          <span class="logo-text">BKU</span>
+        </a>
+        <p>BKU is a full-scale event management and creative production company that transforms ideas into unforgettable experiences. From corporate summits to celebrity concerts and private celebrations.</p>
+        <div class="footer-social">
+          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://wa.me/917981636962" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="terms.html">Terms & Conditions</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="blogs.html">Journal</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h5>Our Agency</h5>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h5>Get in Touch</h5>
+        <ul>
+          <li><a href="tel:+917981636962"><i data-lucide="phone" style="width:16px;height:16px"></i> +91 79816 36962</a></li>
+          <li><a href="mailto:hello@bku.com"><i data-lucide="mail" style="width:16px;height:16px"></i> hello@bku.com</a></li>
+          <li><a href="#"><i data-lucide="map-pin" style="width:16px;height:16px"></i> Mumbai, India</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div>2026 © Developed by <strong style="color:rgba(245,241,232,0.85)">Akhi Digitals & Entertainments Pvt Ltd</strong></div>
+      <div class="footer-bottom-links">
+        <a href="terms.html">Terms & Conditions</a>
+        <a href="privacy.html">Privacy & Policy</a>
+        <a href="#">Help</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <i data-lucide="arrow-up" style="width:20px;height:20px"></i>
+</button>
+
+<script>
+  lucide.createIcons();
+
+  // Scroll Progress Bar
+  const scrollProgress = document.getElementById('scrollProgress');
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = (scrollTop / docHeight) * 100;
+    scrollProgress.style.width = progress + '%';
+  });
+
+  // Navigation scroll state
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Mobile Menu Drawer
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+
+  function toggleMobileMenu() {
+    const isOpen = navLinks.classList.contains('active');
+    if (isOpen) {
+      navLinks.classList.remove('active');
+      mobileOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+      navLinks.style.display = '';
+    } else {
+      navLinks.classList.add('active');
+      mobileOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      Object.assign(navLinks.style, {
+        display: 'flex', position: 'fixed', top: '0', right: '0',
+        width: '300px', height: '100vh', flexDirection: 'column',
+        background: 'var(--white)', padding: '100px 36px 36px',
+        gap: '24px', boxShadow: 'var(--shadow-lg)', zIndex: '1000'
+      });
+    }
+  }
+  menuToggle.addEventListener('click', toggleMobileMenu);
+  mobileOverlay.addEventListener('click', toggleMobileMenu);
+
+  // Scroll Reveal
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // Back to Top
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 500);
+  });
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+</body>
+</html>
