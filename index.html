@@ -151,7 +151,7 @@
   }
   .mobile-menu-overlay.active{display:block;opacity:1}
 
-  /* ========== HERO ========== */
+  /* ========== HERO (VIDEO & IMAGE MEDIA SHOWCASE) ========== */
   .hero{
     min-height:92vh;
     display:flex;align-items:center;
@@ -167,8 +167,8 @@
     z-index:0;
   }
   .hero-grid{
-    display:grid;grid-template-columns:1.1fr 1fr;
-    gap:80px;align-items:center;
+    display:grid;grid-template-columns:1fr 1.15fr;
+    gap:60px;align-items:center;
     position:relative;z-index:2;
   }
   .hero-content{position:relative}
@@ -190,7 +190,7 @@
     color:var(--white);
   }
   .hero h1{
-    font-size:clamp(44px,5.8vw,80px);
+    font-size:clamp(44px,5.4vw,76px);
     font-weight:400;line-height:1.08;
     margin-bottom:28px;color:var(--black);
   }
@@ -202,45 +202,121 @@
   }
   .hero-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
   
-  .hero-image{position:relative}
-  .hero-image-main{
-    width:100%;height:560px;
-    object-fit:cover;
+  /* Hero Media Showcase Card */
+  .hero-media-showcase{
+    position:relative;
+    width:100%;
     border-radius:var(--radius-lg);
+    overflow:hidden;
     box-shadow:var(--shadow-lg);
+    background:var(--black);
+    min-height:500px;
   }
-  .hero-image-accent{
-    position:absolute;bottom:-36px;left:-36px;
-    width:220px;height:290px;
+  .hero-media-video{
+    width:100%;height:520px;
     object-fit:cover;
-    border-radius:var(--radius-md);
-    box-shadow:var(--shadow-lg);
-    border:6px solid var(--white);
+    display:block;
+    transition:opacity .5s ease;
   }
-  .hero-floating-card{
-    position:absolute;top:36px;right:-28px;
-    background:var(--white);
-    padding:18px 24px;border-radius:var(--radius-md);
-    box-shadow:var(--shadow-lg);
-    display:flex;align-items:center;gap:16px;
-    min-width:190px;
-    border:1px solid rgba(10,10,10,0.04);
+  .hero-media-overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.2) 60%, transparent 100%);
+    display:flex;flex-direction:column;
+    justify-content:space-between;
+    padding:32px;
+    z-index:2;
   }
-  .hero-floating-card-icon{
-    width:44px;height:44px;border-radius:50%;
-    background:var(--cream);
+  .hero-media-top{
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .hero-live-tag{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:6px 14px;background:rgba(10,10,10,0.65);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:100px;color:var(--white);
+    font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;
+  }
+  .hero-live-dot{
+    width:8px;height:8px;border-radius:50%;background:#EF4444;
+    animation:pulse 1.5s infinite;
+  }
+  @keyframes pulse{
+    0%,100%{opacity:1;transform:scale(1)}
+    50%{opacity:0.4;transform:scale(1.2)}
+  }
+  
+  .hero-sound-btn{
+    width:42px;height:42px;border-radius:50%;
+    background:rgba(255,255,255,0.2);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.3);
+    color:var(--white);cursor:pointer;
     display:flex;align-items:center;justify-content:center;
-    color:var(--gold);
+    transition:all .3s ease;
   }
-  .hero-floating-card-num{
-    font-family:var(--serif);font-size:26px;
-    color:var(--black);line-height:1;font-weight:600;
+  .hero-sound-btn:hover{background:var(--white);color:var(--black)}
+
+  .hero-media-bottom{
+    display:flex;justify-content:space-between;align-items:flex-end;gap:20px;
   }
-  .hero-floating-card-label{
-    font-size:11px;letter-spacing:1px;
-    text-transform:uppercase;color:var(--light-gray);
-    font-weight:600;
+  .hero-play-reel-btn{
+    display:inline-flex;align-items:center;gap:14px;
+    padding:16px 28px;background:var(--white);
+    color:var(--black);border-radius:100px;
+    font-size:12px;letter-spacing:2px;text-transform:uppercase;
+    font-weight:700;cursor:pointer;border:none;
+    box-shadow:var(--shadow-md);
+    transition:all .4s ease;
   }
+  .hero-play-reel-btn:hover{
+    background:var(--gold);color:var(--white);
+    transform:scale(1.04);
+  }
+  .hero-play-icon{
+    width:32px;height:32px;border-radius:50%;
+    background:var(--black);color:var(--gold-bright);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .hero-play-reel-btn:hover .hero-play-icon{
+    background:var(--white);color:var(--black);
+  }
+  
+  .hero-media-thumbnails{
+    display:flex;gap:10px;
+  }
+  .hero-thumb{
+    width:56px;height:56px;border-radius:var(--radius-sm);
+    overflow:hidden;border:2px solid rgba(255,255,255,0.4);
+    cursor:pointer;transition:all .3s ease;
+  }
+  .hero-thumb.active,.hero-thumb:hover{
+    border-color:var(--gold-bright);transform:scale(1.08);
+  }
+  .hero-thumb img{width:100%;height:100%;object-fit:cover}
+
+  /* Video Lightbox Modal */
+  .video-modal{
+    display:none;position:fixed;inset:0;
+    background:rgba(10,10,10,0.92);
+    backdrop-filter:blur(16px);
+    z-index:9999;align-items:center;justify-content:center;
+    padding:40px;
+  }
+  .video-modal.active{display:flex}
+  .video-modal-content{
+    position:relative;width:100%;max-width:1000px;
+    aspect-ratio:16/9;background:var(--black);
+    border-radius:var(--radius-lg);overflow:hidden;
+    box-shadow:var(--shadow-lg);
+  }
+  .video-modal-content video{width:100%;height:100%;object-fit:cover}
+  .video-modal-close{
+    position:absolute;top:-40px;right:0;
+    background:none;border:none;color:var(--white);
+    font-size:32px;cursor:pointer;transition:color .3s ease;
+  }
+  .video-modal-close:hover{color:var(--gold-bright)}
   
   /* ========== MARQUEE ========== */
   .marquee{
@@ -282,7 +358,6 @@
   .section-header{max-width:720px;margin-bottom:54px}
   .section-header.center{text-align:center;margin-left:auto;margin-right:auto}
   
-  /* CLEAN LEGIBLE SECTION LABEL */
   .section-label{
     font-size:11px;letter-spacing:2px;
     text-transform:uppercase;color:var(--gold);
@@ -307,7 +382,7 @@
   .section-header.center .section-subtitle{margin:0 auto}
   .section-black .section-subtitle{color:rgba(245,241,232,0.88)}
   
-  /* ========== BENTO GRID (Services) ========== */
+  /* ========== BENTO GRID ========== */
   .bento-grid{
     display:grid;
     grid-template-columns:repeat(3, 1fr);
@@ -489,15 +564,15 @@
   }
   .tab-panel-image img{width:100%;height:100%;object-fit:cover}
   
-  /* ========== HORIZONTAL GALLERY (Auto-Scrolling) ========== */
+  /* ========== HORIZONTAL GALLERY (Infinite Smooth Auto-Scroll) ========== */
   .gallery-scroll{
     display:flex;gap:24px;
     overflow-x:auto;
     padding:20px 60px 40px;
-    scroll-snap-type:x mandatory;
     scrollbar-width:none;
     -ms-overflow-style:none;
     cursor:grab;
+    scroll-behavior:auto !important;
   }
   .gallery-scroll::-webkit-scrollbar{display:none}
   .gallery-scroll:active{cursor:grabbing}
@@ -507,7 +582,6 @@
     border-radius:var(--radius-lg);
     overflow:hidden;
     position:relative;
-    scroll-snap-align:start;
     transition:transform .5s ease;
   }
   .gallery-slide:hover{transform:translateY(-8px)}
@@ -544,7 +618,7 @@
   }
   .gallery-btn:hover{background:var(--black);color:var(--white)}
   
-  /* ========== STATS MODERN (With Icons & Counter) ========== */
+  /* ========== STATS MODERN ========== */
   .stats-grid{
     display:grid;grid-template-columns:repeat(4,1fr);
     gap:24px;
@@ -688,7 +762,7 @@
   }
   .accordion-header{
     padding:20px 24px;
-    display:flex;justify-content:space-between;align-items:center;
+    display:flex;justify-between:space-between;align-items:center;
     cursor:pointer;gap:16px;
     background:transparent;border:none;width:100%;
     text-align:left;font-family:var(--sans);
@@ -751,7 +825,7 @@
   .blog-category{
     position:absolute;top:16px;left:16px;
     background:var(--white);color:var(--black);
-    padding:6px 14px;font-size:10px;
+    padding:6px 12px;font-size:10px;
     font-weight:700;text-transform:uppercase;
     letter-spacing:1.5px;border-radius:100px;
     box-shadow:var(--shadow-sm);
@@ -914,9 +988,9 @@
     .container{padding:0 32px}
     .nav-inner{padding:18px 32px}
     .hero{padding:110px 0 60px;min-height:auto}
-    .hero-grid{grid-template-columns:1fr;gap:50px}
-    .hero-image{max-width:560px;margin:0 auto;width:100%}
-    .hero-image-main{height:420px}
+    .hero-grid{grid-template-columns:1fr;gap:40px}
+    .hero-media-showcase{min-height:400px}
+    .hero-media-video{height:400px}
     
     .story-grid{grid-template-columns:1fr;gap:50px}
     .story-images{max-width:600px;width:100%}
@@ -971,10 +1045,9 @@
     .hero{padding:90px 0 40px}
     .hero h1{font-size:36px;margin-bottom:18px}
     .hero-text{font-size:15.5px;margin-bottom:24px}
-    .hero-image-main{height:320px;border-radius:var(--radius-md)}
-    .hero-image-accent{width:130px;height:175px;bottom:-18px;left:-10px;border-width:4px}
-    .hero-floating-card{top:16px;right:-10px;padding:10px 14px;min-width:130px}
-    .hero-floating-card-num{font-size:22px}
+    .hero-media-showcase{min-height:300px}
+    .hero-media-video{height:300px}
+    .hero-play-reel-btn{padding:12px 20px;font-size:11px}
     
     .bento-grid{grid-template-columns:1fr;gap:16px}
     .bento-card,.bento-card.large,.bento-card.wide{
@@ -1047,7 +1120,7 @@
   </div>
 </nav>
 
-<!-- Hero -->
+<!-- Hero (Video & Image Media Showcase Header) -->
 <section class="hero" id="home">
   <div class="container">
     <div class="hero-grid">
@@ -1065,27 +1138,62 @@
             <span>Discover BKU</span>
             <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
           </a>
-          <a href="#gallery" class="btn btn-outline">
-            <span>View Work</span>
-          </a>
+          <button class="btn btn-outline" id="heroReelBtn">
+            <i data-lucide="play" style="width:14px;height:14px"></i>
+            <span>Watch Showreel</span>
+          </button>
         </div>
       </div>
-      <div class="hero-image reveal">
-        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=900&auto=format&fit=crop" alt="Event Production" class="hero-image-main">
-        <img src="https://images.unsplash.com/photo-1478146059778-26028b07395a?w=600&auto=format&fit=crop" alt="Behind Scenes" class="hero-image-accent">
-        <div class="hero-floating-card">
-          <div class="hero-floating-card-icon">
-            <i data-lucide="star" style="width:22px;height:22px;fill:currentColor"></i>
+      
+      <!-- Interactive Video & Image Showcase -->
+      <div class="hero-media-showcase reveal">
+        <video class="hero-media-video" id="heroVideo" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&auto=format&fit=crop">
+          <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+        <div class="hero-media-overlay">
+          <div class="hero-media-top">
+            <div class="hero-live-tag">
+              <span class="hero-live-dot"></span>
+              <span>Live Stage Production</span>
+            </div>
+            <button class="hero-sound-btn" id="soundToggleBtn" aria-label="Toggle Mute Sound">
+              <i data-lucide="volume-x" id="soundIcon" style="width:18px;height:18px"></i>
+            </button>
           </div>
-          <div>
-            <div class="hero-floating-card-num">4.9</div>
-            <div class="hero-floating-card-label">Client Rating</div>
+          
+          <div class="hero-media-bottom">
+            <button class="hero-play-reel-btn" id="playReelModalBtn">
+              <span class="hero-play-icon"><i data-lucide="play" style="width:16px;height:16px;fill:currentColor"></i></span>
+              <span>Play Video Showcase</span>
+            </button>
+            <div class="hero-media-thumbnails">
+              <div class="hero-thumb active" data-src="https://vjs.zencdn.net/v/oceans.mp4" data-type="video" title="Stage Video">
+                <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=200&auto=format&fit=crop" alt="Stage Video">
+              </div>
+              <div class="hero-thumb" data-src="https://images.unsplash.com/photo-1519741497674-611481863552?w=900&auto=format&fit=crop" data-type="image" title="Weddings">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=200&auto=format&fit=crop" alt="Weddings">
+              </div>
+              <div class="hero-thumb" data-src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=900&auto=format&fit=crop" data-type="image" title="Concerts">
+                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=200&auto=format&fit=crop" alt="Concerts">
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- Video Lightbox Modal -->
+<div class="video-modal" id="videoModal">
+  <div class="video-modal-content">
+    <button class="video-modal-close" id="closeVideoModal">&times;</button>
+    <video id="modalVideoPlayer" controls playsinline>
+      <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
 
 <!-- Marquee -->
 <div class="marquee">
@@ -1277,13 +1385,13 @@
   </div>
 </section>
 
-<!-- Horizontal Gallery (With Auto-Scrolling) -->
+<!-- Horizontal Gallery (Infinite Smooth Left-to-Right Auto-Moving Carousel) -->
 <section class="section section-white" id="gallery">
   <div class="container">
     <div class="section-header reveal">
       <div class="section-label">Portfolio</div>
       <h2 class="section-title">Selected Works</h2>
-      <p class="section-subtitle">A curated collection of our most memorable events and productions — drag or watch auto-scroll.</p>
+      <p class="section-subtitle">A curated collection of our most memorable events and productions — auto-scrolling left to right.</p>
     </div>
   </div>
   <div class="gallery-scroll" id="galleryScroll">
@@ -1336,7 +1444,7 @@
   </div>
 </section>
 
-<!-- Stats (With Icons & Smooth Fast Counter Animation) -->
+<!-- Stats -->
 <section class="section section-cream">
   <div class="container">
     <div class="section-header center reveal">
@@ -1750,6 +1858,58 @@
   menuToggle.addEventListener('click', toggleMobileMenu);
   mobileOverlay.addEventListener('click', toggleMobileMenu);
   
+  // Hero Video Showcase Controls & Lightbox Modal
+  const heroVideo = document.getElementById('heroVideo');
+  const soundToggleBtn = document.getElementById('soundToggleBtn');
+  const soundIcon = document.getElementById('soundIcon');
+  const videoModal = document.getElementById('videoModal');
+  const modalVideoPlayer = document.getElementById('modalVideoPlayer');
+  const closeVideoModal = document.getElementById('closeVideoModal');
+  const playReelModalBtn = document.getElementById('playReelModalBtn');
+  const heroReelBtn = document.getElementById('heroReelBtn');
+
+  soundToggleBtn.addEventListener('click', () => {
+    heroVideo.muted = !heroVideo.muted;
+    soundIcon.setAttribute('data-lucide', heroVideo.muted ? 'volume-x' : 'volume-2');
+    lucide.createIcons();
+  });
+
+  function openVideoModal() {
+    videoModal.classList.add('active');
+    modalVideoPlayer.play();
+  }
+  function closeVideoModalFunc() {
+    videoModal.classList.remove('active');
+    modalVideoPlayer.pause();
+  }
+
+  playReelModalBtn.addEventListener('click', openVideoModal);
+  heroReelBtn.addEventListener('click', openVideoModal);
+  closeVideoModal.addEventListener('click', closeVideoModalFunc);
+  videoModal.addEventListener('click', (e) => {
+    if (e.target === videoModal) closeVideoModalFunc();
+  });
+
+  // Hero Thumbnails Switcher
+  const thumbs = document.querySelectorAll('.hero-thumb');
+  thumbs.forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      thumbs.forEach(t => t.classList.remove('active'));
+      thumb.classList.add('active');
+      const src = thumb.dataset.src;
+      const type = thumb.dataset.type;
+      
+      if (type === 'video') {
+        heroVideo.src = src;
+        heroVideo.play();
+      } else {
+        // Change video poster or fallback
+        heroVideo.pause();
+        heroVideo.poster = src;
+      }
+    });
+  });
+
   // Reveal on scroll
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1774,46 +1934,51 @@
     });
   });
   
-  // Gallery Horizontal Auto-Scroll (Slow & Continuous)
+  // Gallery Infinite Left-to-Right Seamless Auto-Scroll Ticker
   const galleryScroll = document.getElementById('galleryScroll');
-  let autoScrollTimer = null;
-  let isUserInteracting = false;
   
-  function startGalleryAutoScroll() {
-    if (autoScrollTimer) return;
-    autoScrollTimer = setInterval(() => {
-      if (isUserInteracting) return;
-      // Loop smoothly back to start when reaching end
-      if (galleryScroll.scrollLeft + galleryScroll.clientWidth >= galleryScroll.scrollWidth - 10) {
-        galleryScroll.scrollLeft = 0;
-      } else {
-        galleryScroll.scrollLeft += 1.2;
-      }
-    }, 25);
-  }
-
-  function pauseAutoScroll() { isUserInteracting = true; }
-  function resumeAutoScroll() { isUserInteracting = false; }
-
-  galleryScroll.addEventListener('mouseenter', pauseAutoScroll);
-  galleryScroll.addEventListener('mouseleave', resumeAutoScroll);
-  galleryScroll.addEventListener('touchstart', pauseAutoScroll, { passive: true });
-  galleryScroll.addEventListener('touchend', resumeAutoScroll, { passive: true });
-
-  let isDown = false, startX, scrollLeft;
-  galleryScroll.addEventListener('mousedown', (e) => {
-    isDown = true;
-    isUserInteracting = true;
-    startX = e.pageX - galleryScroll.offsetLeft;
-    scrollLeft = galleryScroll.scrollLeft;
+  // Duplicate slides for seamless 100% infinite track
+  const originalSlides = Array.from(galleryScroll.children);
+  originalSlides.forEach(slide => {
+    const clone = slide.cloneNode(true);
+    galleryScroll.appendChild(clone);
   });
-  galleryScroll.addEventListener('mouseleave', () => { isDown = false; isUserInteracting = false; });
-  galleryScroll.addEventListener('mouseup', () => { isDown = false; isUserInteracting = false; });
+
+  let isGalleryHovered = false;
+  let isDragging = false;
+  let scrollSpeed = 1.2;
+
+  function runGalleryAutoScroll() {
+    if (!isGalleryHovered && !isDragging) {
+      galleryScroll.scrollLeft += scrollSpeed;
+      // When we reach half the scrollable content (end of first slide set), loop seamlessly to 0
+      if (galleryScroll.scrollLeft >= (galleryScroll.scrollWidth / 2) - 5) {
+        galleryScroll.scrollLeft = 0;
+      }
+    }
+    requestAnimationFrame(runGalleryAutoScroll);
+  }
+  requestAnimationFrame(runGalleryAutoScroll);
+
+  galleryScroll.addEventListener('mouseenter', () => { isGalleryHovered = true; });
+  galleryScroll.addEventListener('mouseleave', () => { isGalleryHovered = false; });
+  galleryScroll.addEventListener('touchstart', () => { isGalleryHovered = true; }, { passive: true });
+  galleryScroll.addEventListener('touchend', () => { isGalleryHovered = false; }, { passive: true });
+
+  let isMouseDown = false, dragStartX, dragScrollLeft;
+  galleryScroll.addEventListener('mousedown', (e) => {
+    isMouseDown = true;
+    isDragging = true;
+    dragStartX = e.pageX - galleryScroll.offsetLeft;
+    dragScrollLeft = galleryScroll.scrollLeft;
+  });
+  galleryScroll.addEventListener('mouseleave', () => { isMouseDown = false; isDragging = false; });
+  galleryScroll.addEventListener('mouseup', () => { isMouseDown = false; isDragging = false; });
   galleryScroll.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
+    if (!isMouseDown) return;
     e.preventDefault();
     const x = e.pageX - galleryScroll.offsetLeft;
-    galleryScroll.scrollLeft = scrollLeft - (x - startX) * 1.5;
+    galleryScroll.scrollLeft = dragScrollLeft - (x - dragStartX) * 1.5;
   });
 
   document.getElementById('galleryPrev').addEventListener('click', () => {
@@ -1822,8 +1987,6 @@
   document.getElementById('galleryNext').addEventListener('click', () => {
     galleryScroll.scrollBy({ left: 400, behavior: 'smooth' });
   });
-
-  startGalleryAutoScroll();
   
   // Stats Numbers Counter Animation (2 Seconds Fast Count)
   let statsAnimated = false;
@@ -1840,7 +2003,6 @@
         function updateCounters(currentTime) {
           const elapsedTime = currentTime - startTime;
           const progress = Math.min(elapsedTime / duration, 1);
-          // Ease-out quadratic function for smooth acceleration
           const easeProgress = 1 - Math.pow(1 - progress, 2);
 
           counters.forEach(counter => {
