@@ -3,13 +3,15 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Our Services — BKU | Crafting Unforgettable Experiences</title>
+<title>Services — BKU | Full-Scale Event Management & Production</title>
+<meta name="description" content="From corporate summits and movie launches to luxury weddings, concerts, and flea markets — BKU delivers end-to-end event experiences with creative precision.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@latest"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
+  /* ========== 1. RESET & BASE ========== */
   :root{
     --white: #FFFFFF;
     --cream: #F5F1E8;
@@ -33,362 +35,871 @@
     --radius-lg: 24px;
     --radius-xl: 32px;
   }
-  
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{
-    font-family:var(--sans);
-    background:var(--white);
-    color:var(--charcoal);
-    line-height:1.7;
-    font-weight:400;
-    font-size:16px;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: var(--sans);
+    background: var(--white);
+    color: var(--charcoal);
+    line-height: 1.7;
+    font-weight: 400;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
-  
-  img{max-width:100%;display:block}
-  a{color:inherit;text-decoration:none;transition:all .35s ease}
-  
-  h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.15;letter-spacing:-0.01em}
-  p{font-size:16px;line-height:1.75;color:var(--gray)}
-  
-  .container{max-width:1360px;margin:0 auto;padding:0 60px}
-  
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: inherit; text-decoration: none; transition: all 0.35s ease; }
+  ul { list-style: none; }
+  h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; line-height: 1.15; letter-spacing: -0.01em; }
+  p { font-size: 16px; line-height: 1.75; color: var(--gray); }
+  .container { max-width: 1360px; margin: 0 auto; padding: 0 60px; width: 100%; }
+
   /* ========== SCROLL PROGRESS ========== */
   .scroll-progress{
     position:fixed;top:0;left:0;height:2px;
     background:linear-gradient(90deg, var(--gold), var(--gold-light));
     z-index:9999;width:0%;transition:width .1s ease;
   }
+
+  /* ========== 2. NAVIGATION ========== */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid transparent;
+    transition: all 0.4s ease;
+  }
+  .nav.scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    border-bottom-color: rgba(10, 10, 10, 0.06);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 60px; max-width: 1600px; margin: 0 auto;
+  }
+  .logo {
+    font-family: var(--serif);
+    display: flex; align-items: center; gap: 14px;
+  }
+  .logo-mark {
+    width: 38px; height: 38px;
+    background: var(--black);
+    color: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif);
+    font-size: 16px; font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 8px;
+    transition: transform 0.4s ease;
+  }
+  .logo:hover .logo-mark { transform: rotate(-8deg) scale(1.05); }
+  .logo-text { font-size: 26px; letter-spacing: 3px; font-weight: 600; color: var(--black); }
+  .nav-links { display: flex; gap: 40px; }
+  .nav-links a {
+    font-size: 13px; letter-spacing: 1.5px; font-weight: 500;
+    text-transform: uppercase; color: var(--charcoal); position: relative;
+    padding: 6px 0;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; left: 0; bottom: 0;
+    width: 0; height: 1px; background: var(--gold); transition: width 0.35s ease;
+  }
+  .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+  .nav-links a:hover { color: var(--black); }
+  .nav-links a.active { color: var(--gold); }
   
-  /* ========== NAVIGATION ========== */
-  .nav{
-    position:fixed;top:0;left:0;right:0;z-index:1000;
-    background:rgba(255,255,255,0.85);
-    backdrop-filter:blur(24px);
-    -webkit-backdrop-filter:blur(24px);
-    border-bottom:1px solid transparent;
-    transition:all .4s ease;
+  .nav-cta { display: flex; align-items: center; gap: 20px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 14px 28px; font-size: 12px; letter-spacing: 2px;
+    font-weight: 600; text-transform: uppercase;
+    cursor: pointer; border: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: var(--sans);
+    border-radius: 100px;
   }
-  .nav.scrolled{
-    background:rgba(255,255,255,0.98);
-    border-bottom-color:rgba(10,10,10,0.06);
+  .btn-black { background: var(--black); color: var(--white); }
+  .btn-black:hover { background: var(--gold); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(184,148,95,0.3); }
+
+  .menu-toggle { display: none; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--charcoal); }
+  .mobile-menu-overlay {
+    position: fixed; inset: 0; background: rgba(10,10,10,0.5);
+    backdrop-filter: blur(4px); z-index: 999;
+    opacity: 0; visibility: hidden; transition: all 0.3s ease;
   }
-  .nav-inner{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:22px 60px;max-width:1600px;margin:0 auto;
+  .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
+
+  @media (max-width: 1024px) {
+    .nav-inner { padding: 20px 32px; }
+    .container { padding: 0 32px; }
+    .nav-links { display: none; }
+    .menu-toggle { display: block; }
   }
-  .logo{
-    font-family:var(--serif);
-    display:flex;align-items:center;gap:14px;
+  @media (max-width: 600px) {
+    .nav-inner { padding: 16px 20px; }
+    .container { padding: 0 20px; }
+    .logo-text { font-size: 22px; }
+    .logo-mark { width: 34px; height: 34px; font-size: 14px; }
   }
-  .logo-mark{
-    width:38px;height:38px;
-    background:var(--black);
-    color:var(--gold);
-    display:flex;align-items:center;justify-content:center;
-    font-family:var(--serif);
-    font-size:16px;font-weight:600;
-    letter-spacing:1px;
-    border-radius:8px;
-    transition:transform .4s ease;
+
+  /* ========== 3. PAGE HERO ========== */
+  .page-hero {
+    padding: 180px 0 64px;
+    background: linear-gradient(135deg, var(--cream) 0%, var(--white) 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
   }
-  .logo:hover .logo-mark{transform:rotate(-8deg) scale(1.05)}
-  .logo-text{font-size:26px;letter-spacing:3px;font-weight:600}
+  .page-hero::before {
+    content: ''; position: absolute; top: -40%; right: -10%;
+    width: 60%; height: 180%;
+    background: radial-gradient(circle, rgba(184, 148, 95, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .breadcrumb {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gray); margin-bottom: 24px; position: relative; z-index: 1;
+  }
+  .breadcrumb a { color: var(--gray); }
+  .breadcrumb a:hover { color: var(--gold); }
+  .breadcrumb-sep { color: var(--gold); }
+  .breadcrumb-current { color: var(--black); font-weight: 500; }
+
+  .page-hero h1 {
+    font-size: clamp(38px, 5vw, 64px);
+    font-weight: 400; margin-bottom: 20px; color: var(--black); position: relative; z-index: 1;
+  }
+  .page-hero h1 em { font-style: italic; color: var(--gold); }
+  .page-hero p {
+    font-size: 17px; max-width: 700px; margin: 0 auto;
+    color: var(--gray); line-height: 1.8; position: relative; z-index: 1;
+  }
+  @media (max-width: 600px) {
+    .page-hero { padding: 140px 0 44px; }
+  }
+
+  /* ========== 4. SERVICE CATEGORY TABS ========== */
+  .category-tabs {
+    position: sticky; top: 78px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(10, 10, 10, 0.06);
+    z-index: 100;
+    padding: 20px 0;
+    transition: top 0.3s ease;
+  }
+  .category-tabs-inner {
+    display: flex; justify-content: center; gap: 10px;
+    flex-wrap: wrap;
+  }
+  .category-tab {
+    padding: 10px 22px;
+    background: transparent;
+    border: 1.5px solid rgba(10, 10, 10, 0.12);
+    border-radius: 100px;
+    font-family: var(--sans);
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--gray);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .category-tab:hover { background: var(--cream); border-color: var(--gold); color: var(--black); }
+  .category-tab.active { background: var(--black); border-color: var(--black); color: var(--white); box-shadow: 0 6px 20px rgba(10,10,10,0.15); }
+  .category-tab i { width: 14px; height: 14px; }
+  @media (max-width: 768px) {
+    .category-tabs { top: 66px; padding: 16px 0; }
+    .category-tab { padding: 8px 16px; font-size: 11px; }
+    .category-tab i { display: none; }
+  }
+
+  /* ========== 5. SERVICE DETAIL PANELS ========== */
+  .service-panels { padding: 64px 0 80px; }
+  .service-panel { display: none; animation: fadePanel 0.5s ease; }
+  .service-panel.active { display: block; }
+  @keyframes fadePanel {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .panel-header {
+    display: grid; grid-template-columns: 1.15fr 1fr;
+    gap: 64px; align-items: center;
+    margin-bottom: 64px;
+  }
+  .panel-header-content .panel-label {
+    font-size: 11px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--gold);
+    font-weight: 600; margin-bottom: 14px;
+    display: inline-flex; align-items: center; gap: 12px;
+  }
+  .panel-label::before {
+    content: ''; width: 30px; height: 1px; background: var(--gold);
+  }
+  .panel-header-content h2 {
+    font-size: clamp(30px, 3.8vw, 48px);
+    margin-bottom: 20px; font-weight: 400; line-height: 1.15; color: var(--black);
+  }
+  .panel-header-content h2 em { font-style: italic; color: var(--gold); }
+  .panel-header-content p { font-size: 16px; line-height: 1.8; color: var(--gray); }
+  .panel-header-image {
+    border-radius: var(--radius-lg); overflow: hidden;
+    height: 440px; box-shadow: var(--shadow-md);
+  }
+  .panel-header-image img { width: 100%; height: 100%; object-fit: cover; }
+  @media (max-width: 900px) {
+    .panel-header { grid-template-columns: 1fr; gap: 36px; margin-bottom: 44px; }
+    .panel-header-image { height: 320px; }
+  }
+
+  .sub-services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px; margin-bottom: 64px;
+  }
+  .sub-service-card {
+    background: var(--white);
+    border: 1px solid rgba(10, 10, 10, 0.08);
+    border-radius: var(--radius-md);
+    padding: 32px;
+    transition: all 0.4s ease;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+  }
+  .sub-service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+    border-color: transparent;
+  }
+  .sub-service-icon {
+    width: 52px; height: 52px;
+    background: var(--cream);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold); margin-bottom: 20px;
+    transition: all 0.4s ease;
+  }
+  .sub-service-card:hover .sub-service-icon {
+    background: var(--black); color: var(--gold);
+    transform: rotate(-6deg);
+  }
+  .sub-service-card h4 {
+    font-size: 20px; margin-bottom: 12px;
+    font-weight: 500; color: var(--black);
+  }
+  .sub-service-card p {
+    font-size: 14px; line-height: 1.65;
+    color: var(--gray); margin-bottom: 20px;
+  }
+  .sub-service-features {
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .sub-feature {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 13px; color: var(--charcoal);
+  }
+  .sub-feature i { color: var(--gold); flex-shrink: 0; }
+  @media (max-width: 900px) {
+    .sub-services-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  }
+  @media (max-width: 600px) {
+    .sub-services-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ========== 6. WHAT'S INCLUDED ========== */
+  .included-section {
+    background: var(--cream);
+    border-radius: var(--radius-lg);
+    padding: 56px;
+    margin-bottom: 64px;
+  }
+  .included-header {
+    text-align: center; margin-bottom: 40px;
+  }
+  .included-header h3 {
+    font-size: 30px; margin-bottom: 12px; font-weight: 400; color: var(--black);
+  }
+  .included-header p { font-size: 15px; color: var(--gray); }
+  .included-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .included-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 20px;
+    background: var(--white);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+  }
+  .included-item-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    background: rgba(184, 148, 95, 0.12);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold);
+  }
+  .included-item h5 {
+    font-family: var(--sans);
+    font-size: 15px; font-weight: 600;
+    color: var(--black); margin-bottom: 4px;
+  }
+  .included-item p {
+    font-size: 13px; line-height: 1.5; color: var(--gray);
+  }
+  @media (max-width: 900px) {
+    .included-section { padding: 40px 28px; }
+    .included-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  }
+  @media (max-width: 600px) {
+    .included-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ========== 7. PROCESS TIMELINE ========== */
+  .process-section { padding: 0 0 80px; }
+  .process-header {
+    text-align: center; max-width: 720px; margin: 0 auto 56px;
+  }
+  .process-header .section-label {
+    font-size: 11px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--gold);
+    font-weight: 600; margin-bottom: 14px;
+    display: inline-flex; align-items: center; gap: 12px;
+  }
+  .process-header .section-label::before, .process-header .section-label::after {
+    content: ''; width: 30px; height: 1px; background: var(--gold);
+  }
+  .process-header h2 {
+    font-size: clamp(30px, 3.8vw, 44px);
+    margin-bottom: 16px; font-weight: 400; color: var(--black);
+  }
+  .process-header h2 em { font-style: italic; color: var(--gold); }
+  .process-header p { font-size: 16px; color: var(--gray); }
+  .process-steps {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 24px; position: relative;
+  }
+  .process-steps::before {
+    content: ''; position: absolute;
+    top: 44px; left: 12%; right: 12%;
+    height: 1px; background: var(--beige);
+    z-index: 0;
+  }
+  .process-step {
+    text-align: center; position: relative; z-index: 1;
+    padding: 0 12px;
+  }
+  .step-number {
+    width: 88px; height: 88px;
+    background: var(--white);
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 24px;
+    font-family: var(--serif);
+    font-size: 30px; color: var(--gold);
+    font-weight: 500;
+    transition: all 0.4s ease;
+    box-shadow: var(--shadow-sm);
+  }
+  .process-step:hover .step-number {
+    background: var(--gold); color: var(--white);
+    transform: scale(1.08); box-shadow: 0 10px 30px rgba(184,148,95,0.3);
+  }
+  .process-step h4 {
+    font-size: 19px; margin-bottom: 10px;
+    font-weight: 500; color: var(--black);
+  }
+  .process-step p {
+    font-size: 14px; line-height: 1.65; color: var(--gray);
+  }
+  @media (max-width: 900px) {
+    .process-steps { grid-template-columns: repeat(2, 1fr); gap: 36px; }
+    .process-steps::before { display: none; }
+  }
+  @media (max-width: 600px) {
+    .process-steps { grid-template-columns: 1fr; }
+  }
+
+  /* ========== 8. WHY CHOOSE US ========== */
+  .why-section {
+    padding: 88px 0;
+    background: var(--black);
+    color: var(--white);
+  }
+  .why-header {
+    text-align: center; max-width: 720px; margin: 0 auto 56px;
+  }
+  .why-header .section-label {
+    font-size: 11px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--gold);
+    font-weight: 600; margin-bottom: 14px;
+    display: inline-flex; align-items: center; gap: 12px;
+  }
+  .why-header .section-label::before, .why-header .section-label::after {
+    content: ''; width: 30px; height: 1px; background: var(--gold);
+  }
+  .why-header h2 {
+    font-size: clamp(30px, 3.8vw, 44px);
+    margin-bottom: 16px; font-weight: 400; color: var(--white);
+  }
+  .why-header h2 em { font-style: italic; color: var(--gold); }
+  .why-header p { color: rgba(245, 241, 232, 0.7); font-size: 16px; }
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .stat-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+    padding: 36px 28px;
+    text-align: center;
+    transition: all 0.4s ease;
+  }
+  .stat-card:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: var(--gold);
+    transform: translateY(-6px);
+  }
+  .stat-icon {
+    width: 52px; height: 52px;
+    background: rgba(184, 148, 95, 0.15);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px; color: var(--gold);
+  }
+  .stat-number {
+    font-family: var(--serif);
+    font-size: 52px; color: var(--white);
+    line-height: 1; margin-bottom: 10px; font-weight: 500;
+  }
+  .stat-number .plus { color: var(--gold); font-size: 36px; }
+  .stat-label {
+    font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; color: rgba(245, 241, 232, 0.65);
+    font-weight: 500;
+  }
+  @media (max-width: 768px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  }
+
+  /* ========== 9. EVENT HIGHLIGHTS ========== */
+  .highlights-section { padding: 80px 0; background: var(--cream); }
+  .highlights-header {
+    text-align: center; max-width: 720px; margin: 0 auto 48px;
+  }
+  .highlights-header .section-label {
+    font-size: 11px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--gold);
+    font-weight: 600; margin-bottom: 14px;
+    display: inline-flex; align-items: center; gap: 12px;
+  }
+  .highlights-header .section-label::before, .highlights-header .section-label::after {
+    content: ''; width: 30px; height: 1px; background: var(--gold);
+  }
+  .highlights-header h2 {
+    font-size: clamp(30px, 3.8vw, 44px);
+    margin-bottom: 16px; font-weight: 400; color: var(--black);
+  }
+  .highlights-header h2 em { font-style: italic; color: var(--gold); }
+  .highlights-header p { font-size: 16px; color: var(--gray); }
+  .highlights-scroll {
+    display: flex; gap: 24px;
+    overflow-x: auto;
+    padding: 0 60px 24px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .highlights-scroll::-webkit-scrollbar { display: none; }
+  .highlight-card {
+    flex: 0 0 340px;
+    height: 420px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    position: relative;
+    scroll-snap-align: start;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+  }
+  .highlight-card img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.8s ease;
+  }
+  .highlight-card:hover img { transform: scale(1.06); }
+  .highlight-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(10, 10, 10, 0.88) 0%, transparent 60%);
+    display: flex; flex-direction: column;
+    justify-content: flex-end;
+    padding: 32px;
+  }
+  .highlight-category {
+    font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--gold-light);
+    font-weight: 600; margin-bottom: 8px;
+  }
+  .highlight-card h3 {
+    font-size: 24px; color: var(--white);
+    margin-bottom: 6px; font-weight: 500; font-family: var(--serif);
+  }
+  .highlight-card p {
+    font-size: 13px; color: rgba(255, 255, 255, 0.75);
+  }
+
+  /* ========== 10. TESTIMONIALS ========== */
+  .testimonials-section { padding: 88px 0; }
+  .testimonials-header {
+    text-align: center; max-width: 720px; margin: 0 auto 52px;
+  }
+  .testimonials-header .section-label {
+    font-size: 11px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--gold);
+    font-weight: 600; margin-bottom: 14px;
+    display: inline-flex; align-items: center; gap: 12px;
+  }
+  .testimonials-header .section-label::before, .testimonials-header .section-label::after {
+    content: ''; width: 30px; height: 1px; background: var(--gold);
+  }
+  .testimonials-header h2 {
+    font-size: clamp(30px, 3.8vw, 44px);
+    margin-bottom: 16px; font-weight: 400; color: var(--black);
+  }
+  .testimonials-header h2 em { font-style: italic; color: var(--gold); }
+  .rating-badge {
+    display: inline-flex; align-items: center; gap: 14px;
+    padding: 12px 24px;
+    background: var(--cream); border-radius: 100px;
+    margin-top: 18px;
+  }
+  .rating-score {
+    font-family: var(--serif);
+    font-size: 30px; color: var(--gold);
+    font-weight: 600; line-height: 1;
+  }
+  .rating-info {
+    display: flex; flex-direction: column;
+    font-size: 12px; color: var(--gray); text-align: left;
+  }
+  .rating-stars { display: flex; gap: 3px; color: var(--gold); margin-bottom: 3px; }
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .testimonial-card {
+    background: var(--white);
+    border: 1px solid rgba(10, 10, 10, 0.08);
+    border-radius: var(--radius-md);
+    padding: 32px;
+    transition: all 0.4s ease;
+    box-shadow: var(--shadow-sm);
+  }
+  .testimonial-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+    border-color: transparent;
+  }
+  .testimonial-stars {
+    display: flex; gap: 4px; color: var(--gold);
+    margin-bottom: 18px;
+  }
+  .testimonial-card blockquote {
+    font-size: 15px; line-height: 1.75;
+    color: var(--charcoal); margin-bottom: 24px;
+    font-style: italic;
+  }
+  .testimonial-author {
+    display: flex; align-items: center; gap: 14px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(10, 10, 10, 0.06);
+  }
+  .testimonial-avatar {
+    width: 48px; height: 48px; border-radius: 50%;
+    overflow: hidden; border: 2px solid var(--gold);
+    flex-shrink: 0;
+  }
+  .testimonial-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .testimonial-author h4 {
+    font-family: var(--sans);
+    font-size: 15px; font-weight: 600;
+    color: var(--black); margin-bottom: 2px;
+  }
+  .testimonial-author p {
+    font-size: 12px; color: var(--light-gray);
+  }
+  @media (max-width: 768px) {
+    .testimonials-grid { grid-template-columns: 1fr; gap: 20px; }
+  }
+
+  /* ========== 11. FAQ ========== */
+  .faq-section { padding: 88px 0; background: var(--cream); }
+  .faq-grid {
+    display: grid; grid-template-columns: 1fr 1.35fr;
+    gap: 64px; align-items: start;
+  }
+  .faq-sticky { position: sticky; top: 140px; }
+  .faq-sticky .section-label {
+    font-size: 11px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--gold);
+    font-weight: 600; margin-bottom: 14px;
+    display: inline-flex; align-items: center; gap: 12px;
+  }
+  .faq-sticky .section-label::before {
+    content: ''; width: 30px; height: 1px; background: var(--gold);
+  }
+  .faq-sticky h2 {
+    font-size: clamp(28px, 3.5vw, 42px);
+    margin-bottom: 16px; font-weight: 400; color: var(--black);
+  }
+  .faq-sticky h2 em { font-style: italic; color: var(--gold); }
+  .faq-sticky p { font-size: 16px; margin-bottom: 28px; color: var(--gray); }
+  .accordion { display: flex; flex-direction: column; gap: 14px; }
+  .accordion-item {
+    background: var(--white);
+    border: 1px solid rgba(10, 10, 10, 0.08);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    transition: all 0.35s ease;
+    box-shadow: var(--shadow-sm);
+  }
+  .accordion-item.active {
+    border-color: var(--black);
+    box-shadow: var(--shadow-md);
+  }
+  .accordion-header {
+    padding: 22px 28px;
+    display: flex; justify-content: space-between; align-items: center;
+    cursor: pointer; gap: 20px;
+    background: transparent; border: none; width: 100%;
+    text-align: left; font-family: var(--sans);
+  }
+  .accordion-title {
+    font-family: var(--serif);
+    font-size: 18px; color: var(--black); font-weight: 500;
+  }
+  .accordion-icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold); flex-shrink: 0;
+    transition: all 0.4s ease;
+  }
+  .accordion-item.active .accordion-icon {
+    background: var(--black); color: var(--gold);
+    transform: rotate(45deg);
+  }
+  .accordion-content {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  .accordion-content-inner {
+    padding: 0 28px 24px;
+    font-size: 15px; color: var(--gray); line-height: 1.75;
+  }
+  @media (max-width: 900px) {
+    .faq-grid { grid-template-columns: 1fr; gap: 44px; }
+    .faq-sticky { position: static; }
+  }
+
+  /* ========== 12. CTA ========== */
+  .cta-section {
+    padding: 96px 0;
+    background: var(--black);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1600&auto=format&fit=crop');
+    background-size: cover; background-position: center;
+    opacity: 0.18;
+  }
+  .cta-content { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; padding: 0 20px; }
+  .cta-section h2 {
+    font-size: clamp(32px, 4vw, 48px);
+    color: var(--white); margin-bottom: 20px; font-weight: 400;
+  }
+  .cta-section h2 em { font-style: italic; color: var(--gold); }
+  .cta-section p {
+    color: rgba(245, 241, 232, 0.75);
+    font-size: 16px; margin-bottom: 32px; line-height: 1.8;
+  }
+  .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn-gold {
+    padding: 15px 32px;
+    background: var(--gold); color: var(--white);
+    border: none; border-radius: 100px;
+    font-family: var(--sans);
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    cursor: pointer; display: inline-flex;
+    align-items: center; gap: 10px;
+    transition: all 0.35s ease;
+  }
+  .btn-gold:hover {
+    background: var(--gold-light); color: var(--black);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(184,148,95,0.4);
+  }
+  .btn-outline-white {
+    padding: 15px 32px;
+    background: transparent; color: var(--white);
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    border-radius: 100px;
+    font-family: var(--sans);
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    cursor: pointer; display: inline-flex;
+    align-items: center; gap: 10px;
+    transition: all 0.35s ease;
+  }
+  .btn-outline-white:hover {
+    background: var(--white); color: var(--black);
+    border-color: var(--white);
+  }
+  @media (max-width: 600px) {
+    .cta-section { padding: 72px 0; }
+    .cta-buttons { flex-direction: column; align-items: center; }
+    .btn-gold, .btn-outline-white { width: 100%; max-width: 280px; justify-content: center; }
+  }
+
+  /* ========== 13. NEWSLETTER ========== */
+  .newsletter-section {
+    padding: 80px 0;
+    background: var(--cream);
+    text-align: center;
+  }
+  .newsletter-content { max-width: 540px; margin: 0 auto; }
+  .newsletter-section h2 {
+    font-size: clamp(28px, 3.5vw, 40px);
+    color: var(--black); margin-bottom: 14px; font-weight: 400;
+  }
+  .newsletter-section h2 em { font-style: italic; color: var(--gold); }
+  .newsletter-section p {
+    color: var(--gray); font-size: 16px; margin-bottom: 28px; line-height: 1.75;
+  }
+  .newsletter-form {
+    display: flex; gap: 10px;
+    background: var(--white);
+    border: 1px solid rgba(10, 10, 10, 0.12);
+    border-radius: 100px; overflow: hidden;
+    padding: 6px 6px 6px 20px;
+    margin-bottom: 14px;
+    box-shadow: var(--shadow-sm);
+  }
+  .newsletter-form input {
+    flex: 1; padding: 10px 0;
+    background: transparent; border: none;
+    color: var(--black); font-family: var(--sans);
+    font-size: 14px; outline: none; min-width: 0;
+  }
+  .newsletter-form input::placeholder { color: var(--light-gray); }
+  .newsletter-form button {
+    padding: 14px 28px;
+    background: var(--black); color: var(--white);
+    border: none; border-radius: 100px; cursor: pointer;
+    font-family: var(--sans);
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    transition: all 0.35s ease; white-space: nowrap;
+  }
+  .newsletter-form button:hover { background: var(--gold); color: var(--white); }
+  .newsletter-note { font-size: 12px; color: var(--light-gray); }
+  @media (max-width: 600px) {
+    .newsletter-form { flex-direction: column; border-radius: 20px; padding: 12px; background: var(--white); border: 1px solid rgba(10,10,10,0.12); }
+    .newsletter-form input { border-bottom: 1px solid rgba(10, 10, 10, 0.08); padding: 12px; text-align: center; }
+    .newsletter-form button { border-radius: 100px; padding: 14px; width: 100%; }
+  }
+
+  /* ========== 14. FOOTER ========== */
+  footer {
+    background: var(--black); color: var(--white);
+    padding: 80px 0 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    gap: 48px; margin-bottom: 48px;
+  }
+  .footer-brand .logo { margin-bottom: 20px; }
+  .footer-brand .logo-text { color: var(--white); }
+  .footer-brand p {
+    color: rgba(245, 241, 232, 0.55);
+    line-height: 1.75; font-size: 14px; margin-bottom: 24px;
+  }
+  .footer-social { display: flex; gap: 12px; flex-wrap: wrap; }
+  .footer-social a {
+    width: 38px; height: 38px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--white); transition: all 0.3s ease;
+    font-size: 15px;
+  }
+  .footer-social a:hover {
+    background: var(--gold); border-color: var(--gold);
+    color: var(--black); transform: translateY(-3px);
+  }
+  .footer-col h5 {
+    font-family: var(--sans);
+    font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; font-weight: 600;
+    margin-bottom: 20px; color: var(--gold);
+  }
+  .footer-col li { margin-bottom: 12px; }
+  .footer-col a {
+    color: rgba(245, 241, 232, 0.55);
+    font-size: 14px; transition: all 0.3s ease;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .footer-col a:hover { color: var(--white); transform: translateX(4px); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 12px; color: rgba(245, 241, 232, 0.45);
+    flex-wrap: wrap; gap: 16px;
+  }
+  .footer-bottom-links { display: flex; gap: 24px; flex-wrap: wrap; }
+  .footer-bottom-links a:hover { color: var(--gold); }
   
-  .nav-links{display:flex;gap:40px;list-style:none}
-  .nav-links a{
-    font-size:13px;letter-spacing:1.5px;
-    font-weight:500;text-transform:uppercase;
-    color:var(--charcoal);
-    position:relative;padding:6px 0;
+  .back-to-top {
+    position: fixed; bottom: 32px; right: 32px;
+    width: 48px; height: 48px;
+    background: var(--black); color: var(--gold);
+    border: 1px solid var(--gold); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; opacity: 0; visibility: hidden;
+    transition: all 0.35s ease; z-index: 900;
   }
-  .nav-links a::after{
-    content:'';position:absolute;left:0;bottom:0;
-    width:0;height:1px;background:var(--gold);
-    transition:width .35s ease;
-  }
-  .nav-links a:hover{color:var(--black)}
-  .nav-links a:hover::after{width:100%}
-  .nav-links a.active{color:var(--gold)}
-  .nav-links a.active::after{width:100%;background:var(--gold)}
-  
-  .nav-cta{display:flex;align-items:center;gap:20px}
-  
-  .btn{
-    display:inline-flex;align-items:center;gap:12px;
-    padding:14px 28px;font-size:12px;letter-spacing:2px;
-    font-weight:600;text-transform:uppercase;
-    cursor:pointer;border:none;
-    transition:all .4s cubic-bezier(0.4, 0, 0.2, 1);
-    font-family:var(--sans);
-    border-radius:100px;
-  }
-  .btn-black{background:var(--black);color:var(--white)}
-  .btn-black:hover{background:var(--gold);transform:translateY(-2px);box-shadow:0 10px 30px rgba(184,148,95,0.3)}
-  .btn-outline{background:transparent;color:var(--black);border:1.5px solid var(--black)}
-  .btn-outline:hover{background:var(--black);color:var(--white)}
-  .btn-outline-light{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,0.4)}
-  .btn-outline-light:hover{background:var(--white);color:var(--black);border-color:var(--white)}
-  
-  .menu-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--charcoal)}
-  .mobile-menu-overlay{
-    position:fixed;inset:0;background:rgba(10,10,10,0.5);
-    backdrop-filter:blur(4px);z-index:999;
-    opacity:0;visibility:hidden;transition:all .3s ease;
-  }
-  .mobile-menu-overlay.active{opacity:1;visibility:visible}
+  .back-to-top.visible { opacity: 1; visibility: visible; }
+  .back-to-top:hover { background: var(--gold); color: var(--black); transform: translateY(-4px); }
 
-  /* ========== PAGE HERO ========== */
-  .page-hero{
-    padding:200px 0 100px;
-    background:var(--cream);
-    position:relative;
-    overflow:hidden;
+  @media (max-width: 900px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
   }
-  .page-hero-grid{
-    display:grid;grid-template-columns:1fr 1fr;
-    gap:80px;align-items:center;
-    position:relative;z-index:2;
-  }
-  .breadcrumb{
-    display:flex;align-items:center;gap:12px;
-    font-size:12px;letter-spacing:2px;
-    text-transform:uppercase;color:var(--gray);
-    margin-bottom:28px;
-  }
-  .breadcrumb a{color:var(--gray)}
-  .breadcrumb a:hover{color:var(--gold)}
-  .breadcrumb-sep{color:var(--gold)}
-  .breadcrumb-current{color:var(--black);font-weight:500}
-  
-  .page-hero-label{
-    display:inline-flex;align-items:center;gap:12px;
-    font-size:12px;letter-spacing:4px;
-    text-transform:uppercase;color:var(--gold);
-    font-weight:600;margin-bottom:24px;
-  }
-  .page-hero h1{
-    font-size:clamp(44px,5.5vw,72px);
-    font-weight:400;line-height:1.08;
-    margin-bottom:28px;color:var(--black);
-  }
-  .page-hero h1 em{font-style:italic;color:var(--gold)}
-  .page-hero-text{
-    font-size:18px;color:var(--gray);
-    line-height:1.8;max-width:520px;
+  @media (max-width: 600px) {
+    footer { padding: 56px 0 24px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; margin-bottom: 36px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .footer-bottom-links { justify-content: center; }
   }
 
-  .page-hero-image img{
-    width:100%;height:500px;
-    object-fit:cover;
-    border-radius:var(--radius-lg);
-    box-shadow:var(--shadow-lg);
+  /* ========== 15. ANIMATIONS ========== */
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
   }
-
-  /* ========== SERVICES GRID ========== */
-  .section{padding:120px 0;position:relative}
-  .section-white{background:var(--white)}
-  .section-cream{background:var(--cream)}
-  .section-black{background:var(--black);color:var(--white)}
-  
-  .section-header{max-width:720px;margin-bottom:70px}
-  .section-header.center{text-align:center;margin-left:auto;margin-right:auto}
-  .section-label{
-    font-size:12px;letter-spacing:4px;
-    text-transform:uppercase;color:var(--gold);
-    font-weight:600;margin-bottom:20px;
-    display:inline-flex;align-items:center;gap:12px;
-  }
-  .section-title{
-    font-size:clamp(32px,4vw,52px);
-    margin-bottom:24px;color:var(--black);
-    font-weight:400;
-  }
-  .section-black .section-title{color:var(--white)}
-  .section-subtitle{font-size:17px;color:var(--gray);line-height:1.8}
-
-  .services-detail-grid{
-    display:grid;grid-template-columns:repeat(3,1fr);
-    gap:32px;
-  }
-  .service-detail-card{
-    background:var(--white);
-    border:1px solid rgba(10,10,10,0.06);
-    border-radius:var(--radius-lg);
-    padding:44px 36px;
-    transition:all .4s ease;
-    display:flex;flex-direction:column;
-    justify-content:space-between;
-    box-shadow:var(--shadow-sm);
-  }
-  .service-detail-card:hover{
-    transform:translateY(-8px);
-    box-shadow:var(--shadow-lg);
-    border-color:var(--gold);
-  }
-  .service-num{
-    font-family:var(--serif);font-size:28px;
-    color:var(--gold);margin-bottom:28px;
-    font-style:italic;
-  }
-  .service-detail-card h3{
-    font-size:26px;margin-bottom:16px;
-    color:var(--black);
-  }
-  .service-detail-card p{
-    font-size:15px;color:var(--gray);
-    line-height:1.8;margin-bottom:28px;
-  }
-  .service-features{
-    list-style:none;margin-bottom:32px;
-    border-top:1px solid var(--beige);
-    padding-top:20px;
-  }
-  .service-features li{
-    font-size:14px;color:var(--charcoal);
-    margin-bottom:10px;display:flex;align-items:center;gap:10px;
-  }
-  .service-features li i{color:var(--gold)}
-
-  /* ========== PROCESS STEPS ========== */
-  .process-grid{
-    display:grid;grid-template-columns:repeat(4,1fr);
-    gap:28px;
-  }
-  .process-card{
-    background:var(--cream);
-    border-radius:var(--radius-lg);
-    padding:40px 32px;
-    position:relative;
-  }
-  .process-step-num{
-    font-family:var(--serif);font-size:48px;
-    color:rgba(10,10,10,0.12);line-height:1;
-    margin-bottom:20px;font-weight:600;
-  }
-  .process-card h3{
-    font-size:22px;margin-bottom:14px;color:var(--black);
-  }
-  .process-card p{
-    font-size:15px;color:var(--gray);line-height:1.75;
-  }
-
-  /* ========== NEWSLETTER ========== */
-  .newsletter-split{
-    display:grid;grid-template-columns:1fr 1fr;
-    background:var(--black);
-    border-radius:var(--radius-xl);
-    overflow:hidden;
-    min-height:440px;
-  }
-  .newsletter-image img{width:100%;height:100%;object-fit:cover}
-  .newsletter-content{
-    padding:70px 60px;
-    display:flex;flex-direction:column;justify-content:center;
-    color:var(--white);
-  }
-  .newsletter-content h2{font-size:clamp(28px,3vw,40px);margin-bottom:16px;color:var(--white)}
-  .newsletter-content p{color:rgba(245,241,232,0.7);margin-bottom:28px}
-  .newsletter-form{display:flex;flex-direction:column;gap:16px;max-width:400px}
-  .newsletter-input-group{
-    display:flex;background:rgba(255,255,255,0.08);
-    border:1px solid rgba(255,255,255,0.15);
-    border-radius:100px;overflow:hidden;
-  }
-  .newsletter-input-group input{
-    flex:1;padding:16px 24px;background:transparent;
-    border:none;color:var(--white);outline:none;
-    font-family:var(--sans);font-size:14px;
-  }
-  .newsletter-input-group button{
-    padding:16px 28px;background:var(--gold);
-    color:var(--black);border:none;cursor:pointer;
-    font-family:var(--sans);font-size:12px;font-weight:600;
-    letter-spacing:2px;text-transform:uppercase;
-  }
-
-  /* ========== FOOTER ========== */
-  footer{background:var(--black);color:var(--white);padding:90px 0 40px}
-  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:60px;margin-bottom:60px}
-  .footer-brand .logo{margin-bottom:24px;color:var(--white)}
-  .footer-brand .logo-mark{background:var(--gold);color:var(--black)}
-  .footer-brand p{color:rgba(245,241,232,0.65);line-height:1.8;max-width:340px;margin-bottom:28px;font-size:14px}
-  .footer-social{display:flex;gap:12px;flex-wrap:wrap}
-  .footer-social a{
-    width:40px;height:40px;
-    border:1px solid rgba(255,255,255,0.15);
-    border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    color:var(--white);transition:all .3s ease;
-  }
-  .footer-social a:hover{background:var(--gold);border-color:var(--gold);color:var(--black);transform:translateY(-3px)}
-  .footer-col h5{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-bottom:24px;color:var(--gold-light)}
-  .footer-col ul{list-style:none}
-  .footer-col li{margin-bottom:12px}
-  .footer-col a{color:rgba(245,241,232,0.65);font-size:14px;transition:all .3s ease;display:inline-flex;align-items:center;gap:8px}
-  .footer-col a:hover{color:var(--white);transform:translateX(4px)}
-  .footer-bottom{
-    display:flex;justify-content:space-between;align-items:center;
-    padding-top:32px;border-top:1px solid rgba(255,255,255,0.08);
-    font-size:13px;color:rgba(245,241,232,0.5);flex-wrap:wrap;gap:20px;
-  }
-  .footer-bottom-links{display:flex;gap:28px}
-  .footer-bottom-links a:hover{color:var(--gold)}
-
-  .back-to-top{
-    position:fixed;bottom:32px;right:32px;
-    width:50px;height:50px;border-radius:50%;
-    background:var(--black);color:var(--white);
-    border:none;cursor:pointer;
-    display:flex;align-items:center;justify-content:center;
-    opacity:0;visibility:hidden;
-    transition:all .4s ease;z-index:999;
-  }
-  .back-to-top.visible{opacity:1;visibility:visible}
-  .back-to-top:hover{background:var(--gold)}
-
-  .reveal{opacity:0;transform:translateY(36px);transition:all .8s cubic-bezier(0.4, 0, 0.2, 1)}
-  .reveal.active{opacity:1;transform:translateY(0)}
-
-  /* ========== GLOBAL RESPONSIVE MEDIA QUERIES ========== */
-  @media (max-width: 1200px){
-    .container{padding:0 40px}
-    .nav-inner{padding:20px 40px}
-    .services-detail-grid{grid-template-columns:repeat(2,1fr)}
-    .process-grid{grid-template-columns:repeat(2,1fr)}
-  }
-  @media (max-width: 1024px){
-    .container{padding:0 32px}
-    .nav-inner{padding:18px 32px}
-    .page-hero-grid{grid-template-columns:1fr;gap:40px}
-    .page-hero-image img{height:380px}
-    .footer-grid{grid-template-columns:1fr 1fr;gap:40px}
-    .newsletter-split{grid-template-columns:1fr}
-    .newsletter-image{height:240px}
-  }
-  @media (max-width: 768px){
-    .container{padding:0 20px}
-    .nav-inner{padding:16px 20px}
-    .nav-links,.nav-cta .btn{display:none}
-    .menu-toggle{display:block}
-    .page-hero{padding:140px 0 60px}
-    .services-detail-grid{grid-template-columns:1fr;gap:20px}
-    .process-grid{grid-template-columns:1fr;gap:20px}
-    .section{padding:80px 0}
-    .footer-grid{grid-template-columns:1fr;gap:32px}
-    .newsletter-content{padding:40px 24px}
-    .newsletter-input-group{flex-direction:column;border-radius:16px;background:transparent;border:none}
-    .newsletter-input-group input{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:100px;margin-bottom:12px}
-    .newsletter-input-group button{border-radius:100px;justify-content:center}
-    .footer-bottom{flex-direction:column;align-items:flex-start;gap:12px}
-  }
+  .reveal.active { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
 
-<!-- Scroll Progress -->
+<!-- Scroll Progress Bar -->
 <div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- Mobile Menu Overlay -->
@@ -405,8 +916,8 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About Us</a></li>
       <li><a href="services.html" class="active">Services</a></li>
-      <li><a href="blogs.html">Journal</a></li>
       <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="blogs.html">Journal</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
     <div class="nav-cta">
@@ -414,193 +925,1116 @@
         <span>Contact Us</span>
         <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
       </a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><i data-lucide="menu"></i></button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <i data-lucide="menu"></i>
+      </button>
     </div>
   </div>
 </nav>
 
-<!-- Page Hero -->
-<section class="page-hero">
-  <div class="container">
-    <div class="page-hero-grid">
+<main id="main-content">
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
       <div class="reveal">
         <div class="breadcrumb">
           <a href="index.html">Home</a>
           <span class="breadcrumb-sep">—</span>
           <span class="breadcrumb-current">Services</span>
         </div>
-        <div class="page-hero-label">What We Do</div>
-        <h1>End-to-end <em>event</em> & PR solutions.</h1>
-        <p class="page-hero-text">
-          From concept development and spatial 3D design to logistics, technical production, and live showcalling — BKU turns your ambitious visions into unforgettable live experiences.
-        </p>
-      </div>
-      <div class="page-hero-image reveal">
-        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=900&auto=format&fit=crop" alt="BKU Services">
+        <h1>Excellence in <em>Every Moment</em>.</h1>
+        <p>From corporate summits and movie premieres to luxury weddings, concerts, and flea markets — BKU delivers end-to-end event experiences with creative precision and operational excellence.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Services Grid Section -->
-<section class="section section-white">
-  <div class="container">
-    <div class="section-header center reveal">
-      <div class="section-label center">Our Capabilities</div>
-      <h2 class="section-title">Six core disciplines. One crew.</h2>
-      <p class="section-subtitle">We bring together strategy, design, production, and storytelling under one roof to deliver seamless shows nationwide.</p>
-    </div>
-    
-    <div class="services-detail-grid">
-      <div class="service-detail-card reveal">
-        <div>
-          <div class="service-num">01</div>
-          <h3>Corporate Summits & Conferences</h3>
-          <p>High-stakes corporate gatherings, product launches, keynote stages, and global partner meets designed to reflect your brand's authority.</p>
-          <ul class="service-features">
-            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> Stage Fabrication & LED Displays</li>
-            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> Keynote Speaker & VIP Hospitality</li>
-            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> Live Webcasting & Broadcast AV</li>
-          </ul>
-        </div>
-        <a href="contact.html" class="btn btn-outline">Inquire Service</a>
-      </div>
-
-      <div class="service-detail-card reveal" style="transition-delay:0.1s">
-        <div>
-          <div class="service-num">02</div>
-          <h3>Luxury Destination Weddings</h3>
-          <p>Bespoke celebrations in iconic locations worldwide. We handle mood boards, floral installations, artist curation, and multi-day run-of-show.</p>
-          <ul class="service-features">
-            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> Venue Sourcing & Spatial Layouts</li>
-            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> Celebrity & Musical Artist Booking</li>
-            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> Guest Management & Concierge</li>
-          </ul>
-        </div>
-        <a href="contact.html" class="btn btn-outline">Inquire Service</a>
-      </div>
-
-      <div class="service-detail-card reveal" style="transition-delay:0.2s">
-        <div>
-          <div class="service-num">03</div>
-          <h3>Brand Activations & Pop-ups</h3>
-          <p>Immersive pop-up environments, interactive installations, and experiential brand touchpoints built for high social shareability.</p>
-          <ul class="service-features">
-            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> 3D Environmental Design</li>
-            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> Mall & Public Space Permits</li>
-            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> Interactive AR/VR Tech Integration</li>
-          </ul>
-        </div>
-        <a href="contact.html" class="btn btn-outline">Inquire Service</a>
-      </div>
-
-      <div class="service-detail-card reveal">
-        <div>
-          <div class="service-num">04</div>
-          <h3>Concerts & Music Festivals</h3>
-          <p>Massive arena-scale sound, intelligent lighting rigs, stage engineering, and crowd management for live music performances.</p>
-          <ul class="service-features">
-            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> Concert Grade Audio (L-Acoustics)</li>
-            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> Pyrotechnics & Laser Displays</li>
-            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> Artist Rider Compliance & Security</li>
-          </ul>
-        </div>
-        <a href="contact.html" class="btn btn-outline">Inquire Service</a>
-      </div>
-
-      <div class="service-detail-card reveal" style="transition-delay:0.1s">
-        <div>
-          <div class="service-num">05</div>
-          <h3>PR & Media Management</h3>
-          <p>Strategic media relations, press conferences, influencer guest lists, and national publication coverage for your major events.</p>
-          <ul class="service-features">
-            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> Press Release Drafting & Wire Distribution</li>
-            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> On-site Red Carpet Media Desk</li>
-            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> Post-event Coverage Reports</li>
-          </ul>
-        </div>
-        <a href="contact.html" class="btn btn-outline">Inquire Service</a>
-      </div>
-
-      <div class="service-detail-card reveal" style="transition-delay:0.2s">
-        <div>
-          <div class="service-num">06</div>
-          <h3>Technical Production & AV Rigs</h3>
-          <p>State-of-the-art rigging, trussing, LED video walls, sound design, and power backup management for any scale venue.</p>
-          <ul class="service-features">
-            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> High Refresh Rate Curved LED Screens</li>
-            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> Certified Structural Rigging</li>
-            <li><i data-lucide="check-circle" style="width:14px;height:14px"></i> Uninterrupted Generator Backups</li>
-          </ul>
-        </div>
-        <a href="contact.html" class="btn btn-outline">Inquire Service</a>
+  <!-- Category Tabs -->
+  <section class="category-tabs" id="categoryTabs">
+    <div class="container">
+      <div class="category-tabs-inner reveal">
+        <button class="category-tab active" data-panel="corporate">
+          <i data-lucide="building-2"></i> Corporate
+        </button>
+        <button class="category-tab" data-panel="weddings">
+          <i data-lucide="heart"></i> Weddings
+        </button>
+        <button class="category-tab" data-panel="entertainment">
+          <i data-lucide="music"></i> Entertainment
+        </button>
+        <button class="category-tab" data-panel="launches">
+          <i data-lucide="rocket"></i> Launches
+        </button>
+        <button class="category-tab" data-panel="hospitality">
+          <i data-lucide="utensils"></i> Hospitality
+        </button>
+        <button class="category-tab" data-panel="specialty">
+          <i data-lucide="sparkles"></i> Specialty
+        </button>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Production Process Section -->
-<section class="section section-cream">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-label">How We Work</div>
-      <h2 class="section-title">Our four-step production workflow.</h2>
-      <p class="section-subtitle">A disciplined approach to creative production that turns initial ideas into flawless show execution.</p>
-    </div>
-    
-    <div class="process-grid">
-      <div class="process-card reveal">
-        <div class="process-step-num">01</div>
-        <h3>Discovery & Strategy</h3>
-        <p>We deep-dive into your objectives, audience demographics, budget parameters, and venue specifications to set clear targets.</p>
-      </div>
+  <!-- Service Detail Panels -->
+  <section class="service-panels">
+    <div class="container">
 
-      <div class="process-card reveal" style="transition-delay:0.1s">
-        <div class="process-step-num">02</div>
-        <h3>3D Visual & Spatial Design</h3>
-        <p>Our creative team renders photorealistic 3D stage layouts, lighting plots, and spatial walk-throughs before fabrication begins.</p>
-      </div>
-
-      <div class="process-card reveal" style="transition-delay:0.2s">
-        <div class="process-step-num">03</div>
-        <h3>On-Ground Showcalling</h3>
-        <p>Our technical directors manage set builds, sound checks, vendor timing, hospitality, and live showcalling minute by minute.</p>
-      </div>
-
-      <div class="process-card reveal" style="transition-delay:0.3s">
-        <div class="process-step-num">04</div>
-        <h3>Content & Amplification</h3>
-        <p>Live photo/video editing teams deliver instant social highlights during the event, followed by official 4K showreels.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Newsletter -->
-<section class="section section-white" style="padding-top:0">
-  <div class="container">
-    <div class="newsletter-split reveal">
-      <div class="newsletter-image">
-        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1000&auto=format&fit=crop" alt="Newsletter">
-      </div>
-      <div class="newsletter-content">
-        <div class="section-label" style="color:var(--gold)">Stay Inspired</div>
-        <h2>Join the <em>BKU</em> community.</h2>
-        <p>Subscribe to receive the latest insights, event trends, and creative inspiration delivered to your inbox. No spam — just stories worth reading.</p>
-        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
-          <div class="newsletter-input-group">
-            <input type="email" placeholder="Your email address" required>
-            <button type="submit">
-              <span>Subscribe</span>
-              <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
-            </button>
+      <!-- CORPORATE PANEL -->
+      <div class="service-panel active" id="corporate">
+        <div class="panel-header reveal">
+          <div class="panel-header-content">
+            <div class="panel-label">Corporate Events</div>
+            <h2>Structured events that <em>elevate</em> your brand.</h2>
+            <p>From intimate board retreats to large-scale international summits, BKU designs corporate experiences that engage teams, inspire stakeholders, and deliver measurable business outcomes with flawless execution.</p>
           </div>
-          <p class="newsletter-note">By subscribing, you agree to our Privacy Policy. Unsubscribe anytime.</p>
-        </form>
+          <div class="panel-header-image">
+            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1000&auto=format&fit=crop" alt="Corporate Events">
+          </div>
+        </div>
+
+        <div class="sub-services-grid">
+          <div class="sub-service-card reveal">
+            <div class="sub-service-icon"><i data-lucide="presentation" style="width:24px;height:24px"></i></div>
+            <h4>Conferences & Summits</h4>
+            <p>Multi-day thought leadership events with keynote stages, breakout sessions, and networking zones.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Stage & AV Production</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Speaker Management</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Delegate Registration</div>
+            </div>
+          </div>
+
+          <div class="sub-service-card reveal" style="transition-delay:0.05s">
+            <div class="sub-service-icon"><i data-lucide="trophy" style="width:24px;height:24px"></i></div>
+            <h4>Award Nights & Galas</h4>
+            <p>Red-carpet ceremonies that celebrate excellence with grandeur, from stage design to trophy presentation.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Red Carpet Setup</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Live Telecast</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Celebrity Hosting</div>
+            </div>
+          </div>
+
+          <div class="sub-service-card reveal" style="transition-delay:0.1s">
+            <div class="sub-service-icon"><i data-lucide="users" style="width:24px;height:24px"></i></div>
+            <h4>Team Offsites & Retreats</h4>
+            <p>Curated experiences that blend team building, strategy sessions, and leisure in inspiring locations.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Venue Sourcing</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Activity Curation</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> End-to-End Logistics</div>
+            </div>
+          </div>
+
+          <div class="sub-service-card reveal">
+            <div class="sub-service-icon"><i data-lucide="mic" style="width:24px;height:24px"></i></div>
+            <h4>Seminars & Workshops</h4>
+            <p>Knowledge-sharing events with interactive formats, expert facilitators, and seamless technical setup.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Hybrid Streaming</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Workshop Materials</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Post-Event Content</div>
+            </div>
+          </div>
+
+          <div class="sub-service-card reveal" style="transition-delay:0.05s">
+            <div class="sub-service-icon"><i data-lucide="briefcase" style="width:24px;height:24px"></i></div>
+            <h4>Annual General Meetings</h4>
+            <p>Formal shareholder meetings with compliance-grade production, voting systems, and broadcast quality.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Secure Voting Systems</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Live Webcast</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Compliance Support</div>
+            </div>
+          </div>
+
+          <div class="sub-service-card reveal" style="transition-delay:0.1s">
+            <div class="sub-service-icon"><i data-lucide="handshake" style="width:24px;height:24px"></i></div>
+            <h4>Client Appreciation Events</h4>
+            <p>Exclusive gatherings that strengthen relationships through personalized experiences and premium hospitality.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> VIP Hospitality</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Custom Gifting</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Personalized Journeys</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="included-section reveal">
+          <div class="included-header">
+            <h3>What's Included</h3>
+            <p>Every corporate engagement comes with our end-to-end service framework.</p>
+          </div>
+          <div class="included-grid">
+            <div class="included-item">
+              <div class="included-item-icon"><i data-lucide="target" style="width:20px;height:20px"></i></div>
+              <div>
+                <h5>Strategy & Planning</h5>
+                <p>Goal alignment, audience mapping, and budget optimization.</p>
+              </div>
+            </div>
+            <div class="included-item">
+              <div class="included-item-icon"><i data-lucide="palette" style="width:20px;height:20px"></i></div>
+              <div>
+                <h5>Creative Design</h5>
+                <p>Theme development, 3D renders, and brand-aligned visuals.</p>
+              </div>
+            </div>
+            <div class="included-item">
+              <div class="included-item-icon"><i data-lucide="settings" style="width:20px;height:20px"></i></div>
+              <div>
+                <h5>Technical Production</h5>
+                <p>Sound, lighting, LED screens, staging, and live streaming.</p>
+              </div>
+            </div>
+            <div class="included-item">
+              <div class="included-item-icon"><i data-lucide="user-check" style="width:20px;height:20px"></i></div>
+              <div>
+                <h5>On-Ground Execution</h5>
+                <p>Registration desks, guest hospitality, and showcalling.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEDDINGS PANEL -->
+      <div class="service-panel" id="weddings">
+        <div class="panel-header reveal">
+          <div class="panel-header-content">
+            <div class="panel-label">Weddings & Celebrations</div>
+            <h2>Your love story, <em>beautifully</em> told.</h2>
+            <p>From intimate ceremonies to grand multi-day celebrations, BKU crafts weddings that reflect your unique journey — blending tradition with contemporary elegance, every detail considered.</p>
+          </div>
+          <div class="panel-header-image">
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1000&auto=format&fit=crop" alt="Weddings">
+          </div>
+        </div>
+
+        <div class="sub-services-grid">
+          <div class="sub-service-card reveal">
+            <div class="sub-service-icon"><i data-lucide="heart" style="width:24px;height:24px"></i></div>
+            <h4>Destination Weddings</h4>
+            <p>Palace weddings, beach ceremonies, and vineyard celebrations across India and abroad.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Venue Scouting</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Guest Travel Coordination</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Multi-Venue Logistics</div>
+            </div>
+          </div>
+
+          <div class="sub-service-card reveal" style="transition-delay:0.05s">
+            <div class="sub-service-icon"><i data-lucide="flower-2" style="width:24px;height:24px"></i></div>
+            <h4>Engagements & Ring Ceremonies</h4>
+            <p>Intimate, elegant affairs that set the tone for your wedding journey with thoughtful details.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Floral Architecture</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Photo Backdrop Ops</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Event Styling</div>
+            </div>
+          </div>
+
+          <div class="sub-service-card reveal" style="transition-delay:0.1s">
+            <div class="sub-service-icon"><i data-lucide="cake" style="width:24px;height:24px"></i></div>
+            <h4>Birthdays & Anniversaries</h4>
+            <p>Milestone celebrations — from intimate dinners to grand themed parties — designed around your story.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Themed Décor</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Live Artist Curation</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Custom Cakes</div>
+            </div>
+          </div>
+
+          <div class="sub-service-card reveal">
+            <div class="sub-service-icon"><i data-lucide="wine" style="width:24px;height:24px"></i></div>
+            <h4>Private Parties</h4>
+            <p>Exclusive gatherings with curated guest lists, premium hospitality, and bespoke atmospheres.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> VIP Guest Management</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Security & Privacy</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Premium F&B</div>
+            </div>
+          </div>
+
+          <div class="sub-service-card reveal" style="transition-delay:0.05s">
+            <div class="sub-service-icon"><i data-lucide="baby" style="width:24px;height:24px"></i></div>
+            <h4>Baby Showers & Naming</h4>
+            <p>Warm, intimate celebrations that welcome new beginnings with elegance and joy.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Soft Pastel Styling</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Interactive Games</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Keepsake Favors</div>
+            </div>
+          </div>
+
+          <div class="sub-service-card reveal" style="transition-delay:0.1s">
+            <div class="sub-service-icon"><i data-lucide="home" style="width:24px;height:24px"></i></div>
+            <h4>Housewarming & Griha Pravesh</h4>
+            <p>Traditional and modern housewarming ceremonies that blend rituals with contemporary celebration.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Ritual Setup Support</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Floral & Rangoli Styling</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Multi-Course Catering</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="included-section reveal">
+          <div class="included-header">
+            <h3>What's Included</h3>
+            <p>Our wedding packages cover every aspect of your celebration.</p>
+          </div>
+          <div class="included-grid">
+            <div class="included-item">
+              <div class="included-item-icon"><i data-lucide="calendar" style="width:20px;height:20px"></i></div>
+              <div>
+                <h5>Full Planning</h5>
+                <p>Timeline creation, vendor management, and day-of coordination.</p>
+              </div>
+            </div>
+            <div class="included-item">
+              <div class="included-item-icon"><i data-lucide="sparkles" style="width:20px;height:20px"></i></div>
+              <div>
+                <h5>Décor & Styling</h5>
+                <p>Floral installations, lighting, mandap, and stage design.</p>
+              </div>
+            </div>
+            <div class="included-item">
+              <div class="included-item-icon"><i data-lucide="utensils" style="width:20px;height:20px"></i></div>
+              <div>
+                <h5>Catering & F&B</h5>
+                <p>Multi-cuisine menus, live food stations, and bar service.</p>
+              </div>
+            </div>
+            <div class="included-item">
+              <div class="included-item-icon"><i data-lucide="camera" style="width:20px;height:20px"></i></div>
+              <div>
+                <h5>Photography & Film</h5>
+                <p>Cinematic 4K coverage, drone photography, and albums.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ENTERTAINMENT PANEL -->
+      <div class="service-panel" id="entertainment">
+        <div class="panel-header reveal">
+          <div class="panel-header-content">
+            <div class="panel-label">Entertainment & Concerts</div>
+            <h2>Stages that <em>move</em> thousands.</h2>
+            <p>From intimate acoustic nights to massive music festivals, BKU produces entertainment experiences with world-class technical production, artist management, and crowd safety protocols.</p>
+          </div>
+          <div class="panel-header-image">
+            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1000&auto=format&fit=crop" alt="Concerts">
+          </div>
+        </div>
+
+        <div class="sub-services-grid">
+          <div class="sub-service-card reveal">
+            <div class="sub-service-icon"><i data-lucide="music" style="width:24px;height:24px"></i></div>
+            <h4>Live Concerts</h4>
+            <p>Solo artist tours and stadium performances with full technical riders and stage engineering.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Artist Management</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> L-Acoustics Sound</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Backline & Trussing</div>
+            </div>
+          </div>
+
+          <div class="sub-service-card reveal" style="transition-delay:0.05s">
+            <div class="sub-service-icon"><i data-lucide="radio" style="width:24px;height:24px"></i></div>
+            <h4>Music Festivals</h4>
+            <p>Multi-stage, multi-day festivals with curated lineups, food courts, and experiential brand zones.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Multi-Stage Rigging</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Crowd Flow Management</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Sponsor Integration</div>
+            </div>
+          </div>
+
+          <div class="sub-service-card reveal" style="transition-delay:0.1s">
+            <div class="sub-service-icon"><i data-lucide="mic-2" style="width:24px;height:24px"></i></div>
+            <h4>Stand-Up & Comedy Shows</h4>
+            <p>Intimate comedy events with perfect speech acoustics, lighting, and audience seat engineering.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Auditorium Curation</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Talent Booking</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Box Office Systems</div>
+            </div>
+          </div>
+
+          <div class="sub-service-card reveal">
+            <div class="sub-service-icon"><i data-lucide="theater" style="width:24px;height:24px"></i></div>
+            <h4>Cultural & Theatre Events</h4>
+            <p>Classical music performances, dance recitals, and theatrical plays with authentic staging.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Stage Set Design</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Acoustic Balancing</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Artist Hospitality</div>
+            </div>
+          </div>
+
+          <div class="sub-service-card reveal" style="transition-delay:0.05s">
+            <div class="sub-service-icon"><i data-lucide="star" style="width:24px;height:24px"></i></div>
+            <h4>Celebrity Appearances</h4>
+            <p>High-profile celebrity acts with strict protocol management, security detail, and press desks.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Celebrity Rider Compliance</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> VIP Security Protocol</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Media Access Control</div>
+            </div>
+          </div>
+
+          <div class="sub-service-card reveal" style="transition-delay:0.1s">
+            <div class="sub-service-icon"><i data-lucide="disc-3" style="width:24px;height:24px"></i></div>
+            <h4>DJ Nights & Arena Clubs</h4>
+            <p>High-energy nightlife experiences with high-refresh LED walls and laser lighting visualizers.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Headline DJ Booking</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> LED & Laser Pyros</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> High-Capacity Bar</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="included-section reveal">
+          <div class="included-header">
+            <h3>What's Included</h3>
+            <p>Complete entertainment production from concept to curtain call.</p>
+          </div>
+          <div class="included-grid">
+            <div class="included-item">
+              <div class="included-item-icon"><i data-lucide="guitar" style="width:20px;height:20px"></i></div>
+              <div>
+                <h5>Artist Management</h5>
+                <p>Booking, rider compliance, travel, and hospitality.</p>
+              </div>
+            </div>
+            <div class="included-item">
+              <div class="included-item-icon"><i data-lucide="speaker" style="width:20px;height:20px"></i></div>
+              <div>
+                <h5>Technical Rigging</h5>
+                <p>Concert audio, moving lights, and curved LED screens.</p>
+              </div>
+            </div>
+            <div class="included-item">
+              <div class="included-item-icon"><i data-lucide="shield-check" style="width:20px;height:20px"></i></div>
+              <div>
+                <h5>Safety & Permits</h5>
+                <p>Crowd control, fire safety, and municipal approvals.</p>
+              </div>
+            </div>
+            <div class="included-item">
+              <div class="included-item-icon"><i data-lucide="ticket" style="width:20px;height:20px"></i></div>
+              <div>
+                <h5>Box Office</h5>
+                <p>Online ticketing integration and gate RFID control.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LAUNCHES PANEL -->
+      <div class="service-panel" id="launches">
+        <div class="panel-header reveal">
+          <div class="panel-header-content">
+            <div class="panel-label">Brand & Product Launches</div>
+            <h2>Launches that make <em>headlines</em>.</h2>
+            <p>From movie premieres to flagship store openings and product reveals, BKU builds launch experiences that generate national buzz and drive brand momentum.</p>
+          </div>
+          <div class="panel-header-image">
+            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=1000&auto=format&fit=crop" alt="Launches">
+          </div>
+        </div>
+
+        <div class="sub-services-grid">
+          <div class="sub-service-card reveal">
+            <div class="sub-service-icon"><i data-lucide="film" style="width:24px;height:24px"></i></div>
+            <h4>Movie Launches & Premieres</h4>
+            <p>Red-carpet premieres, trailer launches, and music unveils with celebrity coordination and press walls.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Red Carpet Production</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Press & Media Desk</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Celebrity VIP Lounge</div>
+            </div>
+          </div>
+
+          <div class="sub-service-card reveal" style="transition-delay:0.05s">
+            <div class="sub-service-icon"><i data-lucide="store" style="width:24px;height:24px"></i></div>
+            <h4>Store Launches & Openings</h4>
+            <p>Grand openings for retail and luxury brands with ribbon-cutting ceremonies and experiential activations.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Ceremonial Stage Setup</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Influencer Guestlist</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> In-Store Photo Zones</div>
+            </div>
+          </div>
+
+          <div class="sub-service-card reveal" style="transition-delay:0.1s">
+            <div class="sub-service-icon"><i data-lucide="package" style="width:24px;height:24px"></i></div>
+            <h4>Product Unveils</h4>
+            <p>Theatrical product unveils with projection mapping, curtain drop mechanisms, and demo zones.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Automated Reveal Rigs</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Interactive Touch Tables</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Digital Press Kits</div>
+            </div>
+          </div>
+
+          <div class="sub-service-card reveal">
+            <div class="sub-service-icon"><i data-lucide="newspaper" style="width:24px;height:24px"></i></div>
+            <h4>Press Conferences</h4>
+            <p>Media announcements with high-refresh broadcast backdrops, live webcasting, and journalist lounges.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Press Backdrop & Audio</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Multi-Camera Webstream</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Q&A Mic Management</div>
+            </div>
+          </div>
+
+          <div class="sub-service-card reveal" style="transition-delay:0.05s">
+            <div class="sub-service-icon"><i data-lucide="building" style="width:24px;height:24px"></i></div>
+            <h4>Real Estate Launches</h4>
+            <p>Property reveals with 3D architectural projections, scale model lighting, and investor galas.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> 3D Projection Mapping</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Scale Model Lighting</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Investor Hospitality</div>
+            </div>
+          </div>
+
+          <div class="sub-service-card reveal" style="transition-delay:0.1s">
+            <div class="sub-service-icon"><i data-lucide="zap" style="width:24px;height:24px"></i></div>
+            <h4>App & Tech Keynotes</h4>
+            <p>Tech keynotes featuring seamless screen switching, live app demos, and AR experiences.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Low-Latency Demo Feeds</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> AR Stage Environments</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Keynote Teleprompters</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="included-section reveal">
+          <div class="included-header">
+            <h3>What's Included</h3>
+            <p>End-to-end launch production from strategy to post-event coverage.</p>
+          </div>
+          <div class="included-grid">
+            <div class="included-item">
+              <div class="included-item-icon"><i data-lucide="megaphone" style="width:20px;height:20px"></i></div>
+              <div>
+                <h5>PR & Media Desk</h5>
+                <p>Press releases, media passes, and journalist relations.</p>
+              </div>
+            </div>
+            <div class="included-item">
+              <div class="included-item-icon"><i data-lucide="clapperboard" style="width:20px;height:20px"></i></div>
+              <div>
+                <h5>Influencers & Stars</h5>
+                <p>Celebrity booking, appearances, and social posts.</p>
+              </div>
+            </div>
+            <div class="included-item">
+              <div class="included-item-icon"><i data-lucide="video" style="width:20px;height:20px"></i></div>
+              <div>
+                <h5>Content Production</h5>
+                <p>Reveal video edits, 4K photography, and social reels.</p>
+              </div>
+            </div>
+            <div class="included-item">
+              <div class="included-item-icon"><i data-lucide="bar-chart" style="width:20px;height:20px"></i></div>
+              <div>
+                <h5>Impact Reporting</h5>
+                <p>Media impressions, reach analytics, and ROI reports.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HOSPITALITY PANEL -->
+      <div class="service-panel" id="hospitality">
+        <div class="panel-header reveal">
+          <div class="panel-header-content">
+            <div class="panel-label">Hospitality & F&B</div>
+            <h2>Hospitality as an <em>art form</em>.</h2>
+            <p>BKU specializes in premium culinary and hospitality management — from black-tie gala dinners and bespoke catering to VIP lounges and artisanal cocktail bars.</p>
+          </div>
+          <div class="panel-header-image">
+            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1000&auto=format&fit=crop" alt="Hospitality">
+          </div>
+        </div>
+
+        <div class="sub-services-grid">
+          <div class="sub-service-card reveal">
+            <div class="sub-service-icon"><i data-lucide="utensils" style="width:24px;height:24px"></i></div>
+            <h4>Gala Dinners</h4>
+            <p>Black-tie banquets featuring multi-course menus, curated wine pairings, and luxury tablescapes.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Multi-Course Plated Menus</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Sommelier Wine Pairing</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Custom Floral Tableware</div>
+            </div>
+          </div>
+
+          <div class="sub-service-card reveal" style="transition-delay:0.05s">
+            <div class="sub-service-icon"><i data-lucide="chef-hat" style="width:24px;height:24px"></i></div>
+            <h4>Curated Catering</h4>
+            <p>Bespoke menus across Indian regional and global cuisines with interactive live chef counters.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Regional & Global Menus</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Interactive Live Stations</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Dietary Accommodations</div>
+            </div>
+          </div>
+
+          <div class="sub-service-card reveal" style="transition-delay:0.1s">
+            <div class="sub-service-icon"><i data-lucide="crown" style="width:24px;height:24px"></i></div>
+            <h4>VIP Lounges</h4>
+            <p>Exclusive lounge setups with private bar tenders, gourmet pass-arounds, and butler service.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Premium Open Bar</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Personal Butler Teams</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Private Access Control</div>
+            </div>
+          </div>
+
+          <div class="sub-service-card reveal">
+            <div class="sub-service-icon"><i data-lucide="coffee" style="width:24px;height:24px"></i></div>
+            <h4>Corporate F&B</h4>
+            <p>Executive luncheons, networking breakfasts, and conference coffee breaks with flawless timing.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Buffet & Plated Dining</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Artisanal Coffee Stations</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Branded Menu Cards</div>
+            </div>
+          </div>
+
+          <div class="sub-service-card reveal" style="transition-delay:0.05s">
+            <div class="sub-service-icon"><i data-lucide="wine-off" style="width:24px;height:24px"></i></div>
+            <h4>Craft Mixology & Bars</h4>
+            <p>Signature cocktail menus, zero-proof mocktail bars, and flair mixologists.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Bespoke Signature Cocktails</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Zero-Proof Mocktail Bars</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Professional Bartenders</div>
+            </div>
+          </div>
+
+          <div class="sub-service-card reveal" style="transition-delay:0.1s">
+            <div class="sub-service-icon"><i data-lucide="cake-slice" style="width:24px;height:24px"></i></div>
+            <h4>Dessert & Pastry Bars</h4>
+            <p>Artisan dessert displays, chocolate fountains, and custom dessert grazing tables.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Artisan Pastry Stations</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Custom Celebration Cakes</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Dessert Grazing Tables</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="included-section reveal">
+          <div class="included-header">
+            <h3>What's Included</h3>
+            <p>Our hospitality services cover every aspect of guest experience.</p>
+          </div>
+          <div class="included-grid">
+            <div class="included-item">
+              <div class="included-item-icon"><i data-lucide="chef-hat" style="width:20px;height:20px"></i></div>
+              <div>
+                <h5>Executive Chefs</h5>
+                <p>Curated menus created by veteran culinary masters.</p>
+              </div>
+            </div>
+            <div class="included-item">
+              <div class="included-item-icon"><i data-lucide="users" style="width:20px;height:20px"></i></div>
+              <div>
+                <h5>Service Staff</h5>
+                <p>Uniformed waitstaff, mixologists, and hosts.</p>
+              </div>
+            </div>
+            <div class="included-item">
+              <div class="included-item-icon"><i data-lucide="flower" style="width:20px;height:20px"></i></div>
+              <div>
+                <h5>Table Styling</h5>
+                <p>Fine linens, porcelain, floral centerpieces, and candles.</p>
+              </div>
+            </div>
+            <div class="included-item">
+              <div class="included-item-icon"><i data-lucide="shield" style="width:20px;height:20px"></i></div>
+              <div>
+                <h5>Food Safety</h5>
+                <p>Strict FSSAI compliance, cold chain, and hygiene.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPECIALTY PANEL -->
+      <div class="service-panel" id="specialty">
+        <div class="panel-header reveal">
+          <div class="panel-header-content">
+            <div class="panel-label">Specialty Events</div>
+            <h2>Unique experiences, <em>uniquely</em> crafted.</h2>
+            <p>From curated flea markets and pop-up retail stores to MICE exhibitions and CSR galas — BKU creates unconventional events that break the mold and leave a lasting impression.</p>
+          </div>
+          <div class="panel-header-image">
+            <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=1000&auto=format&fit=crop" alt="Specialty Events">
+          </div>
+        </div>
+
+        <div class="sub-services-grid">
+          <div class="sub-service-card reveal">
+            <div class="sub-service-icon"><i data-lucide="shopping-bag" style="width:24px;height:24px"></i></div>
+            <h4>Flea Markets & Bazaars</h4>
+            <p>Curated weekend bazaars with artisan stalls, food trucks, live acoustic stages, and workshops.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Artisan Vendor Curation</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Wooden Booth Fabrication</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> High-Footfall Ticketing</div>
+            </div>
+          </div>
+
+          <div class="sub-service-card reveal" style="transition-delay:0.05s">
+            <div class="sub-service-icon"><i data-lucide="box" style="width:24px;height:24px"></i></div>
+            <h4>Pop-Up Retail</h4>
+            <p>Temporary brand stores engineered for maximum viral social sharing and limited-edition product drops.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Modular Pop-Up Architecture</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> High-Traffic Permit Sourcing</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Social Media Photo Spots</div>
+            </div>
+          </div>
+
+          <div class="sub-service-card reveal" style="transition-delay:0.1s">
+            <div class="sub-service-icon"><i data-lucide="globe" style="width:24px;height:24px"></i></div>
+            <h4>MICE & Exhibitions</h4>
+            <p>Meetings, Incentives, Conferences, and Exhibitions delivered with international trade show standards.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Shell Scheme & Custom Booths</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> International Delegate Travel</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> B2B Matchmaking Desks</div>
+            </div>
+          </div>
+
+          <div class="sub-service-card reveal">
+            <div class="sub-service-icon"><i data-lucide="sparkles" style="width:24px;height:24px"></i></div>
+            <h4>Experiential Activations</h4>
+            <p>Immersive brand installations engaging all 5 senses with interactive AR tech integration.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> 3D Sensory Environments</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> AR/VR Interactive Tech</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Shareable Photo Booths</div>
+            </div>
+          </div>
+
+          <div class="sub-service-card reveal" style="transition-delay:0.05s">
+            <div class="sub-service-icon"><i data-lucide="palette" style="width:24px;height:24px"></i></div>
+            <h4>Art & Design Exhibitions</h4>
+            <p>Gallery-style showcases featuring gallery lighting rigs, artwork placement, and opening preview nights.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Gallery Lighting Rigs</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Curatorial Hanging Support</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Preview Night Reception</div>
+            </div>
+          </div>
+
+          <div class="sub-service-card reveal" style="transition-delay:0.1s">
+            <div class="sub-service-icon"><i data-lucide="heart-handshake" style="width:24px;height:24px"></i></div>
+            <h4>CSR & Charity Galas</h4>
+            <p>Purpose-driven events that blend fundraising impact with elegance — charity auctions and benefit dinners.</p>
+            <div class="sub-service-features">
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Live Auction Technology</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> VIP Donor Management</div>
+              <div class="sub-feature"><i data-lucide="check" style="width:14px;height:14px"></i> Post-Gala Impact Reports</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="included-section reveal">
+          <div class="included-header">
+            <h3>What's Included</h3>
+            <p>Our specialty event services are fully customizable to your concept.</p>
+          </div>
+          <div class="included-grid">
+            <div class="included-item">
+              <div class="included-item-icon"><i data-lucide="lightbulb" style="width:20px;height:20px"></i></div>
+              <div>
+                <h5>Creative Concept</h5>
+                <p>Unique thematic design and spatial layout blueprints.</p>
+              </div>
+            </div>
+            <div class="included-item">
+              <div class="included-item-icon"><i data-lucide="map" style="width:20px;height:20px"></i></div>
+              <div>
+                <h5>Venue & Logistics</h5>
+                <p>Permits, power backups, and stall fabrication.</p>
+              </div>
+            </div>
+            <div class="included-item">
+              <div class="included-item-icon"><i data-lucide="share-2" style="width:20px;height:20px"></i></div>
+              <div>
+                <h5>Marketing Support</h5>
+                <p>Press releases, influencer invites, and digital ads.</p>
+              </div>
+            </div>
+            <div class="included-item">
+              <div class="included-item-icon"><i data-lucide="trending-up" style="width:20px;height:20px"></i></div>
+              <div>
+                <h5>Analytics</h5>
+                <p>Gate footfall metrics, social impressions, and sales reports.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Process Timeline -->
+  <section class="process-section">
+    <div class="container">
+      <div class="process-header reveal">
+        <div class="section-label">Our Process</div>
+        <h2>How we bring your <em>vision</em> to life.</h2>
+        <p>A proven four-step framework that ensures every event is delivered with precision, creativity, and care.</p>
+      </div>
+      <div class="process-steps">
+        <div class="process-step reveal">
+          <div class="step-number">01</div>
+          <h4>Discovery</h4>
+          <p>We listen, understand your goals, audience, and vision through detailed initial consultations.</p>
+        </div>
+        <div class="process-step reveal" style="transition-delay:0.1s">
+          <div class="step-number">02</div>
+          <h4>Design</h4>
+          <p>Our team crafts mood boards, 3D spatial layouts, and detailed concept decks aligned with your brand.</p>
+        </div>
+        <div class="process-step reveal" style="transition-delay:0.2s">
+          <div class="step-number">03</div>
+          <h4>Production</h4>
+          <p>Vendor contracting, municipal permits, technical AV setup, and dry rehearsals — every detail orchestrated.</p>
+        </div>
+        <div class="process-step reveal" style="transition-delay:0.3s">
+          <div class="step-number">04</div>
+          <h4>Execution</h4>
+          <p>On-ground showcalling, guest hospitality, and post-event content delivery — flawless from start to finish.</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="why-section">
+    <div class="container">
+      <div class="why-header reveal">
+        <div class="section-label">Why Choose Us</div>
+        <h2>We turn your <em>dream</em> into reality.</h2>
+        <p>Trusted by hundreds of corporate brands and private families across India, our track record speaks for itself.</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card reveal">
+          <div class="stat-icon"><i data-lucide="calendar-check" style="width:24px;height:24px"></i></div>
+          <div class="stat-number">250<span class="plus">+</span></div>
+          <div class="stat-label">Events Completed</div>
+        </div>
+        <div class="stat-card reveal" style="transition-delay:0.1s">
+          <div class="stat-icon"><i data-lucide="heart" style="width:24px;height:24px"></i></div>
+          <div class="stat-number">180<span class="plus">+</span></div>
+          <div class="stat-label">Satisfied Clients</div>
+        </div>
+        <div class="stat-card reveal" style="transition-delay:0.2s">
+          <div class="stat-icon"><i data-lucide="handshake" style="width:24px;height:24px"></i></div>
+          <div class="stat-number">95<span class="plus">+</span></div>
+          <div class="stat-label">Production Partners</div>
+        </div>
+        <div class="stat-card reveal" style="transition-delay:0.3s">
+          <div class="stat-icon"><i data-lucide="award" style="width:24px;height:24px"></i></div>
+          <div class="stat-number">15<span class="plus">+</span></div>
+          <div class="stat-label">Industry Honors</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Event Highlights -->
+  <section class="highlights-section">
+    <div class="container">
+      <div class="highlights-header reveal">
+        <div class="section-label">Event Highlights</div>
+        <h2>Highlights that define <em>excellence</em>.</h2>
+        <p>Every event BKU produces reflects thoughtful planning, innovative spatial design, and precise technical execution.</p>
+      </div>
+    </div>
+    <div class="highlights-scroll reveal">
+      <div class="highlight-card" onclick="window.location.href='gallery.html'">
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&auto=format&fit=crop" alt="Wedding">
+        <div class="highlight-overlay">
+          <div class="highlight-category">Wedding</div>
+          <h3>Royal Palace Wedding</h3>
+          <p>Udaipur • 500 Guests</p>
+        </div>
+      </div>
+      <div class="highlight-card" onclick="window.location.href='gallery.html'">
+        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&auto=format&fit=crop" alt="Corporate">
+        <div class="highlight-overlay">
+          <div class="highlight-category">Corporate</div>
+          <h3>Tech Summit 2026</h3>
+          <p>Mumbai • 1000+ Attendees</p>
+        </div>
+      </div>
+      <div class="highlight-card" onclick="window.location.href='gallery.html'">
+        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&auto=format&fit=crop" alt="Concert">
+        <div class="highlight-overlay">
+          <div class="highlight-category">Concert</div>
+          <h3>Summer Music Fest</h3>
+          <p>Live Production • 10K+ Crowd</p>
+        </div>
+      </div>
+      <div class="highlight-card" onclick="window.location.href='gallery.html'">
+        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&auto=format&fit=crop" alt="Launch">
+        <div class="highlight-overlay">
+          <div class="highlight-category">Launch</div>
+          <h3>Luxury Brand Reveal</h3>
+          <p>Product Launch • International Press</p>
+        </div>
+      </div>
+      <div class="highlight-card" onclick="window.location.href='gallery.html'">
+        <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&auto=format&fit=crop" alt="Flea Market">
+        <div class="highlight-overlay">
+          <div class="highlight-category">Specialty</div>
+          <h3>Artisan Flea Market</h3>
+          <p>Weekend Bazaar • 50+ Vendors</p>
+        </div>
+      </div>
+      <div class="highlight-card" onclick="window.location.href='gallery.html'">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&auto=format&fit=crop" alt="Gala">
+        <div class="highlight-overlay">
+          <div class="highlight-category">Hospitality</div>
+          <h3>Charity Gala Dinner</h3>
+          <p>Annual Fundraiser • 300 Guests</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="testimonials-header reveal">
+        <div class="section-label">Testimonials</div>
+        <h2>What they say <em>about us</em>.</h2>
+        <p>Our success is defined by the satisfaction of our clients. Here are a few words from those who trusted BKU.</p>
+        <div class="rating-badge">
+          <div class="rating-score">4.9</div>
+          <div class="rating-info">
+            <div class="rating-stars">
+              <i data-lucide="star" style="width:14px;height:14px;fill:currentColor"></i>
+              <i data-lucide="star" style="width:14px;height:14px;fill:currentColor"></i>
+              <i data-lucide="star" style="width:14px;height:14px;fill:currentColor"></i>
+              <i data-lucide="star" style="width:14px;height:14px;fill:currentColor"></i>
+              <i data-lucide="star" style="width:14px;height:14px;fill:currentColor"></i>
+            </div>
+            <span>(150+ Verified Reviews) • Satisfied Clients</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">
+            <i data-lucide="star" style="width:16px;height:16px;fill:currentColor"></i>
+            <i data-lucide="star" style="width:16px;height:16px;fill:currentColor"></i>
+            <i data-lucide="star" style="width:16px;height:16px;fill:currentColor"></i>
+            <i data-lucide="star" style="width:16px;height:16px;fill:currentColor"></i>
+            <i data-lucide="star" style="width:16px;height:16px;fill:currentColor"></i>
+          </div>
+          <blockquote>"The attention to detail, technical precision, and seamless execution from BKU made our leadership summit an absolute success. Our delegates were thoroughly impressed!"</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&auto=format&fit=crop" alt="Emily Rodriguez">
+            </div>
+            <div>
+              <h4>Emily Rodriguez</h4>
+              <p>VP Events, Bloom Wellness</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal" style="transition-delay:0.1s">
+          <div class="testimonial-stars">
+            <i data-lucide="star" style="width:16px;height:16px;fill:currentColor"></i>
+            <i data-lucide="star" style="width:16px;height:16px;fill:currentColor"></i>
+            <i data-lucide="star" style="width:16px;height:16px;fill:currentColor"></i>
+            <i data-lucide="star" style="width:16px;height:16px;fill:currentColor"></i>
+            <i data-lucide="star" style="width:16px;height:16px;fill:currentColor"></i>
+          </div>
+          <blockquote>"BKU exceeded our highest expectations. They brought our charity gala vision to life with artistic flair and flawless showcalling."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&auto=format&fit=crop" alt="David Lee">
+            </div>
+            <div>
+              <h4>David Lee</h4>
+              <p>Director, Sunrise Charities</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">
+            <i data-lucide="star" style="width:16px;height:16px;fill:currentColor"></i>
+            <i data-lucide="star" style="width:16px;height:16px;fill:currentColor"></i>
+            <i data-lucide="star" style="width:16px;height:16px;fill:currentColor"></i>
+            <i data-lucide="star" style="width:16px;height:16px;fill:currentColor"></i>
+            <i data-lucide="star" style="width:16px;height:16px;fill:currentColor"></i>
+          </div>
+          <blockquote>"Our corporate gala was a production masterpiece. BKU delivered beyond expectation, creating an unforgettable evening for our investors."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&auto=format&fit=crop" alt="Rajasree Vaidya">
+            </div>
+            <div>
+              <h4>Rajasree Vaidya</h4>
+              <p>Head of Brand, Fintech Corp</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal" style="transition-delay:0.1s">
+          <div class="testimonial-stars">
+            <i data-lucide="star" style="width:16px;height:16px;fill:currentColor"></i>
+            <i data-lucide="star" style="width:16px;height:16px;fill:currentColor"></i>
+            <i data-lucide="star" style="width:16px;height:16px;fill:currentColor"></i>
+            <i data-lucide="star" style="width:16px;height:16px;fill:currentColor"></i>
+            <i data-lucide="star" style="width:16px;height:16px;fill:currentColor"></i>
+          </div>
+          <blockquote>"BKU transformed our luxury product launch into a grand visual spectacle. Every detail was executed flawlessly, driving massive media coverage."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop" alt="Abhisheik">
+            </div>
+            <div>
+              <h4>Abhisheik</h4>
+              <p>Global Marketing Director</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="faq-grid">
+        <div class="faq-sticky reveal">
+          <div class="section-label">FAQ</div>
+          <h2>Questions, <em>answered</em>.</h2>
+          <p>Everything you need to know about working with BKU. Still have questions? Reach out directly to our team.</p>
+          <a href="contact.html" class="btn btn-black" style="margin-top:12px">
+            <span>Get in Touch</span>
+            <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
+          </a>
+        </div>
+        <div class="accordion reveal">
+          <div class="accordion-item active">
+            <button class="accordion-header">
+              <span class="accordion-title">What types of events do you handle?</span>
+              <span class="accordion-icon"><i data-lucide="plus" style="width:18px;height:18px"></i></span>
+            </button>
+            <div class="accordion-content" style="max-height:220px">
+              <div class="accordion-content-inner">We handle everything from corporate conferences, luxury destination weddings, and arena concerts to movie premieres, flea markets, and hospitality galas. Our six service categories cover virtually every scale of event.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span class="accordion-title">Do you specialize in hospitality and F&B?</span>
+              <span class="accordion-icon"><i data-lucide="plus" style="width:18px;height:18px"></i></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">Yes! Hospitality is one of BKU's core pillars. We offer curated multi-course catering, gala dinners, VIP lounges, artisanal mixology bars, and complete F&B logistics with executive chefs and trained waitstaff.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span class="accordion-title">How far in advance should we book BKU?</span>
+              <span class="accordion-icon"><i data-lucide="plus" style="width:18px;height:18px"></i></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">For large corporate summits and peak wedding seasons, we recommend booking 6-12 months in advance. However, we also accommodate express project timelines depending on scope and team availability.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span class="accordion-title">Do you manage movie premieres and store launches?</span>
+              <span class="accordion-icon"><i data-lucide="plus" style="width:18px;height:18px"></i></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">Absolutely. We specialize in red-carpet movie premieres with press desks, celebrity security protocols, and live webcasting. We also design retail store launches, automotive unveils, and tech keynotes with PR support.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span class="accordion-title">What is included in BKU's service packages?</span>
+              <span class="accordion-icon"><i data-lucide="plus" style="width:18px;height:18px"></i></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">Our packages are fully customized and typically cover strategy, 3D spatial design, technical rigging, vendor management, on-ground showcalling, and post-event 4K content delivery.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span class="accordion-title">Do you organize flea markets and pop-up events?</span>
+              <span class="accordion-icon"><i data-lucide="plus" style="width:18px;height:18px"></i></span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-content-inner">Yes! Our specialty events division manages flea markets, artisan bazaars, pop-up stores, MICE trade shows, art exhibitions, and CSR galas with complete vendor curation and footfall management.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content reveal">
+        <h2>Ready to create something <em>extraordinary</em>?</h2>
+        <p>Let's discuss your next event and bring your vision to life with BKU's signature precision and creative excellence.</p>
+        <div class="cta-buttons">
+          <a href="contact.html" class="btn-gold">
+            <span>Start Your Project</span>
+            <i data-lucide="arrow-right" style="width:15px;height:15px"></i>
+          </a>
+          <a href="tel:+917981636962" class="btn-outline-white">
+            <i data-lucide="phone" style="width:15px;height:15px"></i>
+            <span>Call Us Now</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="newsletter-section">
+    <div class="container">
+      <div class="newsletter-content reveal">
+        <h2>Join the <em>BKU</em> Community</h2>
+        <p>Subscribe to receive the latest industry insights, production trends, and creative inspiration delivered straight to your inbox.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to BKU!'); this.reset();">
+          <input type="email" placeholder="Enter your email address" required aria-label="Email address for newsletter">
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="newsletter-note">Join the BKU community and stay connected with the future of event innovation.</p>
+      </div>
+    </div>
+  </section>
+</main>
 
 <!-- Footer -->
 <footer>
@@ -611,7 +2045,7 @@
           <span class="logo-mark">B</span>
           <span class="logo-text">BKU</span>
         </a>
-        <p>A full-scale event management and creative production company that transforms ideas into unforgettable experiences. From corporate summits to celebrity concerts and private celebrations.</p>
+        <p>BKU is a full-scale event management and creative production company that transforms ideas into unforgettable experiences. From corporate summits to celebrity concerts and private celebrations.</p>
         <div class="footer-social">
           <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
           <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
@@ -669,8 +2103,8 @@
 
 <script>
   lucide.createIcons();
-  
-  // Scroll Progress
+
+  // Scroll Progress Bar
   const scrollProgress = document.getElementById('scrollProgress');
   window.addEventListener('scroll', () => {
     const scrollTop = window.scrollY;
@@ -678,18 +2112,40 @@
     const progress = (scrollTop / docHeight) * 100;
     scrollProgress.style.width = progress + '%';
   });
-  
-  // Navigation
+
+  // Navigation scroll state
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 50);
   });
-  
-  // Mobile Menu
+
+  // Category Tabs & Panels
+  const categoryTabs = document.querySelectorAll('.category-tab');
+  const servicePanels = document.querySelectorAll('.service-panel');
+
+  categoryTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      categoryTabs.forEach(t => t.classList.remove('active'));
+      servicePanels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      const panelId = tab.getAttribute('data-panel');
+      const targetPanel = document.getElementById(panelId);
+      if (targetPanel) {
+        targetPanel.classList.add('active');
+        lucide.createIcons();
+        // Re-observe reveals in newly active panel
+        document.querySelectorAll('#' + panelId + ' .reveal:not(.active)').forEach(el => {
+          observer.observe(el);
+        });
+      }
+    });
+  });
+
+  // Mobile Menu Drawer
   const menuToggle = document.getElementById('menuToggle');
   const navLinks = document.getElementById('navLinks');
   const mobileOverlay = document.getElementById('mobileOverlay');
-  
+
   function toggleMobileMenu() {
     const isOpen = navLinks.classList.contains('active');
     if (isOpen) {
@@ -712,17 +2168,37 @@
   menuToggle.addEventListener('click', toggleMobileMenu);
   mobileOverlay.addEventListener('click', toggleMobileMenu);
 
-  // Reveal on scroll
-  const revealObserver = new IntersectionObserver((entries) => {
+  // Scroll Reveal Observer
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('active');
-        revealObserver.unobserve(entry.target);
+        observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-  
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // FAQ Accordion Toggle
+  document.querySelectorAll('.accordion-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const item = header.parentElement;
+      const content = item.querySelector('.accordion-content');
+      const isActive = item.classList.contains('active');
+      
+      document.querySelectorAll('.accordion-item').forEach(i => {
+        i.classList.remove('active');
+        const c = i.querySelector('.accordion-content');
+        if (c) c.style.maxHeight = '0';
+      });
+      
+      if (!isActive) {
+        item.classList.add('active');
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+    });
+  });
+
   // Back to Top
   const backToTop = document.getElementById('backToTop');
   window.addEventListener('scroll', () => {
