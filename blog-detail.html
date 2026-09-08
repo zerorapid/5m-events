@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Art of Crafting Unforgettable Corporate Events — BKU Journal</title>
+<meta name="description" content="Discover the secrets behind creating corporate events that leave lasting impressions. Insights from BKU's expert event producers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  /* ========== 1. RESET & BASE ========== */
+  :root{
+    --white: #FFFFFF;
+    --cream: #F5F1E8;
+    --beige: #E8DFD0;
+    --sand: #D4C4B0;
+    --black: #0A0A0A;
+    --charcoal: #1A1A1A;
+    --dark-gray: #2A2A2A;
+    --gray: #5A5A5A;
+    --light-gray: #8A8A8A;
+    --muted: #A8A29A;
+    --gold: #B8945F;
+    --gold-light: #D4B886;
+    --shadow-sm: 0 4px 12px rgba(10,10,10,0.06);
+    --shadow-md: 0 12px 40px rgba(10,10,10,0.10);
+    --shadow-lg: 0 30px 80px rgba(10,10,10,0.18);
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'Inter', system-ui, sans-serif;
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 32px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: var(--sans);
+    background: var(--white);
+    color: var(--charcoal);
+    line-height: 1.7;
+    font-weight: 400;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: inherit; text-decoration: none; transition: all 0.35s ease; }
+  ul, ol { list-style: none; }
+  h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; line-height: 1.15; letter-spacing: -0.01em; }
+  p { font-size: 16px; line-height: 1.75; color: var(--gray); }
+  .container { max-width: 1360px; margin: 0 auto; padding: 0 60px; width: 100%; }
+
+  /* ========== 2. READING PROGRESS ========== */
+  .reading-progress {
+    position: fixed; top: 0; left: 0; height: 2px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    z-index: 9999; width: 0%; transition: width 0.1s ease;
+  }
+
+  /* ========== 3. NAVIGATION ========== */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid transparent;
+    transition: all 0.4s ease;
+  }
+  .nav.scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    border-bottom-color: rgba(10, 10, 10, 0.06);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 60px; max-width: 1600px; margin: 0 auto;
+  }
+  .logo {
+    font-family: var(--serif);
+    display: flex; align-items: center; gap: 14px;
+  }
+  .logo-mark {
+    width: 38px; height: 38px;
+    background: var(--black);
+    color: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif);
+    font-size: 16px; font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 8px;
+    transition: transform 0.4s ease;
+  }
+  .logo:hover .logo-mark { transform: rotate(-8deg) scale(1.05); }
+  .logo-text { font-size: 26px; letter-spacing: 3px; font-weight: 600; color: var(--black); }
+  .nav-links { display: flex; gap: 40px; }
+  .nav-links a {
+    font-size: 13px; letter-spacing: 1.5px; font-weight: 500;
+    text-transform: uppercase; color: var(--charcoal); position: relative;
+    padding: 6px 0;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; left: 0; bottom: 0;
+    width: 0; height: 1px; background: var(--gold); transition: width 0.35s ease;
+  }
+  .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+  .nav-links a:hover { color: var(--black); }
+  .nav-links a.active { color: var(--gold); }
+  
+  .nav-cta { display: flex; align-items: center; gap: 20px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 14px 28px; font-size: 12px; letter-spacing: 2px;
+    font-weight: 600; text-transform: uppercase;
+    cursor: pointer; border: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: var(--sans);
+    border-radius: 100px;
+  }
+  .btn-black { background: var(--black); color: var(--white); }
+  .btn-black:hover { background: var(--gold); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(184,148,95,0.3); }
+
+  .menu-toggle { display: none; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--charcoal); }
+  .mobile-menu-overlay {
+    position: fixed; inset: 0; background: rgba(10,10,10,0.5);
+    backdrop-filter: blur(4px); z-index: 999;
+    opacity: 0; visibility: hidden; transition: all 0.3s ease;
+  }
+  .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
+
+  @media (max-width: 1024px) {
+    .nav-inner { padding: 20px 32px; }
+    .container { padding: 0 32px; }
+    .nav-links { display: none; }
+    .menu-toggle { display: block; }
+  }
+  @media (max-width: 600px) {
+    .nav-inner { padding: 16px 20px; }
+    .container { padding: 0 20px; }
+    .logo-text { font-size: 22px; }
+    .logo-mark { width: 34px; height: 34px; font-size: 14px; }
+  }
+
+  /* ========== 4. ARTICLE HERO ========== */
+  .article-hero {
+    padding: 180px 0 64px;
+    background: linear-gradient(135deg, var(--cream) 0%, var(--white) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .article-hero::before {
+    content: ''; position: absolute; top: -40%; right: -10%;
+    width: 60%; height: 180%;
+    background: radial-gradient(circle, rgba(184, 148, 95, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .article-hero-inner { max-width: 920px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+  .breadcrumb {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gray); margin-bottom: 24px;
+  }
+  .breadcrumb a { color: var(--gray); }
+  .breadcrumb a:hover { color: var(--gold); }
+  .breadcrumb-sep { color: var(--gold); }
+  .breadcrumb-current { color: var(--black); font-weight: 500; }
+
+  .article-category {
+    display: inline-block;
+    font-size: 11px; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--gold);
+    font-weight: 600; margin-bottom: 20px;
+    padding: 6px 16px; background: rgba(184, 148, 95, 0.12);
+    border-radius: 100px;
+  }
+  .article-hero h1 {
+    font-size: clamp(36px, 4.8vw, 60px);
+    font-weight: 400; margin-bottom: 24px; line-height: 1.15; color: var(--black);
+  }
+  .article-hero h1 em { font-style: italic; color: var(--gold); }
+  .article-excerpt {
+    font-size: 18px; color: var(--gray); line-height: 1.8;
+    max-width: 740px; margin: 0 auto 36px;
+  }
+  .article-meta {
+    display: flex; align-items: center; justify-content: center;
+    gap: 28px; flex-wrap: wrap;
+    padding-top: 28px; border-top: 1px solid rgba(10, 10, 10, 0.08);
+    max-width: 640px; margin: 0 auto;
+  }
+  .meta-author {
+    display: flex; align-items: center; gap: 14px;
+  }
+  .meta-author-avatar {
+    width: 48px; height: 48px; border-radius: 50%;
+    overflow: hidden; border: 2px solid var(--gold);
+  }
+  .meta-author-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .meta-author-info { text-align: left; }
+  .meta-author-name {
+    font-size: 15px; font-weight: 600; color: var(--black);
+    display: block;
+  }
+  .meta-author-role {
+    font-size: 12px; color: var(--light-gray);
+  }
+  .meta-divider {
+    width: 1px; height: 36px; background: rgba(10, 10, 10, 0.12);
+  }
+  .meta-item {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 13px; color: var(--gray);
+  }
+  .meta-item i { color: var(--gold); }
+  @media (max-width: 600px) {
+    .article-hero { padding: 140px 0 48px; }
+    .article-excerpt { font-size: 16px; }
+    .meta-divider { display: none; }
+    .article-meta { gap: 18px; }
+  }
+
+  /* ========== 5. FEATURED IMAGE ========== */
+  .featured-image-section { padding: 0 0 64px; }
+  .featured-image {
+    max-width: 1160px; margin: 0 auto;
+    border-radius: var(--radius-lg); overflow: hidden;
+    box-shadow: var(--shadow-md);
+  }
+  .featured-image img {
+    width: 100%; height: 520px; object-fit: cover;
+  }
+  @media (max-width: 768px) {
+    .featured-image-section { padding: 0 0 48px; }
+    .featured-image img { height: 320px; }
+  }
+
+  /* ========== 6. ARTICLE BODY ========== */
+  .article-body {
+    max-width: 780px; margin: 0 auto;
+    padding: 0 24px 64px;
+  }
+  .article-body p {
+    font-size: 17px; line-height: 1.85; color: var(--charcoal);
+    margin-bottom: 28px;
+  }
+  .article-body p.lead {
+    font-size: 21px; line-height: 1.7; color: var(--black);
+    font-weight: 400; margin-bottom: 36px;
+  }
+  .article-body h2 {
+    font-size: clamp(26px, 3vw, 36px);
+    margin: 52px 0 22px; font-weight: 500;
+    color: var(--black);
+  }
+  .article-body h3 {
+    font-size: 22px; margin: 36px 0 18px;
+    font-weight: 500; color: var(--black);
+  }
+  .article-body ul, .article-body ol {
+    margin: 28px 0; padding-left: 0;
+  }
+  .article-body ul li, .article-body ol li {
+    position: relative; padding-left: 32px;
+    margin-bottom: 14px; font-size: 17px;
+    line-height: 1.75; color: var(--charcoal);
+  }
+  .article-body ul li::before {
+    content: ''; position: absolute; left: 0; top: 12px;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--gold);
+  }
+  .article-body ol { counter-reset: item; }
+  .article-body ol li { counter-increment: item; }
+  .article-body ol li::before {
+    content: counter(item); position: absolute; left: 0; top: 2px;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: var(--gold); color: var(--white);
+    font-size: 12px; font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .article-body blockquote {
+    margin: 44px 0; padding: 36px 40px;
+    border-left: 4px solid var(--gold);
+    background: var(--cream); border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  }
+  .article-body blockquote p {
+    font-family: var(--serif);
+    font-size: 22px; font-style: italic;
+    color: var(--black); line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .article-body blockquote cite {
+    font-family: var(--sans);
+    font-size: 13px; font-style: normal;
+    color: var(--gold); letter-spacing: 1.5px;
+    text-transform: uppercase; font-weight: 600;
+  }
+  .article-body strong { color: var(--black); font-weight: 600; }
+  .article-body a { color: var(--gold); border-bottom: 1px solid transparent; }
+  .article-body a:hover { border-bottom-color: var(--gold); }
+
+  .article-image {
+    margin: 44px 0; border-radius: var(--radius-md); overflow: hidden;
+  }
+  .article-image img {
+    width: 100%; height: 420px; object-fit: cover;
+  }
+  .article-image figcaption {
+    padding: 16px 0 0; font-size: 14px;
+    color: var(--gray); font-style: italic;
+    text-align: center;
+  }
+  @media (max-width: 600px) {
+    .article-body p { font-size: 16px; }
+    .article-body p.lead { font-size: 18px; }
+    .article-body h2 { margin-top: 36px; }
+    .article-body blockquote { padding: 24px 24px; }
+    .article-body blockquote p { font-size: 18px; }
+    .article-image img { height: 280px; }
+  }
+
+  /* ========== 7. TAGS & SHARE ========== */
+  .article-footer {
+    max-width: 780px; margin: 0 auto;
+    padding: 40px 24px 64px;
+    border-top: 1px solid rgba(10, 10, 10, 0.08);
+    display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 24px;
+  }
+  .article-tags {
+    display: flex; gap: 10px; flex-wrap: wrap;
+  }
+  .article-tag {
+    padding: 8px 18px;
+    background: var(--cream); border-radius: 100px;
+    font-size: 12px; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--gray);
+    font-weight: 500; transition: all 0.3s ease;
+  }
+  .article-tag:hover {
+    background: var(--black); color: var(--white);
+  }
+  .article-share {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .share-label {
+    font-size: 12px; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--light-gray);
+    font-weight: 600;
+  }
+  .share-btn {
+    width: 40px; height: 40px;
+    border: 1px solid rgba(10, 10, 10, 0.12);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gray); transition: all 0.3s ease;
+    cursor: pointer; background: transparent;
+  }
+  .share-btn:hover {
+    background: var(--black); color: var(--white);
+    border-color: var(--black); transform: translateY(-3px);
+  }
+  @media (max-width: 600px) {
+    .article-footer { flex-direction: column; align-items: flex-start; }
+  }
+
+  /* ========== 8. AUTHOR BIO ========== */
+  .author-section {
+    padding: 0 0 72px;
+  }
+  .author-card {
+    max-width: 780px; margin: 0 auto;
+    padding: 44px;
+    background: var(--cream);
+    border-radius: var(--radius-lg);
+    display: grid; grid-template-columns: auto 1fr;
+    gap: 36px; align-items: center;
+  }
+  .author-avatar {
+    width: 120px; height: 120px; border-radius: 50%;
+    overflow: hidden; border: 3px solid var(--gold);
+  }
+  .author-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .author-info h4 {
+    font-size: 11px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--gold);
+    font-weight: 600; margin-bottom: 8px;
+    font-family: var(--sans);
+  }
+  .author-info h3 {
+    font-size: 24px; margin-bottom: 4px; color: var(--black);
+  }
+  .author-info .author-role {
+    font-size: 13px; color: var(--light-gray);
+    margin-bottom: 14px;
+  }
+  .author-info p {
+    font-size: 15px; line-height: 1.7; margin-bottom: 18px; color: var(--gray);
+  }
+  .author-socials { display: flex; gap: 10px; }
+  .author-socials a {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(10, 10, 10, 0.12);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gray); transition: all 0.3s ease;
+  }
+  .author-socials a:hover {
+    background: var(--gold); color: var(--white);
+    border-color: var(--gold);
+  }
+  @media (max-width: 600px) {
+    .author-card { grid-template-columns: 1fr; text-align: center; padding: 32px 24px; }
+    .author-avatar { margin: 0 auto; width: 100px; height: 100px; }
+    .author-socials { justify-content: center; }
+  }
+
+  /* ========== 9. RELATED POSTS ========== */
+  .related-section {
+    padding: 80px 0;
+    background: var(--cream);
+  }
+  .section-header {
+    text-align: center; max-width: 650px; margin: 0 auto 48px;
+  }
+  .section-label {
+    font-size: 11px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--gold);
+    font-weight: 600; margin-bottom: 12px;
+    display: inline-flex; align-items: center; gap: 12px;
+  }
+  .section-label::before, .section-label::after {
+    content: ''; width: 28px; height: 1px; background: var(--gold);
+  }
+  .section-header h2 {
+    font-size: clamp(28px, 3.5vw, 40px);
+    margin-bottom: 12px; font-weight: 400; color: var(--black);
+  }
+  .related-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+  .related-card {
+    background: var(--white);
+    border: 1px solid rgba(10, 10, 10, 0.08);
+    border-radius: var(--radius-md); overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: all 0.4s ease;
+    box-shadow: var(--shadow-sm);
+  }
+  .related-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-md);
+    border-color: transparent;
+  }
+  .related-image { height: 210px; overflow: hidden; position: relative; }
+  .related-image img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.8s ease;
+  }
+  .related-card:hover .related-image img { transform: scale(1.06); }
+  .related-category {
+    position: absolute; top: 16px; left: 16px;
+    background: var(--black); color: var(--gold);
+    padding: 6px 14px; border-radius: 100px;
+    font-size: 10px; letter-spacing: 1.5px;
+    text-transform: uppercase; font-weight: 600;
+  }
+  .related-content { padding: 26px; display: flex; flex-direction: column; flex-grow: 1; }
+  .related-meta {
+    display: flex; gap: 14px;
+    font-size: 12px; color: var(--light-gray);
+    letter-spacing: 1px; margin-bottom: 12px;
+  }
+  .related-meta span { display: flex; align-items: center; gap: 6px; }
+  .related-card h3 {
+    font-size: 19px; margin-bottom: 12px;
+    line-height: 1.35; font-weight: 500; color: var(--black);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .related-card p {
+    font-size: 14px; color: var(--gray);
+    line-height: 1.65; margin-bottom: 20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex-grow: 1;
+  }
+  .read-more {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--black); margin-top: auto; align-self: flex-start;
+    transition: all 0.3s ease;
+  }
+  .read-more:hover { color: var(--gold); gap: 12px; }
+  @media (max-width: 900px) {
+    .related-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  }
+  @media (max-width: 600px) {
+    .related-grid { grid-template-columns: 1fr; gap: 20px; }
+    .related-section { padding: 60px 0; }
+  }
+
+  /* ========== 10. NEWSLETTER ========== */
+  .newsletter-section {
+    padding: 88px 0;
+    background: var(--black);
+    text-align: center;
+  }
+  .newsletter-content { max-width: 560px; margin: 0 auto; }
+  .newsletter-section h2 {
+    font-size: clamp(28px, 3.5vw, 42px);
+    color: var(--white); margin-bottom: 14px; font-weight: 400;
+  }
+  .newsletter-section h2 em { font-style: italic; color: var(--gold); }
+  .newsletter-section p {
+    color: rgba(245, 241, 232, 0.7);
+    font-size: 16px; margin-bottom: 28px; line-height: 1.75;
+  }
+  .newsletter-form {
+    display: flex; gap: 0;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 100px; overflow: hidden;
+    margin-bottom: 14px;
+  }
+  .newsletter-form input {
+    flex: 1; padding: 16px 24px;
+    background: transparent; border: none;
+    color: var(--white); font-family: var(--sans);
+    font-size: 14px; outline: none; min-width: 0;
+  }
+  .newsletter-form input::placeholder { color: rgba(255, 255, 255, 0.45); }
+  .newsletter-form button {
+    padding: 16px 28px;
+    background: var(--gold); color: var(--white);
+    border: none; cursor: pointer;
+    font-family: var(--sans);
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    transition: all 0.35s ease; white-space: nowrap;
+  }
+  .newsletter-form button:hover { background: var(--gold-light); color: var(--black); }
+  .newsletter-note { font-size: 12px; color: rgba(245, 241, 232, 0.45); }
+  @media (max-width: 600px) {
+    .newsletter-section { padding: 64px 0; }
+    .newsletter-form { flex-direction: column; border-radius: 16px; background: transparent; border: none; }
+    .newsletter-form input { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 100px; margin-bottom: 12px; text-align: center; }
+    .newsletter-form button { border-radius: 100px; padding: 16px; width: 100%; justify-content: center; }
+  }
+
+  /* ========== 11. FOOTER ========== */
+  footer {
+    background: var(--black); color: var(--white);
+    padding: 80px 0 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    gap: 48px; margin-bottom: 48px;
+  }
+  .footer-brand .logo { margin-bottom: 20px; }
+  .footer-brand .logo-text { color: var(--white); }
+  .footer-brand p {
+    color: rgba(245, 241, 232, 0.55);
+    line-height: 1.75; font-size: 14px; margin-bottom: 24px;
+  }
+  .footer-social { display: flex; gap: 12px; flex-wrap: wrap; }
+  .footer-social a {
+    width: 38px; height: 38px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--white); transition: all 0.3s ease;
+    font-size: 15px;
+  }
+  .footer-social a:hover {
+    background: var(--gold); border-color: var(--gold);
+    color: var(--black); transform: translateY(-3px);
+  }
+  .footer-col h5 {
+    font-family: var(--sans);
+    font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; font-weight: 600;
+    margin-bottom: 20px; color: var(--gold);
+  }
+  .footer-col li { margin-bottom: 12px; }
+  .footer-col a {
+    color: rgba(245, 241, 232, 0.55);
+    font-size: 14px; transition: all 0.3s ease;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .footer-col a:hover { color: var(--white); transform: translateX(4px); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 12px; color: rgba(245, 241, 232, 0.45);
+    flex-wrap: wrap; gap: 16px;
+  }
+  .footer-bottom-links { display: flex; gap: 24px; flex-wrap: wrap; }
+  .footer-bottom-links a:hover { color: var(--gold); }
+  
+  .back-to-top {
+    position: fixed; bottom: 32px; right: 32px;
+    width: 48px; height: 48px;
+    background: var(--black); color: var(--gold);
+    border: 1px solid var(--gold); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; opacity: 0; visibility: hidden;
+    transition: all 0.35s ease; z-index: 900;
+  }
+  .back-to-top.visible { opacity: 1; visibility: visible; }
+  .back-to-top:hover { background: var(--gold); color: var(--black); transform: translateY(-4px); }
+
+  @media (max-width: 900px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+  }
+  @media (max-width: 600px) {
+    footer { padding: 56px 0 24px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; margin-bottom: 36px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .footer-bottom-links { justify-content: center; }
+  }
+
+  /* ========== 12. ANIMATIONS ========== */
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.active { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- Reading Progress Bar -->
+<div class="reading-progress" id="readingProgress"></div>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu-overlay" id="mobileOverlay"></div>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">B</span>
+      <span class="logo-text">BKU</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="blogs.html" class="active">Journal</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="contact.html" class="btn btn-black">
+        <span>Contact Us</span>
+        <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="main-content">
+  <!-- Article Hero -->
+  <section class="article-hero">
+    <div class="container">
+      <div class="article-hero-inner reveal">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="breadcrumb-sep">—</span>
+          <a href="blogs.html">Journal</a>
+          <span class="breadcrumb-sep">—</span>
+          <span class="breadcrumb-current">Article</span>
+        </div>
+        <span class="article-category">Corporate Events</span>
+        <h1>The Art of Crafting <em>Unforgettable</em> Corporate Events</h1>
+        <p class="article-excerpt">Behind every successful corporate event lies a meticulous blend of strategy, spatial design, and flawless production execution. Here's how we turn briefs into experiences that move people.</p>
+        <div class="article-meta">
+          <div class="meta-author">
+            <div class="meta-author-avatar">
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&auto=format&fit=crop" alt="Jaideep Raviprakash">
+            </div>
+            <div class="meta-author-info">
+              <span class="meta-author-name">Jaideep Raviprakash</span>
+              <span class="meta-author-role">Founder & Creative Director</span>
+            </div>
+          </div>
+          <div class="meta-divider"></div>
+          <div class="meta-item">
+            <i data-lucide="calendar" style="width:14px;height:14px"></i>
+            <span>Sep 12, 2026</span>
+          </div>
+          <div class="meta-item">
+            <i data-lucide="clock" style="width:14px;height:14px"></i>
+            <span>8 min read</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Hero Image -->
+  <section class="featured-image-section">
+    <div class="container">
+      <figure class="featured-image reveal">
+        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1400&auto=format&fit=crop" alt="Corporate Event Setup">
+      </figure>
+    </div>
+  </section>
+
+  <!-- Article Body -->
+  <article class="article-body">
+    <p class="lead">In a world where attention is the ultimate currency, corporate events have evolved from mere annual gatherings into high-stakes storytelling platforms. At BKU, we don't just plan events — we architect experiences that resonate long after the final applause.</p>
+
+    <p>The difference between a forgettable corporate function and an unforgettable one lies not solely in the budget, but in the intention behind every detail. From the moment guests arrive at the venue to the final keynote farewell, each touchpoint is an opportunity to reinforce your brand narrative and create meaningful connections.</p>
+
+    <h2>1. Strategy Before Spectacle</h2>
+
+    <p>Every great event begins with a clear understanding of <strong>why</strong> it exists. Before we sketch a single stage layout or source a venue, we sit down with our clients to uncover the deeper objectives: What emotion should attendees leave with? What action should they take afterward? How does this event fit into the broader brand story?</p>
+
+    <p>This strategic foundation informs every creative decision that follows. A product launch for a luxury automotive brand demands a completely different atmosphere than a tech summit — even if both are held in the same city on the same weekend.</p>
+
+    <blockquote>
+      <p>"The best events don't feel planned. They feel inevitable — as if they could have happened no other way."</p>
+      <cite>— Jaideep Raviprakash, Founder & Creative Director</cite>
+    </blockquote>
+
+    <h2>2. Designing for Emotion</h2>
+
+    <p>Once the strategy is clear, our creative team translates it into a multi-sensory experience. This is where <strong>design thinking</strong> meets event production. We consider:</p>
+
+    <ul>
+      <li><strong>Spatial flow</strong> — How guests move seamlessly through registration, main keynotes, and breakout lounges</li>
+      <li><strong>Lighting design</strong> — How ambient LED hues and focused spots shape mood and direct attention</li>
+      <li><strong>Soundscapes</strong> — The subtle audio layers that create atmosphere without overwhelming conversation</li>
+      <li><strong>Tactile details</strong> — From premium badge stock to custom table settings, every touchpoint matters</li>
+    </ul>
+
+    <p>The goal is never to impress with empty extravagance, but to create a cohesive environment that attendees can step into and feel completely immersed in.</p>
+
+    <figure class="article-image">
+      <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&auto=format&fit=crop" alt="Event Design Details">
+      <figcaption>Every detail — from architectural lighting to spatial layouts — is intentionally engineered to reinforce the brand narrative.</figcaption>
+    </figure>
+
+    <h2>3. Flawless Execution</h2>
+
+    <p>Strategy and design mean nothing without execution. This is where BKU's technical production team shines. We manage every moving part — vendor coordination, stage rigging, sound checks, VIP hospitality logistics, and on-ground showcalling — so that our clients can simply host.</p>
+
+    <p>Our philosophy is simple: <strong>the best production is invisible</strong>. When an event runs seamlessly, guests never notice the complexity behind it. They simply enjoy the experience.</p>
+
+    <h3>The Three Pillars of Execution</h3>
+
+    <ol>
+      <li><strong>Preparation</strong> — Minute-by-minute run of show, redundancy contingency plans, and structural sign-offs</li>
+      <li><strong>Communication</strong> — Real-time comms channels between stage managers, technical directors, and venue teams</li>
+      <li><strong>Adaptability</strong> — The agility to pivot gracefully and solve on-site surprises behind the curtain</li>
+    </ol>
+
+    <h2>4. Content That Lives On</h2>
+
+    <p>An event may last a few hours, but its impact should extend far beyond. That's why we integrate <strong>content creation</strong> into every project from day one. High-definition live webcasting, 4K recap films, and real-time social media clips ensure that your event continues to generate marketing value.</p>
+
+    <p>We work with dedicated camera crews who understand both the visual aesthetics and brand objectives, capturing organic moments that tell the story of your event to a global audience.</p>
+
+    <blockquote>
+      <p>"We don't just produce events — we create memories, media assets, and lasting brand equity."</p>
+      <cite>— BKU Production Team</cite>
+    </blockquote>
+
+    <h2>The BKU Difference</h2>
+
+    <p>What sets us apart isn't any single element — it's the seamless <strong>integration</strong> of strategy, spatial design, technical rigging, and broadcast content under one roof. When every aspect of an event is guided by a unified vision, the result is extraordinary.</p>
+
+    <p>Whether you're planning an executive retreat for 50 or a global corporate summit for 5,000, the principles remain the same: understand the why, design for emotion, execute flawlessly, and capture the story.</p>
+
+    <p>That's the art of crafting unforgettable corporate events. And it's what we deliver, day in and day out.</p>
+  </article>
+
+  <!-- Article Footer (Tags & Share) -->
+  <div class="article-footer">
+    <div class="article-tags">
+      <a href="blogs.html" class="article-tag">Corporate</a>
+      <a href="blogs.html" class="article-tag">Strategy</a>
+      <a href="blogs.html" class="article-tag">Design</a>
+      <a href="blogs.html" class="article-tag">Production</a>
+    </div>
+    <div class="article-share">
+      <span class="share-label">Share</span>
+      <button class="share-btn" onclick="shareArticle('twitter')" aria-label="Share on Twitter"><i class="fa-brands fa-x-twitter"></i></button>
+      <button class="share-btn" onclick="shareArticle('facebook')" aria-label="Share on Facebook"><i class="fa-brands fa-facebook-f"></i></button>
+      <button class="share-btn" onclick="shareArticle('linkedin')" aria-label="Share on LinkedIn"><i class="fa-brands fa-linkedin-in"></i></button>
+      <button class="share-btn" onclick="copyArticleLink()" aria-label="Copy link"><i data-lucide="link" style="width:16px;height:16px"></i></button>
+    </div>
+  </div>
+
+  <!-- Author Bio -->
+  <section class="author-section">
+    <div class="container">
+      <div class="author-card reveal">
+        <div class="author-avatar">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&auto=format&fit=crop" alt="Jaideep Raviprakash">
+        </div>
+        <div class="author-info">
+          <h4>Written by</h4>
+          <h3>Jaideep Raviprakash</h3>
+          <p class="author-role">Founder & Creative Director, BKU</p>
+          <p>Jaideep founded BKU with a vision to redefine how live events and corporate experiences are produced. With over a decade of expertise in creative direction and large-scale technical production, he brings artistic vision and operational rigor to every project.</p>
+          <div class="author-socials">
+            <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Posts -->
+  <section class="related-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Continue Reading</div>
+        <h2>Related Articles</h2>
+      </div>
+      <div class="related-grid">
+        <article class="related-card reveal">
+          <div class="related-image">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=700&auto=format&fit=crop" alt="Related Post">
+            <span class="related-category">Trends</span>
+          </div>
+          <div class="related-content">
+            <div class="related-meta">
+              <span><i data-lucide="calendar" style="width:13px;height:13px"></i> Sep 5, 2026</span>
+              <span><i data-lucide="clock" style="width:13px;height:13px"></i> 5 min</span>
+            </div>
+            <h3>10 Trends Shaping Event Production in 2026</h3>
+            <p>Discover the latest innovations in event technology, sustainability practices, spatial sound, and immersive experiences.</p>
+            <a href="blog-detail.html" class="read-more">
+              <span>Read Article</span>
+              <i data-lucide="arrow-right" style="width:13px;height:13px"></i>
+            </a>
+          </div>
+        </article>
+
+        <article class="related-card reveal" style="transition-delay:0.1s">
+          <div class="related-image">
+            <img src="https://images.unsplash.com/photo-1515187029135-18ee4032c99b?w=700&auto=format&fit=crop" alt="Related Post">
+            <span class="related-category">Behind the Scenes</span>
+          </div>
+          <div class="related-content">
+            <div class="related-meta">
+              <span><i data-lucide="calendar" style="width:13px;height:13px"></i> Aug 28, 2026</span>
+              <span><i data-lucide="clock" style="width:13px;height:13px"></i> 4 min</span>
+            </div>
+            <h3>Behind the Scenes: Creating a Luxury Palace Wedding</h3>
+            <p>A detailed look at how our team orchestrated a 300-guest destination wedding from blueprint to final show.</p>
+            <a href="blog-detail.html" class="read-more">
+              <span>Read Article</span>
+              <i data-lucide="arrow-right" style="width:13px;height:13px"></i>
+            </a>
+          </div>
+        </article>
+
+        <article class="related-card reveal" style="transition-delay:0.2s">
+          <div class="related-image">
+            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=700&auto=format&fit=crop" alt="Related Post">
+            <span class="related-category">Technology</span>
+          </div>
+          <div class="related-content">
+            <div class="related-meta">
+              <span><i data-lucide="calendar" style="width:13px;height:13px"></i> Aug 15, 2026</span>
+              <span><i data-lucide="clock" style="width:13px;height:13px"></i> 6 min</span>
+            </div>
+            <h3>The Future of Live Events: AR, VR & Beyond</h3>
+            <p>How augmented and virtual reality are transforming the way we experience live concerts and brand launch productions.</p>
+            <a href="blog-detail.html" class="read-more">
+              <span>Read Article</span>
+              <i data-lucide="arrow-right" style="width:13px;height:13px"></i>
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="newsletter-section">
+    <div class="container">
+      <div class="newsletter-content reveal">
+        <h2>Join the <em>Journal</em></h2>
+        <p>Subscribe to receive the latest industry insights, production trends, and creative inspiration delivered straight to your inbox.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to BKU Journal!'); this.reset();">
+          <input type="email" placeholder="Enter your email address" required aria-label="Email address for newsletter">
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="newsletter-note">No spam. Unsubscribe anytime.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <span class="logo-mark">B</span>
+          <span class="logo-text">BKU</span>
+        </a>
+        <p>BKU is a full-scale event management and creative production company that transforms ideas into unforgettable experiences. From corporate summits to celebrity concerts and private celebrations.</p>
+        <div class="footer-social">
+          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://wa.me/917981636962" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="blogs.html">Journal</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h5>Our Agency</h5>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h5>Get in Touch</h5>
+        <ul>
+          <li><a href="tel:+917981636962"><i data-lucide="phone" style="width:16px;height:16px"></i> +91 79816 36962</a></li>
+          <li><a href="mailto:hello@bku.com"><i data-lucide="mail" style="width:16px;height:16px"></i> hello@bku.com</a></li>
+          <li><a href="#"><i data-lucide="map-pin" style="width:16px;height:16px"></i> Mumbai, India</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div>2026 © Developed by <strong style="color:rgba(245,241,232,0.85)">Akhi Digitals & Entertainments Pvt Ltd</strong></div>
+      <div class="footer-bottom-links">
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Privacy & Policy</a>
+        <a href="#">Help</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <i data-lucide="arrow-up" style="width:20px;height:20px"></i>
+</button>
+
+<script>
+  lucide.createIcons();
+
+  // Reading Progress Bar
+  const readingProgress = document.getElementById('readingProgress');
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = (scrollTop / docHeight) * 100;
+    readingProgress.style.width = progress + '%';
+  });
+
+  // Navigation scroll state
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Mobile Menu Drawer
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+
+  function toggleMobileMenu() {
+    const isOpen = navLinks.classList.contains('active');
+    if (isOpen) {
+      navLinks.classList.remove('active');
+      mobileOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+      navLinks.style.display = '';
+    } else {
+      navLinks.classList.add('active');
+      mobileOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      Object.assign(navLinks.style, {
+        display: 'flex', position: 'fixed', top: '0', right: '0',
+        width: '300px', height: '100vh', flexDirection: 'column',
+        background: 'var(--white)', padding: '100px 36px 36px',
+        gap: '24px', boxShadow: 'var(--shadow-lg)', zIndex: '1000'
+      });
+    }
+  }
+  menuToggle.addEventListener('click', toggleMobileMenu);
+  mobileOverlay.addEventListener('click', toggleMobileMenu);
+
+  // Scroll Reveal
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // Social Sharing & Copy Link
+  function shareArticle(platform) {
+    const url = encodeURIComponent(window.location.href);
+    const title = encodeURIComponent(document.title);
+    let shareUrl = '';
+    if (platform === 'twitter') shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+    if (platform === 'facebook') shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+    if (platform === 'linkedin') shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+    if (shareUrl) window.open(shareUrl, '_blank', 'width=600,height=400');
+  }
+
+  function copyArticleLink() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      alert('Article link copied to clipboard!');
+    }).catch(() => {
+      alert('Link copied to clipboard');
+    });
+  }
+
+  // Back to Top
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 500);
+  });
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+</body>
+</html>
