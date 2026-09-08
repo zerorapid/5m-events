@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About Us — BKU | Crafting Unforgettable Experiences</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  :root{
+    --white: #FFFFFF;
+    --cream: #F5F1E8;
+    --beige: #E8DFD0;
+    --sand: #D4C4B0;
+    --black: #0A0A0A;
+    --charcoal: #1A1A1A;
+    --dark-gray: #2A2A2A;
+    --gray: #5A5A5A;
+    --light-gray: #8A8A8A;
+    --muted: #A8A29A;
+    --gold: #B8945F;
+    --gold-light: #D4B886;
+    --shadow-sm: 0 4px 12px rgba(10,10,10,0.06);
+    --shadow-md: 0 12px 40px rgba(10,10,10,0.10);
+    --shadow-lg: 0 30px 80px rgba(10,10,10,0.18);
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'Inter', system-ui, sans-serif;
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 32px;
+  }
+  
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    background:var(--white);
+    color:var(--charcoal);
+    line-height:1.7;
+    font-weight:400;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none;transition:all .35s ease}
+  
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.15;letter-spacing:-0.01em}
+  p{font-size:16px;line-height:1.75;color:var(--gray)}
+  
+  .container{max-width:1360px;margin:0 auto;padding:0 60px}
+  
+  /* ========== SCROLL PROGRESS ========== */
+  .scroll-progress{
+    position:fixed;top:0;left:0;height:2px;
+    background:linear-gradient(90deg, var(--gold), var(--gold-light));
+    z-index:9999;width:0%;transition:width .1s ease;
+  }
+  
+  /* ========== NAVIGATION ========== */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:1000;
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+    border-bottom:1px solid transparent;
+    transition:all .4s ease;
+  }
+  .nav.scrolled{
+    background:rgba(255,255,255,0.98);
+    border-bottom-color:rgba(10,10,10,0.06);
+  }
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 60px;max-width:1600px;margin:0 auto;
+  }
+  .logo{
+    font-family:var(--serif);
+    display:flex;align-items:center;gap:14px;
+  }
+  .logo-mark{
+    width:38px;height:38px;
+    background:var(--black);
+    color:var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--serif);
+    font-size:16px;font-weight:600;
+    letter-spacing:1px;
+    border-radius:8px;
+    transition:transform .4s ease;
+  }
+  .logo:hover .logo-mark{transform:rotate(-8deg) scale(1.05)}
+  .logo-text{font-size:26px;letter-spacing:3px;font-weight:600}
+  
+  .nav-links{display:flex;gap:40px;list-style:none}
+  .nav-links a{
+    font-size:13px;letter-spacing:1.5px;
+    font-weight:500;text-transform:uppercase;
+    color:var(--charcoal);
+    position:relative;padding:6px 0;
+  }
+  .nav-links a::after{
+    content:'';position:absolute;left:0;bottom:0;
+    width:0;height:1px;background:var(--gold);
+    transition:width .35s ease;
+  }
+  .nav-links a:hover{color:var(--black)}
+  .nav-links a:hover::after{width:100%}
+  .nav-links a.active{color:var(--gold)}
+  .nav-links a.active::after{width:100%;background:var(--gold)}
+  
+  .nav-cta{display:flex;align-items:center;gap:20px}
+  
+  .btn{
+    display:inline-flex;align-items:center;gap:12px;
+    padding:14px 28px;font-size:12px;letter-spacing:2px;
+    font-weight:600;text-transform:uppercase;
+    cursor:pointer;border:none;
+    transition:all .4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family:var(--sans);
+    border-radius:100px;
+  }
+  .btn-black{background:var(--black);color:var(--white)}
+  .btn-black:hover{background:var(--gold);transform:translateY(-2px);box-shadow:0 10px 30px rgba(184,148,95,0.3)}
+  .btn-outline{background:transparent;color:var(--black);border:1.5px solid var(--black)}
+  .btn-outline:hover{background:var(--black);color:var(--white)}
+  .btn-outline-light{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,0.4)}
+  .btn-outline-light:hover{background:var(--white);color:var(--black);border-color:var(--white)}
+  
+  .menu-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--charcoal)}
+  
+  /* ========== PAGE HERO ========== */
+  .page-hero{
+    padding:200px 0 100px;
+    background:var(--cream);
+    position:relative;
+    overflow:hidden;
+  }
+  .page-hero::before{
+    content:'';position:absolute;
+    top:-30%;right:-10%;width:60%;height:160%;
+    background:radial-gradient(circle, var(--beige) 0%, transparent 70%);
+    opacity:0.6;
+  }
+  .page-hero-grid{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:80px;align-items:center;
+    position:relative;z-index:2;
+  }
+  .breadcrumb{
+    display:flex;align-items:center;gap:12px;
+    font-size:12px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--gray);
+    margin-bottom:28px;
+  }
+  .breadcrumb a{color:var(--gray)}
+  .breadcrumb a:hover{color:var(--gold)}
+  .breadcrumb-sep{color:var(--gold)}
+  .breadcrumb-current{color:var(--black);font-weight:500}
+  
+  .page-hero-label{
+    display:inline-flex;align-items:center;gap:12px;
+    font-size:12px;letter-spacing:4px;
+    text-transform:uppercase;color:var(--gold);
+    font-weight:600;margin-bottom:24px;
+  }
+  .page-hero-label::before{
+    content:'';width:32px;height:1px;background:var(--gold);
+  }
+  .page-hero h1{
+    font-size:clamp(48px,6vw,76px);
+    font-weight:400;line-height:1.05;
+    margin-bottom:28px;color:var(--black);
+  }
+  .page-hero h1 em{font-style:italic;color:var(--gold)}
+  .page-hero-text{
+    font-size:18px;color:var(--gray);
+    line-height:1.8;max-width:520px;
+  }
+  
+  .page-hero-image{
+    position:relative;
+  }
+  .page-hero-image img{
+    width:100%;height:520px;
+    object-fit:cover;
+    border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-lg);
+  }
+  .page-hero-badge{
+    position:absolute;bottom:-30px;left:-30px;
+    background:var(--black);color:var(--white);
+    padding:28px 32px;border-radius:var(--radius-md);
+    box-shadow:var(--shadow-lg);
+    display:flex;align-items:center;gap:18px;
+  }
+  .page-hero-badge-icon{
+    width:52px;height:52px;border-radius:50%;
+    background:var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--black);
+  }
+  .page-hero-badge-text{
+    font-family:var(--serif);font-size:20px;
+    font-style:italic;line-height:1.3;
+  }
+  .page-hero-badge-text span{
+    display:block;font-size:12px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--gold);
+    font-style:normal;font-family:var(--sans);
+    margin-top:4px;font-weight:500;
+  }
+  
+  /* ========== SECTION COMMON ========== */
+  .section{padding:140px 0;position:relative}
+  .section-white{background:var(--white)}
+  .section-cream{background:var(--cream)}
+  .section-black{background:var(--black);color:var(--white)}
+  .section-black p{color:var(--beige)}
+  
+  .section-header{max-width:720px;margin-bottom:80px}
+  .section-header.center{text-align:center;margin-left:auto;margin-right:auto}
+  .section-label{
+    font-size:12px;letter-spacing:4px;
+    text-transform:uppercase;color:var(--gold);
+    font-weight:600;margin-bottom:20px;
+    display:inline-flex;align-items:center;gap:12px;
+  }
+  .section-label::before{
+    content:'';width:32px;height:1px;background:var(--gold);
+  }
+  .section-header.center .section-label::before{display:none}
+  .section-title{
+    font-size:clamp(36px,4.5vw,58px);
+    margin-bottom:24px;color:var(--black);
+    font-weight:400;
+  }
+  .section-black .section-title{color:var(--white)}
+  .section-subtitle{font-size:17px;color:var(--gray);line-height:1.8;max-width:620px}
+  .section-header.center .section-subtitle{margin:0 auto}
+  .section-black .section-subtitle{color:var(--beige)}
+  
+  /* ========== STORY SPLIT ========== */
+  .story-split{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:100px;align-items:center;
+  }
+  .story-split-images{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:20px;
+  }
+  .story-split-img{
+    border-radius:var(--radius-md);overflow:hidden;
+  }
+  .story-split-img img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform .8s ease;
+  }
+  .story-split-img:hover img{transform:scale(1.05)}
+  .story-split-img:first-child{
+    grid-row:span 2;height:520px;
+  }
+  .story-split-img:nth-child(2),
+  .story-split-img:nth-child(3){height:250px}
+  
+  .story-split-content h2{
+    font-size:clamp(36px,4vw,52px);
+    margin-bottom:28px;font-weight:400;
+    line-height:1.15;
+  }
+  .story-split-content h2 em{font-style:italic;color:var(--gold)}
+  .story-split-content p{
+    font-size:17px;line-height:1.85;
+    color:var(--gray);margin-bottom:20px;
+  }
+  .story-split-meta{
+    margin-top:36px;padding-top:28px;
+    border-top:1px solid var(--beige);
+    display:flex;gap:40px;
+  }
+  .story-split-meta-item{
+    display:flex;flex-direction:column;
+  }
+  .story-split-meta-num{
+    font-family:var(--serif);font-size:36px;
+    color:var(--black);line-height:1;font-weight:500;
+  }
+  .story-split-meta-label{
+    font-size:12px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--gray);
+    margin-top:6px;
+  }
+  
+  /* ========== PILLARS ========== */
+  .pillars-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:24px;
+  }
+  .pillar-card{
+    background:var(--white);
+    border:1px solid rgba(10,10,10,0.06);
+    border-radius:var(--radius-lg);
+    padding:40px 32px;
+    position:relative;
+    overflow:hidden;
+    transition:all .5s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor:pointer;
+  }
+  .pillar-card::before{
+    content:'';position:absolute;top:0;left:0;
+    width:100%;height:3px;background:var(--gold);
+    transform:scaleX(0);transform-origin:left;
+    transition:transform .5s ease;
+  }
+  .pillar-card:hover{
+    transform:translateY(-8px);
+    box-shadow:var(--shadow-lg);
+    border-color:transparent;
+  }
+  .pillar-card:hover::before{transform:scaleX(1)}
+  .pillar-num{
+    font-family:var(--serif);font-size:14px;
+    color:var(--gold);font-style:italic;
+    margin-bottom:24px;letter-spacing:1px;
+  }
+  .pillar-icon{
+    width:60px;height:60px;
+    background:var(--cream);
+    border-radius:var(--radius-sm);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:28px;color:var(--gold);
+    transition:all .4s ease;
+  }
+  .pillar-card:hover .pillar-icon{
+    background:var(--black);
+    transform:rotate(-8deg);
+  }
+  .pillar-card h3{
+    font-size:24px;margin-bottom:14px;
+    color:var(--black);
+  }
+  .pillar-card p{
+    font-size:15px;color:var(--gray);line-height:1.75;
+  }
+  
+  /* ========== QUOTE BANNER ========== */
+  .quote-banner{
+    background:var(--black);
+    padding:120px 0;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .quote-banner::before{
+    content:'';position:absolute;inset:0;
+    background-image:url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1600&auto=format&fit=crop');
+    background-size:cover;background-position:center;
+    opacity:0.12;
+  }
+  .quote-banner-content{
+    position:relative;z-index:1;
+    max-width:900px;margin:0 auto;
+  }
+  .quote-mark{
+    font-family:var(--serif);
+    font-size:140px;color:var(--gold);
+    line-height:0.5;margin-bottom:40px;
+    opacity:0.4;
+  }
+  .quote-text{
+    font-family:var(--serif);
+    font-size:clamp(32px,4vw,52px);
+    font-style:italic;line-height:1.3;
+    color:var(--white);font-weight:400;
+    margin-bottom:32px;
+  }
+  .quote-text em{color:var(--gold)}
+  .quote-author{
+    font-size:12px;letter-spacing:3px;
+    text-transform:uppercase;color:var(--gold);
+    font-weight:600;
+  }
+  
+  /* ========== FOUNDER SECTION ========== */
+  .founder-grid{
+    display:grid;grid-template-columns:1fr 1.2fr;
+    gap:80px;align-items:center;
+  }
+  .founder-image{
+    position:relative;
+  }
+  .founder-image img{
+    width:100%;height:600px;
+    object-fit:cover;
+    border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-lg);
+  }
+  .founder-image-badge{
+    position:absolute;bottom:30px;left:-30px;
+    background:var(--white);
+    padding:24px 28px;border-radius:var(--radius-md);
+    box-shadow:var(--shadow-lg);
+    display:flex;align-items:center;gap:16px;
+  }
+  .founder-image-badge-icon{
+    width:48px;height:48px;border-radius:50%;
+    background:var(--cream);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--gold);
+  }
+  .founder-image-badge-text{
+    font-family:var(--serif);font-size:18px;
+    color:var(--black);line-height:1.3;
+  }
+  .founder-image-badge-text span{
+    display:block;font-size:11px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--gray);
+    font-family:var(--sans);margin-top:4px;font-weight:500;
+  }
+  
+  .founder-content h2{
+    font-size:clamp(36px,4vw,52px);
+    margin-bottom:24px;font-weight:400;
+    line-height:1.15;
+  }
+  .founder-content h2 em{font-style:italic;color:var(--gold)}
+  .founder-role{
+    display:inline-flex;align-items:center;gap:12px;
+    font-size:12px;letter-spacing:3px;
+    text-transform:uppercase;color:var(--gold);
+    font-weight:600;margin-bottom:20px;
+  }
+  .founder-role::before{
+    content:'';width:32px;height:1px;background:var(--gold);
+  }
+  .founder-content p{
+    font-size:17px;line-height:1.85;
+    color:var(--gray);margin-bottom:20px;
+  }
+  .founder-signature{
+    margin-top:36px;padding-top:28px;
+    border-top:1px solid var(--beige);
+  }
+  .founder-signature-name{
+    font-family:var(--serif);font-style:italic;
+    font-size:28px;color:var(--black);
+    margin-bottom:4px;
+  }
+  .founder-signature-title{
+    font-size:12px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--gray);
+  }
+  .founder-socials{
+    display:flex;gap:12px;margin-top:24px;
+  }
+  .founder-socials a{
+    width:40px;height:40px;border-radius:50%;
+    border:1px solid var(--beige);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--gray);
+    transition:all .3s ease;
+  }
+  .founder-socials a:hover{
+    background:var(--black);color:var(--gold);
+    border-color:var(--black);
+    transform:translateY(-3px);
+  }
+  
+  /* ========== STATS ========== */
+  .stats-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .stat-card{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:var(--radius-lg);
+    padding:56px 40px;
+    text-align:center;
+    transition:all .4s ease;
+    position:relative;
+    overflow:hidden;
+  }
+  .stat-card::before{
+    content:'';position:absolute;top:0;left:0;right:0;
+    height:3px;background:var(--gold);
+    transform:scaleX(0);transition:transform .4s ease;
+    transform-origin:left;
+  }
+  .stat-card:hover{
+    transform:translateY(-6px);
+    background:rgba(255,255,255,0.06);
+    border-color:var(--gold);
+  }
+  .stat-card:hover::before{transform:scaleX(1)}
+  .stat-icon{
+    width:56px;height:56px;
+    background:rgba(184,148,95,0.15);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 24px;color:var(--gold);
+  }
+  .stat-number{
+    font-family:var(--serif);
+    font-size:72px;color:var(--white);
+    line-height:1;margin-bottom:12px;
+    font-weight:400;
+  }
+  .stat-number .plus{color:var(--gold);font-size:48px}
+  .stat-label{
+    font-size:12px;letter-spacing:3px;
+    text-transform:uppercase;color:var(--beige);
+    font-weight:500;
+  }
+  
+  /* ========== TEAM GRID ========== */
+  .team-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:32px;
+  }
+  .team-card{
+    position:relative;
+    cursor:pointer;
+  }
+  .team-image{
+    position:relative;
+    border-radius:var(--radius-lg);
+    overflow:hidden;
+    aspect-ratio:3/4;
+    margin-bottom:24px;
+  }
+  .team-image img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform .8s ease;
+  }
+  .team-card:hover .team-image img{transform:scale(1.06)}
+  .team-image-overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(to top, rgba(10,10,10,0.85) 0%, transparent 50%);
+    opacity:0;transition:opacity .4s ease;
+    display:flex;align-items:flex-end;
+    padding:28px;
+  }
+  .team-card:hover .team-image-overlay{opacity:1}
+  .team-socials{
+    display:flex;gap:10px;
+    transform:translateY(20px);
+    transition:transform .4s ease;
+  }
+  .team-card:hover .team-socials{transform:translateY(0)}
+  .team-socials a{
+    width:38px;height:38px;border-radius:50%;
+    background:var(--white);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--black);
+    transition:all .3s ease;
+  }
+  .team-socials a:hover{
+    background:var(--gold);color:var(--white);
+    transform:translateY(-3px);
+  }
+  .team-tag{
+    display:inline-block;
+    font-size:11px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--gold);
+    font-weight:600;margin-bottom:8px;
+  }
+  .team-card h3{
+    font-size:22px;margin-bottom:6px;
+    color:var(--black);
+  }
+  .team-card .team-role{
+    font-size:14px;color:var(--gray);
+  }
+  
+  /* ========== VALUES TIMELINE ========== */
+  .timeline{
+    position:relative;
+    padding-left:60px;
+  }
+  .timeline::before{
+    content:'';position:absolute;
+    left:20px;top:0;bottom:0;
+    width:1px;background:var(--beige);
+  }
+  .timeline-item{
+    position:relative;
+    padding-bottom:60px;
+  }
+  .timeline-item:last-child{padding-bottom:0}
+  .timeline-dot{
+    position:absolute;left:-52px;top:0;
+    width:40px;height:40px;border-radius:50%;
+    background:var(--white);
+    border:2px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--gold);
+    z-index:2;
+  }
+  .timeline-year{
+    font-size:12px;letter-spacing:3px;
+    text-transform:uppercase;color:var(--gold);
+    font-weight:600;margin-bottom:12px;
+  }
+  .timeline-item h3{
+    font-size:28px;margin-bottom:12px;
+    color:var(--black);
+  }
+  .timeline-item p{
+    font-size:16px;color:var(--gray);
+    line-height:1.8;max-width:600px;
+  }
+  
+  /* ========== NEWSLETTER SPLIT ========== */
+  .newsletter-split{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:0;
+    background:var(--black);
+    border-radius:var(--radius-xl);
+    overflow:hidden;
+    min-height:480px;
+  }
+  .newsletter-image{position:relative;overflow:hidden}
+  .newsletter-image img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform .8s ease;
+  }
+  .newsletter-split:hover .newsletter-image img{transform:scale(1.05)}
+  .newsletter-content{
+    padding:80px 60px;
+    display:flex;flex-direction:column;justify-content:center;
+    color:var(--white);
+  }
+  .newsletter-content h2{
+    font-size:clamp(32px,3.5vw,44px);
+    margin-bottom:20px;color:var(--white);
+    font-weight:400;
+  }
+  .newsletter-content h2 em{font-style:italic;color:var(--gold)}
+  .newsletter-content p{
+    color:rgba(245,241,232,0.7);
+    margin-bottom:32px;font-size:16px;
+  }
+  .newsletter-form{
+    display:flex;flex-direction:column;gap:16px;
+    max-width:400px;
+  }
+  .newsletter-input-group{
+    display:flex;background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:100px;
+    transition:all .3s ease;
+    overflow:hidden;
+  }
+  .newsletter-input-group:focus-within{
+    border-color:var(--gold);
+    background:rgba(255,255,255,0.12);
+  }
+  .newsletter-input-group input{
+    flex:1;padding:16px 24px;
+    background:transparent;border:none;
+    color:var(--white);font-family:var(--sans);
+    font-size:14px;outline:none;
+  }
+  .newsletter-input-group input::placeholder{color:rgba(255,255,255,0.5)}
+  .newsletter-input-group button{
+    padding:16px 28px;background:var(--gold);
+    color:var(--black);border:none;cursor:pointer;
+    font-family:var(--sans);font-size:12px;
+    font-weight:600;letter-spacing:2px;
+    text-transform:uppercase;
+    transition:all .3s ease;
+    display:flex;align-items:center;gap:8px;
+  }
+  .newsletter-input-group button:hover{background:var(--gold-light)}
+  .newsletter-note{font-size:12px;color:rgba(245,241,232,0.5);margin-top:8px}
+  
+  /* ========== FOOTER ========== */
+  footer{background:var(--black);color:var(--white);padding:100px 0 40px}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:80px;margin-bottom:80px}
+  .footer-brand .logo{margin-bottom:28px;color:var(--white)}
+  .footer-brand .logo-mark{background:var(--gold);color:var(--black)}
+  .footer-brand p{color:rgba(245,241,232,0.6);line-height:1.8;max-width:340px;margin-bottom:32px;font-size:15px}
+  .footer-social{display:flex;gap:14px}
+  .footer-social a{
+    width:42px;height:42px;
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--white);transition:all .3s ease;
+  }
+  .footer-social a:hover{background:var(--gold);border-color:var(--gold);color:var(--black);transform:translateY(-3px)}
+  .footer-col h5{font-size:12px;letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-bottom:28px;color:var(--gold)}
+  .footer-col ul{list-style:none}
+  .footer-col li{margin-bottom:14px}
+  .footer-col a{color:rgba(245,241,232,0.6);font-size:15px;transition:all .3s ease;display:inline-flex;align-items:center;gap:8px}
+  .footer-col a:hover{color:var(--white);transform:translateX(4px)}
+  .footer-bottom{
+    display:flex;justify-content:space-between;align-items:center;
+    padding-top:40px;border-top:1px solid rgba(255,255,255,0.08);
+    font-size:13px;color:rgba(245,241,232,0.5);flex-wrap:wrap;gap:20px;
+  }
+  .footer-bottom-links{display:flex;gap:32px}
+  .footer-bottom-links a:hover{color:var(--gold)}
+  
+  /* ========== BACK TO TOP ========== */
+  .back-to-top{
+    position:fixed;bottom:32px;right:32px;
+    width:52px;height:52px;border-radius:50%;
+    background:var(--black);color:var(--white);
+    border:none;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    opacity:0;visibility:hidden;
+    transition:all .4s ease;z-index:999;
+    box-shadow:var(--shadow-md);
+  }
+  .back-to-top.visible{opacity:1;visibility:visible}
+  .back-to-top:hover{background:var(--gold);transform:translateY(-4px)}
+  
+  /* ========== ANIMATIONS ========== */
+  .reveal{opacity:0;transform:translateY(40px);transition:all 1s cubic-bezier(0.4, 0, 0.2, 1)}
+  .reveal.active{opacity:1;transform:translateY(0)}
+  
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 1024px){
+    .container{padding:0 32px}
+    .nav-inner{padding:20px 32px}
+    .page-hero-grid,.story-split,.founder-grid{grid-template-columns:1fr;gap:60px}
+    .page-hero-image{max-width:500px;margin:0 auto}
+    .pillars-grid{grid-template-columns:repeat(2,1fr)}
+    .team-grid{grid-template-columns:repeat(2,1fr)}
+    .stats-grid{grid-template-columns:1fr}
+    .newsletter-split{grid-template-columns:1fr}
+    .newsletter-image{height:280px}
+    .footer-grid{grid-template-columns:1fr 1fr;gap:48px}
+  }
+  @media (max-width: 768px){
+    .container{padding:0 24px}
+    .nav-inner{padding:18px 24px}
+    .nav-links,.nav-cta .btn{display:none}
+    .menu-toggle{display:block}
+    .section{padding:100px 0}
+    .page-hero{padding:160px 0 80px}
+    .pillars-grid,.team-grid{grid-template-columns:1fr}
+    .footer-grid{grid-template-columns:1fr;gap:40px}
+    .newsletter-content{padding:50px 30px}
+    .page-hero-badge{position:relative;bottom:auto;left:auto;margin-top:20px;display:inline-flex}
+    .founder-image-badge{position:relative;bottom:auto;left:auto;margin-top:20px;display:inline-flex}
+    .story-split-meta{flex-wrap:wrap;gap:24px}
+  }
+</style>
+</head>
+<body>
+
+<!-- Scroll Progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">B</span>
+      <span class="logo-text">BKU</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#journal">Journal</a></li>
+      <li><a href="index.html#gallery">Gallery</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="index.html#contact" class="btn btn-black">
+        <span>Contact Us</span>
+        <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
+      </a>
+      <button class="menu-toggle"><i data-lucide="menu"></i></button>
+    </div>
+  </div>
+</nav>
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-grid">
+      <div class="reveal">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="breadcrumb-sep">—</span>
+          <span class="breadcrumb-current">About Us</span>
+        </div>
+        <div class="page-hero-label">Integrated Event & PR Agency</div>
+        <h1>Creating <em>lasting</em> impressions.</h1>
+        <p class="page-hero-text">
+          Founded in 2024, BKU delivers end-to-end event solutions across corporate and social gatherings, weddings, brand launches, M.I.C.E., and experiential activations. A passionate, multidisciplinary crew handles everything from concept and creative to logistics and on-ground showcalling — ensuring every detail lands with impact.
+        </p>
+      </div>
+      <div class="page-hero-image reveal">
+        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=900&auto=format&fit=crop" alt="About BKU">
+        <div class="page-hero-badge">
+          <div class="page-hero-badge-icon">
+            <i data-lucide="award" style="width:22px;height:22px"></i>
+          </div>
+          <div class="page-hero-badge-text">
+            Est. 2024
+            <span>Crafting moments since day one</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Story Section -->
+<section class="section section-white">
+  <div class="container">
+    <div class="story-split">
+      <div class="story-split-images reveal">
+        <div class="story-split-img">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&auto=format&fit=crop" alt="Our Story">
+        </div>
+        <div class="story-split-img">
+          <img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=600&auto=format&fit=crop" alt="Planning">
+        </div>
+        <div class="story-split-img">
+          <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&auto=format&fit=crop" alt="Execution">
+        </div>
+      </div>
+      
+      <div class="story-split-content reveal">
+        <div class="section-label">Our Story</div>
+        <h2>A crew built on <em>craft</em>, collaboration, and care.</h2>
+        <p>
+          BKU began with a simple conviction: that every gathering — whether a 50-guest wedding or a 5,000-attendee summit — deserves to be more than an event. It deserves to be an experience.
+        </p>
+        <p>
+          Since 2024, we've grown into a full-scale event management and creative production company. Our multidisciplinary crew turns briefs into immersive environments, camera-ready content, and seamless run-of-show — so you can enjoy the spotlight while everything just works.
+        </p>
+        <p>
+          From concept mood boards and 3D layouts to stage fabrication, lighting, sound, artist management, and post-event content — we deliver shows that look spectacular and run on rails.
+        </p>
+        
+        <div class="story-split-meta">
+          <div class="story-split-meta-item">
+            <div class="story-split-meta-num">2024</div>
+            <div class="story-split-meta-label">Founded</div>
+          </div>
+          <div class="story-split-meta-item">
+            <div class="story-split-meta-num">12+</div>
+            <div class="story-split-meta-label">Cities Served</div>
+          </div>
+          <div class="story-split-meta-item">
+            <div class="story-split-meta-num">100%</div>
+            <div class="story-split-meta-label">In-House Crew</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pillars Section -->
+<section class="section section-cream">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="section-label center">Our Philosophy</div>
+      <h2 class="section-title">Four pillars. One promise.</h2>
+      <p class="section-subtitle">Every project we take on is built on four non-negotiable principles — the foundation of every BKU experience.</p>
+    </div>
+    
+    <div class="pillars-grid">
+      <div class="pillar-card reveal">
+        <div class="pillar-num">01</div>
+        <div class="pillar-icon">
+          <i data-lucide="target" style="width:26px;height:26px"></i>
+        </div>
+        <h3>Strategy First Approach</h3>
+        <p>We align goals, audience, and budget before design begins — so every creative decision is rooted in purpose.</p>
+      </div>
+      
+      <div class="pillar-card reveal" style="transition-delay:0.1s">
+        <div class="pillar-num">02</div>
+        <div class="pillar-icon">
+          <i data-lucide="palette" style="width:26px;height:26px"></i>
+        </div>
+        <h3>Design That Moves</h3>
+        <p>Visuals that don't just look beautiful — they evoke emotion, tell stories, and create moments worth remembering.</p>
+      </div>
+      
+      <div class="pillar-card reveal" style="transition-delay:0.2s">
+        <div class="pillar-num">03</div>
+        <div class="pillar-icon">
+          <i data-lucide="zap" style="width:26px;height:26px"></i>
+        </div>
+        <h3>Flawless Execution</h3>
+        <p>Vendor control, permits, hospitality, and expert showcalling — every detail orchestrated so the show runs on rails.</p>
+      </div>
+      
+      <div class="pillar-card reveal" style="transition-delay:0.3s">
+        <div class="pillar-num">04</div>
+        <div class="pillar-icon">
+          <i data-lucide="camera" style="width:26px;height:26px"></i>
+        </div>
+        <h3>Content That Lives On</h3>
+        <p>Live capture, professional edits, and social amplification — ensuring your event lives far beyond the final curtain.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Quote Banner -->
+<section class="quote-banner">
+  <div class="container">
+    <div class="quote-banner-content reveal">
+      <div class="quote-mark">"</div>
+      <p class="quote-text">Every event we craft is a <em>story</em> waiting to be told.</p>
+      <div class="quote-author">— The BKU Promise</div>
+    </div>
+  </div>
+</section>
+
+<!-- Founder Section -->
+<section class="section section-white">
+  <div class="container">
+    <div class="founder-grid">
+      <div class="founder-image reveal">
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&auto=format&fit=crop" alt="Jaideep Raviprakash">
+        <div class="founder-image-badge">
+          <div class="founder-image-badge-icon">
+            <i data-lucide="crown" style="width:22px;height:22px"></i>
+          </div>
+          <div class="founder-image-badge-text">
+            Founder & Visionary
+            <span>Leading since 2024</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="founder-content reveal">
+        <div class="founder-role">Meet The Founder</div>
+        <h2>Jaideep <em>Raviprakash</em></h2>
+        <p>
+          Jaideep founded BKU with a vision to redefine how India experiences events. With a background spanning creative direction, production management, and brand storytelling, he brings a rare blend of artistic sensibility and operational rigor to every project.
+        </p>
+        <p>
+          His belief is simple: great events aren't just planned — they're authored. Under his leadership, BKU has grown from a passionate startup into a trusted partner for some of the most memorable weddings, launches, and celebrations in the country.
+        </p>
+        <p>
+          When he's not on set or in a production meeting, you'll find him scouting locations, studying global event trends, or mentoring the next generation of event storytellers.
+        </p>
+        
+        <div class="founder-signature">
+          <div class="founder-signature-name">Jaideep Raviprakash</div>
+          <div class="founder-signature-title">Founder & Creative Director</div>
+        </div>
+        
+        <div class="founder-socials">
+          <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin" style="width:18px;height:18px"></i></a>
+          <a href="#" aria-label="Instagram"><i data-lucide="instagram" style="width:18px;height:18px"></i></a>
+          <a href="#" aria-label="Twitter"><i data-lucide="twitter" style="width:18px;height:18px"></i></a>
+          <a href="mailto:jaideep@bku.com" aria-label="Email"><i data-lucide="mail" style="width:18px;height:18px"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Section -->
+<section class="section section-black">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="section-label center">By The Numbers</div>
+      <h2 class="section-title">A growing legacy of trust.</h2>
+      <p class="section-subtitle">The numbers tell part of the story — the experiences tell the rest.</p>
+    </div>
+    
+    <div class="stats-grid">
+      <div class="stat-card reveal">
+        <div class="stat-icon">
+          <i data-lucide="calendar-check" style="width:24px;height:24px"></i>
+        </div>
+        <div class="stat-number" data-target="250">0<span class="plus">+</span></div>
+        <div class="stat-label">Events Completed</div>
+      </div>
+      <div class="stat-card reveal" style="transition-delay:0.1s">
+        <div class="stat-icon">
+          <i data-lucide="heart" style="width:24px;height:24px"></i>
+        </div>
+        <div class="stat-number" data-target="180">0<span class="plus">+</span></div>
+        <div class="stat-label">Satisfied Customers</div>
+      </div>
+      <div class="stat-card reveal" style="transition-delay:0.2s">
+        <div class="stat-icon">
+          <i data-lucide="handshake" style="width:24px;height:24px"></i>
+        </div>
+        <div class="stat-number" data-target="95">0<span class="plus">+</span></div>
+        <div class="stat-label">Respected Vendors</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Team Section -->
+<section class="section section-white" id="team">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="section-label center">Our Crew</div>
+      <h2 class="section-title">The team behind every extraordinary experience.</h2>
+      <p class="section-subtitle">At BKU, our strength lies in our people — a dynamic team of event strategists, creative designers, production specialists, and technical experts who share one goal: delivering excellence.</p>
+    </div>
+    
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-image">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&auto=format&fit=crop" alt="Jaideep Raviprakash">
+          <div class="team-image-overlay">
+            <div class="team-socials">
+              <a href="#"><i data-lucide="linkedin" style="width:16px;height:16px"></i></a>
+              <a href="#"><i data-lucide="instagram" style="width:16px;height:16px"></i></a>
+              <a href="#"><i data-lucide="mail" style="width:16px;height:16px"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-tag">Founder</div>
+        <h3>Jaideep Raviprakash</h3>
+        <p class="team-role">Founder & Creative Director</p>
+      </div>
+      
+      <div class="team-card reveal" style="transition-delay:0.1s">
+        <div class="team-image">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&auto=format&fit=crop" alt="Team Member">
+          <div class="team-image-overlay">
+            <div class="team-socials">
+              <a href="#"><i data-lucide="linkedin" style="width:16px;height:16px"></i></a>
+              <a href="#"><i data-lucide="instagram" style="width:16px;height:16px"></i></a>
+              <a href="#"><i data-lucide="mail" style="width:16px;height:16px"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-tag">Strategy</div>
+        <h3>Ananya Sharma</h3>
+        <p class="team-role">Head of Event Strategy</p>
+      </div>
+      
+      <div class="team-card reveal" style="transition-delay:0.2s">
+        <div class="team-image">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&auto=format&fit=crop" alt="Team Member">
+          <div class="team-image-overlay">
+            <div class="team-socials">
+              <a href="#"><i data-lucide="linkedin" style="width:16px;height:16px"></i></a>
+              <a href="#"><i data-lucide="instagram" style="width:16px;height:16px"></i></a>
+              <a href="#"><i data-lucide="mail" style="width:16px;height:16px"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-tag">Production</div>
+        <h3>Rohan Mehta</h3>
+        <p class="team-role">Technical Director</p>
+      </div>
+      
+      <div class="team-card reveal" style="transition-delay:0.3s">
+        <div class="team-image">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&auto=format&fit=crop" alt="Team Member">
+          <div class="team-image-overlay">
+            <div class="team-socials">
+              <a href="#"><i data-lucide="linkedin" style="width:16px;height:16px"></i></a>
+              <a href="#"><i data-lucide="instagram" style="width:16px;height:16px"></i></a>
+              <a href="#"><i data-lucide="mail" style="width:16px;height:16px"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-tag">Creative</div>
+        <h3>Isha Verma</h3>
+        <p class="team-role">Creative Lead</p>
+      </div>
+      
+      <div class="team-card reveal">
+        <div class="team-image">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop" alt="Team Member">
+          <div class="team-image-overlay">
+            <div class="team-socials">
+              <a href="#"><i data-lucide="linkedin" style="width:16px;height:16px"></i></a>
+              <a href="#"><i data-lucide="instagram" style="width:16px;height:16px"></i></a>
+              <a href="#"><i data-lucide="mail" style="width:16px;height:16px"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-tag">Design</div>
+        <h3>Arjun Nair</h3>
+        <p class="team-role">Senior Experience Designer</p>
+      </div>
+      
+      <div class="team-card reveal" style="transition-delay:0.1s">
+        <div class="team-image">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&auto=format&fit=crop" alt="Team Member">
+          <div class="team-image-overlay">
+            <div class="team-socials">
+              <a href="#"><i data-lucide="linkedin" style="width:16px;height:16px"></i></a>
+              <a href="#"><i data-lucide="instagram" style="width:16px;height:16px"></i></a>
+              <a href="#"><i data-lucide="mail" style="width:16px;height:16px"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-tag">PR</div>
+        <h3>Kavya Iyer</h3>
+        <p class="team-role">PR & Communications Lead</p>
+      </div>
+      
+      <div class="team-card reveal" style="transition-delay:0.2s">
+        <div class="team-image">
+          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&auto=format&fit=crop" alt="Team Member">
+          <div class="team-image-overlay">
+            <div class="team-socials">
+              <a href="#"><i data-lucide="linkedin" style="width:16px;height:16px"></i></a>
+              <a href="#"><i data-lucide="instagram" style="width:16px;height:16px"></i></a>
+              <a href="#"><i data-lucide="mail" style="width:16px;height:16px"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-tag">Operations</div>
+        <h3>Vikram Rao</h3>
+        <p class="team-role">Operations Manager</p>
+      </div>
+      
+      <div class="team-card reveal" style="transition-delay:0.3s">
+        <div class="team-image">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&auto=format&fit=crop" alt="Team Member">
+          <div class="team-image-overlay">
+            <div class="team-socials">
+              <a href="#"><i data-lucide="linkedin" style="width:16px;height:16px"></i></a>
+              <a href="#"><i data-lucide="instagram" style="width:16px;height:16px"></i></a>
+              <a href="#"><i data-lucide="mail" style="width:16px;height:16px"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-tag">Content</div>
+        <h3>Meera Kapoor</h3>
+        <p class="team-role">Content & Social Lead</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Journey Timeline -->
+<section class="section section-cream">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Our Journey</div>
+      <h2 class="section-title">Milestones along the way.</h2>
+      <p class="section-subtitle">A brief look at how BKU has grown from a bold idea into a trusted name in event production.</p>
+    </div>
+    
+    <div class="timeline reveal">
+      <div class="timeline-item">
+        <div class="timeline-dot">
+          <i data-lucide="sparkles" style="width:18px;height:18px"></i>
+        </div>
+        <div class="timeline-year">2024 — The Beginning</div>
+        <h3>BKU is founded.</h3>
+        <p>Started with a small crew and a big vision — to craft events that feel as intentional as they look spectacular. Our first project: an intimate destination wedding in Rajasthan.</p>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="timeline-dot">
+          <i data-lucide="trending-up" style="width:18px;height:18px"></i>
+        </div>
+        <div class="timeline-year">2024 — First Milestone</div>
+        <h3>50 events in our first year.</h3>
+        <p>From intimate gatherings to corporate summits, we proved that scale doesn't have to come at the cost of soul. Our client roster began to grow through word-of-mouth alone.</p>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="timeline-dot">
+          <i data-lucide="users" style="width:18px;height:18px"></i>
+        </div>
+        <div class="timeline-year">2025 — The Crew Grows</div>
+        <h3>Expanding the team.</h3>
+        <p>We brought on specialists in PR, technical production, and content — building a multidisciplinary crew capable of handling every aspect of an event in-house.</p>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="timeline-dot">
+          <i data-lucide="globe" style="width:18px;height:18px"></i>
+        </div>
+        <div class="timeline-year">2026 — Today</div>
+        <h3>Nationwide, and growing.</h3>
+        <p>With 250+ events delivered, 180+ happy clients, and a network of 95+ trusted vendors, BKU is now a name associated with craft, care, and unforgettable experiences across India.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="section section-white" style="padding-top:0">
+  <div class="container">
+    <div class="newsletter-split reveal">
+      <div class="newsletter-image">
+        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1000&auto=format&fit=crop" alt="Newsletter">
+      </div>
+      <div class="newsletter-content">
+        <div class="section-label" style="color:var(--gold)">Stay Inspired</div>
+        <h2>Join the <em>BKU</em> community.</h2>
+        <p>Subscribe to receive the latest insights, event trends, and creative inspiration delivered to your inbox. No spam — just stories worth reading.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+          <div class="newsletter-input-group">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit">
+              <span>Subscribe</span>
+              <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
+            </button>
+          </div>
+          <p class="newsletter-note">By subscribing, you agree to our Privacy Policy. Unsubscribe anytime.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <span class="logo-mark">B</span>
+          <span class="logo-text">BKU</span>
+        </a>
+        <p>A full-scale event management and creative production company that transforms ideas into unforgettable experiences. From corporate summits to celebrity concerts and private celebrations.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><i data-lucide="instagram" style="width:18px;height:18px"></i></a>
+          <a href="#" aria-label="Facebook"><i data-lucide="facebook" style="width:18px;height:18px"></i></a>
+          <a href="#" aria-label="Twitter"><i data-lucide="twitter" style="width:18px;height:18px"></i></a>
+          <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin" style="width:18px;height:18px"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="index.html#gallery">Gallery</a></li>
+          <li><a href="index.html#journal">Journal</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h5>Our Agency</h5>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h5>Get in Touch</h5>
+        <ul>
+          <li><a href="tel:+917981636962"><i data-lucide="phone" style="width:16px;height:16px"></i> +91 79816 36962</a></li>
+          <li><a href="mailto:hello@bku.com"><i data-lucide="mail" style="width:16px;height:16px"></i> hello@bku.com</a></li>
+          <li><a href="#"><i data-lucide="map-pin" style="width:16px;height:16px"></i> Mumbai, India</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div>2026 © Developed by <strong style="color:rgba(245,241,232,0.8)">Akhi Digitals & Entertainments Pvt Ltd</strong></div>
+      <div class="footer-bottom-links">
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Privacy & Policy</a>
+        <a href="#">Help</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <i data-lucide="arrow-up" style="width:20px;height:20px"></i>
+</button>
+
+<script>
+  lucide.createIcons();
+  
+  // Scroll Progress
+  const scrollProgress = document.getElementById('scrollProgress');
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = (scrollTop / docHeight) * 100;
+    scrollProgress.style.width = progress + '%';
+  });
+  
+  // Navigation
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
+  
+  // Mobile Menu
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  menuToggle.addEventListener('click', () => {
+    const isOpen = navLinks.style.display === 'flex';
+    navLinks.style.display = isOpen ? 'none' : 'flex';
+    if (!isOpen) {
+      Object.assign(navLinks.style, {
+        position:'absolute', top:'100%', left:'0', right:'0',
+        flexDirection:'column', background:'var(--white)',
+        padding:'32px', gap:'20px', boxShadow:'var(--shadow-lg)',
+        borderTop:'1px solid rgba(10,10,10,0.06)'
+      });
+    }
+  });
+  
+  // Reveal on scroll
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  
+  // Counter Animation
+  const counters = document.querySelectorAll('.stat-number');
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.target);
+        if (target && !isNaN(target)) {
+          let count = 0;
+          const increment = target / 50;
+          const timer = setInterval(() => {
+            count += increment;
+            if (count >= target) {
+              el.innerHTML = target + '<span class="plus">+</span>';
+              clearInterval(timer);
+            } else {
+              el.textContent = Math.floor(count);
+            }
+          }, 30);
+        }
+        counterObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(counter => counterObserver.observe(counter));
+  
+  // Back to Top
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 500);
+  });
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+</body>
+</html>
