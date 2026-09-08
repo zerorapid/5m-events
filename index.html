@@ -748,46 +748,51 @@
     gap:70px;align-items:start;
   }
   .faq-sticky{position:sticky;top:120px}
-  .accordion{display:flex;flex-direction:column;gap:12px}
+  .accordion{display:flex;flex-direction:column}
   .accordion-item{
-    background:var(--white);
-    border:1px solid rgba(10,10,10,0.08);
-    border-radius:var(--radius-md);
-    overflow:hidden;
+    border-bottom:1px solid rgba(10,10,10,0.12);
     transition:all .3s ease;
   }
-  .accordion-item.active{
-    border-color:var(--black);
-    box-shadow:var(--shadow-sm);
+  .accordion-item:first-child{
+    border-top:1px solid rgba(10,10,10,0.12);
   }
   .accordion-header{
-    padding:20px 24px;
-    display:flex;justify-between:space-between;align-items:center;
-    cursor:pointer;gap:16px;
+    padding:24px 0;
+    display:flex;justify-content:space-between;align-items:center;
+    cursor:pointer;gap:20px;
     background:transparent;border:none;width:100%;
     text-align:left;font-family:var(--sans);
   }
+  .accordion-title-wrap{
+    display:flex;align-items:center;gap:20px;
+  }
+  .accordion-num{
+    font-family:var(--sans);font-size:14px;font-weight:600;
+    color:var(--gold);min-width:24px;
+  }
   .accordion-title{
-    font-family:var(--serif);font-size:18px;
+    font-family:var(--serif);font-size:20px;
     color:var(--black);font-weight:500;
   }
   .accordion-icon{
-    width:32px;height:32px;border-radius:50%;
-    background:var(--cream);
+    width:36px;height:36px;border-radius:50%;
+    border:1px solid rgba(10,10,10,0.15);
+    background:transparent;
     display:flex;align-items:center;justify-content:center;
-    color:var(--gold);flex-shrink:0;
-    transition:all .4s ease;
+    color:var(--black);flex-shrink:0;
+    transition:transform .4s cubic-bezier(0.16, 1, 0.3, 1), background .3s ease, color .3s ease;
   }
   .accordion-item.active .accordion-icon{
-    background:var(--black);color:var(--gold-bright);
-    transform:rotate(45deg);
+    background:var(--black);color:var(--white);
+    border-color:var(--black);
+    transform:rotate(180deg);
   }
   .accordion-content{
     max-height:0;overflow:hidden;
-    transition:max-height .4s ease;
+    transition:max-height .4s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .accordion-content-inner{
-    padding:0 24px 24px;
+    padding:0 0 28px 44px;
     font-size:15px;color:var(--gray);line-height:1.8;
   }
   
@@ -1582,8 +1587,11 @@
       <div class="accordion reveal">
         <div class="accordion-item active">
           <button class="accordion-header">
-            <span class="accordion-title">What types of events does BKU manage?</span>
-            <span class="accordion-icon"><i data-lucide="plus" style="width:16px;height:16px"></i></span>
+            <div class="accordion-title-wrap">
+              <span class="accordion-num">01</span>
+              <span class="accordion-title">What types of events does BKU manage?</span>
+            </div>
+            <span class="accordion-icon"><i data-lucide="chevron-down" style="width:18px;height:18px"></i></span>
           </button>
           <div class="accordion-content" style="max-height:200px">
             <div class="accordion-content-inner">We manage everything from intimate weddings and private celebrations to large-scale corporate summits, product launches, concerts, festivals, and brand activations. No event is too small or too ambitious.</div>
@@ -1592,8 +1600,11 @@
         
         <div class="accordion-item">
           <button class="accordion-header">
-            <span class="accordion-title">How far in advance should we book?</span>
-            <span class="accordion-icon"><i data-lucide="plus" style="width:16px;height:16px"></i></span>
+            <div class="accordion-title-wrap">
+              <span class="accordion-num">02</span>
+              <span class="accordion-title">How far in advance should we book?</span>
+            </div>
+            <span class="accordion-icon"><i data-lucide="chevron-down" style="width:18px;height:18px"></i></span>
           </button>
           <div class="accordion-content">
             <div class="accordion-content-inner">For large-scale events and peak wedding seasons, we recommend booking 6-12 months in advance. However, we also accommodate shorter timelines depending on availability and scope.</div>
@@ -1602,8 +1613,11 @@
         
         <div class="accordion-item">
           <button class="accordion-header">
-            <span class="accordion-title">Do you work with clients outside India?</span>
-            <span class="accordion-icon"><i data-lucide="plus" style="width:16px;height:16px"></i></span>
+            <div class="accordion-title-wrap">
+              <span class="accordion-num">03</span>
+              <span class="accordion-title">Do you work with clients outside India?</span>
+            </div>
+            <span class="accordion-icon"><i data-lucide="chevron-down" style="width:18px;height:18px"></i></span>
           </button>
           <div class="accordion-content">
             <div class="accordion-content-inner">Absolutely. We've produced events across the globe — from destination weddings in Europe to corporate summits in the Middle East. Our network extends worldwide.</div>
@@ -1612,8 +1626,11 @@
         
         <div class="accordion-item">
           <button class="accordion-header">
-            <span class="accordion-title">What's included in your planning packages?</span>
-            <span class="accordion-icon"><i data-lucide="plus" style="width:16px;height:16px"></i></span>
+            <div class="accordion-title-wrap">
+              <span class="accordion-num">04</span>
+              <span class="accordion-title">What's included in your planning packages?</span>
+            </div>
+            <span class="accordion-icon"><i data-lucide="chevron-down" style="width:18px;height:18px"></i></span>
           </button>
           <div class="accordion-content">
             <div class="accordion-content-inner">Our packages are fully customizable. They can include venue sourcing, creative design, vendor management, technical production, on-site coordination, hospitality, and post-event content — tailored to your needs.</div>
@@ -1622,8 +1639,11 @@
         
         <div class="accordion-item">
           <button class="accordion-header">
-            <span class="accordion-title">How do we get started?</span>
-            <span class="accordion-icon"><i data-lucide="plus" style="width:16px;height:16px"></i></span>
+            <div class="accordion-title-wrap">
+              <span class="accordion-num">05</span>
+              <span class="accordion-title">How do we get started?</span>
+            </div>
+            <span class="accordion-icon"><i data-lucide="chevron-down" style="width:18px;height:18px"></i></span>
           </button>
           <div class="accordion-content">
             <div class="accordion-content-inner">Simply reach out via the contact form or give us a call. We'll schedule a discovery call to understand your vision, then send you a tailored concept deck and costed plan within a week.</div>
