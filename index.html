@@ -951,7 +951,7 @@
   .footer-brand .logo{margin-bottom:24px;color:var(--white)}
   .footer-brand .logo-mark{background:var(--gold);color:var(--black)}
   .footer-brand p{color:rgba(245,241,232,0.65);line-height:1.8;max-width:340px;margin-bottom:28px;font-size:14px}
-  .footer-social{display:flex;gap:12px}
+  .footer-social{display:flex;gap:12px;flex-wrap:wrap}
   .footer-social a{
     width:40px;height:40px;
     border:1px solid rgba(255,255,255,0.15);
@@ -960,6 +960,33 @@
     color:var(--white);transition:all .3s ease;
   }
   .footer-social a:hover{background:var(--gold);border-color:var(--gold);color:var(--black);transform:translateY(-3px)}
+  
+  /* Floating Social Sidebar */
+  .floating-socials{
+    position:fixed;left:24px;top:50%;
+    transform:translateY(-50%);
+    display:flex;flex-direction:column;gap:12px;
+    z-index:998;
+  }
+  .floating-social-link{
+    width:40px;height:40px;border-radius:50%;
+    background:rgba(255,255,255,0.9);
+    border:1px solid rgba(10,10,10,0.08);
+    box-shadow:0 4px 16px rgba(10,10,10,0.08);
+    backdrop-filter:blur(12px);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--black);
+    transition:all .35s cubic-bezier(0.4,0,0.2,1);
+  }
+  .floating-social-link:hover{
+    background:var(--black);
+    color:var(--gold);
+    transform:scale(1.15) translateX(4px);
+    box-shadow:0 8px 24px rgba(10,10,10,0.18);
+  }
+  @media (max-width: 1100px){
+    .floating-socials{display:none}
+  }
   .footer-col h5{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-bottom:24px;color:var(--gold-light)}
   .footer-col ul{list-style:none}
   .footer-col li{margin-bottom:12px}
@@ -1097,6 +1124,15 @@
 
 <!-- Scroll Progress -->
 <div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Floating Social Sidebar -->
+<div class="floating-socials">
+  <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="floating-social-link"><i data-lucide="instagram" style="width:18px;height:18px"></i></a>
+  <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook" class="floating-social-link"><i data-lucide="facebook" style="width:18px;height:18px"></i></a>
+  <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube" class="floating-social-link"><i data-lucide="youtube" style="width:18px;height:18px"></i></a>
+  <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn" class="floating-social-link"><i data-lucide="linkedin" style="width:18px;height:18px"></i></a>
+  <a href="https://wa.me/917981636962" target="_blank" rel="noopener" aria-label="WhatsApp" class="floating-social-link"><i data-lucide="message-square" style="width:18px;height:18px"></i></a>
+</div>
 
 <!-- Mobile Menu Overlay -->
 <div class="mobile-menu-overlay" id="mobileOverlay"></div>
@@ -1771,10 +1807,18 @@
           <i data-lucide="mail" style="width:16px;height:16px"></i>
           <span>Start a Project</span>
         </a>
-        <a href="#gallery" class="btn btn-outline-light">
-          <i data-lucide="images" style="width:16px;height:16px"></i>
-          <span>View Portfolio</span>
+        <a href="https://wa.me/917981636962" target="_blank" rel="noopener" class="btn btn-outline-light">
+          <i data-lucide="message-square" style="width:16px;height:16px"></i>
+          <span>Chat on WhatsApp</span>
         </a>
+      </div>
+      <div class="cta-social-bar" style="display:flex;align-items:center;justify-content:center;gap:16px;margin-top:40px">
+        <span style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600">Connect With Us:</span>
+        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" style="width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;color:var(--white);transition:all .3s ease"><i data-lucide="instagram" style="width:16px;height:16px"></i></a>
+        <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook" style="width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;color:var(--white);transition:all .3s ease"><i data-lucide="facebook" style="width:16px;height:16px"></i></a>
+        <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube" style="width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;color:var(--white);transition:all .3s ease"><i data-lucide="youtube" style="width:16px;height:16px"></i></a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn" style="width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;color:var(--white);transition:all .3s ease"><i data-lucide="linkedin" style="width:16px;height:16px"></i></a>
+        <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter" style="width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;color:var(--white);transition:all .3s ease"><i data-lucide="twitter" style="width:16px;height:16px"></i></a>
       </div>
     </div>
   </div>
@@ -1791,10 +1835,12 @@
         </a>
         <p>A full-scale event management and creative production company that transforms ideas into unforgettable experiences. From corporate summits to celebrity concerts and private celebrations.</p>
         <div class="footer-social">
-          <a href="#" aria-label="Instagram"><i data-lucide="instagram" style="width:18px;height:18px"></i></a>
-          <a href="#" aria-label="Facebook"><i data-lucide="facebook" style="width:18px;height:18px"></i></a>
-          <a href="#" aria-label="Twitter"><i data-lucide="twitter" style="width:18px;height:18px"></i></a>
-          <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin" style="width:18px;height:18px"></i></a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i data-lucide="instagram" style="width:18px;height:18px"></i></a>
+          <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i data-lucide="facebook" style="width:18px;height:18px"></i></a>
+          <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i data-lucide="youtube" style="width:18px;height:18px"></i></a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><i data-lucide="linkedin" style="width:18px;height:18px"></i></a>
+          <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"><i data-lucide="twitter" style="width:18px;height:18px"></i></a>
+          <a href="https://wa.me/917981636962" target="_blank" rel="noopener" aria-label="WhatsApp"><i data-lucide="message-square" style="width:18px;height:18px"></i></a>
         </div>
       </div>
       
