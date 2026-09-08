@@ -1,0 +1,1736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BKU — Crafting Unforgettable Experiences</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  :root{
+    --white: #FFFFFF;
+    --cream: #F5F1E8;
+    --beige: #E8DFD0;
+    --sand: #D4C4B0;
+    --black: #0A0A0A;
+    --charcoal: #1A1A1A;
+    --dark-gray: #2A2A2A;
+    --gray: #5A5A5A;
+    --light-gray: #8A8A8A;
+    --muted: #A8A29A;
+    --gold: #B8945F;
+    --gold-light: #D4B886;
+    --shadow-sm: 0 4px 12px rgba(10,10,10,0.06);
+    --shadow-md: 0 12px 40px rgba(10,10,10,0.10);
+    --shadow-lg: 0 30px 80px rgba(10,10,10,0.18);
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'Inter', system-ui, sans-serif;
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 32px;
+  }
+  
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    background:var(--white);
+    color:var(--charcoal);
+    line-height:1.7;
+    font-weight:400;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none;transition:all .35s ease}
+  
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.15;letter-spacing:-0.01em}
+  p{font-size:16px;line-height:1.75;color:var(--gray)}
+  
+  .container{max-width:1360px;margin:0 auto;padding:0 60px}
+  
+  /* ========== SCROLL PROGRESS ========== */
+  .scroll-progress{
+    position:fixed;top:0;left:0;height:2px;
+    background:linear-gradient(90deg, var(--gold), var(--gold-light));
+    z-index:9999;width:0%;transition:width .1s ease;
+  }
+  
+  /* ========== NAVIGATION ========== */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:1000;
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+    border-bottom:1px solid transparent;
+    transition:all .4s ease;
+  }
+  .nav.scrolled{
+    background:rgba(255,255,255,0.98);
+    border-bottom-color:rgba(10,10,10,0.06);
+  }
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 60px;max-width:1600px;margin:0 auto;
+  }
+  .logo{
+    font-family:var(--serif);
+    display:flex;align-items:center;gap:14px;
+  }
+  .logo-mark{
+    width:38px;height:38px;
+    background:var(--black);
+    color:var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--serif);
+    font-size:16px;font-weight:600;
+    letter-spacing:1px;
+    border-radius:8px;
+    transition:transform .4s ease;
+  }
+  .logo:hover .logo-mark{transform:rotate(-8deg) scale(1.05)}
+  .logo-text{font-size:26px;letter-spacing:3px;font-weight:600}
+  
+  .nav-links{display:flex;gap:40px;list-style:none}
+  .nav-links a{
+    font-size:13px;letter-spacing:1.5px;
+    font-weight:500;text-transform:uppercase;
+    color:var(--charcoal);
+    position:relative;padding:6px 0;
+  }
+  .nav-links a::after{
+    content:'';position:absolute;left:0;bottom:0;
+    width:0;height:1px;background:var(--gold);
+    transition:width .35s ease;
+  }
+  .nav-links a:hover{color:var(--black)}
+  .nav-links a:hover::after{width:100%}
+  
+  .nav-cta{display:flex;align-items:center;gap:20px}
+  
+  .btn{
+    display:inline-flex;align-items:center;gap:12px;
+    padding:14px 28px;font-size:12px;letter-spacing:2px;
+    font-weight:600;text-transform:uppercase;
+    cursor:pointer;border:none;
+    transition:all .4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family:var(--sans);
+    border-radius:100px;
+    position:relative;overflow:hidden;
+  }
+  .btn-black{background:var(--black);color:var(--white)}
+  .btn-black:hover{
+    background:var(--gold);
+    transform:translateY(-2px);
+    box-shadow:0 10px 30px rgba(184,148,95,0.3);
+  }
+  .btn-outline{background:transparent;color:var(--black);border:1.5px solid var(--black)}
+  .btn-outline:hover{background:var(--black);color:var(--white)}
+  .btn-outline-light{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,0.4)}
+  .btn-outline-light:hover{background:var(--white);color:var(--black);border-color:var(--white)}
+  .btn-ghost{background:transparent;color:var(--charcoal);padding:14px 0;border-radius:0;border-bottom:1px solid var(--gold)}
+  .btn-ghost:hover{color:var(--gold)}
+  
+  .menu-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--charcoal)}
+  
+  /* ========== HERO ========== */
+  .hero{
+    min-height:100vh;
+    display:flex;align-items:center;
+    padding:140px 0 80px;
+    position:relative;
+    background:var(--white);
+    overflow:hidden;
+  }
+  .hero::before{
+    content:'';position:absolute;
+    top:-20%;right:-10%;width:70%;height:120%;
+    background:radial-gradient(circle, var(--cream) 0%, transparent 70%);
+    z-index:0;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.1fr 1fr;
+    gap:80px;align-items:center;
+    position:relative;z-index:2;
+  }
+  .hero-content{position:relative}
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:8px 16px 8px 8px;
+    background:var(--white);
+    border:1px solid var(--beige);
+    border-radius:100px;
+    font-size:12px;letter-spacing:1px;
+    color:var(--charcoal);font-weight:500;
+    margin-bottom:32px;
+    box-shadow:var(--shadow-sm);
+  }
+  .hero-badge-dot{
+    width:24px;height:24px;border-radius:50%;
+    background:var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--white);
+  }
+  .hero h1{
+    font-size:clamp(48px,6.5vw,84px);
+    font-weight:400;line-height:1.05;
+    margin-bottom:32px;color:var(--black);
+  }
+  .hero h1 em{font-style:italic;color:var(--gold)}
+  .hero-text{
+    font-size:18px;color:var(--gray);
+    line-height:1.8;margin-bottom:40px;
+    max-width:520px;
+  }
+  .hero-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  
+  .hero-image{position:relative}
+  .hero-image-main{
+    width:100%;height:600px;
+    object-fit:cover;
+    border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-lg);
+  }
+  .hero-image-accent{
+    position:absolute;bottom:-40px;left:-40px;
+    width:240px;height:320px;
+    object-fit:cover;
+    border-radius:var(--radius-md);
+    box-shadow:var(--shadow-lg);
+    border:8px solid var(--white);
+  }
+  .hero-floating-card{
+    position:absolute;top:40px;right:-30px;
+    background:var(--white);
+    padding:20px 24px;border-radius:var(--radius-md);
+    box-shadow:var(--shadow-lg);
+    display:flex;align-items:center;gap:16px;
+    min-width:200px;
+  }
+  .hero-floating-card-icon{
+    width:48px;height:48px;border-radius:50%;
+    background:var(--cream);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--gold);
+  }
+  .hero-floating-card-num{
+    font-family:var(--serif);font-size:28px;
+    color:var(--black);line-height:1;font-weight:500;
+  }
+  .hero-floating-card-label{
+    font-size:11px;letter-spacing:1px;
+    text-transform:uppercase;color:var(--gray);
+  }
+  
+  /* ========== MARQUEE ========== */
+  .marquee{
+    background:var(--black);
+    color:var(--white);
+    padding:28px 0;
+    overflow:hidden;
+    border-top:1px solid rgba(255,255,255,0.08);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .marquee-track{
+    display:flex;gap:60px;
+    animation:marquee 30s linear infinite;
+    white-space:nowrap;
+  }
+  .marquee-item{
+    display:flex;align-items:center;gap:60px;
+    font-family:var(--serif);
+    font-size:32px;font-style:italic;
+    font-weight:400;
+  }
+  .marquee-item em{color:var(--gold)}
+  .marquee-dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--gold);flex-shrink:0;
+  }
+  @keyframes marquee{
+    from{transform:translateX(0)}
+    to{transform:translateX(-50%)}
+  }
+  
+  /* ========== SECTION COMMON ========== */
+  .section{padding:140px 0;position:relative}
+  .section-white{background:var(--white)}
+  .section-cream{background:var(--cream)}
+  .section-black{background:var(--black);color:var(--white)}
+  .section-black p{color:var(--beige)}
+  
+  .section-header{max-width:720px;margin-bottom:80px}
+  .section-header.center{text-align:center;margin-left:auto;margin-right:auto}
+  .section-label{
+    font-size:12px;letter-spacing:4px;
+    text-transform:uppercase;color:var(--gold);
+    font-weight:600;margin-bottom:20px;
+    display:inline-flex;align-items:center;gap:12px;
+  }
+  .section-label::before{
+    content:'';width:32px;height:1px;background:var(--gold);
+  }
+  .section-header.center .section-label::before{display:none}
+  .section-title{
+    font-size:clamp(36px,4.5vw,58px);
+    margin-bottom:24px;color:var(--black);
+    font-weight:400;
+  }
+  .section-black .section-title{color:var(--white)}
+  .section-subtitle{font-size:17px;color:var(--gray);line-height:1.8;max-width:620px}
+  .section-header.center .section-subtitle{margin:0 auto}
+  .section-black .section-subtitle{color:var(--beige)}
+  
+  /* ========== BENTO GRID (Services) ========== */
+  .bento-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    grid-template-rows:auto auto;
+    gap:20px;
+  }
+  .bento-card{
+    background:var(--white);
+    border:1px solid rgba(10,10,10,0.06);
+    border-radius:var(--radius-lg);
+    padding:36px;
+    position:relative;
+    overflow:hidden;
+    transition:all .5s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor:pointer;
+  }
+  .bento-card:hover{
+    transform:translateY(-6px);
+    box-shadow:var(--shadow-lg);
+    border-color:transparent;
+  }
+  .bento-card.large{grid-column:span 2;grid-row:span 2;padding:0;overflow:hidden}
+  .bento-card.wide{grid-column:span 2}
+  .bento-card.tall{grid-row:span 2}
+  
+  .bento-card.large .bento-image{
+    position:absolute;inset:0;
+  }
+  .bento-card.large .bento-image img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform .8s ease;
+  }
+  .bento-card.large:hover .bento-image img{transform:scale(1.05)}
+  .bento-card.large::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(to top, rgba(10,10,10,0.85) 0%, transparent 60%);
+  }
+  .bento-card.large .bento-content{
+    position:relative;z-index:2;
+    height:100%;display:flex;flex-direction:column;
+    justify-content:flex-end;
+    padding:40px;color:var(--white);
+  }
+  .bento-card.large h3{color:var(--white);font-size:32px;margin-bottom:12px}
+  .bento-card.large p{color:rgba(255,255,255,0.8);margin-bottom:20px}
+  
+  .bento-icon{
+    width:52px;height:52px;
+    background:var(--cream);
+    border-radius:var(--radius-sm);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:24px;color:var(--gold);
+    transition:all .4s ease;
+  }
+  .bento-card:hover .bento-icon{
+    background:var(--black);color:var(--gold);
+    transform:rotate(-8deg);
+  }
+  .bento-card h3{font-size:22px;margin-bottom:12px;color:var(--black)}
+  .bento-card p{font-size:15px;color:var(--gray);line-height:1.7}
+  .bento-tag{
+    display:inline-block;
+    font-size:11px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--gold);
+    font-weight:600;margin-bottom:16px;
+  }
+  .bento-link{
+    display:inline-flex;align-items:center;gap:8px;
+    margin-top:20px;font-size:12px;font-weight:600;
+    letter-spacing:2px;text-transform:uppercase;
+    color:var(--black);
+  }
+  .bento-card.large .bento-link{color:var(--gold)}
+  .bento-link:hover{gap:14px}
+  
+  /* ========== STORY ========== */
+  .story-grid{
+    display:grid;grid-template-columns:1fr 1.1fr;
+    gap:100px;align-items:center;
+  }
+  .story-content h2{
+    font-size:clamp(36px,4vw,52px);
+    margin-bottom:36px;font-weight:400;
+    color:var(--white);line-height:1.15;
+  }
+  .story-content h2 em{font-style:italic;color:var(--gold)}
+  .story-content p{
+    font-size:17px;line-height:1.85;
+    color:rgba(245,241,232,0.85);margin-bottom:24px;
+  }
+  .story-signature{
+    margin-top:48px;padding-top:32px;
+    border-top:1px solid rgba(255,255,255,0.1);
+    display:flex;align-items:center;gap:24px;
+  }
+  .story-signature-text{font-family:var(--serif);font-style:italic;font-size:20px;color:var(--gold)}
+  .story-signature-role{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,241,232,0.6)}
+  .story-images{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .story-img{border-radius:var(--radius-md);overflow:hidden}
+  .story-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+  .story-img:hover img{transform:scale(1.05)}
+  .story-img:first-child{grid-row:span 2;height:520px}
+  .story-img:nth-child(2),.story-img:nth-child(3){height:250px}
+  
+  /* ========== TABS (Process) ========== */
+  .tabs-container{
+    display:grid;grid-template-columns:320px 1fr;
+    gap:60px;align-items:start;
+  }
+  .tabs-nav{
+    display:flex;flex-direction:column;gap:8px;
+    position:sticky;top:120px;
+  }
+  .tab-btn{
+    display:flex;align-items:center;gap:20px;
+    padding:24px;background:transparent;
+    border:1px solid transparent;
+    border-radius:var(--radius-md);
+    cursor:pointer;text-align:left;
+    transition:all .4s ease;
+    font-family:var(--sans);
+  }
+  .tab-btn:hover{background:var(--cream)}
+  .tab-btn.active{
+    background:var(--black);
+    border-color:var(--black);
+  }
+  .tab-btn.active .tab-num,
+  .tab-btn.active .tab-title{color:var(--white)}
+  .tab-btn.active .tab-num{color:var(--gold)}
+  .tab-num{
+    font-family:var(--serif);font-size:14px;
+    color:var(--gold);font-style:italic;
+    min-width:30px;
+  }
+  .tab-title{
+    font-family:var(--serif);font-size:22px;
+    color:var(--black);font-weight:500;
+  }
+  
+  .tab-panels{position:relative;min-height:500px}
+  .tab-panel{
+    display:none;
+    animation:tabFade .5s ease;
+  }
+  .tab-panel.active{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+  @keyframes tabFade{
+    from{opacity:0;transform:translateY(20px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+  .tab-panel-content h3{
+    font-size:40px;margin-bottom:20px;
+    color:var(--black);font-weight:400;
+  }
+  .tab-panel-content p{
+    font-size:16px;line-height:1.8;
+    color:var(--gray);margin-bottom:24px;
+  }
+  .tab-features{list-style:none;margin-top:24px}
+  .tab-features li{
+    display:flex;align-items:center;gap:14px;
+    padding:14px 0;border-bottom:1px solid var(--beige);
+    font-size:15px;color:var(--charcoal);
+  }
+  .tab-features li:last-child{border-bottom:none}
+  .tab-features i{color:var(--gold);flex-shrink:0}
+  .tab-panel-image{
+    border-radius:var(--radius-lg);overflow:hidden;
+    height:480px;
+  }
+  .tab-panel-image img{width:100%;height:100%;object-fit:cover}
+  
+  /* ========== HORIZONTAL GALLERY ========== */
+  .gallery-scroll{
+    display:flex;gap:24px;
+    overflow-x:auto;
+    padding:20px 60px 40px;
+    scroll-snap-type:x mandatory;
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+    cursor:grab;
+  }
+  .gallery-scroll::-webkit-scrollbar{display:none}
+  .gallery-scroll:active{cursor:grabbing}
+  .gallery-slide{
+    flex:0 0 400px;
+    height:520px;
+    border-radius:var(--radius-lg);
+    overflow:hidden;
+    position:relative;
+    scroll-snap-align:start;
+    transition:transform .5s ease;
+  }
+  .gallery-slide:hover{transform:translateY(-8px)}
+  .gallery-slide img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform .8s ease;
+  }
+  .gallery-slide:hover img{transform:scale(1.08)}
+  .gallery-slide-overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(to top, rgba(10,10,10,0.85) 0%, transparent 50%);
+    display:flex;flex-direction:column;
+    justify-content:flex-end;padding:32px;
+  }
+  .gallery-slide-overlay h3{
+    font-size:24px;color:var(--white);margin-bottom:8px;
+  }
+  .gallery-slide-overlay p{
+    font-size:12px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--gold-light);
+  }
+  .gallery-controls{
+    display:flex;justify-content:center;gap:12px;
+    margin-top:40px;
+  }
+  .gallery-btn{
+    width:48px;height:48px;border-radius:50%;
+    border:1px solid var(--black);
+    background:transparent;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    transition:all .3s ease;
+    color:var(--black);
+  }
+  .gallery-btn:hover{background:var(--black);color:var(--white)}
+  
+  /* ========== STATS MODERN ========== */
+  .stats-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:24px;
+  }
+  .stat-card{
+    background:var(--white);
+    border:1px solid rgba(10,10,10,0.06);
+    border-radius:var(--radius-lg);
+    padding:40px 32px;
+    text-align:center;
+    transition:all .4s ease;
+    position:relative;
+    overflow:hidden;
+  }
+  .stat-card::before{
+    content:'';position:absolute;top:0;left:0;right:0;
+    height:3px;background:var(--gold);
+    transform:scaleX(0);transition:transform .4s ease;
+    transform-origin:left;
+  }
+  .stat-card:hover{
+    transform:translateY(-6px);
+    box-shadow:var(--shadow-md);
+    border-color:transparent;
+  }
+  .stat-card:hover::before{transform:scaleX(1)}
+  .stat-number{
+    font-family:var(--serif);
+    font-size:64px;color:var(--black);
+    line-height:1;margin-bottom:12px;
+    font-weight:400;
+  }
+  .stat-number .plus{color:var(--gold);font-size:40px}
+  .stat-label{
+    font-size:12px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--gray);
+    font-weight:500;
+  }
+  
+  /* ========== TESTIMONIAL CAROUSEL ========== */
+  .testimonial-carousel{
+    max-width:1000px;margin:0 auto;
+    position:relative;
+  }
+  .testimonial-track{
+    overflow:hidden;
+    border-radius:var(--radius-xl);
+  }
+  .testimonial-slides{
+    display:flex;
+    transition:transform .6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .testimonial-slide{
+    flex:0 0 100%;
+    padding:60px 80px;
+    background:var(--white);
+    border:1px solid rgba(10,10,10,0.06);
+    border-radius:var(--radius-xl);
+    text-align:center;
+  }
+  .testimonial-quote-mark{
+    font-family:var(--serif);
+    font-size:100px;color:var(--gold);
+    line-height:0.5;margin-bottom:32px;
+    opacity:0.4;
+  }
+  .testimonial-quote{
+    font-family:var(--serif);
+    font-size:clamp(22px,2.5vw,32px);
+    font-style:italic;line-height:1.5;
+    margin-bottom:40px;color:var(--charcoal);
+    font-weight:400;
+  }
+  .testimonial-author{
+    display:flex;align-items:center;
+    justify-content:center;gap:20px;
+  }
+  .testimonial-avatar{
+    width:64px;height:64px;
+    border-radius:50%;overflow:hidden;
+    border:2px solid var(--gold);
+  }
+  .testimonial-avatar img{width:100%;height:100%;object-fit:cover}
+  .testimonial-info{text-align:left}
+  .testimonial-info h4{font-family:var(--sans);font-size:16px;font-weight:600;margin-bottom:4px;color:var(--black)}
+  .testimonial-info p{font-size:13px;color:var(--gray);letter-spacing:1px;text-transform:uppercase}
+  .testimonial-rating{display:flex;justify-content:center;gap:6px;margin-bottom:32px;color:var(--gold)}
+  
+  .carousel-controls{
+    display:flex;justify-content:center;align-items:center;
+    gap:24px;margin-top:40px;
+  }
+  .carousel-dots{display:flex;gap:10px}
+  .carousel-dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--beige);border:none;cursor:pointer;
+    transition:all .3s ease;padding:0;
+  }
+  .carousel-dot.active{
+    background:var(--gold);width:32px;border-radius:4px;
+  }
+  .carousel-btn{
+    width:48px;height:48px;border-radius:50%;
+    border:1px solid var(--black);
+    background:transparent;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    transition:all .3s ease;color:var(--black);
+  }
+  .carousel-btn:hover{background:var(--black);color:var(--white)}
+  
+  /* ========== FAQ ACCORDION ========== */
+  .faq-grid{
+    display:grid;grid-template-columns:1fr 1.3fr;
+    gap:80px;align-items:start;
+  }
+  .faq-sticky{position:sticky;top:120px}
+  .accordion{display:flex;flex-direction:column;gap:12px}
+  .accordion-item{
+    background:var(--white);
+    border:1px solid rgba(10,10,10,0.08);
+    border-radius:var(--radius-md);
+    overflow:hidden;
+    transition:all .3s ease;
+  }
+  .accordion-item.active{
+    border-color:var(--black);
+    box-shadow:var(--shadow-sm);
+  }
+  .accordion-header{
+    padding:24px 28px;
+    display:flex;justify-between:space-between;align-items:center;
+    cursor:pointer;gap:20px;
+    background:transparent;border:none;width:100%;
+    text-align:left;font-family:var(--sans);
+  }
+  .accordion-title{
+    font-family:var(--serif);font-size:20px;
+    color:var(--black);font-weight:500;
+  }
+  .accordion-icon{
+    width:32px;height:32px;border-radius:50%;
+    background:var(--cream);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--gold);flex-shrink:0;
+    transition:all .4s ease;
+  }
+  .accordion-item.active .accordion-icon{
+    background:var(--black);color:var(--gold);
+    transform:rotate(45deg);
+  }
+  .accordion-content{
+    max-height:0;overflow:hidden;
+    transition:max-height .4s ease;
+  }
+  .accordion-content-inner{
+    padding:0 28px 28px;
+    font-size:15px;color:var(--gray);line-height:1.8;
+  }
+  
+  /* ========== BLOG ========== */
+  .blog-header{
+    display:flex;justify-content:space-between;
+    align-items:flex-end;margin-bottom:60px;gap:40px;
+  }
+  .blog-title-wrapper{max-width:600px}
+  .blog-title-wrapper h2{font-size:clamp(36px,4vw,52px);margin-bottom:16px}
+  .blog-view-all{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:12px;font-weight:600;
+    text-transform:uppercase;letter-spacing:2px;
+    padding-bottom:6px;border-bottom:1px solid var(--black);
+    flex-shrink:0;
+  }
+  .blog-view-all:hover{color:var(--gold);border-color:var(--gold)}
+  
+  .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+  .blog-card{
+    background:var(--white);
+    border-radius:var(--radius-lg);overflow:hidden;
+    transition:all .5s ease;cursor:pointer;
+    border:1px solid rgba(10,10,10,0.06);
+  }
+  .blog-card:hover{
+    transform:translateY(-8px);
+    box-shadow:var(--shadow-lg);
+    border-color:transparent;
+  }
+  .blog-image{height:260px;overflow:hidden;position:relative}
+  .blog-image img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+  .blog-card:hover .blog-image img{transform:scale(1.08)}
+  .blog-category{
+    position:absolute;top:20px;left:20px;
+    background:var(--white);color:var(--black);
+    padding:8px 14px;font-size:11px;
+    font-weight:600;text-transform:uppercase;
+    letter-spacing:1.5px;border-radius:100px;
+  }
+  .blog-content{padding:28px}
+  .blog-meta{
+    display:flex;gap:16px;margin-bottom:16px;
+    font-size:12px;color:var(--light-gray);
+    letter-spacing:1px;text-transform:uppercase;
+  }
+  .blog-meta span{display:flex;align-items:center;gap:6px}
+  .blog-card h3{font-size:20px;margin-bottom:12px;line-height:1.35;color:var(--black)}
+  .blog-card p{font-size:14.5px;color:var(--gray);line-height:1.7}
+  .blog-read-more{
+    display:inline-flex;align-items:center;gap:8px;
+    margin-top:18px;font-size:12px;font-weight:600;
+    letter-spacing:2px;text-transform:uppercase;
+    color:var(--gold);
+  }
+  .blog-read-more:hover{gap:14px}
+  
+  /* ========== NEWSLETTER SPLIT ========== */
+  .newsletter-split{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:0;
+    background:var(--black);
+    border-radius:var(--radius-xl);
+    overflow:hidden;
+    min-height:480px;
+  }
+  .newsletter-image{position:relative;overflow:hidden}
+  .newsletter-image img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform .8s ease;
+  }
+  .newsletter-split:hover .newsletter-image img{transform:scale(1.05)}
+  .newsletter-content{
+    padding:80px 60px;
+    display:flex;flex-direction:column;justify-content:center;
+    color:var(--white);
+  }
+  .newsletter-content h2{
+    font-size:clamp(32px,3.5vw,44px);
+    margin-bottom:20px;color:var(--white);
+    font-weight:400;
+  }
+  .newsletter-content h2 em{font-style:italic;color:var(--gold)}
+  .newsletter-content p{
+    color:rgba(245,241,232,0.7);
+    margin-bottom:32px;font-size:16px;
+  }
+  .newsletter-form{
+    display:flex;flex-direction:column;gap:16px;
+    max-width:400px;
+  }
+  .newsletter-input-group{
+    display:flex;background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:100px;
+    transition:all .3s ease;
+    overflow:hidden;
+  }
+  .newsletter-input-group:focus-within{
+    border-color:var(--gold);
+    background:rgba(255,255,255,0.12);
+  }
+  .newsletter-input-group input{
+    flex:1;padding:16px 24px;
+    background:transparent;border:none;
+    color:var(--white);font-family:var(--sans);
+    font-size:14px;outline:none;
+  }
+  .newsletter-input-group input::placeholder{color:rgba(255,255,255,0.5)}
+  .newsletter-input-group button{
+    padding:16px 28px;background:var(--gold);
+    color:var(--black);border:none;cursor:pointer;
+    font-family:var(--sans);font-size:12px;
+    font-weight:600;letter-spacing:2px;
+    text-transform:uppercase;
+    transition:all .3s ease;
+    display:flex;align-items:center;gap:8px;
+  }
+  .newsletter-input-group button:hover{background:var(--gold-light)}
+  .newsletter-note{font-size:12px;color:rgba(245,241,232,0.5);margin-top:8px}
+  
+  /* ========== CTA ========== */
+  .cta{
+    padding:160px 0;text-align:center;
+    position:relative;overflow:hidden;
+  }
+  .cta::before{
+    content:'';position:absolute;inset:0;
+    background-image:url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1600&auto=format&fit=crop');
+    background-size:cover;background-position:center;
+    opacity:0.15;
+  }
+  .cta::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(135deg, rgba(10,10,10,0.95), rgba(10,10,10,0.85));
+  }
+  .cta-content{position:relative;z-index:1;max-width:800px;margin:0 auto}
+  .cta h2{
+    font-size:clamp(38px,5vw,68px);
+    margin-bottom:28px;font-weight:400;
+    color:var(--white);line-height:1.15;
+  }
+  .cta h2 em{font-style:italic;color:var(--gold)}
+  .cta p{font-size:18px;color:rgba(245,241,232,0.8);margin-bottom:48px;line-height:1.8}
+  .cta-buttons{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+  
+  /* ========== FOOTER ========== */
+  footer{background:var(--black);color:var(--white);padding:100px 0 40px}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:80px;margin-bottom:80px}
+  .footer-brand .logo{margin-bottom:28px;color:var(--white)}
+  .footer-brand .logo-mark{background:var(--gold);color:var(--black)}
+  .footer-brand p{color:rgba(245,241,232,0.6);line-height:1.8;max-width:340px;margin-bottom:32px;font-size:15px}
+  .footer-social{display:flex;gap:14px}
+  .footer-social a{
+    width:42px;height:42px;
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--white);transition:all .3s ease;
+  }
+  .footer-social a:hover{background:var(--gold);border-color:var(--gold);color:var(--black);transform:translateY(-3px)}
+  .footer-col h5{font-size:12px;letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-bottom:28px;color:var(--gold)}
+  .footer-col ul{list-style:none}
+  .footer-col li{margin-bottom:14px}
+  .footer-col a{color:rgba(245,241,232,0.6);font-size:15px;transition:all .3s ease;display:inline-flex;align-items:center;gap:8px}
+  .footer-col a:hover{color:var(--white);transform:translateX(4px)}
+  .footer-bottom{
+    display:flex;justify-content:space-between;align-items:center;
+    padding-top:40px;border-top:1px solid rgba(255,255,255,0.08);
+    font-size:13px;color:rgba(245,241,232,0.5);flex-wrap:wrap;gap:20px;
+  }
+  .footer-bottom-links{display:flex;gap:32px}
+  .footer-bottom-links a:hover{color:var(--gold)}
+  
+  /* ========== BACK TO TOP ========== */
+  .back-to-top{
+    position:fixed;bottom:32px;right:32px;
+    width:52px;height:52px;border-radius:50%;
+    background:var(--black);color:var(--white);
+    border:none;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    opacity:0;visibility:hidden;
+    transition:all .4s ease;z-index:999;
+    box-shadow:var(--shadow-md);
+  }
+  .back-to-top.visible{opacity:1;visibility:visible}
+  .back-to-top:hover{background:var(--gold);transform:translateY(-4px)}
+  
+  /* ========== ANIMATIONS ========== */
+  .reveal{opacity:0;transform:translateY(40px);transition:all 1s cubic-bezier(0.4, 0, 0.2, 1)}
+  .reveal.active{opacity:1;transform:translateY(0)}
+  
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 1024px){
+    .container{padding:0 32px}
+    .nav-inner{padding:20px 32px}
+    .hero-grid,.story-grid,.faq-grid{grid-template-columns:1fr;gap:60px}
+    .hero-image{max-width:500px;margin:0 auto}
+    .bento-grid{grid-template-columns:repeat(2,1fr)}
+    .bento-card.large,.bento-card.wide{grid-column:span 2}
+    .bento-card.tall{grid-row:span 1}
+    .tabs-container{grid-template-columns:1fr}
+    .tabs-nav{position:static;flex-direction:row;overflow-x:auto;gap:8px;padding-bottom:8px}
+    .tab-btn{flex-shrink:0;min-width:200px}
+    .tab-panel.active{grid-template-columns:1fr}
+    .stats-grid{grid-template-columns:repeat(2,1fr)}
+    .blog-grid{grid-template-columns:1fr}
+    .newsletter-split{grid-template-columns:1fr}
+    .newsletter-image{height:280px}
+    .footer-grid{grid-template-columns:1fr 1fr;gap:48px}
+    .testimonial-slide{padding:40px 30px}
+  }
+  @media (max-width: 768px){
+    .container{padding:0 24px}
+    .nav-inner{padding:18px 24px}
+    .nav-links,.nav-cta .btn{display:none}
+    .menu-toggle{display:block}
+    .section{padding:100px 0}
+    .hero{padding:120px 0 60px;min-height:auto}
+    .hero-image-main{height:440px}
+    .hero-image-accent{width:160px;height:220px;bottom:-20px;left:-10px}
+    .hero-floating-card{top:20px;right:-10px;padding:14px 18px;min-width:160px}
+    .bento-grid{grid-template-columns:1fr}
+    .bento-card.large,.bento-card.wide{grid-column:span 1}
+    .stats-grid{grid-template-columns:1fr}
+    .footer-grid{grid-template-columns:1fr;gap:40px}
+    .blog-header{flex-direction:column;align-items:flex-start}
+    .cta-buttons{flex-direction:column;align-items:center}
+    .gallery-slide{flex:0 0 300px;height:420px}
+    .newsletter-content{padding:50px 30px}
+    .marquee-item{font-size:24px}
+  }
+</style>
+</head>
+<body>
+
+<!-- Scroll Progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark">B</span>
+      <span class="logo-text">BKU</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#journal">Journal</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-black">
+        <span>Contact Us</span>
+        <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
+      </a>
+      <button class="menu-toggle"><i data-lucide="menu"></i></button>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content reveal">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"><i data-lucide="sparkles" style="width:14px;height:14px"></i></span>
+          <span>Event Management & Creative Production</span>
+        </div>
+        <h1>Make moments that <em>move</em> people.</h1>
+        <p class="hero-text">
+          Step into experiences where imagination meets meticulous craft — stage by stage, light by light, story by story. BKU blends strategy, design, and flawless production to transform your vision into an unforgettable show.
+        </p>
+        <div class="hero-actions">
+          <a href="#story" class="btn btn-black">
+            <span>Discover BKU</span>
+            <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
+          </a>
+          <a href="#gallery" class="btn btn-outline">
+            <span>View Work</span>
+          </a>
+        </div>
+      </div>
+      <div class="hero-image reveal">
+        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=900&auto=format&fit=crop" alt="Event Production" class="hero-image-main">
+        <img src="https://images.unsplash.com/photo-1478146059778-26028b07395a?w=600&auto=format&fit=crop" alt="Behind Scenes" class="hero-image-accent">
+        <div class="hero-floating-card">
+          <div class="hero-floating-card-icon">
+            <i data-lucide="star" style="width:22px;height:22px;fill:currentColor"></i>
+          </div>
+          <div>
+            <div class="hero-floating-card-num">4.9</div>
+            <div class="hero-floating-card-label">Client Rating</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Marquee -->
+<div class="marquee">
+  <div class="marquee-track">
+    <div class="marquee-item">Weddings <span class="marquee-dot"></span> <em>Corporate</em> <span class="marquee-dot"></span> Concerts <span class="marquee-dot"></span> <em>Launches</em> <span class="marquee-dot"></span> Galas <span class="marquee-dot"></span> <em>Festivals</em> <span class="marquee-dot"></span> Activations <span class="marquee-dot"></span> <em>Summits</em></div>
+    <div class="marquee-item">Weddings <span class="marquee-dot"></span> <em>Corporate</em> <span class="marquee-dot"></span> Concerts <span class="marquee-dot"></span> <em>Launches</em> <span class="marquee-dot"></span> Galas <span class="marquee-dot"></span> <em>Festivals</em> <span class="marquee-dot"></span> Activations <span class="marquee-dot"></span> <em>Summits</em></div>
+  </div>
+</div>
+
+<!-- Story -->
+<section class="section section-black" id="story">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-content reveal">
+        <div class="section-label">Our Story</div>
+        <h2>From a single vision to <em>extraordinary</em> experiences.</h2>
+        <p>BKU was born from a simple belief — that every gathering, every celebration, every launch deserves to be more than just an event. It deserves to be a story told with intention, crafted with care, and remembered long after the lights go down.</p>
+        <p>From intimate weddings to grand corporate summits, celebrity concerts to private celebrations, our multidisciplinary team turns briefs into immersive environments. We handle every detail — from concept mood boards and 3D layouts to stage fabrication, lighting, sound, and post-event content — so you can simply be present in the moment we've created for you.</p>
+        <div class="story-signature">
+          <div>
+            <div class="story-signature-text">The BKU Collective</div>
+            <div class="story-signature-role">Founders & Creative Directors</div>
+          </div>
+        </div>
+      </div>
+      <div class="story-images reveal">
+        <div class="story-img"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&auto=format&fit=crop" alt="Luxury Event"></div>
+        <div class="story-img"><img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=600&auto=format&fit=crop" alt="Event Planning"></div>
+        <div class="story-img"><img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&auto=format&fit=crop" alt="Team Work"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Bento Grid -->
+<section class="section section-white" id="services">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="section-label center">What We Do</div>
+      <h2 class="section-title">Comprehensive Event Solutions</h2>
+      <p class="section-subtitle">From intimate gatherings to grand productions, we craft experiences across every scale and style.</p>
+    </div>
+    
+    <div class="bento-grid">
+      <div class="bento-card large reveal">
+        <div class="bento-image">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&auto=format&fit=crop" alt="Weddings">
+        </div>
+        <div class="bento-content">
+          <span class="bento-tag" style="color:var(--gold-light)">01 — Celebrations</span>
+          <h3>Weddings & Celebrations</h3>
+          <p>Your special day deserves perfection. We orchestrate every detail to create unforgettable celebrations that reflect your unique story and style.</p>
+          <a href="#" class="bento-link">
+            <span>Explore</span>
+            <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div class="bento-card wide reveal" style="transition-delay:0.1s">
+        <div class="bento-icon"><i data-lucide="building-2" style="width:24px;height:24px"></i></div>
+        <span class="bento-tag">02 — Corporate</span>
+        <h3>Corporate Events</h3>
+        <p>From product launches to annual summits, we create impactful corporate experiences that engage audiences and achieve business objectives.</p>
+        <a href="#" class="bento-link">
+          <span>Learn more</span>
+          <i data-lucide="arrow-right" style="width:12px;height:12px"></i>
+        </a>
+      </div>
+      
+      <div class="bento-card reveal" style="transition-delay:0.2s">
+        <div class="bento-icon"><i data-lucide="music" style="width:24px;height:24px"></i></div>
+        <span class="bento-tag">03 — Productions</span>
+        <h3>Concerts & Festivals</h3>
+        <p>Large-scale productions requiring technical mastery and creative vision.</p>
+        <a href="#" class="bento-link">
+          <span>Learn more</span>
+          <i data-lucide="arrow-right" style="width:12px;height:12px"></i>
+        </a>
+      </div>
+      
+      <div class="bento-card reveal" style="transition-delay:0.3s">
+        <div class="bento-icon"><i data-lucide="sparkles" style="width:24px;height:24px"></i></div>
+        <span class="bento-tag">04 — Experiences</span>
+        <h3>Brand Activations</h3>
+        <p>Immersive brand experiences that connect with your audience on a deeper level.</p>
+        <a href="#" class="bento-link">
+          <span>Learn more</span>
+          <i data-lucide="arrow-right" style="width:12px;height:12px"></i>
+        </a>
+      </div>
+      
+      <div class="bento-card wide reveal" style="transition-delay:0.2s">
+        <div class="bento-icon"><i data-lucide="camera" style="width:24px;height:24px"></i></div>
+        <span class="bento-tag">05 — Content</span>
+        <h3>Camera-Ready Storytelling</h3>
+        <p>Live capture, professional edits, and strategic social amplification — ensuring your event lives on far beyond the final curtain call.</p>
+        <a href="#" class="bento-link">
+          <span>Learn more</span>
+          <i data-lucide="arrow-right" style="width:12px;height:12px"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process Tabs -->
+<section class="section section-cream">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="section-label center">Our Process</div>
+      <h2 class="section-title">The BKU Journey</h2>
+      <p class="section-subtitle">A refined three-act process designed to bring your vision to life with precision, creativity, and care at every stage.</p>
+    </div>
+    
+    <div class="tabs-container reveal">
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-tab="tab1">
+          <span class="tab-num">01</span>
+          <span class="tab-title">Discovery</span>
+        </button>
+        <button class="tab-btn" data-tab="tab2">
+          <span class="tab-num">02</span>
+          <span class="tab-title">Design</span>
+        </button>
+        <button class="tab-btn" data-tab="tab3">
+          <span class="tab-num">03</span>
+          <span class="tab-title">Execution</span>
+        </button>
+      </div>
+      
+      <div class="tab-panels">
+        <div class="tab-panel active" id="tab1">
+          <div class="tab-panel-content">
+            <h3>We begin by listening.</h3>
+            <p>Understanding your vision, goals, audience, and the emotion you want to evoke. Every great event starts with a story worth telling — and we're here to uncover yours.</p>
+            <ul class="tab-features">
+              <li><i data-lucide="check" style="width:18px;height:18px"></i> In-depth vision & goal consultation</li>
+              <li><i data-lucide="check" style="width:18px;height:18px"></i> Audience & stakeholder analysis</li>
+              <li><i data-lucide="check" style="width:18px;height:18px"></i> Budget & timeline alignment</li>
+              <li><i data-lucide="check" style="width:18px;height:18px"></i> Venue shortlisting & feasibility</li>
+            </ul>
+          </div>
+          <div class="tab-panel-image">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&auto=format&fit=crop" alt="Discovery">
+          </div>
+        </div>
+        
+        <div class="tab-panel" id="tab2">
+          <div class="tab-panel-content">
+            <h3>Crafting the creative blueprint.</h3>
+            <p>Our creative team transforms insights into mood boards, 3D layouts, and detailed concepts that align with your brand aesthetics and event objectives — every detail considered.</p>
+            <ul class="tab-features">
+              <li><i data-lucide="check" style="width:18px;height:18px"></i> Concept mood boards & themes</li>
+              <li><i data-lucide="check" style="width:18px;height:18px"></i> 3D venue layouts & renders</li>
+              <li><i data-lucide="check" style="width:18px;height:18px"></i> Brand-aligned visual identity</li>
+              <li><i data-lucide="check" style="width:18px;height:18px"></i> Technical production planning</li>
+            </ul>
+          </div>
+          <div class="tab-panel-image">
+            <img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=800&auto=format&fit=crop" alt="Design">
+          </div>
+        </div>
+        
+        <div class="tab-panel" id="tab3">
+          <div class="tab-panel-content">
+            <h3>Flawless execution, every time.</h3>
+            <p>From venue sourcing to vendor coordination, stage fabrication to technical production — we handle every detail with precision so you can enjoy the spotlight.</p>
+            <ul class="tab-features">
+              <li><i data-lucide="check" style="width:18px;height:18px"></i> Full vendor & permit management</li>
+              <li><i data-lucide="check" style="width:18px;height:18px"></i> Stage, lighting & sound production</li>
+              <li><i data-lucide="check" style="width:18px;height:18px"></i> On-site showcalling & hospitality</li>
+              <li><i data-lucide="check" style="width:18px;height:18px"></i> Post-event content delivery</li>
+            </ul>
+          </div>
+          <div class="tab-panel-image">
+            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&auto=format&fit=crop" alt="Execution">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Horizontal Gallery -->
+<section class="section section-white" id="gallery">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Portfolio</div>
+      <h2 class="section-title">Selected Works</h2>
+      <p class="section-subtitle">A curated collection of our most memorable events and productions — drag to explore.</p>
+    </div>
+  </div>
+  <div class="gallery-scroll" id="galleryScroll">
+    <div class="gallery-slide">
+      <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&auto=format&fit=crop" alt="Wedding">
+      <div class="gallery-slide-overlay">
+        <h3>Royal Wedding</h3>
+        <p>Udaipur Palace • 500 Guests</p>
+      </div>
+    </div>
+    <div class="gallery-slide">
+      <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&auto=format&fit=crop" alt="Corporate">
+      <div class="gallery-slide-overlay">
+        <h3>Tech Summit 2026</h3>
+        <p>Corporate Conference</p>
+      </div>
+    </div>
+    <div class="gallery-slide">
+      <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&auto=format&fit=crop" alt="Concert">
+      <div class="gallery-slide-overlay">
+        <h3>Summer Festival</h3>
+        <p>Live Production</p>
+      </div>
+    </div>
+    <div class="gallery-slide">
+      <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&auto=format&fit=crop" alt="Launch">
+      <div class="gallery-slide-overlay">
+        <h3>Luxury Brand Launch</h3>
+        <p>Product Reveal</p>
+      </div>
+    </div>
+    <div class="gallery-slide">
+      <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=800&auto=format&fit=crop" alt="Gala">
+      <div class="gallery-slide-overlay">
+        <h3>Charity Gala</h3>
+        <p>Annual Fundraiser</p>
+      </div>
+    </div>
+    <div class="gallery-slide">
+      <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&auto=format&fit=crop" alt="Event">
+      <div class="gallery-slide-overlay">
+        <h3>Private Celebration</h3>
+        <p>Intimate Gathering</p>
+      </div>
+    </div>
+  </div>
+  <div class="gallery-controls">
+    <button class="gallery-btn" id="galleryPrev"><i data-lucide="arrow-left" style="width:18px;height:18px"></i></button>
+    <button class="gallery-btn" id="galleryNext"><i data-lucide="arrow-right" style="width:18px;height:18px"></i></button>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="section section-cream">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="section-label center">By The Numbers</div>
+      <h2 class="section-title">A Legacy of Excellence</h2>
+    </div>
+    <div class="stats-grid reveal">
+      <div class="stat-card">
+        <div class="stat-number">250<span class="plus">+</span></div>
+        <div class="stat-label">Events Completed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">180<span class="plus">+</span></div>
+        <div class="stat-label">Satisfied Clients</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">95<span class="plus">+</span></div>
+        <div class="stat-label">Vendor Partners</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">15</div>
+        <div class="stat-label">Industry Awards</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonial Carousel -->
+<section class="section section-white">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="section-label center">Client Stories</div>
+      <h2 class="section-title">Words From Those We've Served</h2>
+    </div>
+    
+    <div class="testimonial-carousel reveal">
+      <div class="testimonial-track">
+        <div class="testimonial-slides" id="testimonialSlides">
+          <div class="testimonial-slide">
+            <div class="testimonial-rating">
+              <i data-lucide="star" style="fill:currentColor;width:18px;height:18px"></i>
+              <i data-lucide="star" style="fill:currentColor;width:18px;height:18px"></i>
+              <i data-lucide="star" style="fill:currentColor;width:18px;height:18px"></i>
+              <i data-lucide="star" style="fill:currentColor;width:18px;height:18px"></i>
+              <i data-lucide="star" style="fill:currentColor;width:18px;height:18px"></i>
+            </div>
+            <div class="testimonial-quote-mark">"</div>
+            <p class="testimonial-quote">BKU transformed our vision into an experience that exceeded every expectation. Their attention to detail, creative vision, and flawless execution made our corporate launch truly unforgettable.</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop" alt="Client">
+              </div>
+              <div class="testimonial-info">
+                <h4>Rajesh Malhotra</h4>
+                <p>CEO, Malhotra Enterprises</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="testimonial-slide">
+            <div class="testimonial-rating">
+              <i data-lucide="star" style="fill:currentColor;width:18px;height:18px"></i>
+              <i data-lucide="star" style="fill:currentColor;width:18px;height:18px"></i>
+              <i data-lucide="star" style="fill:currentColor;width:18px;height:18px"></i>
+              <i data-lucide="star" style="fill:currentColor;width:18px;height:18px"></i>
+              <i data-lucide="star" style="fill:currentColor;width:18px;height:18px"></i>
+            </div>
+            <div class="testimonial-quote-mark">"</div>
+            <p class="testimonial-quote">From the first meeting to the final farewell, BKU treated our wedding like it was their own. Every detail was perfect — we couldn't have asked for a more magical day.</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&auto=format&fit=crop" alt="Client">
+              </div>
+              <div class="testimonial-info">
+                <h4>Priya & Arjun Kapoor</h4>
+                <p>Wedding Clients</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="testimonial-slide">
+            <div class="testimonial-rating">
+              <i data-lucide="star" style="fill:currentColor;width:18px;height:18px"></i>
+              <i data-lucide="star" style="fill:currentColor;width:18px;height:18px"></i>
+              <i data-lucide="star" style="fill:currentColor;width:18px;height:18px"></i>
+              <i data-lucide="star" style="fill:currentColor;width:18px;height:18px"></i>
+              <i data-lucide="star" style="fill:currentColor;width:18px;height:18px"></i>
+            </div>
+            <div class="testimonial-quote-mark">"</div>
+            <p class="testimonial-quote">The team at BKU doesn't just plan events — they create moments that last forever. Their creative vision and operational precision are truly world-class.</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&auto=format&fit=crop" alt="Client">
+              </div>
+              <div class="testimonial-info">
+                <h4>Vikram Singh</h4>
+                <p>Director, Singh Group</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="testPrev"><i data-lucide="arrow-left" style="width:18px;height:18px"></i></button>
+        <div class="carousel-dots" id="testDots">
+          <button class="carousel-dot active" data-index="0"></button>
+          <button class="carousel-dot" data-index="1"></button>
+          <button class="carousel-dot" data-index="2"></button>
+        </div>
+        <button class="carousel-btn" id="testNext"><i data-lucide="arrow-right" style="width:18px;height:18px"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Accordion -->
+<section class="section section-cream">
+  <div class="container">
+    <div class="faq-grid">
+      <div class="faq-sticky reveal">
+        <div class="section-label">FAQ</div>
+        <h2 class="section-title">Questions, answered.</h2>
+        <p class="section-subtitle" style="margin-top:20px">Everything you need to know about working with BKU. Can't find what you're looking for? Reach out to our team.</p>
+        <a href="#contact" class="btn btn-black" style="margin-top:32px">
+          <span>Get in Touch</span>
+          <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
+        </a>
+      </div>
+      
+      <div class="accordion reveal">
+        <div class="accordion-item active">
+          <button class="accordion-header">
+            <span class="accordion-title">What types of events does BKU manage?</span>
+            <span class="accordion-icon"><i data-lucide="plus" style="width:16px;height:16px"></i></span>
+          </button>
+          <div class="accordion-content" style="max-height:200px">
+            <div class="accordion-content-inner">We manage everything from intimate weddings and private celebrations to large-scale corporate summits, product launches, concerts, festivals, and brand activations. No event is too small or too ambitious.</div>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span class="accordion-title">How far in advance should we book?</span>
+            <span class="accordion-icon"><i data-lucide="plus" style="width:16px;height:16px"></i></span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">For large-scale events and peak wedding seasons, we recommend booking 6-12 months in advance. However, we also accommodate shorter timelines depending on availability and scope.</div>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span class="accordion-title">Do you work with clients outside India?</span>
+            <span class="accordion-icon"><i data-lucide="plus" style="width:16px;height:16px"></i></span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">Absolutely. We've produced events across the globe — from destination weddings in Europe to corporate summits in the Middle East. Our network extends worldwide.</div>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span class="accordion-title">What's included in your planning packages?</span>
+            <span class="accordion-icon"><i data-lucide="plus" style="width:16px;height:16px"></i></span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">Our packages are fully customizable. They can include venue sourcing, creative design, vendor management, technical production, on-site coordination, hospitality, and post-event content — tailored to your needs.</div>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span class="accordion-title">How do we get started?</span>
+            <span class="accordion-icon"><i data-lucide="plus" style="width:16px;height:16px"></i></span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">Simply reach out via the contact form or give us a call. We'll schedule a discovery call to understand your vision, then send you a tailored concept deck and costed plan within a week.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Blog -->
+<section class="section section-white" id="journal">
+  <div class="container">
+    <div class="blog-header reveal">
+      <div class="blog-title-wrapper">
+        <div class="section-label">Our Journal</div>
+        <h2 class="section-title">Insights & Stories</h2>
+        <p>Explore the latest trends, behind-the-scenes stories, and expert insights from the world of event production.</p>
+      </div>
+      <a href="#" class="blog-view-all">
+        <span>View All</span>
+        <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
+      </a>
+    </div>
+    
+    <div class="blog-grid">
+      <article class="blog-card reveal">
+        <div class="blog-image">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=700&auto=format&fit=crop" alt="Blog">
+          <span class="blog-category">Planning</span>
+        </div>
+        <div class="blog-content">
+          <div class="blog-meta">
+            <span><i data-lucide="calendar" style="width:13px;height:13px"></i> Sep 5, 2026</span>
+            <span><i data-lucide="clock" style="width:13px;height:13px"></i> 5 min</span>
+          </div>
+          <h3>10 Trends Shaping Event Production in 2026</h3>
+          <p>Discover the latest innovations in event technology, sustainability practices, and immersive experiences defining this year.</p>
+          <a href="#" class="blog-read-more">
+            <span>Read Article</span>
+            <i data-lucide="arrow-right" style="width:12px;height:12px"></i>
+          </a>
+        </div>
+      </article>
+      
+      <article class="blog-card reveal" style="transition-delay:0.1s">
+        <div class="blog-image">
+          <img src="https://images.unsplash.com/photo-1515187029135-18ee4032c99b?w=700&auto=format&fit=crop" alt="Blog">
+          <span class="blog-category">Behind the Scenes</span>
+        </div>
+        <div class="blog-content">
+          <div class="blog-meta">
+            <span><i data-lucide="calendar" style="width:13px;height:13px"></i> Aug 28, 2026</span>
+            <span><i data-lucide="clock" style="width:13px;height:13px"></i> 4 min</span>
+          </div>
+          <h3>Behind the Scenes: Creating a Luxury Wedding</h3>
+          <p>A detailed look at how we orchestrated a 300-guest destination wedding from concept to flawless execution.</p>
+          <a href="#" class="blog-read-more">
+            <span>Read Article</span>
+            <i data-lucide="arrow-right" style="width:12px;height:12px"></i>
+          </a>
+        </div>
+      </article>
+      
+      <article class="blog-card reveal" style="transition-delay:0.2s">
+        <div class="blog-image">
+          <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=700&auto=format&fit=crop" alt="Blog">
+          <span class="blog-category">Technology</span>
+        </div>
+        <div class="blog-content">
+          <div class="blog-meta">
+            <span><i data-lucide="calendar" style="width:13px;height:13px"></i> Aug 15, 2026</span>
+            <span><i data-lucide="clock" style="width:13px;height:13px"></i> 6 min</span>
+          </div>
+          <h3>The Future of Live Events: AR, VR, and Beyond</h3>
+          <p>How augmented and virtual reality are transforming the way we experience live events and productions worldwide.</p>
+          <a href="#" class="blog-read-more">
+            <span>Read Article</span>
+            <i data-lucide="arrow-right" style="width:12px;height:12px"></i>
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter Split -->
+<section class="section section-white" style="padding-top:0">
+  <div class="container">
+    <div class="newsletter-split reveal">
+      <div class="newsletter-image">
+        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1000&auto=format&fit=crop" alt="Newsletter">
+      </div>
+      <div class="newsletter-content">
+        <div class="section-label" style="color:var(--gold)">Stay Inspired</div>
+        <h2>Join the <em>BKU</em> community.</h2>
+        <p>Receive the latest insights, event trends, and creative inspiration delivered to your inbox. No spam — just stories worth reading.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+          <div class="newsletter-input-group">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit">
+              <span>Subscribe</span>
+              <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
+            </button>
+          </div>
+          <p class="newsletter-note">By subscribing, you agree to our Privacy Policy. Unsubscribe anytime.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section section-black cta" id="contact">
+  <div class="container">
+    <div class="cta-content reveal">
+      <div class="section-label center" style="justify-content:center">Get in Touch</div>
+      <h2>Let's create something <em>extraordinary</em> together.</h2>
+      <p>Share your date, venue, and goals to receive a tailored concept deck and costed plan. We're ready to bring your vision to life.</p>
+      <div class="cta-buttons">
+        <a href="mailto:hello@bku.com" class="btn btn-black">
+          <i data-lucide="mail" style="width:16px;height:16px"></i>
+          <span>Start a Project</span>
+        </a>
+        <a href="#gallery" class="btn btn-outline-light">
+          <i data-lucide="images" style="width:16px;height:16px"></i>
+          <span>View Portfolio</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <span class="logo-mark">B</span>
+          <span class="logo-text">BKU</span>
+        </a>
+        <p>A full-scale event management and creative production company that transforms ideas into unforgettable experiences. From corporate summits to celebrity concerts and private celebrations.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><i data-lucide="instagram" style="width:18px;height:18px"></i></a>
+          <a href="#" aria-label="Facebook"><i data-lucide="facebook" style="width:18px;height:18px"></i></a>
+          <a href="#" aria-label="Twitter"><i data-lucide="twitter" style="width:18px;height:18px"></i></a>
+          <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin" style="width:18px;height:18px"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#journal">Journal</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h5>Our Agency</h5>
+        <ul>
+          <li><a href="#story">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h5>Get in Touch</h5>
+        <ul>
+          <li><a href="tel:+917981636962"><i data-lucide="phone" style="width:16px;height:16px"></i> +91 79816 36962</a></li>
+          <li><a href="mailto:hello@bku.com"><i data-lucide="mail" style="width:16px;height:16px"></i> hello@bku.com</a></li>
+          <li><a href="#"><i data-lucide="map-pin" style="width:16px;height:16px"></i> Mumbai, India</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div>2026 © Developed by <strong style="color:rgba(245,241,232,0.8)">Akhi Digitals & Entertainments Pvt Ltd</strong></div>
+      <div class="footer-bottom-links">
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Privacy & Policy</a>
+        <a href="#">Help</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <i data-lucide="arrow-up" style="width:20px;height:20px"></i>
+</button>
+
+<script>
+  lucide.createIcons();
+  
+  // Scroll Progress Bar
+  const scrollProgress = document.getElementById('scrollProgress');
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = (scrollTop / docHeight) * 100;
+    scrollProgress.style.width = progress + '%';
+  });
+  
+  // Navigation
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
+  
+  // Mobile Menu
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  menuToggle.addEventListener('click', () => {
+    const isOpen = navLinks.style.display === 'flex';
+    navLinks.style.display = isOpen ? 'none' : 'flex';
+    if (!isOpen) {
+      Object.assign(navLinks.style, {
+        position:'absolute', top:'100%', left:'0', right:'0',
+        flexDirection:'column', background:'var(--white)',
+        padding:'32px', gap:'20px', boxShadow:'var(--shadow-lg)',
+        borderTop:'1px solid rgba(10,10,10,0.06)'
+      });
+    }
+  });
+  
+  // Reveal on scroll
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  
+  // Tabs
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabPanels = document.querySelectorAll('.tab-panel');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      tabPanels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      lucide.createIcons();
+    });
+  });
+  
+  // Gallery Horizontal Scroll
+  const galleryScroll = document.getElementById('galleryScroll');
+  let isDown = false, startX, scrollLeft;
+  galleryScroll.addEventListener('mousedown', (e) => {
+    isDown = true;
+    startX = e.pageX - galleryScroll.offsetLeft;
+    scrollLeft = galleryScroll.scrollLeft;
+  });
+  galleryScroll.addEventListener('mouseleave', () => isDown = false);
+  galleryScroll.addEventListener('mouseup', () => isDown = false);
+  galleryScroll.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - galleryScroll.offsetLeft;
+    galleryScroll.scrollLeft = scrollLeft - (x - startX) * 1.5;
+  });
+  document.getElementById('galleryPrev').addEventListener('click', () => {
+    galleryScroll.scrollBy({ left: -420, behavior: 'smooth' });
+  });
+  document.getElementById('galleryNext').addEventListener('click', () => {
+    galleryScroll.scrollBy({ left: 420, behavior: 'smooth' });
+  });
+  
+  // Testimonial Carousel
+  const slides = document.getElementById('testimonialSlides');
+  const dots = document.querySelectorAll('.carousel-dot');
+  let currentSlide = 0;
+  const totalSlides = 3;
+  
+  function goToSlide(i) {
+    currentSlide = (i + totalSlides) % totalSlides;
+    slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+    dots.forEach((d, idx) => d.classList.toggle('active', idx === currentSlide));
+  }
+  document.getElementById('testPrev').addEventListener('click', () => goToSlide(currentSlide - 1));
+  document.getElementById('testNext').addEventListener('click', () => goToSlide(currentSlide + 1));
+  dots.forEach(dot => dot.addEventListener('click', () => goToSlide(+dot.dataset.index)));
+  
+  // Auto-rotate testimonials
+  setInterval(() => goToSlide(currentSlide + 1), 6000);
+  
+  // Accordion
+  document.querySelectorAll('.accordion-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const item = header.parentElement;
+      const content = item.querySelector('.accordion-content');
+      const isActive = item.classList.contains('active');
+      
+      document.querySelectorAll('.accordion-item').forEach(i => {
+        i.classList.remove('active');
+        i.querySelector('.accordion-content').style.maxHeight = '0';
+      });
+      
+      if (!isActive) {
+        item.classList.add('active');
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+    });
+  });
+  
+  // Back to Top
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 500);
+  });
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === '#') return;
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (window.innerWidth <= 768) navLinks.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
