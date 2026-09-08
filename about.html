@@ -681,6 +681,73 @@
   .newsletter-input-group button:hover{background:var(--gold-light)}
   .newsletter-note{font-size:12px;color:rgba(245,241,232,0.5);margin-top:8px}
   
+  /* ========== CLIENTELE SECTION (WHITE BG) ========== */
+  .clients-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 50px;
+  }
+  .client-card {
+    background: #FAF9F6;
+    border: 1px dashed rgba(10, 10, 10, 0.12);
+    border-radius: var(--radius-md);
+    padding: 36px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 130px;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  .client-card:hover {
+    background: var(--white);
+    border-color: var(--gold);
+    border-style: solid;
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+  .client-placeholder-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray);
+    transition: color 0.3s ease;
+  }
+  .client-card:hover .client-placeholder-logo {
+    color: var(--black);
+  }
+  .client-logo-badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(184, 148, 95, 0.12);
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  .client-card:hover .client-logo-badge {
+    background: var(--black);
+    color: var(--gold);
+  }
+  .client-tag {
+    font-size: 11px;
+    color: var(--light-gray);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  
   /* ========== FOOTER ========== */
   footer{background:var(--black);color:var(--white);padding:100px 0 40px}
   .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:80px;margin-bottom:80px}
@@ -735,6 +802,7 @@
     .page-hero-grid,.story-split,.founder-grid{grid-template-columns:1fr;gap:60px}
     .page-hero-image{max-width:500px;margin:0 auto}
     .pillars-grid{grid-template-columns:repeat(2,1fr)}
+    .clients-grid{grid-template-columns:repeat(2,1fr)}
     .team-grid{grid-template-columns:repeat(2,1fr)}
     .stats-grid{grid-template-columns:1fr}
     .newsletter-split{grid-template-columns:1fr}
@@ -750,7 +818,7 @@
     .cta-social-bar{flex-wrap:wrap;gap:12px !important}
     .section{padding:70px 0}
     .page-hero{padding:130px 0 60px}
-    .pillars-grid,.team-grid{grid-template-columns:1fr}
+    .pillars-grid,.team-grid,.clients-grid{grid-template-columns:repeat(2,1fr);gap:14px}
     .footer-grid{grid-template-columns:1fr;gap:40px}
     .newsletter-content{padding:40px 20px}
     .page-hero-badge{position:relative;bottom:auto;left:auto;margin-top:20px;display:inline-flex}
@@ -1014,6 +1082,83 @@
         </div>
         <div class="stat-number" data-target="95">0<span class="plus">+</span></div>
         <div class="stat-label">Respected Vendors</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Clientele Section (White Background) -->
+<section class="section section-white" id="clientele">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="section-label center">Our Clientele</div>
+      <h2 class="section-title">Trusted by industry leaders.</h2>
+      <p class="section-subtitle">We partner with leading brands, corporate houses, luxury hosts, and global organizers to bring visionary events to life.</p>
+    </div>
+    
+    <div class="clients-grid">
+      <div class="client-card reveal">
+        <div class="client-logo-badge">
+          <i data-lucide="building-2" style="width:16px;height:16px"></i>
+        </div>
+        <div class="client-placeholder-logo">CLIENT LOGO 01</div>
+        <div class="client-tag">Corporate Partner</div>
+      </div>
+      
+      <div class="client-card reveal" style="transition-delay:0.05s">
+        <div class="client-logo-badge">
+          <i data-lucide="briefcase" style="width:16px;height:16px"></i>
+        </div>
+        <div class="client-placeholder-logo">CLIENT LOGO 02</div>
+        <div class="client-tag">Brand Activation</div>
+      </div>
+      
+      <div class="client-card reveal" style="transition-delay:0.1s">
+        <div class="client-logo-badge">
+          <i data-lucide="star" style="width:16px;height:16px"></i>
+        </div>
+        <div class="client-placeholder-logo">CLIENT LOGO 03</div>
+        <div class="client-tag">Luxury Weddings</div>
+      </div>
+      
+      <div class="client-card reveal" style="transition-delay:0.15s">
+        <div class="client-logo-badge">
+          <i data-lucide="globe" style="width:16px;height:16px"></i>
+        </div>
+        <div class="client-placeholder-logo">CLIENT LOGO 04</div>
+        <div class="client-tag">Global Summits</div>
+      </div>
+      
+      <div class="client-card reveal" style="transition-delay:0.2s">
+        <div class="client-logo-badge">
+          <i data-lucide="music" style="width:16px;height:16px"></i>
+        </div>
+        <div class="client-placeholder-logo">CLIENT LOGO 05</div>
+        <div class="client-tag">Concerts & Festivals</div>
+      </div>
+      
+      <div class="client-card reveal" style="transition-delay:0.25s">
+        <div class="client-logo-badge">
+          <i data-lucide="tv" style="width:16px;height:16px"></i>
+        </div>
+        <div class="client-placeholder-logo">CLIENT LOGO 06</div>
+        <div class="client-tag">Media & Entertainment</div>
+      </div>
+      
+      <div class="client-card reveal" style="transition-delay:0.3s">
+        <div class="client-logo-badge">
+          <i data-lucide="award" style="width:16px;height:16px"></i>
+        </div>
+        <div class="client-placeholder-logo">CLIENT LOGO 07</div>
+        <div class="client-tag">Private Galas</div>
+      </div>
+      
+      <div class="client-card reveal" style="transition-delay:0.35s">
+        <div class="client-logo-badge">
+          <i data-lucide="layers" style="width:16px;height:16px"></i>
+        </div>
+        <div class="client-placeholder-logo">CLIENT LOGO 08</div>
+        <div class="client-tag">Exhibitions & MICE</div>
       </div>
     </div>
   </div>
