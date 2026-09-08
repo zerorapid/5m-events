@@ -130,6 +130,18 @@
 <i class="w-3.5 h-3.5 text-obsidian" data-lucide="sparkles"></i>
 <span>Let's Talk!</span>
 </a>
+<button id="mobile-menu-btn" class="lg:hidden p-2.5 rounded-xl bg-obsidian text-white border border-champagne/30 hover:border-champagne focus:outline-none pointer-events-auto" aria-label="Toggle Navigation Menu">
+<i class="w-5 h-5 text-champagne" data-lucide="menu"></i>
+</button>
+</div>
+<div id="mobile-menu-drawer" class="hidden fixed inset-x-0 top-[72px] z-40 bg-obsidian/95 backdrop-blur-xl border-b border-champagne/20 p-6 flex flex-col gap-3 text-center transition-all pointer-events-auto shadow-2xl">
+<a class="py-2 font-heading text-sm font-semibold text-champagne border-b border-white/10" href="#" onclick="toggleMobileMenu()">Manifesto</a>
+<a class="py-2 font-heading text-sm font-medium text-zinc-300 hover:text-white border-b border-white/10" href="#about" onclick="toggleMobileMenu()">About</a>
+<a class="py-2 font-heading text-sm font-medium text-zinc-300 hover:text-white border-b border-white/10" href="#alchemy" onclick="toggleMobileMenu()">Pillars</a>
+<a class="py-2 font-heading text-sm font-medium text-zinc-300 hover:text-white border-b border-white/10" href="#services" onclick="toggleMobileMenu()">Services</a>
+<a class="py-2 font-heading text-sm font-medium text-zinc-300 hover:text-white border-b border-white/10" href="#protocol" onclick="toggleMobileMenu()">Process</a>
+<a class="py-2 font-heading text-sm font-medium text-zinc-300 hover:text-white border-b border-white/10" href="#chronicles" onclick="toggleMobileMenu()">Portfolio</a>
+<a class="py-2 font-heading text-sm font-medium text-white bg-champagne/20 rounded-xl py-2.5 border border-champagne/40 mt-1" href="#contact" onclick="toggleMobileMenu()">Let's Talk!</a>
 </div>
 </div>
 </header>
@@ -161,7 +173,7 @@
 </div>
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
 <div class="lg:col-span-8">
-<h1 class="font-heading font-black text-4xl sm:text-6xl md:text-7xl lg:text-[88px] tracking-tight leading-[1.02] text-white">
+<h1 class="font-heading font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl tracking-tight leading-[1.05] text-white">
   Make moments that <br/>
 <span class="gold-gradient-text italic font-light">move</span> people.
 </h1>
@@ -205,7 +217,7 @@
 </div>
 </div>
 <div class="relative z-10 max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12 mt-16">
-<div class="p-4 sm:p-5 rounded-2xl bg-black/60 backdrop-blur-glass border border-champagne/25 shadow-2xl grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 items-center">
+<div class="p-4 sm:p-5 rounded-2xl bg-black/60 backdrop-blur-glass border border-champagne/25 shadow-2xl grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 items-center">
 <div class="flex items-center gap-3 border-r border-white/10 pr-2">
 <div class="w-9 h-9 rounded-xl bg-champagne/15 text-champagne flex items-center justify-center shrink-0">
 <i class="w-4 h-4" data-lucide="volume-2"></i>
@@ -251,11 +263,7 @@
 <div class="text-xs font-heading font-bold text-white">VIP Hospitality</div>
 </div>
 </div>
-<div class="flex items-center justify-end">
-<a class="w-full text-center py-2 px-3 rounded-lg bg-champagne/20 hover:bg-champagne/30 text-champagne-light border border-champagne/40 font-mono text-xs font-semibold transition-all" href="#contact">
-  Check Dates →
-</a>
-</div>
+
 </div>
 <div class="mt-8 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
 <div class="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-champagne-light/70 font-semibold shrink-0">
@@ -735,69 +743,10 @@ Turnkey Site Coordination
 <div class="font-heading font-bold text-base sm:text-lg" id="hero-title-tag">Bespoke Structural Rigging &amp; Luxury Mandap</div>
 </div>
 </div>
-<!-- Floating Backstage Inset Thumbnail Layer -->
-<div class="absolute -bottom-6 -right-4 sm:-right-6 hidden sm:block">
-<div class="p-2 bg-white/95 backdrop-blur-glass rounded-2xl border border-champagne/50 shadow-2xl transition-transform hover:-translate-y-1 duration-300">
-<div class="relative overflow-hidden rounded-xl">
-<img alt="Palatial setup" class="w-52 h-36 object-cover rounded-xl border-2 border-amber-400/40 shadow-2xl" id="floating-inset-img" src="https://lh3.googleusercontent.com/aida/AEtjO1XdDbqptIauweAPvaQHIMO-AqPMYKakuvkaIWtZNpi0FCALxG0W0LbCRuO0Ij0_hQHVQFOVAY_leaW3Ui_3Bj9fFMwm3BmvW608SpnWp2AOzlrtQFUqaAwmNHxWNBZPiG4tjAFBE5Dyz5vfOHsIhpXl6nidWPzNNgf1loZoUSZ-XfQaTLvG8yebT1aW9CKihuR_6a6HOdeFJPOmO7vE1--V-MKJUe1jbdJPm1-uISIaUVY1INipn0qsVQ"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-<div class="absolute bottom-2 left-2 right-2 flex items-center justify-between text-white">
-<span class="font-mono text-[9px] uppercase tracking-wider text-champagne-light font-bold" id="inset-label">AERIAL RECEPTION VIEW</span>
-<i class="w-3.5 h-3.5 text-champagne" data-lucide="maximize-2"></i>
+
 </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<!-- Interactive Discipline Showcase Quick-Switch Dock -->
-<div class="mt-12 pt-8 border-t border-ivory-border">
-<div class="flex items-center justify-between mb-4">
-<span class="font-mono text-xs uppercase tracking-wider text-zinc-500 font-bold flex items-center gap-2">
-<i class="w-4 h-4 text-champagne-dark" data-lucide="layout-grid"></i>
-<span>EXPLORE ALTERNATE PRODUCTIONS</span>
-</span>
-<span class="text-xs font-mono text-champagne-dark font-medium">Click thumbnail to switch console</span>
-</div>
-<div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-<!-- Quick Switch 1: Corporate -->
-<div class="group cursor-pointer relative rounded-2xl overflow-hidden border border-ivory-border hover:border-champagne shadow-xs transition-all hover:scale-[1.02]" onclick="switchVertical(1)">
-<img alt="Corporate" class="w-full h-36 object-cover rounded-xl group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AEtjO1VjNZ8aMIbsZhmOrLi8QC1GDfCSTLABPfRxPPo1siFd4WjIHyuOP8zN-qHby5nqY8TaCggs2nQ1nOUMuWVX7DZPcCrdaXBYljmWAVdHioa8QiiaKMvYh4tPpa4UzmQHxsQWEjt3aVEuqJLI-UYaV44mgJQwW-aghjzla0AAGpG6Nib9PPOi12mWmLo4BbjXG5b0J8tT3oPsgchPGhCVonbwVVXiPq4nENum7toavJO_v6SdExHxsfLtPw"/>
-<div class="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/30 to-transparent"></div>
-<div class="absolute bottom-2.5 left-3 right-3 text-white">
-<span class="font-mono text-[9px] uppercase tracking-wider text-champagne-light font-bold block">02 / CORPORATE</span>
-<span class="font-heading font-bold text-xs block truncate">Leadership Keynotes</span>
-</div>
-</div>
-<!-- Quick Switch 2: Launch -->
-<div class="group cursor-pointer relative rounded-2xl overflow-hidden border border-ivory-border hover:border-champagne shadow-xs transition-all hover:scale-[1.02]" onclick="switchVertical(5)">
-<img alt="Launch" class="w-full h-36 object-cover rounded-xl group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AEtjO1Ug0RjgOGg1McFgo4BQVT_7xrbqDlgAY87Je9Io4o-cKshG4OFEU7NfwJwAjEIcCLQBGWVSKFT_myHsZK31GhyM8DT6MKqk1ljqDYNGSHgt3eTRDvp9NpTqTSjM6h6ye8u4GWM7CqR0nbeeKnnGUM_Hg45YsUfYy0lLoBxTfkvgcaxT9AJU8J4pa8-kBz8CbnePazcpOdamCJSQM2ElB3I9oVHzOitAG8UGgQJoCG63Gtoe8O338tG4bg"/>
-<div class="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/30 to-transparent"></div>
-<div class="absolute bottom-2.5 left-3 right-3 text-white">
-<span class="font-mono text-[9px] uppercase tracking-wider text-champagne-light font-bold block">06 / LAUNCHES</span>
-<span class="font-heading font-bold text-xs block truncate">Retail &amp; Brand Debuts</span>
-</div>
-</div>
-<!-- Quick Switch 3: Concert / MICE -->
-<div class="group cursor-pointer relative rounded-2xl overflow-hidden border border-ivory-border hover:border-champagne shadow-xs transition-all hover:scale-[1.02]" onclick="switchVertical(0)">
-<img alt="Concert" class="w-full h-36 object-cover rounded-xl group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AEtjO1Um00cmwHGcOEfRhlUuXAfubsbiDb3vHV7D7SUN7_uORMLF_sKGucYtl6KAF1XkA16k9sjekwzuBoWmrczUAPsPn-sPxANuASjvkC_xjIIpEhCnz-rz-OcW_OUAvKwXqkc5ytJKCitPYH7X1yG2IzpLmZ7pc1IxJ_AAeWHSgUfXX-x12xDPKDjnchyzp4w5IDg3LRRI4ExqSMSMlUZWGwZeioQ227EHyynKbid0ANWf_58PMmLFwaUn"/>
-<div class="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/30 to-transparent"></div>
-<div class="absolute bottom-2.5 left-3 right-3 text-white">
-<span class="font-mono text-[9px] uppercase tracking-wider text-champagne-light font-bold block">01 / ARENAS</span>
-<span class="font-heading font-bold text-xs block truncate">Festivals &amp; M.I.C.E</span>
-</div>
-</div>
-<!-- Quick Switch 4: Private Gala -->
-<div class="group cursor-pointer relative rounded-2xl overflow-hidden border border-ivory-border hover:border-champagne shadow-xs transition-all hover:scale-[1.02]" onclick="switchVertical(3)">
-<img alt="Private Gala" class="w-full h-36 object-cover rounded-xl group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AEtjO1Xqgf4mptAIgY2Q6M2c2F4CWZYJfyI-KUg-_utu25mIwrzp0UdO51l02zUY-rzbMrVrfa0pAkd0LJ6_oKyEIgWVHgfSEu7SUCa25_8wEmTSn0QSyNbyNzdRrbg_olLUtdN5gC-TGGBSrVAhEQxg466n-a6dN1JHv_BFyInfpU0aL3zkULUNbbJWkLHYj2_1Yoz1vqTDpyAVD9xCZ0tF1pUw2Lg57Ve2fn5eTU0Y5mGnXLZB2o3IbWMK"/>
-<div class="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/30 to-transparent"></div>
-<div class="absolute bottom-2.5 left-3 right-3 text-white">
-<span class="font-mono text-[9px] uppercase tracking-wider text-champagne-light font-bold block">04 / PRIVATE GALA</span>
-<span class="font-heading font-bold text-xs block truncate">Intimate Soirees</span>
-</div>
-</div>
-</div>
-</div>
+
 </div>
 </div>
 </section>
@@ -821,7 +770,7 @@ Turnkey Site Coordination
   Every event is planned and delivered with clarity, precision, and dedicated show management.
 </p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 <div class="p-6 rounded-2xl bg-white/[0.04] backdrop-blur-glass border border-white/10 hover:border-champagne transition-all group flex flex-col justify-between">
 <div>
 <div class="font-mono text-xs text-champagne font-bold mb-4 flex items-center justify-between">
@@ -933,32 +882,7 @@ Turnkey Site Coordination
 </div>
 </div>
 </section>
-<!-- ========================================================================= -->
-<!-- 8. MID-PAGE HIGH-IMPACT COLLABORATIVE BANNER                              -->
-<!-- ========================================================================= -->
-<section class="py-20 bg-ivory-warm">
-<div class="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
-<div class="relative rounded-3xl overflow-hidden bg-gradient-to-br from-obsidian via-[#14120f] to-obsidian p-8 sm:p-14 text-center flex flex-col items-center border border-champagne/40 shadow-2xl">
-<div class="absolute -right-20 -bottom-20 w-96 h-96 bg-champagne/20 rounded-full blur-3xl pointer-events-none"></div>
-<div class="absolute -left-20 -top-20 w-96 h-96 bg-champagne-glow/20 rounded-full blur-3xl pointer-events-none"></div>
-<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 text-champagne text-xs font-mono uppercase tracking-widest mb-4 border border-champagne/30">
-<i class="w-3.5 h-3.5 text-champagne" data-lucide="sparkle"></i>
-<span>Collaborative Excellence</span>
-<i class="w-3.5 h-3.5 text-champagne" data-lucide="sparkle"></i>
-</div>
-<h2 class="font-heading text-3xl sm:text-5xl font-black text-white max-w-3xl tracking-tight mb-4 text-balance leading-tight">
-  Let's Plan Your Event Ideas Together!
-</h2>
-<p class="text-zinc-300 text-sm sm:text-base max-w-2xl leading-relaxed mb-8 font-light text-balance">
-  From concept to celebration, our team turns your vision into a seamless and unforgettable event experience. Let's collaborate to make your next occasion extraordinary.
-</p>
-<a class="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl bg-gradient-to-r from-champagne via-champagne-glow to-champagne-dark text-obsidian font-heading font-bold text-xs uppercase tracking-wider shadow-gold-glow hover:scale-105 transition-all" href="#contact">
-<i class="w-4 h-4 text-obsidian" data-lucide="message-square"></i>
-<span>Let's Talk!</span>
-</a>
-</div>
-</div>
-</section>
+
 <!-- ========================================================================= -->
 <!-- 9. WHY CHOOSE US: EXPERTISE STATEMENT                                     -->
 <!-- ========================================================================= -->
@@ -1203,31 +1127,7 @@ Turnkey Site Coordination
 </div>
 </div>
 </section>
-<!-- ========================================================================= -->
-<!-- 12. NEWSLETTER & COMMUNITY SIGNUP                                         -->
-<!-- ========================================================================= -->
-<section class="py-20 bg-ivory-warm border-b border-ivory-border">
-<div class="max-w-3xl mx-auto px-4 sm:px-8 text-center">
-<div class="w-14 h-14 rounded-2xl bg-white border border-champagne/30 text-champagne flex items-center justify-center mx-auto mb-4 shadow-sm">
-<i class="w-7 h-7" data-lucide="mail"></i>
-</div>
-<h2 class="font-heading text-2xl sm:text-4xl font-black text-obsidian tracking-tight mb-3">
-  Subscribe To Our Newsletter
-</h2>
-<p class="text-zinc-600 text-sm leading-relaxed mb-8 max-w-xl mx-auto font-normal">
-  Subscribe to receive the latest insights, event trends, and creative inspiration delivered to your inbox. Join the 5thMedia community and stay connected with the future of event innovation.
-</p>
-<form class="flex flex-col sm:flex-row items-center gap-3 max-w-md mx-auto" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Fi5th Media!');">
-<input class="w-full px-4 py-3.5 rounded-xl border border-zinc-300 bg-white text-zinc-900 placeholder:text-zinc-400 text-sm focus:outline-none focus:border-champagne focus:ring-1 focus:ring-champagne shadow-xs" placeholder="Enter your email address" required="" type="email"/>
-<button class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-obsidian text-white hover:bg-champagne hover:text-obsidian font-heading text-xs font-bold uppercase tracking-wider shrink-0 transition-all shadow-md" type="submit">
-  Subscribe
-</button>
-</form>
-<span class="font-mono text-[10px] text-zinc-500 tracking-widest uppercase block mt-4">
-  No spam. Only curated production elegance.
-</span>
-</div>
-</section>
+
 <!-- ========================================================================= -->
 <!-- 13. INTERACTIVE CONCIERGE & HYDERABAD HQ FINALE                           -->
 <!-- ========================================================================= -->
@@ -1399,6 +1299,13 @@ Turnkey Site Coordination
 </footer>
 <!-- Interactive Vanilla JS Switcher for Verticals -->
 <script>
+  function toggleMobileMenu() {
+    const drawer = document.getElementById('mobile-menu-drawer');
+    if (drawer) {
+      drawer.classList.toggle('hidden');
+    }
+  }
+
   const verticalsData = [
     {
       code: "M.I.C.E & Arenas",
@@ -1535,11 +1442,11 @@ Turnkey Site Coordination
     
     document.getElementById('primary-hero-img').src = data.heroImg;
     document.getElementById('primary-hero-img').alt = data.title;
-    document.getElementById('floating-inset-img').src = data.insetImg;
+    if (document.getElementById('floating-inset-img')) document.getElementById('floating-inset-img').src = data.insetImg;
     document.getElementById('hero-badge-tag').textContent = data.heroBadge;
     document.getElementById('hero-geo-tag').textContent = data.heroGeo;
     document.getElementById('hero-title-tag').textContent = data.heroTitle;
-    document.getElementById('inset-label').textContent = data.insetLabel;
+    if (document.getElementById('inset-label')) document.getElementById('inset-label').textContent = data.insetLabel;
 
     // Refresh icons inside dynamically updated parts if necessary
     lucide.createIcons();
