@@ -107,8 +107,9 @@
     content: ''; position: absolute; left: 0; bottom: 0;
     width: 0; height: 1px; background: var(--gold); transition: width 0.35s ease;
   }
-  .nav-links a:hover::after { width: 100%; }
+  .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
   .nav-links a:hover { color: var(--black); }
+  .nav-links a.active { color: var(--gold); }
   
   .nav-cta { display: flex; align-items: center; gap: 20px; }
   .btn {
@@ -289,8 +290,8 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About Us</a></li>
       <li><a href="services.html">Services</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
       <li><a href="blogs.html">Journal</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
     <div class="nav-cta">
@@ -421,7 +422,7 @@
       <div>2026 © Developed by <strong style="color:rgba(245,241,232,0.85)">Akhi Digitals & Entertainments Pvt Ltd</strong></div>
       <div class="footer-bottom-links">
         <a href="terms.html">Terms & Conditions</a>
-        <a href="privacy.html">Privacy & Policy</a>
+        <a href="privacy.html">Privacy Policy</a>
         <a href="#">Help</a>
       </div>
     </div>
@@ -476,6 +477,13 @@
   }
   menuToggle.addEventListener('click', toggleMobileMenu);
   mobileOverlay.addEventListener('click', toggleMobileMenu);
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+      mobileOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
 
   // Scroll Reveal
   const revealObserver = new IntersectionObserver((entries) => {

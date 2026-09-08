@@ -112,8 +112,8 @@
     width:0;height:2px;background:var(--gold);
     transition:width .35s ease;
   }
-  .nav-links a:hover{color:var(--black)}
-  .nav-links a:hover::after{width:100%}
+  .nav-links a:hover, .nav-links a.active{color:var(--black)}
+  .nav-links a:hover::after, .nav-links a.active::after{width:100%}
   
   .nav-cta{display:flex;align-items:center;gap:20px}
   
@@ -1106,12 +1106,12 @@
 <!-- Navigation -->
 <nav class="nav" id="nav">
   <div class="nav-inner">
-    <a href="#" class="logo">
+    <a href="index.html" class="logo">
       <span class="logo-mark">B</span>
       <span class="logo-text">BKU</span>
     </a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="index.html#home">Home</a></li>
+      <li><a href="index.html" class="active">Home</a></li>
       <li><a href="about.html">About Us</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="blogs.html">Journal</a></li>
@@ -1795,7 +1795,7 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="#" class="logo">
+        <a href="index.html" class="logo">
           <span class="logo-mark">B</span>
           <span class="logo-text">BKU</span>
         </a>
@@ -1892,6 +1892,12 @@
   
   menuToggle.addEventListener('click', toggleMobileMenu);
   mobileOverlay.addEventListener('click', toggleMobileMenu);
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+      mobileOverlay.classList.remove('active');
+    });
+  });
   
   // Hero Video Showcase Controls & Lightbox Modal
   const heroVideo = document.getElementById('heroVideo');

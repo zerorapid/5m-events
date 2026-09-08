@@ -916,8 +916,8 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About Us</a></li>
       <li><a href="services.html" class="active">Services</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
       <li><a href="blogs.html">Journal</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
     <div class="nav-cta">
@@ -2167,6 +2167,13 @@
   }
   menuToggle.addEventListener('click', toggleMobileMenu);
   mobileOverlay.addEventListener('click', toggleMobileMenu);
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+      mobileOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
 
   // Scroll Reveal Observer
   const observer = new IntersectionObserver((entries) => {
