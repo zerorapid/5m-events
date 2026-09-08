@@ -1,447 +1,1576 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lumina Event Management</title>
-    <style>
-        /* --- RESET & BASE STYLES --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        body {
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* --- HEADER & NAVIGATION --- */
-        header {
-            background: #fff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: #1e3a8a;
-            letter-spacing: -1px;
-        }
-
-        .logo span {
-            color: #f59e0b;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            font-weight: 500;
-            color: #4b5563;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #1e3a8a;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 28px;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background: #1e3a8a;
-            color: #fff;
-        }
-
-        .btn-primary:hover {
-            background: #1e40af;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-            color: #fff;
-            padding: 100px 0;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            font-weight: 800;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            max-width: 600px;
-            margin: 0 auto 40px;
-            opacity: 0.9;
-        }
-
-        .hero .btn {
-            background: #f59e0b;
-            color: #1e3a8a;
-            font-size: 1.1rem;
-        }
-
-        .hero .btn:hover {
-            background: #fbbf24;
-            transform: translateY(-2px);
-        }
-
-        /* --- SECTION STYLES --- */
-        section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            color: #1e3a8a;
-            margin-bottom: 15px;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: #6b7280;
-            font-size: 1.1rem;
-            margin-bottom: 50px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* --- UPCOMING EVENTS --- */
-        .events-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .event-card {
-            background: #fff;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .event-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-
-        .event-img {
-            height: 200px;
-            background: #e5e7eb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-        }
-
-        .event-card:nth-child(1) .event-img { background: linear-gradient(45deg, #fef3c7, #fde68a); }
-        .event-card:nth-child(2) .event-img { background: linear-gradient(45deg, #dbeafe, #bfdbfe); }
-        .event-card:nth-child(3) .event-img { background: linear-gradient(45deg, #fce7f3, #fbcfe8); }
-
-        .event-content {
-            padding: 25px;
-        }
-
-        .event-date {
-            color: #f59e0b;
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .event-content h3 {
-            font-size: 1.4rem;
-            margin: 10px 0;
-            color: #111827;
-        }
-
-        .event-content p {
-            color: #6b7280;
-            margin-bottom: 20px;
-        }
-
-        .event-link {
-            color: #1e3a8a;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        /* --- SERVICES SECTION --- */
-        .services {
-            background: #fff;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .service-item {
-            text-align: center;
-            padding: 40px 20px;
-            border-radius: 15px;
-            transition: background 0.3s ease;
-        }
-
-        .service-item:hover {
-            background: #f8fafc;
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        .service-item h3 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: #1e3a8a;
-        }
-
-        .service-item p {
-            color: #6b7280;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background: #111827;
-            color: #9ca3af;
-            padding: 60px 0 30px;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-col h4 {
-            color: #fff;
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-        }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 10px;
-        }
-
-        .footer-col a:hover {
-            color: #f59e0b;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid #374151;
-            font-size: 0.9rem;
-        }
-
-        /* --- RESPONSIVE DESIGN --- */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none; /* Simplified for this demo; hide on mobile */
+<html class="scroll-smooth antialiased" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fi5th Media | 5M Events — Avant-Garde Scenography &amp; Production Atelier</title>
+<!-- Typography strictly: Geist & Open Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&amp;family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;family=Geist+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Lucide Icons Script -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Open Sans', 'sans-serif'],
+            display: ['Geist', 'sans-serif'],
+            mono: ['Geist Mono', 'monospace'],
+          },
+          colors: {
+            obsidian: {
+              DEFAULT: '#0a0a0a',
+              card: '#121212',
+              elevated: '#191919',
+              border: '#27272a'
+            },
+            ivory: {
+              DEFAULT: '#faf9f6',
+              surface: '#ffffff',
+              warm: '#f5f3ee',
+              muted: '#ede9e1',
+              border: '#e4dec7'
+            },
+            champagne: {
+              DEFAULT: '#c5a059',
+              light: '#e5c378',
+              glow: '#d4af37',
+              dark: '#997736',
+              surface: '#fbf8f0'
             }
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            .hero p {
-                font-size: 1.1rem;
-            }
-            .section-title {
-                font-size: 2rem;
-            }
+          },
+          boxShadow: {
+            'gold-glow': '0 0 50px -10px rgba(212, 175, 55, 0.35)',
+            'gold-sm': '0 4px 20px -2px rgba(197, 160, 89, 0.15)',
+            'glass-light': '0 20px 40px -15px rgba(0,0,0,0.06)',
+            'glass-dark': '0 25px 50px -12px rgba(0,0,0,0.7)'
+          }
         }
-    </style>
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #faf9f6;
+      color: #18181b;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, h5, h6, .font-heading {
+      font-family: 'Geist', sans-serif;
+    }
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #f7eedb 0%, #e5c378 30%, #c5a059 65%, #997736 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .gold-gradient-text-light {
+      background: linear-gradient(135deg, #b0893b 0%, #8c6823 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .backdrop-blur-glass {
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    .telemetry-grid {
+      background-image: radial-gradient(rgba(197, 160, 89, 0.15) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .tab-active {
+      background-color: #0a0a0a !important;
+      color: #ffffff !important;
+      border-color: #c5a059 !important;
+      box-shadow: 0 10px 25px -5px rgba(197, 160, 89, 0.25);
+    }
+    .tab-active .icon-box {
+      background-color: #c5a059 !important;
+      color: #0a0a0a !important;
+    }
+    .tab-active .num-tag {
+      color: #e5c378 !important;
+    }
+    .tab-active .sub-tag {
+      color: #e4dec7 !important;
+    }
+  </style>
 </head>
-<body>
+<body class="selection:bg-champagne selection:text-white">
+<!-- ========================================================================= -->
+<!-- 1. AVANT-GARDE ARCHITECTURAL GLASS NAV BAR                                -->
+<!-- ========================================================================= -->
+<header class="fixed top-0 left-0 w-full z-50 px-3 sm:px-6 lg:px-10 pt-4 pointer-events-none transition-all duration-500">
+<div class="max-w-[1440px] mx-auto flex items-center justify-between pointer-events-auto">
+<a class="group flex items-center gap-3 bg-obsidian/90 backdrop-blur-glass pl-3 pr-5 py-2 rounded-2xl border border-champagne/30 shadow-2xl transition-all duration-300 hover:border-champagne" href="#">
+<div class="w-9 h-9 rounded-xl bg-gradient-to-br from-champagne-light via-champagne to-champagne-dark p-[1.5px] shadow-sm flex items-center justify-center">
+<div class="w-full h-full bg-obsidian rounded-[10px] flex items-center justify-center">
+<span class="font-heading font-black text-xs text-champagne-light tracking-tighter">5M</span>
+</div>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-heading font-extrabold text-sm tracking-tight text-white">Fi5th Media</span>
+<span class="w-1.5 h-1.5 rounded-full bg-champagne animate-pulse"></span>
+</div>
+<span class="font-mono text-[9px] uppercase tracking-[0.2em] text-champagne-light/70 font-semibold">5THMEDIA • 5M EVENTS</span>
+</div>
+</a>
+<nav class="hidden lg:flex items-center gap-1.5 bg-obsidian/85 backdrop-blur-glass p-1.5 rounded-full border border-white/10 shadow-glass-dark">
+<a class="px-4 py-2 rounded-full font-heading text-xs font-semibold text-obsidian bg-champagne-light shadow-sm transition-all flex items-center gap-1.5" href="#">
+<i class="w-3.5 h-3.5" data-lucide="compass"></i>
+<span>Manifesto</span>
+</a>
+<a class="px-4 py-2 rounded-full font-heading text-xs font-medium text-zinc-300 hover:text-white hover:bg-white/5 transition-all" href="#about">About</a>
+<a class="px-4 py-2 rounded-full font-heading text-xs font-medium text-zinc-300 hover:text-white hover:bg-white/5 transition-all" href="#alchemy">Pillars</a>
+<a class="px-4 py-2 rounded-full font-heading text-xs font-medium text-zinc-300 hover:text-white hover:bg-white/5 transition-all" href="#services">Verticals</a>
+<a class="px-4 py-2 rounded-full font-heading text-xs font-medium text-zinc-300 hover:text-white hover:bg-white/5 transition-all" href="#protocol">Protocol</a>
+<a class="px-4 py-2 rounded-full font-heading text-xs font-medium text-zinc-300 hover:text-white hover:bg-white/5 transition-all" href="#chronicles">Archive</a>
+<a class="px-4 py-2 rounded-full font-heading text-xs font-medium text-zinc-300 hover:text-white hover:bg-white/5 transition-all" href="#contact">Atelier</a>
+</nav>
+<div class="flex items-center gap-2 sm:gap-3">
+<a class="hidden sm:inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-obsidian/80 backdrop-blur-glass text-champagne-light border border-champagne/25 font-mono text-xs hover:border-champagne transition-all" href="tel:+917981636962">
+<i class="w-3.5 h-3.5 text-champagne" data-lucide="phone-call"></i>
+<span>+91 79816 36962</span>
+</a>
+<a class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-champagne via-champagne-glow to-champagne-dark text-obsidian font-heading font-bold text-xs uppercase tracking-wider shadow-gold-glow hover:scale-[1.03] active:scale-[0.98] transition-all" href="#contact">
+<i class="w-3.5 h-3.5 text-obsidian" data-lucide="sparkles"></i>
+<span>Let's Talk!</span>
+</a>
+</div>
+</div>
+</header>
+<!-- ========================================================================= -->
+<!-- 2. HERO: CINEMATIC EDITORIAL CURVED BACKDROP + STAGE TELEMETRY HUD        -->
+<!-- ========================================================================= -->
+<section class="relative min-h-screen pt-32 pb-24 flex flex-col justify-between overflow-hidden bg-[#070707] text-white">
+<div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+<img alt="Fi5th Media Staging" class="w-full h-full object-cover object-center opacity-30 mix-blend-screen scale-105 filter brightness-90 contrast-110" src="https://lh3.googleusercontent.com/aida/AEtjO1XdDbqptIauweAPvaQHIMO-AqPMYKakuvkaIWtZNpi0FCALxG0W0LbCRuO0Ij0_hQHVQFOVAY_leaW3Ui_3Bj9fFMwm3BmvW608SpnWp2AOzlrtQFUqaAwmNHxWNBZPiG4tjAFBE5Dyz5vfOHsIhpXl6nidWPzNNgf1loZoUSZ-XfQaTLvG8yebT1aW9CKihuR_6a6HOdeFJPOmO7vE1--V-MKJUe1jbdJPm1-uISIaUVY1INipn0qsVQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#070707] via-[#070707]/80 to-[#070707]/60"></div>
+<div class="absolute -top-48 -left-48 w-[650px] h-[650px] bg-champagne/15 rounded-full blur-[160px]"></div>
+<div class="absolute top-1/2 -right-36 w-[600px] h-[600px] bg-champagne-glow/15 rounded-full blur-[150px]"></div>
+<div class="absolute inset-0 telemetry-grid opacity-25"></div>
+</div>
+<div class="relative z-10 max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12 flex-1 flex flex-col justify-center my-auto">
+<div class="flex flex-wrap items-center gap-3 mb-8">
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 backdrop-blur-glass border border-champagne/30 text-champagne-light font-mono text-[11px] tracking-wider uppercase">
+<span class="w-2 h-2 rounded-full bg-champagne animate-ping"></span>
+<span>CHAPTER 01 / THE MANIFESTO</span>
+</div>
+<div class="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/40 border border-white/10 text-zinc-400 font-mono text-[11px]">
+<i class="w-3.5 h-3.5 text-champagne" data-lucide="radio"></i>
+<span>Hyderabad Atelier • Pan-India Deployments</span>
+</div>
+<div class="inline-flex items-center gap-1 text-xs font-mono text-zinc-400">
+<i class="w-3.5 h-3.5 text-champagne" data-lucide="shield-check"></i>
+<span>Available For 2025–2026 Production</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
+<div class="lg:col-span-8">
+<h1 class="font-heading font-black text-4xl sm:text-6xl md:text-7xl lg:text-[88px] tracking-tight leading-[1.02] text-white">
+  Make moments that <br/>
+<span class="gold-gradient-text italic font-light">move</span> people.
+</h1>
+<p class="mt-8 text-lg sm:text-xl text-zinc-300 font-light leading-relaxed max-w-2xl">
+  Step into experiences where imagination meets meticulous craft stage by stage, light by light, story by story. Fi5th Media blends strategy, design, and flawless production to transform your vision into an unforgettable show.
+</p>
+<div class="mt-10 flex flex-wrap items-center gap-4">
+<a class="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-champagne via-champagne-glow to-champagne-dark text-obsidian font-heading font-bold text-xs uppercase tracking-widest shadow-gold-glow hover:scale-105 transition-all" href="#services">
+<i class="w-4 h-4 text-obsidian" data-lucide="layers"></i>
+<span>Our Services</span>
+</a>
+<a class="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-obsidian/80 backdrop-blur-glass border border-champagne/30 text-white font-heading font-semibold text-xs uppercase tracking-widest hover:border-champagne hover:bg-champagne/10 transition-all" href="#contact">
+<i class="w-4 h-4 text-champagne" data-lucide="calendar"></i>
+<span>Let's Plan Together</span>
+</a>
+<a class="inline-flex items-center gap-2 text-xs font-mono text-champagne-light hover:text-white transition-colors ml-2" href="tel:+917981636962">
+<i class="w-3.5 h-3.5 text-champagne" data-lucide="zap"></i>
+<span>Direct Showcall: +91 79816 36962</span>
+</a>
+</div>
+</div>
+<div class="lg:col-span-4 flex flex-col justify-end">
+<div class="p-6 rounded-3xl bg-white/[0.03] backdrop-blur-glass border border-champagne/20 shadow-2xl relative overflow-hidden group hover:border-champagne/50 transition-all">
+<div class="absolute -right-12 -top-12 w-32 h-32 bg-champagne/20 rounded-full blur-2xl group-hover:scale-150 transition-transform"></div>
+<div class="flex items-center justify-between mb-4">
+<span class="font-mono text-[10px] uppercase text-champagne tracking-widest font-bold">PRODUCTION SPECIFICATION</span>
+<div class="w-7 h-7 rounded-lg bg-champagne/10 flex items-center justify-center text-champagne">
+<i class="w-4 h-4" data-lucide="cpu"></i>
+</div>
+</div>
+<p class="font-heading font-bold text-sm text-white mb-2">Turnkey Scenography &amp; Kinetic Staging</p>
+<p class="text-xs text-zinc-400 leading-relaxed mb-4">
+  Bespoke 3D Stages • Audio Engineering • Guest Protocols. Complete end-to-end sovereign control.
+</p>
+<div class="pt-3 border-t border-white/10 flex items-center justify-between text-xs font-mono text-zinc-400">
+<span>EST. 11+ YRS</span>
+<span class="text-champagne font-bold">250+ GRAND STAGES</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="relative z-10 max-w-[1440px] w-full mx-auto px-4 sm:px-8 lg:px-12 mt-16">
+<div class="p-4 sm:p-5 rounded-2xl bg-black/60 backdrop-blur-glass border border-champagne/25 shadow-2xl grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 items-center">
+<div class="flex items-center gap-3 border-r border-white/10 pr-2">
+<div class="w-9 h-9 rounded-xl bg-champagne/15 text-champagne flex items-center justify-center shrink-0">
+<i class="w-4 h-4" data-lucide="volume-2"></i>
+</div>
+<div>
+<div class="text-[10px] font-mono text-zinc-400 uppercase">Acoustics</div>
+<div class="text-xs font-heading font-bold text-white">Line-Array 120dB</div>
+</div>
+</div>
+<div class="flex items-center gap-3 border-r border-white/10 pr-2">
+<div class="w-9 h-9 rounded-xl bg-champagne/15 text-champagne flex items-center justify-center shrink-0">
+<i class="w-4 h-4" data-lucide="sparkle"></i>
+</div>
+<div>
+<div class="text-[10px] font-mono text-zinc-400 uppercase">Illumination</div>
+<div class="text-xs font-heading font-bold text-white">40k ANSI Lumens</div>
+</div>
+</div>
+<div class="flex items-center gap-3 border-r border-white/10 pr-2">
+<div class="w-9 h-9 rounded-xl bg-champagne/15 text-champagne flex items-center justify-center shrink-0">
+<i class="w-4 h-4" data-lucide="sliders"></i>
+</div>
+<div>
+<div class="text-[10px] font-mono text-zinc-400 uppercase">Scenography</div>
+<div class="text-xs font-heading font-bold text-white">Millimeter CAD 3D</div>
+</div>
+</div>
+<div class="flex items-center gap-3 border-r border-white/10 pr-2">
+<div class="w-9 h-9 rounded-xl bg-champagne/15 text-champagne flex items-center justify-center shrink-0">
+<i class="w-4 h-4" data-lucide="activity"></i>
+</div>
+<div>
+<div class="text-[10px] font-mono text-zinc-400 uppercase">Run-of-Show</div>
+<div class="text-xs font-heading font-bold text-white">Timecode Cueing</div>
+</div>
+</div>
+<div class="flex items-center gap-3 border-r border-white/10 pr-2">
+<div class="w-9 h-9 rounded-xl bg-champagne/15 text-champagne flex items-center justify-center shrink-0">
+<i class="w-4 h-4" data-lucide="crown"></i>
+</div>
+<div>
+<div class="text-[10px] font-mono text-zinc-400 uppercase">Hospitality</div>
+<div class="text-xs font-heading font-bold text-white">VIP Protocol</div>
+</div>
+</div>
+<div class="flex items-center justify-end">
+<a class="w-full text-center py-2 px-3 rounded-lg bg-champagne/20 hover:bg-champagne/30 text-champagne-light border border-champagne/40 font-mono text-xs font-semibold transition-all" href="#contact">
+  Check Dates →
+</a>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-champagne-light/70 font-semibold shrink-0">
+<i class="w-3.5 h-3.5 text-champagne" data-lucide="award"></i>
+<span>Our Optimistic Partner &amp; Sponsor Network:</span>
+</div>
+<div class="flex flex-wrap items-center justify-center md:justify-end gap-3 text-xs font-mono text-zinc-400">
+<span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 hover:border-champagne/40 transition-colors flex items-center gap-1.5">
+<i class="w-3 h-3 text-champagne" data-lucide="gamepad-2"></i> Tech Gaming
+</span>
+<span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 hover:border-champagne/40 transition-colors flex items-center gap-1.5">
+<i class="w-3 h-3 text-champagne" data-lucide="radio"></i> Media Age
+</span>
+<span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 hover:border-champagne/40 transition-colors flex items-center gap-1.5">
+<i class="w-3 h-3 text-champagne" data-lucide="landmark"></i> Hyd Angels
+</span>
+<span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 hover:border-champagne/40 transition-colors flex items-center gap-1.5">
+<i class="w-3 h-3 text-champagne" data-lucide="trending-up"></i> Innovation Fund
+</span>
+<span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 hover:border-champagne/40 transition-colors flex items-center gap-1.5">
+<i class="w-3 h-3 text-champagne" data-lucide="globe"></i> WebUI11
+</span>
+<span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 hover:border-champagne/40 transition-colors flex items-center gap-1.5">
+<i class="w-3 h-3 text-champagne" data-lucide="trophy"></i> Sports Net
+</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 3. METRIC TELEMETRY COUNTER BANNER (11+, 250+, 500+, 75+)                -->
+<!-- ========================================================================= -->
+<section class="py-12 bg-ivory-warm border-y border-ivory-border relative">
+<div class="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="p-6 rounded-2xl bg-white border border-champagne/20 shadow-sm flex flex-col justify-between group hover:border-champagne transition-all">
+<div class="flex items-center justify-between mb-2">
+<span class="font-mono text-[10px] text-champagne-dark uppercase tracking-wider font-bold">MILESTONE 01</span>
+<div class="w-7 h-7 rounded-lg bg-champagne/10 text-champagne flex items-center justify-center">
+<i class="w-3.5 h-3.5" data-lucide="award"></i>
+</div>
+</div>
+<div>
+<div class="font-heading text-4xl sm:text-5xl font-black text-obsidian tracking-tight">11<span class="text-champagne font-light">+</span></div>
+<div class="font-heading font-bold text-sm text-zinc-900 mt-1">Years of Experience</div>
+<div class="text-xs text-zinc-500 font-normal">Dedicated craft &amp; leadership</div>
+</div>
+</div>
+<div class="p-6 rounded-2xl bg-white border border-champagne/20 shadow-sm flex flex-col justify-between group hover:border-champagne transition-all">
+<div class="flex items-center justify-between mb-2">
+<span class="font-mono text-[10px] text-champagne-dark uppercase tracking-wider font-bold">MILESTONE 02</span>
+<div class="w-7 h-7 rounded-lg bg-champagne/10 text-champagne flex items-center justify-center">
+<i class="w-3.5 h-3.5" data-lucide="check-circle-2"></i>
+</div>
+</div>
+<div>
+<div class="font-heading text-4xl sm:text-5xl font-black text-obsidian tracking-tight">250<span class="text-champagne font-light">+</span></div>
+<div class="font-heading font-bold text-sm text-zinc-900 mt-1">Events Completed</div>
+<div class="text-xs text-zinc-500 font-normal">Conferences, galas &amp; nuptials</div>
+</div>
+</div>
+<div class="p-6 rounded-2xl bg-white border border-champagne/20 shadow-sm flex flex-col justify-between group hover:border-champagne transition-all">
+<div class="flex items-center justify-between mb-2">
+<span class="font-mono text-[10px] text-champagne-dark uppercase tracking-wider font-bold">MILESTONE 03</span>
+<div class="w-7 h-7 rounded-lg bg-champagne/10 text-champagne flex items-center justify-center">
+<i class="w-3.5 h-3.5" data-lucide="smile"></i>
+</div>
+</div>
+<div>
+<div class="font-heading text-4xl sm:text-5xl font-black text-obsidian tracking-tight">500<span class="text-champagne font-light">+</span></div>
+<div class="font-heading font-bold text-sm text-zinc-900 mt-1">Satisfied Customers</div>
+<div class="text-xs text-zinc-500 font-normal">Patrons, founders &amp; enterprises</div>
+</div>
+</div>
+<div class="p-6 rounded-2xl bg-white border border-champagne/20 shadow-sm flex flex-col justify-between group hover:border-champagne transition-all">
+<div class="flex items-center justify-between mb-2">
+<span class="font-mono text-[10px] text-champagne-dark uppercase tracking-wider font-bold">MILESTONE 04</span>
+<div class="w-7 h-7 rounded-lg bg-champagne/10 text-champagne flex items-center justify-center">
+<i class="w-3.5 h-3.5" data-lucide="handshake"></i>
+</div>
+</div>
+<div>
+<div class="font-heading text-4xl sm:text-5xl font-black text-obsidian tracking-tight">75<span class="text-champagne font-light">+</span></div>
+<div class="font-heading font-bold text-sm text-zinc-900 mt-1">Respected Vendors</div>
+<div class="text-xs text-zinc-500 font-normal">Artisanal floral, sound &amp; lighting</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 4. NARRATIVE CHAPTER 02: "THE ALCHEMY OF GRANDEUR" (CORE PILLARS)          -->
+<!-- ========================================================================= -->
+<section class="py-24 bg-white relative overflow-hidden" id="alchemy">
+<div class="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+<div>
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-champagne/10 border border-champagne/30 text-champagne-dark text-xs font-mono tracking-wider uppercase font-semibold mb-3">
+<i class="w-3.5 h-3.5 text-champagne-dark" data-lucide="shield-check"></i>
+<span>CHAPTER 02 / CORE PILLARS</span>
+</div>
+<h2 class="font-heading text-3xl sm:text-5xl font-black text-obsidian tracking-tight">
+  Engineered For Flawless Grandeur
+</h2>
+</div>
+<p class="text-zinc-600 text-sm sm:text-base max-w-lg leading-relaxed">
+  Three pillars anchored in human listening, technological precision, and curated spatial environments.
+</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+<div class="lg:col-span-4 rounded-3xl bg-ivory-warm p-8 border border-ivory-border hover:border-champagne transition-all duration-300 flex flex-col justify-between group relative overflow-hidden shadow-sm">
+<div class="absolute top-0 right-0 w-48 h-48 bg-champagne/10 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform"></div>
+<div>
+<div class="flex items-center justify-between mb-8">
+<span class="font-mono text-xs text-champagne-dark font-bold uppercase tracking-widest">01 / CREW ARCHITECTURE</span>
+<div class="w-12 h-12 rounded-2xl bg-white border border-champagne/30 text-champagne flex items-center justify-center shadow-xs group-hover:bg-champagne group-hover:text-obsidian transition-colors">
+<i class="w-6 h-6" data-lucide="users"></i>
+</div>
+</div>
+<h3 class="font-heading text-2xl sm:text-3xl font-bold text-obsidian mb-4 tracking-tight">
+  Personable Team
+</h3>
+<p class="text-zinc-700 text-sm leading-relaxed mb-6 font-normal">
+  A friendly, detail-obsessed crew that listens first and plans with clarity—so your event feels uniquely yours and execution feels effortless from briefing to curtain call. Expect quick responses, clear ownership, and smiles on show day.
+</p>
+</div>
+<div class="pt-6 border-t border-ivory-border flex items-center justify-between text-xs font-mono text-champagne-dark font-semibold">
+<span class="flex items-center gap-1.5">
+<i class="w-3.5 h-3.5 text-champagne" data-lucide="check"></i>
+Dedicated Show Management
+</span>
+<i class="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" data-lucide="arrow-up-right"></i>
+</div>
+</div>
+<div class="lg:col-span-4 rounded-3xl bg-obsidian text-white p-8 border border-champagne/40 shadow-2xl flex flex-col justify-between group relative overflow-hidden">
+<div class="absolute inset-0 telemetry-grid opacity-20 pointer-events-none"></div>
+<div class="absolute -bottom-10 -right-10 w-48 h-48 bg-champagne/20 rounded-full blur-3xl pointer-events-none"></div>
+<div class="relative z-10">
+<div class="flex items-center justify-between mb-8">
+<span class="font-mono text-xs text-champagne font-bold uppercase tracking-widest">02 / SENSORY ORCHESTRATION</span>
+<div class="w-12 h-12 rounded-2xl bg-champagne text-obsidian flex items-center justify-center shadow-gold-glow">
+<i class="w-6 h-6" data-lucide="sparkles"></i>
+</div>
+</div>
+<h3 class="font-heading text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight">
+  Unforgettable Experience
+</h3>
+<p class="text-zinc-300 text-sm leading-relaxed mb-6 font-light">
+  From immersive décor and precision lighting to live entertainment and seamless showcalling, every element is designed to spark emotion and leave a lasting impression on guests and brands alike. Moments are captured for social and post-event storytelling.
+</p>
+</div>
+<div class="relative z-10 pt-6 border-t border-white/15 flex items-center justify-between text-xs font-mono text-champagne font-semibold">
+<span class="flex items-center gap-1.5">
+<i class="w-3.5 h-3.5 text-champagne" data-lucide="flame"></i>
+Precision Sensory Artistry
+</span>
+<i class="w-4 h-4 text-champagne group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" data-lucide="arrow-up-right"></i>
+</div>
+</div>
+<div class="lg:col-span-4 rounded-3xl bg-ivory-warm p-8 border border-ivory-border hover:border-champagne transition-all duration-300 flex flex-col justify-between group relative overflow-hidden shadow-sm">
+<div class="absolute top-0 right-0 w-48 h-48 bg-champagne/10 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform"></div>
+<div>
+<div class="flex items-center justify-between mb-8">
+<span class="font-mono text-xs text-champagne-dark font-bold uppercase tracking-widest">03 / SPATIAL SELECTION</span>
+<div class="w-12 h-12 rounded-2xl bg-white border border-champagne/30 text-champagne flex items-center justify-center shadow-xs group-hover:bg-champagne group-hover:text-obsidian transition-colors">
+<i class="w-6 h-6" data-lucide="building-2"></i>
+</div>
+</div>
+<h3 class="font-heading text-2xl sm:text-3xl font-bold text-obsidian mb-4 tracking-tight">
+  Top-Rated Venues
+</h3>
+<p class="text-zinc-700 text-sm leading-relaxed mb-6 font-normal">
+  Access a trusted network of premium hotels, convention centers, outdoor arenas, and boutique spaces matched to your theme, capacity, and budget—with layouts, permits, and vendor coordination handled end-to-end.
+</p>
+</div>
+<div class="pt-6 border-t border-ivory-border flex items-center justify-between text-xs font-mono text-champagne-dark font-semibold">
+<span class="flex items-center gap-1.5">
+<i class="w-3.5 h-3.5 text-champagne" data-lucide="map-pin"></i>
+Turnkey Site Coordination
+</span>
+<i class="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" data-lucide="arrow-up-right"></i>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 5. ABOUT US: "CREATING LASTING IMPRESSIONS" (SPLIT MASTERPIECE)           -->
+<!-- ========================================================================= -->
+<section class="py-24 bg-ivory-warm border-y border-ivory-border relative" id="about">
+<div class="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-6 relative">
+<div class="relative rounded-3xl overflow-hidden border border-champagne/40 shadow-2xl group bg-obsidian">
+<img alt="Fi5th Media Royal Mandap Production" class="w-full h-[540px] object-cover group-hover:scale-105 transition-transform duration-700 opacity-95" src="https://lh3.googleusercontent.com/aida/AEtjO1XktSnYwFFI6h5FcGLo1sBAUEkWJkyjGKCj6dfT2_IyRnk4IGvrE6OmcDGqDa15upEgrVUBurCPYqzn7DY-9EohhduMEjHQ_7Gf6h1fUJsF8CfpX1Gy4H3mFuznUuLJeAXVcUUWlPYQYRbFWtNMHSqBcr6qrDRd_MT5DMSm7oTahTZockX4PsultR1FtfLd2u49yDqWxrpBBHLpwukoMqyLI-UBmB895InnUonHBw0S8zSljIR4EzFMvw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-black/30"></div>
+<div class="absolute top-5 left-5 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-glass border border-champagne/50 text-obsidian text-xs font-heading font-bold shadow-md">
+<i class="w-3.5 h-3.5 text-champagne-dark" data-lucide="sparkles"></i>
+<span>Curated Scenography</span>
+</div>
+<div class="absolute bottom-6 left-6 right-6 p-6 rounded-2xl bg-white/90 backdrop-blur-glass border border-white/60 shadow-xl flex items-center justify-between">
+<div>
+<span class="font-mono text-[10px] text-champagne-dark uppercase tracking-widest font-bold block">LEGACY OF EXCELLENCE</span>
+<span class="font-heading text-2xl font-black text-obsidian">11+ Years of Experience</span>
+<span class="text-xs text-zinc-600 block mt-0.5">Hyderabad &amp; Pan-India Scenography Atelier</span>
+</div>
+<div class="w-12 h-12 rounded-xl bg-champagne text-obsidian flex items-center justify-center shadow-gold-sm">
+<i class="w-6 h-6" data-lucide="crown"></i>
+</div>
+</div>
+</div>
+<div class="absolute -bottom-8 -left-8 w-60 h-60 bg-champagne/20 rounded-full blur-3xl -z-10"></div>
+</div>
+<div class="lg:col-span-6 flex flex-col items-start">
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-champagne/40 text-champagne-dark text-xs font-mono uppercase tracking-wider font-semibold mb-4 shadow-xs">
+<span class="w-2 h-2 rounded-full bg-champagne"></span>
+<span>CHAPTER 03 / ABOUT US</span>
+</div>
+<h2 class="font-heading text-3xl sm:text-5xl font-black text-obsidian tracking-tight mb-5 leading-tight">
+  Creating Lasting Impressions.
+</h2>
+<p class="text-base sm:text-lg text-zinc-700 leading-relaxed mb-8 font-normal">
+  From weddings and launches to conferences and concerts, a multidisciplinary crew turns briefs into immersive environments, camera-ready content, and seamless run-of-show—so you can enjoy the spotlight while everything just works.
+</p>
+<div class="flex flex-col gap-3 w-full mb-8">
+<div class="group flex items-start gap-3.5 p-3.5 rounded-2xl bg-white border border-ivory-border hover:border-champagne transition-colors shadow-xs">
+<div class="w-7 h-7 rounded-lg bg-champagne/15 text-champagne-dark flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-champagne group-hover:text-obsidian transition-colors">
+<i class="w-4 h-4" data-lucide="check"></i>
+</div>
+<span class="text-sm font-medium text-zinc-800 leading-normal">
+  Premium venue sourcing tailored to capacity, access, and brand aesthetics.
+</span>
+</div>
+<div class="group flex items-start gap-3.5 p-3.5 rounded-2xl bg-white border border-ivory-border hover:border-champagne transition-colors shadow-xs">
+<div class="w-7 h-7 rounded-lg bg-champagne/15 text-champagne-dark flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-champagne group-hover:text-obsidian transition-colors">
+<i class="w-4 h-4" data-lucide="check"></i>
+</div>
+<span class="text-sm font-medium text-zinc-800 leading-normal">
+  Seamless run-of-show with vendor control, permits, hospitality, and showcalling.
+</span>
+</div>
+<div class="group flex items-start gap-3.5 p-3.5 rounded-2xl bg-white border border-ivory-border hover:border-champagne transition-colors shadow-xs">
+<div class="w-7 h-7 rounded-lg bg-champagne/15 text-champagne-dark flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-champagne group-hover:text-obsidian transition-colors">
+<i class="w-4 h-4" data-lucide="check"></i>
+</div>
+<span class="text-sm font-medium text-zinc-800 leading-normal">
+  Strategy-first planning that aligns goals, audience, and budget before design begins.
+</span>
+</div>
+<div class="group flex items-start gap-3.5 p-3.5 rounded-2xl bg-white border border-ivory-border hover:border-champagne transition-colors shadow-xs">
+<div class="w-7 h-7 rounded-lg bg-champagne/15 text-champagne-dark flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-champagne group-hover:text-obsidian transition-colors">
+<i class="w-4 h-4" data-lucide="check"></i>
+</div>
+<span class="text-sm font-medium text-zinc-800 leading-normal">
+  Personalised journeys with custom agendas, flows, and attendee communications.
+</span>
+</div>
+<div class="group flex items-start gap-3.5 p-3.5 rounded-2xl bg-white border border-ivory-border hover:border-champagne transition-colors shadow-xs">
+<div class="w-7 h-7 rounded-lg bg-champagne/15 text-champagne-dark flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-champagne group-hover:text-obsidian transition-colors">
+<i class="w-4 h-4" data-lucide="check"></i>
+</div>
+<span class="text-sm font-medium text-zinc-800 leading-normal">
+  Camera-ready storytelling with live capture, edits, and social amplification.
+</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-4">
+<a class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-obsidian text-white hover:bg-champagne hover:text-obsidian font-heading text-xs font-bold uppercase tracking-wider transition-all shadow-md" href="#why-us">
+<span>Read More</span>
+<i class="w-4 h-4" data-lucide="arrow-up-right"></i>
+</a>
+<div class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-champagne/30 text-zinc-700 text-xs font-mono">
+<i class="w-4 h-4 text-champagne" data-lucide="shield"></i>
+<span>Pan-India Turnkey Delivery</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 6. REDESIGNED CHAPTER 04: EXPERIENTIAL MASTER STAGE CONSOLE               -->
+<!-- ========================================================================= -->
+<section class="py-24 bg-gradient-to-b from-white via-ivory-warm to-white border-b border-ivory-border relative overflow-hidden" id="services">
+<!-- Subtle ambient glow background -->
+<div class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-champagne/5 rounded-full blur-[140px] pointer-events-none"></div>
+<div class="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
+<!-- Section Architectural Header -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
+<div>
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-champagne/10 border border-champagne/30 text-champagne-dark text-xs font-mono tracking-wider uppercase font-semibold mb-3">
+<i class="w-3.5 h-3.5 text-champagne-dark" data-lucide="layers"></i>
+<span>CHAPTER 04 / VERTICALS CONSOLE</span>
+</div>
+<h2 class="font-heading text-3xl sm:text-5xl font-black text-obsidian tracking-tight">
+        Excellence in Every Moment.
+      </h2>
+<p class="text-zinc-600 text-sm sm:text-base max-w-2xl mt-3 leading-relaxed">
+        Where avant-garde scenography meets surgical execution. Select an atelier discipline below to explore the telemetry, acoustic staging, and bespoke curation of our 6 flagship verticals.
+      </p>
+</div>
+<!-- Live Console Telemetry Badge -->
+<div class="flex items-center gap-3 bg-white p-3 rounded-2xl border border-champagne/30 shadow-xs shrink-0 font-mono text-xs">
+<div class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></div>
+<span class="text-zinc-700 font-medium">CONSOLE ACTIVE: <span class="text-champagne-dark font-bold" id="active-vertical-code">03 // WEDDINGS</span></span>
+<span class="text-zinc-300">|</span>
+<span class="text-zinc-500">6 DISCIPLINES</span>
+</div>
+</div>
+<!-- Interactive 6-Vertical Discipline Controller Tabstrip -->
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-8" id="vertical-tabs">
+<!-- Tab 1: MICE -->
+<button class="vertical-tab p-4 rounded-2xl bg-white border border-ivory-border hover:border-champagne/60 text-left transition-all duration-300 group flex flex-col justify-between" onclick="switchVertical(0)">
+<div class="flex items-center justify-between w-full mb-3">
+<span class="num-tag font-mono text-[11px] font-bold text-zinc-400 group-hover:text-champagne-dark">01</span>
+<div class="icon-box w-8 h-8 rounded-xl bg-ivory-warm text-champagne-dark flex items-center justify-center transition-colors">
+<i class="w-4 h-4" data-lucide="globe"></i>
+</div>
+</div>
+<div>
+<div class="font-heading font-bold text-sm text-zinc-900 group-hover:text-champagne-dark transition-colors">M.I.C.E &amp; Arenas</div>
+<div class="sub-tag font-mono text-[10px] text-zinc-500 mt-0.5">Conventions &amp; Expos</div>
+</div>
+</button>
+<!-- Tab 2: Corporate -->
+<button class="vertical-tab p-4 rounded-2xl bg-white border border-ivory-border hover:border-champagne/60 text-left transition-all duration-300 group flex flex-col justify-between" onclick="switchVertical(1)">
+<div class="flex items-center justify-between w-full mb-3">
+<span class="num-tag font-mono text-[11px] font-bold text-zinc-400 group-hover:text-champagne-dark">02</span>
+<div class="icon-box w-8 h-8 rounded-xl bg-ivory-warm text-champagne-dark flex items-center justify-center transition-colors">
+<i class="w-4 h-4" data-lucide="briefcase"></i>
+</div>
+</div>
+<div>
+<div class="font-heading font-bold text-sm text-zinc-900 group-hover:text-champagne-dark transition-colors">Corporate Summits</div>
+<div class="sub-tag font-mono text-[10px] text-zinc-500 mt-0.5">Keynotes &amp; Offsites</div>
+</div>
+</button>
+<!-- Tab 3: Royal Weddings (ACTIVE DEFAULT) -->
+<button class="vertical-tab tab-active p-4 rounded-2xl bg-white border border-ivory-border hover:border-champagne/60 text-left transition-all duration-300 group flex flex-col justify-between" onclick="switchVertical(2)">
+<div class="flex items-center justify-between w-full mb-3">
+<span class="num-tag font-mono text-[11px] font-bold text-zinc-400 group-hover:text-champagne-dark">03</span>
+<div class="icon-box w-8 h-8 rounded-xl bg-ivory-warm text-champagne-dark flex items-center justify-center transition-colors">
+<i class="w-4 h-4" data-lucide="crown"></i>
+</div>
+</div>
+<div>
+<div class="font-heading font-bold text-sm text-zinc-900 group-hover:text-champagne-dark transition-colors">Royal Weddings</div>
+<div class="sub-tag font-mono text-[10px] text-zinc-500 mt-0.5">Palaces &amp; Mandaps</div>
+</div>
+</button>
+<!-- Tab 4: Private Galas -->
+<button class="vertical-tab p-4 rounded-2xl bg-white border border-ivory-border hover:border-champagne/60 text-left transition-all duration-300 group flex flex-col justify-between" onclick="switchVertical(3)">
+<div class="flex items-center justify-between w-full mb-3">
+<span class="num-tag font-mono text-[11px] font-bold text-zinc-400 group-hover:text-champagne-dark">04</span>
+<div class="icon-box w-8 h-8 rounded-xl bg-ivory-warm text-champagne-dark flex items-center justify-center transition-colors">
+<i class="w-4 h-4" data-lucide="wine"></i>
+</div>
+</div>
+<div>
+<div class="font-heading font-bold text-sm text-zinc-900 group-hover:text-champagne-dark transition-colors">Private Galas</div>
+<div class="sub-tag font-mono text-[10px] text-zinc-500 mt-0.5">Exclusive Soirees</div>
+</div>
+</button>
+<!-- Tab 5: Anniversaries -->
+<button class="vertical-tab p-4 rounded-2xl bg-white border border-ivory-border hover:border-champagne/60 text-left transition-all duration-300 group flex flex-col justify-between" onclick="switchVertical(4)">
+<div class="flex items-center justify-between w-full mb-3">
+<span class="num-tag font-mono text-[11px] font-bold text-zinc-400 group-hover:text-champagne-dark">05</span>
+<div class="icon-box w-8 h-8 rounded-xl bg-ivory-warm text-champagne-dark flex items-center justify-center transition-colors">
+<i class="w-4 h-4" data-lucide="sparkles"></i>
+</div>
+</div>
+<div>
+<div class="font-heading font-bold text-sm text-zinc-900 group-hover:text-champagne-dark transition-colors">Anniversaries</div>
+<div class="sub-tag font-mono text-[10px] text-zinc-500 mt-0.5">Milestone Feasts</div>
+</div>
+</button>
+<!-- Tab 6: Launch Event -->
+<button class="vertical-tab p-4 rounded-2xl bg-white border border-ivory-border hover:border-champagne/60 text-left transition-all duration-300 group flex flex-col justify-between" onclick="switchVertical(5)">
+<div class="flex items-center justify-between w-full mb-3">
+<span class="num-tag font-mono text-[11px] font-bold text-zinc-400 group-hover:text-champagne-dark">06</span>
+<div class="icon-box w-8 h-8 rounded-xl bg-ivory-warm text-champagne-dark flex items-center justify-center transition-colors">
+<i class="w-4 h-4" data-lucide="rocket"></i>
+</div>
+</div>
+<div>
+<div class="font-heading font-bold text-sm text-zinc-900 group-hover:text-champagne-dark transition-colors">Launch Spectacles</div>
+<div class="sub-tag font-mono text-[10px] text-zinc-500 mt-0.5">Brand &amp; Retail Debuts</div>
+</div>
+</button>
+</div>
+<!-- THE MASTER ACTIVE STAGE SHOWCASE (MAJESTIC SPLIT CONSOLE) -->
+<div class="rounded-3xl bg-white border border-champagne/30 shadow-2xl p-6 sm:p-10 lg:p-12 relative overflow-hidden transition-all duration-500">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+<!-- LEFT: Narrative Storytelling & Production Metrics -->
+<div class="lg:col-span-5 flex flex-col justify-between">
+<div>
+<!-- Division Pill and Code -->
+<div class="flex items-center gap-3 mb-4">
+<span class="px-3 py-1 rounded-full bg-champagne/15 text-champagne-dark font-mono text-xs font-bold uppercase tracking-wider" id="showcase-pill">
+              5M DIVISION 03
+            </span>
+<span class="font-mono text-xs text-zinc-500 uppercase tracking-widest" id="showcase-subtitle">
+              ROYAL &amp; DESTINATION UNIONS
+            </span>
+</div>
+<!-- Main Title -->
+<h3 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-black text-obsidian tracking-tight mb-5 leading-tight" id="showcase-title">
+            Wedding Organizing
+          </h3>
+<!-- Narrative description -->
+<p class="text-zinc-700 text-sm sm:text-base leading-relaxed mb-8 font-normal" id="showcase-desc">
+            End-to-end planning across ceremonies, Sangeet, reception, and hospitality: décor, artists, choreography, baraat/entry concepts, and complete guest management. Destination setups on request.
+          </p>
+<!-- Telemetry Specs Array with Lucide Icons -->
+<div class="grid grid-cols-2 gap-3 mb-8 pt-4 border-t border-ivory-border">
+<div class="p-3.5 rounded-2xl bg-ivory-warm border border-ivory-border flex items-start gap-3">
+<div class="w-8 h-8 rounded-xl bg-white text-champagne-dark flex items-center justify-center shrink-0 shadow-2xs">
+<i class="w-4 h-4" data-lucide="crown"></i>
+</div>
+<div>
+<span class="font-mono text-[10px] text-zinc-500 uppercase block">Scenography</span>
+<span class="font-heading text-xs font-bold text-obsidian block" id="spec-1">Heritage Mandap 3D</span>
+</div>
+</div>
+<div class="p-3.5 rounded-2xl bg-ivory-warm border border-ivory-border flex items-start gap-3">
+<div class="w-8 h-8 rounded-xl bg-white text-champagne-dark flex items-center justify-center shrink-0 shadow-2xs">
+<i class="w-4 h-4" data-lucide="users"></i>
+</div>
+<div>
+<span class="font-mono text-[10px] text-zinc-500 uppercase block">Guest Flow</span>
+<span class="font-heading text-xs font-bold text-obsidian block" id="spec-2">500 - 3,500 Nobles</span>
+</div>
+</div>
+<div class="p-3.5 rounded-2xl bg-ivory-warm border border-ivory-border flex items-start gap-3">
+<div class="w-8 h-8 rounded-xl bg-white text-champagne-dark flex items-center justify-center shrink-0 shadow-2xs">
+<i class="w-4 h-4" data-lucide="sparkles"></i>
+</div>
+<div>
+<span class="font-mono text-[10px] text-zinc-500 uppercase block">Floral &amp; Lighting</span>
+<span class="font-heading text-xs font-bold text-obsidian block" id="spec-3">Artisanal Kinetic Glow</span>
+</div>
+</div>
+<div class="p-3.5 rounded-2xl bg-ivory-warm border border-ivory-border flex items-start gap-3">
+<div class="w-8 h-8 rounded-xl bg-white text-champagne-dark flex items-center justify-center shrink-0 shadow-2xs">
+<i class="w-4 h-4" data-lucide="clock"></i>
+</div>
+<div>
+<span class="font-mono text-[10px] text-zinc-500 uppercase block">Turnaround</span>
+<span class="font-heading text-xs font-bold text-obsidian block" id="spec-4">24/7 Run-Of-Show</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Call to Action Buttons -->
+<div class="flex flex-wrap items-center gap-4">
+<a class="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-champagne via-champagne-glow to-champagne-dark text-obsidian font-heading font-bold text-xs uppercase tracking-wider shadow-gold-glow hover:scale-105 transition-all" href="#contact" id="showcase-cta">
+<i class="w-4 h-4 text-obsidian" data-lucide="sparkles"></i>
+<span>Inquire Royal Wedding</span>
+</a>
+<a class="inline-flex items-center gap-2 px-5 py-4 rounded-xl border border-zinc-300 hover:border-champagne text-obsidian font-heading text-xs font-semibold uppercase tracking-wider transition-all" href="tel:+917981636962">
+<i class="w-4 h-4 text-champagne" data-lucide="phone-call"></i>
+<span>Call Lead Scenographer</span>
+</a>
+</div>
+</div>
+<!-- RIGHT: Layered Visual Arrangement with Hero Tag + Floating Backstage Inset -->
+<div class="lg:col-span-7 relative">
+<!-- Main Primary Hero Visual Container -->
+<div class="relative rounded-3xl overflow-hidden border border-champagne/40 shadow-2xl bg-obsidian group">
+<img alt="Royal Weddings" class="w-full h-[480px] object-cover rounded-2xl shadow-xl group-hover:scale-105 transition-transform duration-700" id="primary-hero-img" src="https://lh3.googleusercontent.com/aida/AEtjO1XktSnYwFFI6h5FcGLo1sBAUEkWJkyjGKCj6dfT2_IyRnk4IGvrE6OmcDGqDa15upEgrVUBurCPYqzn7DY-9EohhduMEjHQ_7Gf6h1fUJsF8CfpX1Gy4H3mFuznUuLJeAXVcUUWlPYQYRbFWtNMHSqBcr6qrDRd_MT5DMSm7oTahTZockX4PsultR1FtfLd2u49yDqWxrpBBHLpwukoMqyLI-UBmB895InnUonHBw0S8zSljIR4EzFMvw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-transparent to-black/20 pointer-events-none"></div>
+<!-- Top Telemetry Live Pill -->
+<div class="absolute top-5 left-5 flex items-center gap-2">
+<span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-obsidian/80 backdrop-blur-md text-white font-mono text-[10px] tracking-wider uppercase border border-champagne/40">
+<span class="w-2 h-2 rounded-full bg-champagne animate-pulse"></span>
+<span id="hero-badge-tag">STAGE VIEW: PALATIAL AUDITORIUM</span>
+</span>
+</div>
+<!-- Bottom Spatial Spec Indicator -->
+<div class="absolute bottom-5 left-5 text-white">
+<div class="font-mono text-[10px] text-champagne-light uppercase tracking-widest font-semibold" id="hero-geo-tag">VENUE COORDINATION</div>
+<div class="font-heading font-bold text-base sm:text-lg" id="hero-title-tag">Bespoke Structural Rigging &amp; Luxury Mandap</div>
+</div>
+</div>
+<!-- Floating Backstage Inset Thumbnail Layer -->
+<div class="absolute -bottom-6 -right-4 sm:-right-6 hidden sm:block">
+<div class="p-2 bg-white/95 backdrop-blur-glass rounded-2xl border border-champagne/50 shadow-2xl transition-transform hover:-translate-y-1 duration-300">
+<div class="relative overflow-hidden rounded-xl">
+<img alt="Palatial setup" class="w-52 h-36 object-cover rounded-xl border-2 border-amber-400/40 shadow-2xl" id="floating-inset-img" src="https://lh3.googleusercontent.com/aida/AEtjO1XdDbqptIauweAPvaQHIMO-AqPMYKakuvkaIWtZNpi0FCALxG0W0LbCRuO0Ij0_hQHVQFOVAY_leaW3Ui_3Bj9fFMwm3BmvW608SpnWp2AOzlrtQFUqaAwmNHxWNBZPiG4tjAFBE5Dyz5vfOHsIhpXl6nidWPzNNgf1loZoUSZ-XfQaTLvG8yebT1aW9CKihuR_6a6HOdeFJPOmO7vE1--V-MKJUe1jbdJPm1-uISIaUVY1INipn0qsVQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-2 left-2 right-2 flex items-center justify-between text-white">
+<span class="font-mono text-[9px] uppercase tracking-wider text-champagne-light font-bold" id="inset-label">AERIAL RECEPTION VIEW</span>
+<i class="w-3.5 h-3.5 text-champagne" data-lucide="maximize-2"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Discipline Showcase Quick-Switch Dock -->
+<div class="mt-12 pt-8 border-t border-ivory-border">
+<div class="flex items-center justify-between mb-4">
+<span class="font-mono text-xs uppercase tracking-wider text-zinc-500 font-bold flex items-center gap-2">
+<i class="w-4 h-4 text-champagne-dark" data-lucide="layout-grid"></i>
+<span>EXPLORE ALTERNATE PRODUCTIONS</span>
+</span>
+<span class="text-xs font-mono text-champagne-dark font-medium">Click thumbnail to switch console</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+<!-- Quick Switch 1: Corporate -->
+<div class="group cursor-pointer relative rounded-2xl overflow-hidden border border-ivory-border hover:border-champagne shadow-xs transition-all hover:scale-[1.02]" onclick="switchVertical(1)">
+<img alt="Corporate" class="w-full h-36 object-cover rounded-xl group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AEtjO1VjNZ8aMIbsZhmOrLi8QC1GDfCSTLABPfRxPPo1siFd4WjIHyuOP8zN-qHby5nqY8TaCggs2nQ1nOUMuWVX7DZPcCrdaXBYljmWAVdHioa8QiiaKMvYh4tPpa4UzmQHxsQWEjt3aVEuqJLI-UYaV44mgJQwW-aghjzla0AAGpG6Nib9PPOi12mWmLo4BbjXG5b0J8tT3oPsgchPGhCVonbwVVXiPq4nENum7toavJO_v6SdExHxsfLtPw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/30 to-transparent"></div>
+<div class="absolute bottom-2.5 left-3 right-3 text-white">
+<span class="font-mono text-[9px] uppercase tracking-wider text-champagne-light font-bold block">02 / CORPORATE</span>
+<span class="font-heading font-bold text-xs block truncate">Leadership Keynotes</span>
+</div>
+</div>
+<!-- Quick Switch 2: Launch -->
+<div class="group cursor-pointer relative rounded-2xl overflow-hidden border border-ivory-border hover:border-champagne shadow-xs transition-all hover:scale-[1.02]" onclick="switchVertical(5)">
+<img alt="Launch" class="w-full h-36 object-cover rounded-xl group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AEtjO1Ug0RjgOGg1McFgo4BQVT_7xrbqDlgAY87Je9Io4o-cKshG4OFEU7NfwJwAjEIcCLQBGWVSKFT_myHsZK31GhyM8DT6MKqk1ljqDYNGSHgt3eTRDvp9NpTqTSjM6h6ye8u4GWM7CqR0nbeeKnnGUM_Hg45YsUfYy0lLoBxTfkvgcaxT9AJU8J4pa8-kBz8CbnePazcpOdamCJSQM2ElB3I9oVHzOitAG8UGgQJoCG63Gtoe8O338tG4bg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/30 to-transparent"></div>
+<div class="absolute bottom-2.5 left-3 right-3 text-white">
+<span class="font-mono text-[9px] uppercase tracking-wider text-champagne-light font-bold block">06 / LAUNCHES</span>
+<span class="font-heading font-bold text-xs block truncate">Retail &amp; Brand Debuts</span>
+</div>
+</div>
+<!-- Quick Switch 3: Concert / MICE -->
+<div class="group cursor-pointer relative rounded-2xl overflow-hidden border border-ivory-border hover:border-champagne shadow-xs transition-all hover:scale-[1.02]" onclick="switchVertical(0)">
+<img alt="Concert" class="w-full h-36 object-cover rounded-xl group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AEtjO1Um00cmwHGcOEfRhlUuXAfubsbiDb3vHV7D7SUN7_uORMLF_sKGucYtl6KAF1XkA16k9sjekwzuBoWmrczUAPsPn-sPxANuASjvkC_xjIIpEhCnz-rz-OcW_OUAvKwXqkc5ytJKCitPYH7X1yG2IzpLmZ7pc1IxJ_AAeWHSgUfXX-x12xDPKDjnchyzp4w5IDg3LRRI4ExqSMSMlUZWGwZeioQ227EHyynKbid0ANWf_58PMmLFwaUn"/>
+<div class="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/30 to-transparent"></div>
+<div class="absolute bottom-2.5 left-3 right-3 text-white">
+<span class="font-mono text-[9px] uppercase tracking-wider text-champagne-light font-bold block">01 / ARENAS</span>
+<span class="font-heading font-bold text-xs block truncate">Festivals &amp; M.I.C.E</span>
+</div>
+</div>
+<!-- Quick Switch 4: Private Gala -->
+<div class="group cursor-pointer relative rounded-2xl overflow-hidden border border-ivory-border hover:border-champagne shadow-xs transition-all hover:scale-[1.02]" onclick="switchVertical(3)">
+<img alt="Private Gala" class="w-full h-36 object-cover rounded-xl group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AEtjO1Xqgf4mptAIgY2Q6M2c2F4CWZYJfyI-KUg-_utu25mIwrzp0UdO51l02zUY-rzbMrVrfa0pAkd0LJ6_oKyEIgWVHgfSEu7SUCa25_8wEmTSn0QSyNbyNzdRrbg_olLUtdN5gC-TGGBSrVAhEQxg466n-a6dN1JHv_BFyInfpU0aL3zkULUNbbJWkLHYj2_1Yoz1vqTDpyAVD9xCZ0tF1pUw2Lg57Ve2fn5eTU0Y5mGnXLZB2o3IbWMK"/>
+<div class="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/30 to-transparent"></div>
+<div class="absolute bottom-2.5 left-3 right-3 text-white">
+<span class="font-mono text-[9px] uppercase tracking-wider text-champagne-light font-bold block">04 / PRIVATE GALA</span>
+<span class="font-heading font-bold text-xs block truncate">Intimate Soirees</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 7. THE 6-PHASE SHOW PROTOCOL AS A MILITARY FLIGHT PLAN                     -->
+<!-- ========================================================================= -->
+<section class="py-24 bg-obsidian text-white relative overflow-hidden" id="protocol">
+<div class="absolute inset-0 telemetry-grid opacity-20 pointer-events-none"></div>
+<div class="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+<div>
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-champagne/30 text-champagne text-xs font-mono uppercase tracking-wider font-semibold mb-3">
+<i class="w-3.5 h-3.5 text-champagne" data-lucide="git-merge"></i>
+<span>CHAPTER 05 / RUNBOOK</span>
+</div>
+<h2 class="font-heading text-3xl sm:text-5xl font-black text-white tracking-tight">
+  The 6-Phase Show Protocol
+</h2>
+</div>
+<p class="text-zinc-400 text-sm max-w-md font-light leading-relaxed">
+  Every commission follows our structured military-precision operational runbook.
+</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
+<div class="p-6 rounded-2xl bg-white/[0.04] backdrop-blur-glass border border-white/10 hover:border-champagne transition-all group flex flex-col justify-between">
+<div>
+<div class="font-mono text-xs text-champagne font-bold mb-4 flex items-center justify-between">
+<span>PHASE 01</span>
+<span class="w-2 h-2 rounded-full bg-champagne"></span>
+</div>
+<div class="w-10 h-10 rounded-xl bg-champagne/15 flex items-center justify-center text-champagne mb-4 group-hover:bg-champagne group-hover:text-obsidian transition-colors">
+<i class="w-5 h-5" data-lucide="lightbulb"></i>
+</div>
+<h4 class="font-heading font-bold text-base text-white mb-2">Concept Brief</h4>
+<p class="text-xs text-zinc-400 font-light leading-relaxed">
+  Listening, requirements capture, guest demography analysis.
+</p>
+</div>
+<div class="mt-6 pt-3 border-t border-white/10 text-[10px] font-mono text-zinc-500">
+  TIMECODE T-90 DAYS
+</div>
+</div>
+<div class="p-6 rounded-2xl bg-white/[0.04] backdrop-blur-glass border border-white/10 hover:border-champagne transition-all group flex flex-col justify-between">
+<div>
+<div class="font-mono text-xs text-champagne font-bold mb-4 flex items-center justify-between">
+<span>PHASE 02</span>
+<span class="w-2 h-2 rounded-full bg-champagne"></span>
+</div>
+<div class="w-10 h-10 rounded-xl bg-champagne/15 flex items-center justify-center text-champagne mb-4 group-hover:bg-champagne group-hover:text-obsidian transition-colors">
+<i class="w-5 h-5" data-lucide="box"></i>
+</div>
+<h4 class="font-heading font-bold text-base text-white mb-2">3D Scenography</h4>
+<p class="text-xs text-zinc-400 font-light leading-relaxed">
+  CAD renders, stage visualization, acoustic modeling.
+</p>
+</div>
+<div class="mt-6 pt-3 border-t border-white/10 text-[10px] font-mono text-zinc-500">
+  TIMECODE T-60 DAYS
+</div>
+</div>
+<div class="p-6 rounded-2xl bg-white/[0.04] backdrop-blur-glass border border-white/10 hover:border-champagne transition-all group flex flex-col justify-between">
+<div>
+<div class="font-mono text-xs text-champagne font-bold mb-4 flex items-center justify-between">
+<span>PHASE 03</span>
+<span class="w-2 h-2 rounded-full bg-champagne"></span>
+</div>
+<div class="w-10 h-10 rounded-xl bg-champagne/15 flex items-center justify-center text-champagne mb-4 group-hover:bg-champagne group-hover:text-obsidian transition-colors">
+<i class="w-5 h-5" data-lucide="map-pin"></i>
+</div>
+<h4 class="font-heading font-bold text-base text-white mb-2">Venue Permitting</h4>
+<p class="text-xs text-zinc-400 font-light leading-relaxed">
+  Fire safety, legal compliance, hotel liaison &amp; load-ins.
+</p>
+</div>
+<div class="mt-6 pt-3 border-t border-white/10 text-[10px] font-mono text-zinc-500">
+  TIMECODE T-30 DAYS
+</div>
+</div>
+<div class="p-6 rounded-2xl bg-white/[0.04] backdrop-blur-glass border border-white/10 hover:border-champagne transition-all group flex flex-col justify-between">
+<div>
+<div class="font-mono text-xs text-champagne font-bold mb-4 flex items-center justify-between">
+<span>PHASE 04</span>
+<span class="w-2 h-2 rounded-full bg-champagne"></span>
+</div>
+<div class="w-10 h-10 rounded-xl bg-champagne/15 flex items-center justify-center text-champagne mb-4 group-hover:bg-champagne group-hover:text-obsidian transition-colors">
+<i class="w-5 h-5" data-lucide="hammer"></i>
+</div>
+<h4 class="font-heading font-bold text-base text-white mb-2">Fabrication</h4>
+<p class="text-xs text-zinc-400 font-light leading-relaxed">
+  Custom trussing, floral sculpture, LED wall integration.
+</p>
+</div>
+<div class="mt-6 pt-3 border-t border-white/10 text-[10px] font-mono text-zinc-500">
+  TIMECODE T-7 DAYS
+</div>
+</div>
+<div class="p-6 rounded-2xl bg-white/[0.04] backdrop-blur-glass border border-white/10 hover:border-champagne transition-all group flex flex-col justify-between">
+<div>
+<div class="font-mono text-xs text-champagne font-bold mb-4 flex items-center justify-between">
+<span>PHASE 05</span>
+<span class="w-2 h-2 rounded-full bg-champagne animate-pulse"></span>
+</div>
+<div class="w-10 h-10 rounded-xl bg-champagne/15 flex items-center justify-center text-champagne mb-4 group-hover:bg-champagne group-hover:text-obsidian transition-colors">
+<i class="w-5 h-5" data-lucide="mic"></i>
+</div>
+<h4 class="font-heading font-bold text-base text-white mb-2">Show Calling</h4>
+<p class="text-xs text-zinc-400 font-light leading-relaxed">
+  Minute-by-minute cues, artist cueing, live broadcast.
+</p>
+</div>
+<div class="mt-6 pt-3 border-t border-white/10 text-[10px] font-mono text-champagne">
+  SHOW DAY LIVE
+</div>
+</div>
+<div class="p-6 rounded-2xl bg-white/[0.04] backdrop-blur-glass border border-white/10 hover:border-champagne transition-all group flex flex-col justify-between">
+<div>
+<div class="font-mono text-xs text-champagne font-bold mb-4 flex items-center justify-between">
+<span>PHASE 06</span>
+<span class="w-2 h-2 rounded-full bg-champagne"></span>
+</div>
+<div class="w-10 h-10 rounded-xl bg-champagne/15 flex items-center justify-center text-champagne mb-4 group-hover:bg-champagne group-hover:text-obsidian transition-colors">
+<i class="w-5 h-5" data-lucide="film"></i>
+</div>
+<h4 class="font-heading font-bold text-base text-white mb-2">Post Story</h4>
+<p class="text-xs text-zinc-400 font-light leading-relaxed">
+  Same-day edits, guest deliverables, digital coverage.
+</p>
+</div>
+<div class="mt-6 pt-3 border-t border-white/10 text-[10px] font-mono text-zinc-500">
+  T+24 HOURS
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 8. MID-PAGE HIGH-IMPACT COLLABORATIVE BANNER                              -->
+<!-- ========================================================================= -->
+<section class="py-20 bg-ivory-warm">
+<div class="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
+<div class="relative rounded-3xl overflow-hidden bg-gradient-to-br from-obsidian via-[#14120f] to-obsidian p-8 sm:p-14 text-center flex flex-col items-center border border-champagne/40 shadow-2xl">
+<div class="absolute -right-20 -bottom-20 w-96 h-96 bg-champagne/20 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute -left-20 -top-20 w-96 h-96 bg-champagne-glow/20 rounded-full blur-3xl pointer-events-none"></div>
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 text-champagne text-xs font-mono uppercase tracking-widest mb-4 border border-champagne/30">
+<i class="w-3.5 h-3.5 text-champagne" data-lucide="sparkle"></i>
+<span>Collaborative Excellence</span>
+<i class="w-3.5 h-3.5 text-champagne" data-lucide="sparkle"></i>
+</div>
+<h2 class="font-heading text-3xl sm:text-5xl font-black text-white max-w-3xl tracking-tight mb-4 text-balance leading-tight">
+  Let's Plan Your Event Ideas Together!
+</h2>
+<p class="text-zinc-300 text-sm sm:text-base max-w-2xl leading-relaxed mb-8 font-light text-balance">
+  From concept to celebration, our team turns your vision into a seamless and unforgettable event experience. Let's collaborate to make your next occasion extraordinary.
+</p>
+<a class="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl bg-gradient-to-r from-champagne via-champagne-glow to-champagne-dark text-obsidian font-heading font-bold text-xs uppercase tracking-wider shadow-gold-glow hover:scale-105 transition-all" href="#contact">
+<i class="w-4 h-4 text-obsidian" data-lucide="message-square"></i>
+<span>Let's Talk!</span>
+</a>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 9. WHY CHOOSE US: EXPERTISE STATEMENT                                     -->
+<!-- ========================================================================= -->
+<section class="py-24 bg-white border-b border-ivory-border" id="why-us">
+<div class="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
+<div class="flex flex-col items-center text-center max-w-3xl mx-auto mb-16">
+<span class="font-mono text-xs text-champagne-dark uppercase tracking-widest font-bold mb-2">CHAPTER 06 / WHY CHOOSE US</span>
+<h2 class="font-heading text-3xl sm:text-5xl font-black text-obsidian tracking-tight mb-4">
+  We Turning Your Dream into Reality
+</h2>
+<p class="text-zinc-600 text-sm sm:text-base leading-relaxed">
+  With years of experience in the event industry, 5thMedia stands as Hyderabad's trusted name for creative and flawless event execution.
+</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="p-8 rounded-3xl bg-ivory-warm border border-ivory-border hover:border-champagne transition-all shadow-sm">
+<div class="w-12 h-12 rounded-2xl bg-white border border-champagne/30 flex items-center justify-center text-champagne-dark mb-6">
+<i class="w-6 h-6" data-lucide="shield-check"></i>
+</div>
+<h4 class="font-heading text-xl font-bold text-obsidian mb-2">Single Point of Ownership</h4>
+<p class="text-xs text-zinc-600 leading-relaxed font-normal">
+  No fragmented vendors. One executive producer steers the whole production pipeline.
+</p>
+</div>
+<div class="p-8 rounded-3xl bg-ivory-warm border border-ivory-border hover:border-champagne transition-all shadow-sm">
+<div class="w-12 h-12 rounded-2xl bg-white border border-champagne/30 flex items-center justify-center text-champagne-dark mb-6">
+<i class="w-6 h-6" data-lucide="palette"></i>
+</div>
+<h4 class="font-heading text-xl font-bold text-obsidian mb-2">Architectural Scenography</h4>
+<p class="text-xs text-zinc-600 leading-relaxed font-normal">
+  3D renders that translate with millimeter precision to stage fabrication and lighting rigs.
+</p>
+</div>
+<div class="p-8 rounded-3xl bg-ivory-warm border border-ivory-border hover:border-champagne transition-all shadow-sm">
+<div class="w-12 h-12 rounded-2xl bg-white border border-champagne/30 flex items-center justify-center text-champagne-dark mb-6">
+<i class="w-6 h-6" data-lucide="clock"></i>
+</div>
+<h4 class="font-heading text-xl font-bold text-obsidian mb-2">Clockwork Execution</h4>
+<p class="text-xs text-zinc-600 leading-relaxed font-normal">
+  Minute-by-minute run-of-show protocols preventing delays, backstage snags, or dead air.
+</p>
+</div>
+<div class="p-8 rounded-3xl bg-ivory-warm border border-ivory-border hover:border-champagne transition-all shadow-sm">
+<div class="w-12 h-12 rounded-2xl bg-white border border-champagne/30 flex items-center justify-center text-champagne-dark mb-6">
+<i class="w-6 h-6" data-lucide="sparkles"></i>
+</div>
+<h4 class="font-heading text-xl font-bold text-obsidian mb-2">Sensory Magic</h4>
+<p class="text-xs text-zinc-600 leading-relaxed font-normal">
+  Creating emotional crescendo through synchronized sound, light, fragrance, and reveal moments.
+</p>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 10. TESTIMONIALS / "VOICES OF EMINENCE"                                    -->
+<!-- ========================================================================= -->
+<section class="py-24 bg-ivory-warm border-b border-ivory-border">
+<div class="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16">
+<div>
+<span class="font-mono text-xs text-champagne-dark uppercase tracking-widest font-bold block mb-2">CHAPTER 07 / TESTIMONIALS</span>
+<h2 class="font-heading text-3xl sm:text-5xl font-black text-obsidian tracking-tight">
+  What They Say About Us
+</h2>
+<p class="text-zinc-600 text-sm max-w-2xl mt-2 leading-relaxed font-normal">
+  Our success is defined by the satisfaction of our clients. From corporate launches to grand celebrations, every event we deliver leaves a lasting impression. Here are a few words from those who trusted 5thMedia to bring their vision to life.
+</p>
+</div>
+<div class="inline-flex items-center gap-4 px-6 py-4 rounded-2xl bg-white border border-champagne/40 shadow-sm shrink-0">
+<div class="font-heading text-4xl font-black text-obsidian">4.9</div>
+<div class="flex flex-col">
+<div class="flex text-champagne">
+<i class="w-4 h-4 fill-champagne text-champagne" data-lucide="star"></i>
+<i class="w-4 h-4 fill-champagne text-champagne" data-lucide="star"></i>
+<i class="w-4 h-4 fill-champagne text-champagne" data-lucide="star"></i>
+<i class="w-4 h-4 fill-champagne text-champagne" data-lucide="star"></i>
+<i class="w-4 h-4 fill-champagne text-champagne" data-lucide="star"></i>
+</div>
+<span class="font-mono text-[10px] text-zinc-600 uppercase tracking-wider font-semibold mt-1">4.9 (10+ Reviews) — Satisfied Customer</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="relative rounded-3xl bg-white p-8 sm:p-10 border border-ivory-border hover:border-champagne transition-all shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-6">
+<div class="flex text-champagne gap-1">
+<i class="w-4 h-4 fill-champagne text-champagne" data-lucide="star"></i>
+<i class="w-4 h-4 fill-champagne text-champagne" data-lucide="star"></i>
+<i class="w-4 h-4 fill-champagne text-champagne" data-lucide="star"></i>
+<i class="w-4 h-4 fill-champagne text-champagne" data-lucide="star"></i>
+<i class="w-4 h-4 fill-champagne text-champagne" data-lucide="star"></i>
+</div>
+<i class="w-6 h-6 text-champagne/40" data-lucide="quote"></i>
+</div>
+<p class="text-zinc-800 text-base sm:text-lg leading-relaxed italic mb-8 font-light">
+  “The attention to detail, creativity, and seamless execution from Evento made our retreat an absolute success. Our attendees were blown away, and so were we! Nice!”
+</p>
+</div>
+<div class="pt-6 border-t border-ivory-border flex items-center gap-3.5">
+<div class="w-11 h-11 rounded-full bg-champagne/15 border border-champagne/40 text-champagne-dark font-heading font-bold flex items-center justify-center text-sm">
+  ER
+</div>
+<div>
+<span class="font-heading font-bold text-sm text-obsidian block">Emily Rodriguez</span>
+<span class="text-xs text-zinc-500 font-normal">Founder of Bloom Wellness</span>
+</div>
+</div>
+</div>
+<div class="relative rounded-3xl bg-white p-8 sm:p-10 border border-ivory-border hover:border-champagne transition-all shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-6">
+<div class="flex text-champagne gap-1">
+<i class="w-4 h-4 fill-champagne text-champagne" data-lucide="star"></i>
+<i class="w-4 h-4 fill-champagne text-champagne" data-lucide="star"></i>
+<i class="w-4 h-4 fill-champagne text-champagne" data-lucide="star"></i>
+<i class="w-4 h-4 fill-champagne text-champagne" data-lucide="star"></i>
+<i class="w-4 h-4 fill-champagne text-champagne" data-lucide="star"></i>
+</div>
+<i class="w-6 h-6 text-champagne/40" data-lucide="quote"></i>
+</div>
+<p class="text-zinc-800 text-base sm:text-lg leading-relaxed italic mb-8 font-light">
+  “Evento exceeded our expectations. They brought our vision to life with precision and passion, making our charity event both memorable and impactful.”
+</p>
+</div>
+<div class="pt-6 border-t border-ivory-border flex items-center gap-3.5">
+<div class="w-11 h-11 rounded-full bg-champagne/15 border border-champagne/40 text-champagne-dark font-heading font-bold flex items-center justify-center text-sm">
+  DL
+</div>
+<div>
+<span class="font-heading font-bold text-sm text-obsidian block">David Lee</span>
+<span class="text-xs text-zinc-500 font-normal">Event Coordinator at Sunrise Charities</span>
+</div>
+</div>
+</div>
+<div class="relative rounded-3xl bg-white p-8 sm:p-10 border border-ivory-border hover:border-champagne transition-all shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-6">
+<div class="flex text-champagne gap-1">
+<i class="w-4 h-4 fill-champagne text-champagne" data-lucide="star"></i>
+<i class="w-4 h-4 fill-champagne text-champagne" data-lucide="star"></i>
+<i class="w-4 h-4 fill-champagne text-champagne" data-lucide="star"></i>
+<i class="w-4 h-4 fill-champagne text-champagne" data-lucide="star"></i>
+<i class="w-4 h-4 fill-champagne text-champagne" data-lucide="star"></i>
+</div>
+<i class="w-6 h-6 text-champagne/40" data-lucide="quote"></i>
+</div>
+<p class="text-zinc-800 text-base sm:text-lg leading-relaxed italic mb-8 font-light">
+  “Our corporate gala was a masterpiece. 5M Events delivered beyond expectations, creating an unforgettable experience for our guests. Truly a top-tier event planning team.”
+</p>
+</div>
+<div class="pt-6 border-t border-ivory-border flex items-center gap-3.5">
+<div class="w-11 h-11 rounded-full bg-champagne/15 border border-champagne/40 text-champagne-dark font-heading font-bold flex items-center justify-center text-sm">
+  RV
+</div>
+<div>
+<span class="font-heading font-bold text-sm text-obsidian block">Rajasree</span>
+<span class="text-xs text-zinc-500 font-normal">Fintech Company</span>
+</div>
+</div>
+</div>
+<div class="relative rounded-3xl bg-white p-8 sm:p-10 border border-ivory-border hover:border-champagne transition-all shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-6">
+<div class="flex text-champagne gap-1">
+<i class="w-4 h-4 fill-champagne text-champagne" data-lucide="star"></i>
+<i class="w-4 h-4 fill-champagne text-champagne" data-lucide="star"></i>
+<i class="w-4 h-4 fill-champagne text-champagne" data-lucide="star"></i>
+<i class="w-4 h-4 fill-champagne text-champagne" data-lucide="star"></i>
+<i class="w-4 h-4 fill-champagne text-champagne" data-lucide="star"></i>
+</div>
+<i class="w-6 h-6 text-champagne/40" data-lucide="quote"></i>
+</div>
+<p class="text-zinc-800 text-base sm:text-lg leading-relaxed italic mb-8 font-light">
+  “5M Events transformed our product launch into a grand spectacle. Every detail was flawless, and feedback from our attendees was overwhelmingly positive. Highly recommend!”
+</p>
+</div>
+<div class="pt-6 border-t border-ivory-border flex items-center gap-3.5">
+<div class="w-11 h-11 rounded-full bg-champagne/15 border border-champagne/40 text-champagne-dark font-heading font-bold flex items-center justify-center text-sm">
+  AD
+</div>
+<div>
+<span class="font-heading font-bold text-sm text-obsidian block">Abhisheik</span>
+<span class="text-xs text-zinc-500 font-normal">Marketing Director</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 11. VISUAL GALLERY ARCHIVE & PRODUCTION CHRONICLES                        -->
+<!-- ========================================================================= -->
+<section class="py-24 bg-white border-b border-ivory-border" id="chronicles">
+<div class="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+<div>
+<span class="font-mono text-xs text-champagne-dark uppercase tracking-widest font-bold block mb-2">CHAPTER 08 / MASTERPIECES</span>
+<h2 class="font-heading text-3xl sm:text-5xl font-black text-obsidian tracking-tight">
+  Visual Gallery Archive
+</h2>
+</div>
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-4 py-2 rounded-full text-xs font-mono font-bold bg-obsidian text-white cursor-pointer shadow-sm">All Archive</span>
+<span class="px-4 py-2 rounded-full text-xs font-mono font-medium bg-ivory-warm text-zinc-700 border border-ivory-border hover:border-champagne cursor-pointer">Royal Unions</span>
+<span class="px-4 py-2 rounded-full text-xs font-mono font-medium bg-ivory-warm text-zinc-700 border border-ivory-border hover:border-champagne cursor-pointer">Summits</span>
+<span class="px-4 py-2 rounded-full text-xs font-mono font-medium bg-ivory-warm text-zinc-700 border border-ivory-border hover:border-champagne cursor-pointer">Galas</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="group relative rounded-3xl overflow-hidden border border-ivory-border shadow-sm h-96 bg-obsidian">
+<img alt="Palace Mandap Scenography" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida/AEtjO1XktSnYwFFI6h5FcGLo1sBAUEkWJkyjGKCj6dfT2_IyRnk4IGvrE6OmcDGqDa15upEgrVUBurCPYqzn7DY-9EohhduMEjHQ_7Gf6h1fUJsF8CfpX1Gy4H3mFuznUuLJeAXVcUUWlPYQYRbFWtNMHSqBcr6qrDRd_MT5DMSm7oTahTZockX4PsultR1FtfLd2u49yDqWxrpBBHLpwukoMqyLI-UBmB895InnUonHBw0S8zSljIR4EzFMvw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-obsidian via-black/30 to-transparent"></div>
+<div class="absolute bottom-6 left-6 right-6 text-white">
+<span class="font-mono text-[10px] uppercase text-champagne font-bold block mb-1">Royal Heritage</span>
+<h4 class="font-heading text-xl font-bold">Palace Mandap Scenography</h4>
+</div>
+</div>
+<div class="group relative rounded-3xl overflow-hidden border border-ivory-border shadow-sm h-96 bg-obsidian">
+<img alt="Maison Éclat Flagship Unveil" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida/AEtjO1Ug0RjgOGg1McFgo4BQVT_7xrbqDlgAY87Je9Io4o-cKshG4OFEU7NfwJwAjEIcCLQBGWVSKFT_myHsZK31GhyM8DT6MKqk1ljqDYNGSHgt3eTRDvp9NpTqTSjM6h6ye8u4GWM7CqR0nbeeKnnGUM_Hg45YsUfYy0lLoBxTfkvgcaxT9AJU8J4pa8-kBz8CbnePazcpOdamCJSQM2ElB3I9oVHzOitAG8UGgQJoCG63Gtoe8O338tG4bg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-obsidian via-black/30 to-transparent"></div>
+<div class="absolute bottom-6 left-6 right-6 text-white">
+<span class="font-mono text-[10px] uppercase text-champagne font-bold block mb-1">Retail Debut</span>
+<h4 class="font-heading text-xl font-bold">Maison Éclat Flagship Unveil</h4>
+</div>
+</div>
+<div class="group relative rounded-3xl overflow-hidden border border-ivory-border shadow-sm h-96 bg-obsidian">
+<img alt="Nocturne Opulence Anniversary" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida/AEtjO1Xqgf4mptAIgY2Q6M2c2F4CWZYJfyI-KUg-_utu25mIwrzp0UdO51l02zUY-rzbMrVrfa0pAkd0LJ6_oKyEIgWVHgfSEu7SUCa25_8wEmTSn0QSyNbyNzdRrbg_olLUtdN5gC-TGGBSrVAhEQxg466n-a6dN1JHv_BFyInfpU0aL3zkULUNbbJWkLHYj2_1Yoz1vqTDpyAVD9xCZ0tF1pUw2Lg57Ve2fn5eTU0Y5mGnXLZB2o3IbWMK"/>
+<div class="absolute inset-0 bg-gradient-to-t from-obsidian via-black/30 to-transparent"></div>
+<div class="absolute bottom-6 left-6 right-6 text-white">
+<span class="font-mono text-[10px] uppercase text-champagne font-bold block mb-1">VIP Gala Banquet</span>
+<h4 class="font-heading text-xl font-bold">Nocturne Opulence Anniversary</h4>
+</div>
+</div>
+</div>
+<div class="mt-12 flex justify-center">
+<a class="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-champagne-dark hover:text-obsidian transition-colors" href="#contact">
+<span>Commission Custom Staging</span>
+<i class="w-4 h-4" data-lucide="arrow-right"></i>
+</a>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 12. NEWSLETTER & COMMUNITY SIGNUP                                         -->
+<!-- ========================================================================= -->
+<section class="py-20 bg-ivory-warm border-b border-ivory-border">
+<div class="max-w-3xl mx-auto px-4 sm:px-8 text-center">
+<div class="w-14 h-14 rounded-2xl bg-white border border-champagne/30 text-champagne flex items-center justify-center mx-auto mb-4 shadow-sm">
+<i class="w-7 h-7" data-lucide="mail"></i>
+</div>
+<h2 class="font-heading text-2xl sm:text-4xl font-black text-obsidian tracking-tight mb-3">
+  Subscribe To Our Newsletter
+</h2>
+<p class="text-zinc-600 text-sm leading-relaxed mb-8 max-w-xl mx-auto font-normal">
+  Subscribe to receive the latest insights, event trends, and creative inspiration delivered to your inbox. Join the 5thMedia community and stay connected with the future of event innovation.
+</p>
+<form class="flex flex-col sm:flex-row items-center gap-3 max-w-md mx-auto" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Fi5th Media!');">
+<input class="w-full px-4 py-3.5 rounded-xl border border-zinc-300 bg-white text-zinc-900 placeholder:text-zinc-400 text-sm focus:outline-none focus:border-champagne focus:ring-1 focus:ring-champagne shadow-xs" placeholder="Enter your email address" required="" type="email"/>
+<button class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-obsidian text-white hover:bg-champagne hover:text-obsidian font-heading text-xs font-bold uppercase tracking-wider shrink-0 transition-all shadow-md" type="submit">
+  Subscribe
+</button>
+</form>
+<span class="font-mono text-[10px] text-zinc-500 tracking-widest uppercase block mt-4">
+  No spam. Only curated production elegance.
+</span>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 13. INTERACTIVE CONCIERGE & HYDERABAD HQ FINALE                           -->
+<!-- ========================================================================= -->
+<section class="py-24 bg-white relative" id="contact">
+<div class="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
+<div class="rounded-3xl border border-ivory-border bg-ivory-warm p-8 sm:p-14 shadow-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<div class="lg:col-span-5 flex flex-col justify-between">
+<div>
+<div class="inline-flex items-center gap-2 text-champagne-dark text-xs font-mono uppercase tracking-wider mb-3 font-semibold">
+<span class="w-2 h-2 rounded-full bg-champagne"></span>
+<span>CHAPTER 09 / ATELIER CONCIERGE</span>
+</div>
+<h2 class="font-heading text-3xl sm:text-4xl font-black text-obsidian tracking-tight mb-4 leading-tight">
+  Let's Plan Your Next Unforgettable Show.
+</h2>
+<p class="text-zinc-600 text-sm leading-relaxed mb-8 font-normal">
+  Whether you are orchestrating a royal destination wedding or an international M.I.C.E convention, reach our principal producers directly.
+</p>
+</div>
+<div class="flex flex-col gap-3.5">
+<a class="flex items-center gap-4 p-4 rounded-2xl bg-white border border-ivory-border hover:border-champagne transition-all group shadow-xs" href="tel:+917981636962">
+<div class="w-12 h-12 rounded-xl bg-champagne/15 text-champagne flex items-center justify-center shrink-0 group-hover:bg-champagne group-hover:text-obsidian transition-colors">
+<i class="w-5 h-5" data-lucide="phone-call"></i>
+</div>
+<div>
+<span class="text-xs text-zinc-500 block font-mono uppercase">Call Our Production Desk</span>
+<span class="font-heading font-bold text-sm sm:text-base text-obsidian">+91 79816 36962</span>
+</div>
+</a>
+<a class="flex items-center gap-4 p-4 rounded-2xl bg-white border border-ivory-border hover:border-champagne transition-all group shadow-xs" href="mailto:contact@fi5thmedia.com">
+<div class="w-12 h-12 rounded-xl bg-champagne/15 text-champagne flex items-center justify-center shrink-0 group-hover:bg-champagne group-hover:text-obsidian transition-colors">
+<i class="w-5 h-5" data-lucide="mail"></i>
+</div>
+<div>
+<span class="text-xs text-zinc-500 block font-mono uppercase">Email Atelier</span>
+<span class="font-heading font-bold text-sm sm:text-base text-obsidian">contact@fi5thmedia.com</span>
+</div>
+</a>
+<div class="flex items-center gap-4 p-4 rounded-2xl bg-white border border-ivory-border shadow-xs">
+<div class="w-12 h-12 rounded-xl bg-champagne/15 text-champagne flex items-center justify-center shrink-0">
+<i class="w-5 h-5" data-lucide="map-pin"></i>
+</div>
+<div>
+<span class="text-xs text-zinc-500 block font-mono uppercase">Hyderabad Headquarters</span>
+<span class="font-heading font-bold text-sm sm:text-base text-obsidian">Jubilee Hills &amp; Banjara Hills, TS</span>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-7 bg-white p-7 sm:p-10 rounded-3xl border border-ivory-border shadow-sm">
+<h3 class="font-heading text-xl sm:text-2xl font-bold text-obsidian mb-1">
+  Request a Tailored Concept Deck
+</h3>
+<p class="text-xs text-zinc-500 mb-6 font-mono">Fill in details for a bespoke proposal and costed blueprint within 24 hours.</p>
+<form class="flex flex-col gap-4" onsubmit="event.preventDefault(); alert('Thank you! Our lead producer will connect with you within 4 hours.');">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-semibold text-zinc-800 mb-1.5 font-heading">Your Full Name</label>
+<input class="w-full px-4 py-3 rounded-xl border border-zinc-200 bg-ivory-warm text-sm focus:outline-none focus:border-champagne focus:ring-1 focus:ring-champagne" placeholder="e.g. Rajesh Sharma" required="" type="text"/>
+</div>
+<div>
+<label class="block text-xs font-semibold text-zinc-800 mb-1.5 font-heading">Phone / WhatsApp</label>
+<input class="w-full px-4 py-3 rounded-xl border border-zinc-200 bg-ivory-warm text-sm focus:outline-none focus:border-champagne focus:ring-1 focus:ring-champagne" placeholder="+91 98765 43210" required="" type="tel"/>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-semibold text-zinc-800 mb-1.5 font-heading">Event Category</label>
+<select class="w-full px-4 py-3 rounded-xl border border-zinc-200 bg-ivory-warm text-sm focus:outline-none focus:border-champagne focus:ring-1 focus:ring-champagne">
+<option>Wedding Organizing</option>
+<option>Corporate Events &amp; M.I.C.E</option>
+<option>Product / Brand Launch</option>
+<option>Private Party &amp; Galas</option>
+<option>Anniversary Celebration</option>
+<option>Concerts &amp; Festivals</option>
+</select>
+</div>
+<div>
+<label class="block text-xs font-semibold text-zinc-800 mb-1.5 font-heading">Approximate Guest Count</label>
+<input class="w-full px-4 py-3 rounded-xl border border-zinc-200 bg-ivory-warm text-sm focus:outline-none focus:border-champagne focus:ring-1 focus:ring-champagne" placeholder="e.g. 200 - 500 Guests" type="text"/>
+</div>
+</div>
+<div>
+<label class="block text-xs font-semibold text-zinc-800 mb-1.5 font-heading">Event Vision &amp; Notes</label>
+<textarea class="w-full px-4 py-3 rounded-xl border border-zinc-200 bg-ivory-warm text-sm focus:outline-none focus:border-champagne focus:ring-1 focus:ring-champagne resize-none" placeholder="Tell us about the desired date, location or venue theme..." rows="3"></textarea>
+</div>
+<button class="w-full py-4 rounded-xl bg-gradient-to-r from-champagne via-champagne-glow to-champagne-dark text-obsidian font-heading font-bold text-xs uppercase tracking-wider shadow-gold-glow hover:scale-[1.01] active:scale-[0.99] transition-all" type="submit">
+  Submit Inquiry &amp; Receive Deck
+</button>
+<div class="flex items-center justify-center gap-1.5 text-center text-[11px] text-zinc-500 font-mono">
+<i class="w-3.5 h-3.5 text-champagne" data-lucide="lock"></i>
+<span>Strict Confidentiality &amp; Non-Disclosure Agreement Guaranteed</span>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 14. FOOTER                                                                -->
+<!-- ========================================================================= -->
+<footer class="bg-obsidian text-white pt-16 pb-12 border-t border-white/10">
+<div class="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 mb-16">
+<div class="lg:col-span-5 flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-gradient-to-br from-champagne-light via-champagne to-champagne-dark p-[1.5px] flex items-center justify-center">
+<div class="w-full h-full bg-obsidian rounded-[10px] flex items-center justify-center">
+<span class="font-heading font-black text-xs text-champagne tracking-tight">5M</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-heading font-extrabold text-base tracking-tight text-white">Fi5th Media</span>
+<span class="font-mono text-[9px] text-champagne tracking-[0.2em] font-semibold">5THMEDIA • 5M EVENTS</span>
+</div>
+</div>
+<p class="text-xs text-zinc-400 leading-relaxed max-w-md font-light">
+  5thMedia is a full-scale event management and creative production company that transforms ideas into unforgettable experiences. From corporate summits to celebrity concerts and private celebrations, we design, plan, and execute events that inspire and connect.
+</p>
+<div class="flex items-center gap-2 pt-2">
+<a class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-zinc-400 hover:text-champagne hover:border-champagne transition-all" href="#" title="Instagram">
+<i class="w-4 h-4" data-lucide="instagram"></i>
+</a>
+<a class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-zinc-400 hover:text-champagne hover:border-champagne transition-all" href="https://wa.me/917981636962" title="WhatsApp">
+<i class="w-4 h-4" data-lucide="message-circle"></i>
+</a>
+<a class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-zinc-400 hover:text-champagne hover:border-champagne transition-all" href="tel:+917981636962" title="Call">
+<i class="w-4 h-4" data-lucide="phone"></i>
+</a>
+</div>
+</div>
+<div class="lg:col-span-3 flex flex-col gap-3">
+<span class="font-mono text-xs text-champagne uppercase tracking-widest font-bold">QUICK LINKS</span>
+<div class="flex flex-col gap-2.5 text-xs text-zinc-400">
+<a class="hover:text-champagne transition-colors" href="#">Terms and Conditions</a>
+<a class="hover:text-champagne transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-champagne transition-colors" href="#chronicles">Gallery</a>
+<a class="hover:text-champagne transition-colors" href="#">Blogs &amp; Insights</a>
+<a class="hover:text-champagne transition-colors" href="#services">Services Portfolio</a>
+</div>
+</div>
+<div class="lg:col-span-4 flex flex-col gap-3">
+<span class="font-mono text-xs text-champagne uppercase tracking-widest font-bold">OUR AGENCY</span>
+<div class="flex flex-col gap-2.5 text-xs text-zinc-400">
+<a class="hover:text-champagne transition-colors" href="#about">About Us</a>
+<a class="hover:text-champagne transition-colors" href="#why-us">Our Team</a>
+<div class="flex items-center gap-2 pt-2 text-white font-medium">
+<i class="w-3.5 h-3.5 text-champagne" data-lucide="phone"></i>
+<span>+91 79816 36962</span>
+</div>
+<div class="flex items-center gap-2 text-zinc-400">
+<i class="w-3.5 h-3.5 text-champagne" data-lucide="map-pin"></i>
+<span>Jubilee Hills &amp; Banjara Hills, Hyderabad</span>
+</div>
+<div class="mt-3 p-3 rounded-xl bg-white/5 border border-white/10">
+<span class="text-xs font-bold text-champagne block">Atelier Benchmark:</span>
+<span class="text-[11px] text-zinc-400 block font-mono">ISO 9001:2015 Premier Quality Benchmark</span>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-zinc-500 font-mono">
+<div>
+  2025 © Developed by Akhi Digitals &amp; Entertainments Pvt Ltd | 5thMedia / 5M Events
+</div>
+<div class="flex items-center gap-4">
+<a class="hover:text-champagne transition-colors" href="#">Terms &amp; Conditions</a>
+<span>•</span>
+<a class="hover:text-champagne transition-colors" href="#">Privacy &amp; Policy</a>
+<span>•</span>
+<a class="hover:text-champagne transition-colors" href="#contact">Bespoke Concierge</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- Interactive Vanilla JS Switcher for Verticals -->
+<script>
+  const verticalsData = [
+    {
+      code: "01 // M.I.C.E & ARENAS",
+      pill: "5M DIVISION 01",
+      subtitle: "CONVENTIONS, EXPOS & FESTIVALS",
+      title: "M.I.C.E",
+      desc: "Explore M.I.C.E., concerts and festivals, fashion shows, sporting events, exhibition stalls, and thematic décor/design for immersive experiences at any scale.",
+      spec1: "Multi-Zone Line Array 120dB",
+      spec2: "10,000+ Stadium Capacity",
+      spec3: "360° Kinetic Rigging & Laser",
+      spec4: "72h Multi-Stage Setup",
+      ctaText: "Request M.I.C.E Concept Deck",
+      heroImg: "https://lh3.googleusercontent.com/aida/AEtjO1Um00cmwHGcOEfRhlUuXAfubsbiDb3vHV7D7SUN7_uORMLF_sKGucYtl6KAF1XkA16k9sjekwzuBoWmrczUAPsPn-sPxANuASjvkC_xjIIpEhCnz-rz-OcW_OUAvKwXqkc5ytJKCitPYH7X1yG2IzpLmZ7pc1IxJ_AAeWHSgUfXX-x12xDPKDjnchyzp4w5IDg3LRRI4ExqSMSMlUZWGwZeioQ227EHyynKbid0ANWf_58PMmLFwaUn",
+      insetImg: "https://lh3.googleusercontent.com/aida/AEtjO1VjNZ8aMIbsZhmOrLi8QC1GDfCSTLABPfRxPPo1siFd4WjIHyuOP8zN-qHby5nqY8TaCggs2nQ1nOUMuWVX7DZPcCrdaXBYljmWAVdHioa8QiiaKMvYh4tPpa4UzmQHxsQWEjt3aVEuqJLI-UYaV44mgJQwW-aghjzla0AAGpG6Nib9PPOi12mWmLo4BbjXG5b0J8tT3oPsgchPGhCVonbwVVXiPq4nENum7toavJO_v6SdExHxsfLtPw",
+      heroBadge: "ARENA VIEW: HYDERABAD EXPO CENTER",
+      heroGeo: "MASSIVE SOUND REINFORCEMENT",
+      heroTitle: "Arena Trussing, LED Pyramids & Pyro Displays",
+      insetLabel: "KEYNOTE HALL INSET"
+    },
+    {
+      code: "02 // CORPORATE SUMMITS",
+      pill: "5M DIVISION 02",
+      subtitle: "EXECUTIVE RETREATS & CONFERENCES",
+      title: "Corporate Events",
+      desc: "Townhalls, annual days, offsites, dealer/distributor meets, inaugurations, and retreats with stage design, AV, scripting, and showcalling for seamless delivery and measurable outcomes.",
+      spec1: "Curved 4K Ultra-Wide LED",
+      spec2: "500 - 2,500 Delegates",
+      spec3: "Studio Broadcast Telemetry",
+      spec4: "Zero-Latency Run-Of-Show",
+      ctaText: "Plan Corporate Event",
+      heroImg: "https://lh3.googleusercontent.com/aida/AEtjO1VjNZ8aMIbsZhmOrLi8QC1GDfCSTLABPfRxPPo1siFd4WjIHyuOP8zN-qHby5nqY8TaCggs2nQ1nOUMuWVX7DZPcCrdaXBYljmWAVdHioa8QiiaKMvYh4tPpa4UzmQHxsQWEjt3aVEuqJLI-UYaV44mgJQwW-aghjzla0AAGpG6Nib9PPOi12mWmLo4BbjXG5b0J8tT3oPsgchPGhCVonbwVVXiPq4nENum7toavJO_v6SdExHxsfLtPw",
+      insetImg: "https://lh3.googleusercontent.com/aida/AEtjO1Ug0RjgOGg1McFgo4BQVT_7xrbqDlgAY87Je9Io4o-cKshG4OFEU7NfwJwAjEIcCLQBGWVSKFT_myHsZK31GhyM8DT6MKqk1ljqDYNGSHgt3eTRDvp9NpTqTSjM6h6ye8u4GWM7CqR0nbeeKnnGUM_Hg45YsUfYy0lLoBxTfkvgcaxT9AJU8J4pa8-kBz8CbnePazcpOdamCJSQM2ElB3I9oVHzOitAG8UGgQJoCG63Gtoe8O338tG4bg",
+      heroBadge: "SUMMIT VIEW: GRAND 5-STAR AUDITORIUM",
+      heroGeo: "EXECUTIVE AUDIENCE DEPLOYMENT",
+      heroTitle: "Sleek Keynote Staging with Panoramic Displays",
+      insetLabel: "DEBUT PAVILION INSET"
+    },
+    {
+      code: "03 // WEDDINGS",
+      pill: "5M DIVISION 03",
+      subtitle: "ROYAL & DESTINATION UNIONS",
+      title: "Wedding Organizing",
+      desc: "End-to-end planning across ceremonies, Sangeet, reception, and hospitality: décor, artists, choreography, baraat/entry concepts, and complete guest management. Destination setups on request.",
+      spec1: "Heritage Mandap 3D CAD",
+      spec2: "500 - 3,500 Nobles",
+      spec3: "Artisanal Kinetic Floral Glow",
+      spec4: "24/7 Run-Of-Show Protocols",
+      ctaText: "Inquire Royal Wedding",
+      heroImg: "https://lh3.googleusercontent.com/aida/AEtjO1XktSnYwFFI6h5FcGLo1sBAUEkWJkyjGKCj6dfT2_IyRnk4IGvrE6OmcDGqDa15upEgrVUBurCPYqzn7DY-9EohhduMEjHQ_7Gf6h1fUJsF8CfpX1Gy4H3mFuznUuLJeAXVcUUWlPYQYRbFWtNMHSqBcr6qrDRd_MT5DMSm7oTahTZockX4PsultR1FtfLd2u49yDqWxrpBBHLpwukoMqyLI-UBmB895InnUonHBw0S8zSljIR4EzFMvw",
+      insetImg: "https://lh3.googleusercontent.com/aida/AEtjO1XdDbqptIauweAPvaQHIMO-AqPMYKakuvkaIWtZNpi0FCALxG0W0LbCRuO0Ij0_hQHVQFOVAY_leaW3Ui_3Bj9fFMwm3BmvW608SpnWp2AOzlrtQFUqaAwmNHxWNBZPiG4tjAFBE5Dyz5vfOHsIhpXl6nidWPzNNgf1loZoUSZ-XfQaTLvG8yebT1aW9CKihuR_6a6HOdeFJPOmO7vE1--V-MKJUe1jbdJPm1-uISIaUVY1INipn0qsVQ",
+      heroBadge: "STAGE VIEW: PALATIAL AUDITORIUM",
+      heroGeo: "VENUE COORDINATION",
+      heroTitle: "Bespoke Structural Rigging & Luxury Mandap",
+      insetLabel: "AERIAL RECEPTION VIEW"
+    },
+    {
+      code: "04 // PRIVATE GALAS",
+      pill: "5M DIVISION 04",
+      subtitle: "INTIMATE CELEBRATIONS & SOIREES",
+      title: "Private Party",
+      desc: "From birthdays and family gatherings to themed celebrations, 5thMedia crafts unforgettable private parties that reflect your personality and preferences. Every detail — décor, lighting, music, and guest flow — is handled with precision to create a relaxed yet vibrant atmosphere.",
+      spec1: "Suspended Floral Chandeliers",
+      spec2: "80 - 350 VIP Guests",
+      spec3: "Candlelit Ambient Acoustics",
+      spec4: "White-Glove Hospitality Concierge",
+      ctaText: "Plan Private Party",
+      heroImg: "https://lh3.googleusercontent.com/aida/AEtjO1Xqgf4mptAIgY2Q6M2c2F4CWZYJfyI-KUg-_utu25mIwrzp0UdO51l02zUY-rzbMrVrfa0pAkd0LJ6_oKyEIgWVHgfSEu7SUCa25_8wEmTSn0QSyNbyNzdRrbg_olLUtdN5gC-TGGBSrVAhEQxg466n-a6dN1JHv_BFyInfpU0aL3zkULUNbbJWkLHYj2_1Yoz1vqTDpyAVD9xCZ0tF1pUw2Lg57Ve2fn5eTU0Y5mGnXLZB2o3IbWMK",
+      insetImg: "https://lh3.googleusercontent.com/aida/AEtjO1XdDbqptIauweAPvaQHIMO-AqPMYKakuvkaIWtZNpi0FCALxG0W0LbCRuO0Ij0_hQHVQFOVAY_leaW3Ui_3Bj9fFMwm3BmvW608SpnWp2AOzlrtQFUqaAwmNHxWNBZPiG4tjAFBE5Dyz5vfOHsIhpXl6nidWPzNNgf1loZoUSZ-XfQaTLvG8yebT1aW9CKihuR_6a6HOdeFJPOmO7vE1--V-MKJUe1jbdJPm1-uISIaUVY1INipn0qsVQ",
+      heroBadge: "BALLROOM VIEW: HERITAGE COURTYARD",
+      heroGeo: "BESPOKE AMBIANCE & LUXE TABLESCAPES",
+      heroTitle: "Opulent Candelabras & Suspended Floral Flora",
+      insetLabel: "ROYAL LAWNS INSET"
+    },
+    {
+      code: "05 // ANNIVERSARIES",
+      pill: "5M DIVISION 05",
+      subtitle: "MILESTONE GALAS & RECEPTIONS",
+      title: "Anniversaries",
+      desc: "Celebrate your milestones in style. 5thMedia curates anniversary experiences that combine emotion and elegance, from venue styling and entertainment to curated dining and visual storytelling. Our creative team transforms your love story into an immersive celebration filled with warmth, beauty, and unforgettable moments.",
+      spec1: "Retrospective Video Walls",
+      spec2: "150 - 800 Patrons",
+      spec3: "Symphonic String Quartet Sound",
+      spec4: "Tears & Cheers Showcalling",
+      ctaText: "Curate Anniversary",
+      heroImg: "https://lh3.googleusercontent.com/aida/AEtjO1XdDbqptIauweAPvaQHIMO-AqPMYKakuvkaIWtZNpi0FCALxG0W0LbCRuO0Ij0_hQHVQFOVAY_leaW3Ui_3Bj9fFMwm3BmvW608SpnWp2AOzlrtQFUqaAwmNHxWNBZPiG4tjAFBE5Dyz5vfOHsIhpXl6nidWPzNNgf1loZoUSZ-XfQaTLvG8yebT1aW9CKihuR_6a6HOdeFJPOmO7vE1--V-MKJUe1jbdJPm1-uISIaUVY1INipn0qsVQ",
+      insetImg: "https://lh3.googleusercontent.com/aida/AEtjO1XktSnYwFFI6h5FcGLo1sBAUEkWJkyjGKCj6dfT2_IyRnk4IGvrE6OmcDGqDa15upEgrVUBurCPYqzn7DY-9EohhduMEjHQ_7Gf6h1fUJsF8CfpX1Gy4H3mFuznUuLJeAXVcUUWlPYQYRbFWtNMHSqBcr6qrDRd_MT5DMSm7oTahTZockX4PsultR1FtfLd2u49yDqWxrpBBHLpwukoMqyLI-UBmB895InnUonHBw0S8zSljIR4EzFMvw",
+      heroBadge: "WATERFRONT VIEW: PALACE ATRIUM",
+      heroGeo: "FLOATING LOTUS DIYAS & ARCHITECTURAL LIGHT",
+      heroTitle: "Grand Scale Heritage Nocturne Feast",
+      insetLabel: "MANDAP GLOW INSET"
+    },
+    {
+      code: "06 // BRAND SPECTACLE",
+      pill: "5M DIVISION 06",
+      subtitle: "PRODUCT & RETAIL DEBUTS",
+      title: "Launch Event",
+      desc: "Introduce your brand, product, or service with impact. 5thMedia delivers launch events that command attention through experiential design, multimedia production, and seamless execution. From press meets and influencer engagements to live showcases and digital coverage, we ensure your brand debut makes a powerful statement.",
+      spec1: "Kinetic Hologram Curtain",
+      spec2: "VIP Press & Influencer Access",
+      spec3: "Red Carpet Flash Mob Rig",
+      spec4: "Live Same-Day Digital Social Edits",
+      ctaText: "Ignite Brand Debut",
+      heroImg: "https://lh3.googleusercontent.com/aida/AEtjO1Ug0RjgOGg1McFgo4BQVT_7xrbqDlgAY87Je9Io4o-cKshG4OFEU7NfwJwAjEIcCLQBGWVSKFT_myHsZK31GhyM8DT6MKqk1ljqDYNGSHgt3eTRDvp9NpTqTSjM6h6ye8u4GWM7CqR0nbeeKnnGUM_Hg45YsUfYy0lLoBxTfkvgcaxT9AJU8J4pa8-kBz8CbnePazcpOdamCJSQM2ElB3I9oVHzOitAG8UGgQJoCG63Gtoe8O338tG4bg",
+      insetImg: "https://lh3.googleusercontent.com/aida/AEtjO1VjNZ8aMIbsZhmOrLi8QC1GDfCSTLABPfRxPPo1siFd4WjIHyuOP8zN-qHby5nqY8TaCggs2nQ1nOUMuWVX7DZPcCrdaXBYljmWAVdHioa8QiiaKMvYh4tPpa4UzmQHxsQWEjt3aVEuqJLI-UYaV44mgJQwW-aghjzla0AAGpG6Nib9PPOi12mWmLo4BbjXG5b0J8tT3oPsgchPGhCVonbwVVXiPq4nENum7toavJO_v6SdExHxsfLtPw",
+      heroBadge: "RED CARPET VIEW: FLAGSHIP FACADE",
+      heroGeo: "LUXURY RETAIL ACTIVATION",
+      heroTitle: "Kinetic Lighting, Champagne Reception & Ribbon Spectacle",
+      insetLabel: "AUDITORIUM CUT INSET"
+    }
+  ];
 
-    <!-- HEADER -->
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">Lumina<span>.</span></div>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#events">Events</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <a href="#contact" class="btn btn-primary">Book Now</a>
-            </nav>
-        </div>
-    </header>
+  function switchVertical(index) {
+    const data = verticalsData[index];
+    const tabs = document.querySelectorAll('.vertical-tab');
+    
+    tabs.forEach((tab, i) => {
+      if (i === index) {
+        tab.classList.add('tab-active');
+      } else {
+        tab.classList.remove('tab-active');
+      }
+    });
 
-    <!-- HERO SECTION -->
-    <section class="hero" id="home">
-        <div class="container">
-            <h1>Crafting Unforgettable<br>Experiences</h1>
-            <p>From intimate gatherings to grand corporate galas, we bring your vision to life with flawless execution and creative brilliance.</p>
-            <a href="#events" class="btn">Explore Upcoming Events</a>
-        </div>
-    </section>
+    document.getElementById('active-vertical-code').textContent = data.code;
+    document.getElementById('showcase-pill').textContent = data.pill;
+    document.getElementById('showcase-subtitle').textContent = data.subtitle;
+    document.getElementById('showcase-title').textContent = data.title;
+    document.getElementById('showcase-desc').textContent = data.desc;
+    document.getElementById('spec-1').textContent = data.spec1;
+    document.getElementById('spec-2').textContent = data.spec2;
+    document.getElementById('spec-3').textContent = data.spec3;
+    document.getElementById('spec-4').textContent = data.spec4;
+    document.getElementById('showcase-cta').querySelector('span').textContent = data.ctaText;
+    
+    document.getElementById('primary-hero-img').src = data.heroImg;
+    document.getElementById('primary-hero-img').alt = data.title;
+    document.getElementById('floating-inset-img').src = data.insetImg;
+    document.getElementById('hero-badge-tag').textContent = data.heroBadge;
+    document.getElementById('hero-geo-tag').textContent = data.heroGeo;
+    document.getElementById('hero-title-tag').textContent = data.heroTitle;
+    document.getElementById('inset-label').textContent = data.insetLabel;
 
-    <!-- UPCOMING EVENTS -->
-    <section id="events">
-        <div class="container">
-            <h2 class="section-title">Upcoming Events</h2>
-            <p class="section-subtitle">Join us at our next curated experiences. Secure your spot today.</p>
-            
-            <div class="events-grid">
-                <!-- Event 1 -->
-                <div class="event-card">
-                    <div class="event-img">💼</div>
-                    <div class="event-content">
-                        <span class="event-date">October 12, 2026 • New York</span>
-                        <h3>Global Tech Innovators Summit</h3>
-                        <p>Network with industry leaders and discover the future of AI and cloud computing.</p>
-                        <a href="#" class="event-link">Get Tickets →</a>
-                    </div>
-                </div>
+    // Refresh icons inside dynamically updated parts if necessary
+    lucide.createIcons();
+  }
 
-                <!-- Event 2 -->
-                <div class="event-card">
-                    <div class="event-img">🎵</div>
-                    <div class="event-content">
-                        <span class="event-date">November 05, 2026 • Los Angeles</span>
-                        <h3>Autumn Acoustic Music Fest</h3>
-                        <p>An evening of soulful melodies and indie bands under the stars.</p>
-                        <a href="#" class="event-link">Get Tickets →</a>
-                    </div>
-                </div>
-
-                <!-- Event 3 -->
-                <div class="event-card">
-                    <div class="event-img">🥂</div>
-                    <div class="event-content">
-                        <span class="event-date">December 18, 2026 • Chicago</span>
-                        <h3>Annual Charity Gala Dinner</h3>
-                        <p>A black-tie evening dedicated to raising funds for local community arts programs.</p>
-                        <a href="#" class="event-link">Get Tickets →</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SERVICES SECTION -->
-    <section class="services" id="services">
-        <div class="container">
-            <h2 class="section-title">What We Do</h2>
-            <p class="section-subtitle">End-to-end event management solutions tailored to your unique needs.</p>
-            
-            <div class="services-grid">
-                <div class="service-item">
-                    <div class="service-icon">📋</div>
-                    <h3>Event Planning</h3>
-                    <p>Comprehensive strategy and logistics management from concept to cleanup.</p>
-                </div>
-                <div class="service-item">
-                    <div class="service-icon">🏛️</div>
-                    <h3>Venue Sourcing</h3>
-                    <p>Access to exclusive venues and negotiated rates for spaces of all sizes.</p>
-                </div>
-                <div class="service-item">
-                    <div class="service-icon">🍽️</div>
-                    <h3>Catering & Decor</h3>
-                    <p>Curated menus and stunning visual designs that match your event's theme.</p>
-                </div>
-                <div class="service-item">
-                    <div class="service-icon">📢</div>
-                    <h3>Marketing & PR</h3>
-                    <p>Drive attendance and buzz with targeted promotions and media relations.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>Lumina Events</h4>
-                    <p>Creating memorable moments and seamless experiences since 2015.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#events">Events</a></li>
-                        <li><a href="#services">Services</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact Us</h4>
-                    <ul>
-                        <li>📍 123 Event Blvd, Suite 100</li>
-                        <li>📞 (555) 123-4567</li>
-                        <li>✉️ hello@luminaevents.com</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Lumina Event Management. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-</body>
-</html>
+  document.addEventListener("DOMContentLoaded", () => {
+    lucide.createIcons();
+  });
+</script>
+</body></html>
