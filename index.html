@@ -68,184 +68,234 @@
   /* ========== NAVIGATION ========== */
   .nav{
     position:fixed;top:0;left:0;right:0;z-index:1000;
-    background:rgba(255,255,255,0.88);
-    backdrop-filter:blur(24px);
-    -webkit-backdrop-filter:blur(24px);
-    border-bottom:1px solid transparent;
+    padding:22px 0;
+    background:transparent;
     transition:all .4s ease;
   }
   .nav.scrolled{
-    background:rgba(255,255,255,0.98);
-    border-bottom-color:rgba(10,10,10,0.06);
-    box-shadow:var(--shadow-sm);
+    background:rgba(0, 0, 0, 0.82);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    padding:16px 0;
+    box-shadow:0 8px 32px rgba(0,0,0,0.3);
   }
   .nav-inner{
     display:flex;align-items:center;justify-content:space-between;
-    padding:20px 60px;max-width:1600px;margin:0 auto;
+    padding:0 60px;max-width:1600px;margin:0 auto;
   }
   .logo{
     font-family:var(--serif);
     display:flex;align-items:center;gap:14px;
   }
-  .logo-mark{
-    width:40px;height:40px;
-    background:var(--black);
-    color:var(--gold-bright);
-    display:flex;align-items:center;justify-content:center;
-    font-family:var(--serif);
-    font-size:18px;font-weight:600;
-    letter-spacing:1px;
-    border-radius:10px;
-    transition:transform .4s ease;
-  }
-  .logo:hover .logo-mark{transform:rotate(-8deg) scale(1.05)}
-  .logo-text{font-size:26px;letter-spacing:3px;font-weight:600;color:var(--black)}
+  .logo img{height:44px;width:auto;display:block;transition:transform .4s ease}
+  .logo:hover img{transform:scale(1.04)}
   
-  .nav-links{display:flex;gap:40px;list-style:none}
+  .nav-links{display:flex;gap:42px;list-style:none}
   .nav-links a{
-    font-size:13px;letter-spacing:1.5px;
-    font-weight:600;text-transform:uppercase;
-    color:var(--charcoal);
+    font-size:14px;letter-spacing:0.3px;
+    font-weight:500;
+    color:rgba(255,255,255,0.85);
     position:relative;padding:6px 0;
+    transition:color 0.3s ease;
   }
   .nav-links a::after{
     content:'';position:absolute;left:0;bottom:0;
     width:0;height:2px;background:var(--gold);
     transition:width .35s ease;
   }
-  .nav-links a:hover, .nav-links a.active{color:var(--black)}
+  .nav-links a:hover, .nav-links a.active{color:var(--gold)}
   .nav-links a:hover::after, .nav-links a.active::after{width:100%}
   
-  .nav-cta{display:flex;align-items:center;gap:20px}
-  
-  .btn{
-    display:inline-flex;align-items:center;gap:12px;
-    padding:14px 28px;font-size:12px;letter-spacing:2px;
-    font-weight:600;text-transform:uppercase;
-    cursor:pointer;border:none;
-    transition:all .4s cubic-bezier(0.4, 0, 0.2, 1);
-    font-family:var(--sans);
-    border-radius:100px;
-    position:relative;overflow:hidden;
-  }
-  .btn-black{background:var(--black);color:var(--white)}
-  .btn-black:hover{
+  .nav-cta{display:flex;align-items:center;gap:16px}
+  .nav-cta-btn{
     background:var(--gold);
     color:var(--white);
-    transform:translateY(-2px);
-    box-shadow:0 10px 30px rgba(163,125,70,0.3);
+    padding:12px 26px;
+    border-radius:50px;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:600;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    letter-spacing:0.5px;
+    transition:all 0.3s ease;
   }
-  .btn-outline{background:transparent;color:var(--black);border:1.5px solid var(--black)}
-  .btn-outline:hover{background:var(--black);color:var(--white)}
-  .btn-outline-light{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,0.4)}
-  .btn-outline-light:hover{background:var(--white);color:var(--black);border-color:var(--white)}
+  .nav-cta-btn:hover{
+    background:var(--gold-bright);
+    color:var(--black);
+    transform:translateY(-2px);
+    box-shadow:0 8px 24px rgba(163,125,70,0.35);
+  }
   
-  .menu-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--charcoal);padding:8px}
+  .menu-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--white);padding:8px}
   
   /* Mobile Overlay Menu */
   .mobile-menu-overlay{
     display:none;
     position:fixed;inset:0;
-    background:rgba(10,10,10,0.6);
+    background:rgba(10,10,10,0.7);
     backdrop-filter:blur(8px);
     z-index:998;
     opacity:0;transition:opacity .3s ease;
   }
   .mobile-menu-overlay.active{display:block;opacity:1}
 
-  /* ========== HERO (VIDEO & IMAGE MEDIA SHOWCASE) ========== */
+  /* ========== HERO (FULLSCREEN DARK CINEMA VIDEO HERO) ========== */
   .hero{
-    min-height:92vh;
-    display:flex;align-items:center;
-    padding:130px 0 70px;
     position:relative;
-    background:var(--white);
+    height:100vh;
+    min-height:720px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     overflow:hidden;
+    background:radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
   }
-  .hero::before{
-    content:'';position:absolute;
-    top:-20%;right:-10%;width:70%;height:120%;
-    background:radial-gradient(circle, var(--cream) 0%, transparent 70%);
-    z-index:0;
-  }
-  .hero-grid{
-    display:grid;grid-template-columns:1fr 1.15fr;
-    gap:60px;align-items:center;
-    position:relative;z-index:2;
-  }
-  .hero-content{position:relative}
-  .hero-badge{
-    display:inline-flex;align-items:center;gap:10px;
-    padding:8px 18px 8px 10px;
-    background:var(--cream);
-    border:1px solid var(--beige);
-    border-radius:100px;
-    font-size:12px;letter-spacing:1px;
-    color:var(--charcoal);font-weight:600;
-    margin-bottom:28px;
-    box-shadow:var(--shadow-sm);
-  }
-  .hero-badge-dot{
-    width:24px;height:24px;border-radius:50%;
-    background:var(--gold);
-    display:flex;align-items:center;justify-content:center;
-    color:var(--white);
-  }
-  .hero h1{
-    font-size:clamp(44px,5.4vw,76px);
-    font-weight:400;line-height:1.08;
-    margin-bottom:28px;color:var(--black);
-  }
-  .hero h1 em{font-style:italic;color:var(--gold)}
-  .hero-text{
-    font-size:18px;color:var(--gray);
-    line-height:1.8;margin-bottom:36px;
-    max-width:520px;
-  }
-  .hero-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
-  
-  /* Hero Media Showcase Card */
-  .hero-media-showcase{
-    position:relative;
-    width:100%;
-    border-radius:var(--radius-lg);
-    overflow:hidden;
-    box-shadow:var(--shadow-lg);
-    background:var(--black);
-    min-height:500px;
-  }
-  .hero-media-video{
-    width:100%;height:520px;
+  .hero-video{
+    position:absolute;
+    top:50%;
+    left:50%;
+    min-width:100%;
+    min-height:100%;
+    width:auto;
+    height:auto;
+    transform:translate(-50%, -50%);
     object-fit:cover;
-    display:block;
-    transition:opacity .5s ease;
+    z-index:1;
   }
-  .hero-media-overlay{
-    position:absolute;inset:0;
-    background:linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.2) 60%, transparent 100%);
-    display:flex;flex-direction:column;
-    justify-content:space-between;
-    padding:32px;
+  .hero-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.35) 0%,
+      rgba(0, 0, 0, 0.25) 50%,
+      rgba(0, 0, 0, 0.60) 100%
+    );
     z-index:2;
   }
-  .hero-media-top{
-    display:flex;justify-content:space-between;align-items:center;
+  .hero-content{
+    position:relative;
+    z-index:10;
+    text-align:center;
+    max-width:900px;
+    padding:0 40px;
   }
-  .hero-live-tag{
-    display:inline-flex;align-items:center;gap:8px;
-    padding:6px 14px;background:rgba(10,10,10,0.65);
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    background:rgba(255, 255, 255, 0.08);
     backdrop-filter:blur(12px);
-    border:1px solid rgba(255,255,255,0.15);
-    border-radius:100px;color:var(--white);
-    font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;
+    -webkit-backdrop-filter:blur(12px);
+    border:1px solid rgba(201, 179, 138, 0.35);
+    padding:12px 24px;
+    border-radius:50px;
+    font-size:14px;
+    font-weight:500;
+    letter-spacing:0.5px;
+    color:var(--white);
+    margin-bottom:36px;
+    animation:fadeInDown 1s ease;
   }
-  .hero-live-dot{
-    width:8px;height:8px;border-radius:50%;background:#EF4444;
-    animation:pulse 1.5s infinite;
+  .badge-icon{
+    width:28px;
+    height:28px;
+    background:var(--gold);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    color:var(--white);
   }
-  @keyframes pulse{
-    0%,100%{opacity:1;transform:scale(1)}
-    50%{opacity:0.4;transform:scale(1.2)}
+  .badge-icon svg{width:15px;height:15px;color:#fff}
+  
+  .hero h1{
+    font-family:var(--serif);
+    font-size:clamp(52px, 8vw, 96px);
+    font-weight:500;
+    line-height:1.05;
+    margin-bottom:32px;
+    color:var(--white);
+    letter-spacing:-1px;
+    animation:fadeInUp 1s ease 0.2s both;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--gold-bright);
+    font-weight:400;
+  }
+  .hero-subtitle{
+    font-size:17px;
+    line-height:1.75;
+    color:rgba(255, 255, 255, 0.88);
+    margin-bottom:48px;
+    max-width:640px;
+    margin-left:auto;
+    margin-right:auto;
+    font-weight:400;
+    animation:fadeInUp 1s ease 0.4s both;
+  }
+  
+  .btn-contact{
+    background:var(--white);
+    color:var(--black);
+    padding:18px 42px;
+    border-radius:50px;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    transition:all 0.3s ease;
+    border:2px solid var(--white);
+    animation:fadeInUp 1s ease 0.6s both;
+  }
+  .btn-contact:hover{
+    background:var(--gold-bright);
+    border-color:var(--gold-bright);
+    color:var(--black);
+    transform:translateY(-3px);
+    box-shadow:0 12px 30px rgba(184, 148, 95, 0.45);
+  }
+  .btn-contact svg{width:16px;height:16px}
+  
+  /* Animations */
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .video-indicator{
+    position:absolute;
+    bottom:40px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:10;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:rgba(255,255,255,0.7);
+    font-size:12px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+  }
+  .video-indicator .dot{
+    width:8px;
+    height:8px;
+    background:var(--gold-bright);
+    border-radius:50%;
+    animation:pulse 2s ease-in-out infinite;
   }
   
   .hero-sound-btn{
@@ -997,11 +1047,9 @@
   /* ========== COMPREHENSIVE RESPONSIVE CSS ========== */
   @media (max-width: 1024px){
     .container{padding:0 32px}
-    .nav-inner{padding:18px 32px}
-    .hero{padding:110px 0 60px;min-height:auto}
-    .hero-grid{grid-template-columns:1fr;gap:40px}
-    .hero-media-showcase{min-height:400px}
-    .hero-media-video{height:400px}
+    .nav-inner{padding:0 32px}
+    .hero{height:100vh;min-height:640px}
+    .hero-content{padding:0 32px}
     
     .story-grid{grid-template-columns:1fr;gap:50px}
     .story-images{max-width:600px;width:100%}
@@ -1035,7 +1083,8 @@
 
   @media (max-width: 768px){
     .container{padding:0 20px}
-    .nav-inner{padding:16px 20px}
+    .nav{padding:16px 0}
+    .nav-inner{padding:0 20px}
     
     .nav-links{
       position:fixed;top:0;right:-100%;width:80%;max-width:320px;height:100vh;
@@ -1048,20 +1097,22 @@
       -webkit-overflow-scrolling:touch;
     }
     .nav-links.active{right:0}
-    .nav-links a{font-size:16px}
-    .nav-cta .btn{display:none}
+    .nav-links a{font-size:16px;color:var(--charcoal)}
+    .nav-links a:hover, .nav-links a.active{color:var(--gold)}
+    .nav-cta .nav-cta-btn{display:none}
     .menu-toggle{display:block;z-index:1000}
     .logo img{height:36px !important}
     
     .section{padding:70px 0}
     .section-header{margin-bottom:36px}
     
-    .hero{padding:90px 0 40px}
-    .hero h1{font-size:36px;margin-bottom:18px}
-    .hero-text{font-size:15.5px;margin-bottom:24px}
-    .hero-media-showcase{min-height:300px}
-    .hero-media-video{height:300px}
-    .hero-play-reel-btn{padding:12px 20px;font-size:11px}
+    .hero{min-height:580px;height:100vh}
+    .hero-content{padding:0 20px}
+    .badge{font-size:12px;padding:8px 16px;margin-bottom:24px}
+    .hero h1{font-size:clamp(36px, 9vw, 56px);margin-bottom:20px;letter-spacing:-0.5px}
+    .hero-subtitle{font-size:15px;line-height:1.65;margin-bottom:32px}
+    .btn-contact{padding:14px 32px;font-size:12px}
+    .video-indicator{bottom:24px;font-size:11px}
     
     .bento-grid{grid-template-columns:1fr;gap:16px}
     .bento-card,.bento-card.large,.bento-card.wide{
@@ -1122,9 +1173,11 @@
       <li><a href="contact.html">Contact</a></li>
     </ul>
     <div class="nav-cta">
-      <a href="contact.html" class="btn btn-black">
-        <span>Contact Us</span>
-        <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
+      <a href="contact.html" class="nav-cta-btn">
+        Get in Touch
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="width:14px;height:14px">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+        </svg>
       </a>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
         <i data-lucide="menu" id="menuIcon"></i>
@@ -1133,68 +1186,46 @@
   </div>
 </nav>
 
-<!-- Hero (Video & Image Media Showcase Header) -->
+<!-- Hero (Fullscreen Video Background Header) -->
 <section class="hero" id="home">
-  <div class="container">
-    <div class="hero-grid">
-      <div class="hero-content reveal">
-        <div class="hero-badge">
-          <span class="hero-badge-dot"><i data-lucide="award" style="width:14px;height:14px"></i></span>
-          <span>Event Management & Creative Production</span>
-        </div>
-        <h1>Make moments that <em>move</em> people.</h1>
-        <p class="hero-text">
-          Step into experiences where imagination meets meticulous craft — stage by stage, light by light, story by story. BKU blends strategy, design, and flawless production to transform your vision into an unforgettable show.
-        </p>
-        <div class="hero-actions">
-          <a href="#story" class="btn btn-black">
-            <span>Discover BKU</span>
-            <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
-          </a>
-          <button class="btn btn-outline" id="heroReelBtn">
-            <i data-lucide="play" style="width:14px;height:14px"></i>
-            <span>Watch Showreel</span>
-          </button>
-        </div>
-      </div>
-      
-      <!-- Interactive Video & Image Showcase -->
-      <div class="hero-media-showcase reveal">
-        <video class="hero-media-video" id="heroVideo" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&auto=format&fit=crop">
-          <source src="https://assets.mixkit.co/videos/preview/mixkit-stage-lights-shining-at-a-concert-41315-large.mp4" type="video/mp4">
-          Your browser does not support HTML5 video.
-        </video>
-        <div class="hero-media-overlay">
-          <div class="hero-media-top">
-            <div class="hero-live-tag">
-              <span class="hero-live-dot"></span>
-              <span>Live Stage Production</span>
-            </div>
-            <button class="hero-sound-btn" id="soundToggleBtn" aria-label="Toggle Mute Sound">
-              <i data-lucide="volume-x" id="soundIcon" style="width:18px;height:18px"></i>
-            </button>
-          </div>
-          
-          <div class="hero-media-bottom">
-            <button class="hero-play-reel-btn" id="playReelModalBtn">
-              <span class="hero-play-icon"><i data-lucide="play" style="width:16px;height:16px;fill:currentColor"></i></span>
-              <span>Play Video Showcase</span>
-            </button>
-            <div class="hero-media-thumbnails">
-              <div class="hero-thumb active" data-src="https://assets.mixkit.co/videos/preview/mixkit-stage-lights-shining-at-a-concert-41315-large.mp4" data-type="video" title="Stage Video">
-                <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=200&auto=format&fit=crop" alt="Stage Video">
-              </div>
-              <div class="hero-thumb" data-src="https://images.unsplash.com/photo-1519741497674-611481863552?w=900&auto=format&fit=crop" data-type="image" title="Weddings">
-                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=200&auto=format&fit=crop" alt="Weddings">
-              </div>
-              <div class="hero-thumb" data-src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=900&auto=format&fit=crop" data-type="image" title="Concerts">
-                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=200&auto=format&fit=crop" alt="Concerts">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+  <!-- Concert & Event Video Background -->
+  <video class="hero-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&auto=format&fit=crop">
+    <source src="https://videos.pexels.com/video-files/2022395/2022395-hd_1920_1080_30fps.mp4" type="video/mp4">
+    <source src="https://videos.pexels.com/video-files/4761426/4761426-uhd_2560_1440_25fps.mp4" type="video/mp4">
+    <source src="https://assets.mixkit.co/videos/preview/mixkit-stage-lights-shining-at-a-concert-41315-large.mp4" type="video/mp4">
+  </video>
+
+  <!-- Dark translucent overlay so video shines through -->
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <div class="badge">
+      <span class="badge-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+        </svg>
+      </span>
+      Event Management & Creative Production
     </div>
+
+    <h1>Make moments<br>that <em>move</em><br>people.</h1>
+
+    <p class="hero-subtitle">
+      Step into experiences where imagination meets meticulous craft — stage by stage, light by light, story by story. BKU blends strategy, design, and flawless production to transform your vision into an unforgettable show.
+    </p>
+
+    <!-- Single Contact Us CTA -->
+    <a href="contact.html" class="btn-contact">
+      Contact Us
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+      </svg>
+    </a>
+  </div>
+
+  <div class="video-indicator">
+    <span class="dot"></span>
+    <span>Live Experience</span>
   </div>
 </section>
 
@@ -1901,57 +1932,14 @@
     });
   });
   
-  // Hero Video Showcase Controls & Lightbox Modal
-  const heroVideo = document.getElementById('heroVideo');
-  const soundToggleBtn = document.getElementById('soundToggleBtn');
-  const soundIcon = document.getElementById('soundIcon');
-  const videoModal = document.getElementById('videoModal');
-  const modalVideoPlayer = document.getElementById('modalVideoPlayer');
-  const closeVideoModal = document.getElementById('closeVideoModal');
-  const playReelModalBtn = document.getElementById('playReelModalBtn');
-  const heroReelBtn = document.getElementById('heroReelBtn');
-
-  soundToggleBtn.addEventListener('click', () => {
-    heroVideo.muted = !heroVideo.muted;
-    soundIcon.setAttribute('data-lucide', heroVideo.muted ? 'volume-x' : 'volume-2');
-    lucide.createIcons();
-  });
-
-  function openVideoModal() {
-    videoModal.classList.add('active');
-    modalVideoPlayer.play();
-  }
-  function closeVideoModalFunc() {
-    videoModal.classList.remove('active');
-    modalVideoPlayer.pause();
-  }
-
-  playReelModalBtn.addEventListener('click', openVideoModal);
-  heroReelBtn.addEventListener('click', openVideoModal);
-  closeVideoModal.addEventListener('click', closeVideoModalFunc);
-  videoModal.addEventListener('click', (e) => {
-    if (e.target === videoModal) closeVideoModalFunc();
-  });
-
-  // Hero Thumbnails Switcher
-  const thumbs = document.querySelectorAll('.hero-thumb');
-  thumbs.forEach(thumb => {
-    thumb.addEventListener('click', () => {
-      thumbs.forEach(t => t.classList.remove('active'));
-      thumb.classList.add('active');
-      const src = thumb.dataset.src;
-      const type = thumb.dataset.type;
-      
-      if (type === 'video') {
-        heroVideo.src = src;
-        heroVideo.play();
-      } else {
-        // Change video poster or fallback
-        heroVideo.pause();
-        heroVideo.poster = src;
-      }
+  // Hero Video Showcase Controls
+  const heroVideo = document.querySelector('.hero-video');
+  if (heroVideo) {
+    heroVideo.play().catch(() => {
+      heroVideo.muted = true;
+      heroVideo.play();
     });
-  });
+  }
 
   // Reveal on scroll
   const revealObserver = new IntersectionObserver((entries) => {
