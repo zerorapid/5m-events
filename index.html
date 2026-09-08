@@ -98,6 +98,34 @@
     .tab-active .sub-tag {
       color: #e4dec7 !important;
     }
+  
+    /* --- ACETERNTY UI COMPONENT STYLES --- */
+    .focus-card-grid:hover .focus-card-item:not(:hover) {
+      filter: blur(3px) opacity(0.6);
+      transform: scale(0.98);
+    }
+    .focus-card-item {
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .focus-card-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 20px 40px -10px rgba(197, 160, 89, 0.3);
+      border-color: rgba(197, 160, 89, 0.7) !important;
+    }
+    .card-3d-wrap {
+      perspective: 1000px;
+    }
+    .card-3d {
+      transition: transform 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+      transform-style: preserve-3d;
+    }
+    .card-3d:hover {
+      transform: translateY(-8px) rotateX(2deg) rotateY(1deg);
+      box-shadow: 0 25px 50px -12px rgba(197, 160, 89, 0.25);
+    }
+    .timeline-line {
+      background: linear-gradient(180deg, #c5a059 0%, #d4af37 50%, rgba(197, 160, 89, 0.15) 100%);
+    }
   </style>
 </head>
 <body class="selection:bg-champagne selection:text-white">
@@ -792,50 +820,92 @@ Turnkey Site Coordination
 <section class="py-24 bg-white border-b border-ivory-border" id="why-us">
 <div class="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
 <div class="flex flex-col items-center text-center max-w-3xl mx-auto mb-16">
-<span class="font-mono text-xs text-champagne-dark uppercase tracking-widest font-bold mb-2">WHY CHOOSE US</span>
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-champagne/10 border border-champagne/30 text-champagne-dark text-xs font-mono tracking-wider uppercase font-semibold mb-3">
+<i class="w-3.5 h-3.5 text-champagne-dark" data-lucide="award"></i>
+<span>WHY CHOOSE US</span>
+</div>
 <h2 class="font-heading text-3xl sm:text-5xl font-black text-obsidian tracking-tight mb-4">
-  We Turning Your Dream into Reality
+  Turning Your Vision Into Reality
 </h2>
 <p class="text-zinc-600 text-sm sm:text-base leading-relaxed">
-  With years of experience in the event industry, 5thMedia stands as Hyderabad's trusted name for creative and flawless event execution.
+  With over 11 years of leadership in the event industry, 5thMedia is Hyderabad's premier atelier for creative stage design and flawless execution.
 </p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-<div class="p-8 rounded-3xl bg-ivory-warm border border-ivory-border hover:border-champagne transition-all shadow-sm">
-<div class="w-12 h-12 rounded-2xl bg-white border border-champagne/30 flex items-center justify-center text-champagne-dark mb-6">
+
+<!-- Aceternity Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Hero Bento Box (Col Span 2) -->
+<div class="card-3d-wrap md:col-span-2">
+<div class="card-3d h-full p-8 sm:p-10 rounded-3xl bg-obsidian text-white border border-champagne/40 shadow-xl flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute -right-16 -top-16 w-64 h-64 bg-champagne/20 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform"></div>
+<div>
+<div class="w-12 h-12 rounded-2xl bg-champagne text-obsidian flex items-center justify-center mb-8 shadow-gold-glow">
 <i class="w-6 h-6" data-lucide="shield-check"></i>
 </div>
-<h4 class="font-heading text-xl font-bold text-obsidian mb-2">Single Point of Ownership</h4>
-<p class="text-xs text-zinc-600 leading-relaxed font-normal">
-  No fragmented vendors. One executive producer steers the whole production pipeline.
+<h3 class="font-heading text-2xl sm:text-4xl font-bold text-white mb-4 tracking-tight">Single Point of Ownership</h3>
+<p class="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-xl font-light mb-6">
+  No fragmented vendors or communication breakdowns. One dedicated lead producer oversees your entire project pipeline from initial brief to final post-event wrap.
 </p>
 </div>
-<div class="p-8 rounded-3xl bg-ivory-warm border border-ivory-border hover:border-champagne transition-all shadow-sm">
-<div class="w-12 h-12 rounded-2xl bg-white border border-champagne/30 flex items-center justify-center text-champagne-dark mb-6">
+<div class="pt-6 border-t border-white/15 flex items-center gap-2 text-xs font-mono text-champagne font-semibold">
+<i class="w-4 h-4" data-lucide="check-circle-2"></i>
+<span>End-to-End Account Ownership Guarantee</span>
+</div>
+</div>
+</div>
+
+<!-- Bento Box 2 -->
+<div class="card-3d-wrap">
+<div class="card-3d h-full p-8 rounded-3xl bg-ivory-warm border border-ivory-border hover:border-champagne transition-all shadow-sm flex flex-col justify-between group">
+<div>
+<div class="w-12 h-12 rounded-2xl bg-white border border-champagne/30 text-champagne-dark flex items-center justify-center mb-6 shadow-xs group-hover:bg-champagne group-hover:text-obsidian transition-colors">
 <i class="w-6 h-6" data-lucide="palette"></i>
 </div>
-<h4 class="font-heading text-xl font-bold text-obsidian mb-2">Architectural Scenography</h4>
-<p class="text-xs text-zinc-600 leading-relaxed font-normal">
-  3D renders that translate with millimeter precision to stage fabrication and lighting rigs.
+<h3 class="font-heading text-xl font-bold text-obsidian mb-3">3D Visual Stage Design</h3>
+<p class="text-xs text-zinc-600 leading-relaxed font-normal mb-4">
+  Photorealistic 3D CAD renders that translate with exact precision into physical stage fabrication and lighting rigs.
 </p>
 </div>
-<div class="p-8 rounded-3xl bg-ivory-warm border border-ivory-border hover:border-champagne transition-all shadow-sm">
-<div class="w-12 h-12 rounded-2xl bg-white border border-champagne/30 flex items-center justify-center text-champagne-dark mb-6">
+<div class="pt-4 border-t border-ivory-border text-xs font-mono text-champagne-dark font-semibold flex items-center gap-1.5">
+<i class="w-3.5 h-3.5" data-lucide="sparkles"></i> Exact Spatial Rendering
+</div>
+</div>
+</div>
+
+<!-- Bento Box 3 -->
+<div class="card-3d-wrap">
+<div class="card-3d h-full p-8 rounded-3xl bg-ivory-warm border border-ivory-border hover:border-champagne transition-all shadow-sm flex flex-col justify-between group">
+<div>
+<div class="w-12 h-12 rounded-2xl bg-white border border-champagne/30 text-champagne-dark flex items-center justify-center mb-6 shadow-xs group-hover:bg-champagne group-hover:text-obsidian transition-colors">
 <i class="w-6 h-6" data-lucide="clock"></i>
 </div>
-<h4 class="font-heading text-xl font-bold text-obsidian mb-2">Clockwork Execution</h4>
-<p class="text-xs text-zinc-600 leading-relaxed font-normal">
-  Minute-by-minute run-of-show protocols preventing delays, backstage snags, or dead air.
+<h3 class="font-heading text-xl font-bold text-obsidian mb-3">Clockwork Execution</h3>
+<p class="text-xs text-zinc-600 leading-relaxed font-normal mb-4">
+  Minute-by-minute run-of-show protocols that eliminate delays, backstage snags, or technical interruptions.
 </p>
 </div>
-<div class="p-8 rounded-3xl bg-ivory-warm border border-ivory-border hover:border-champagne transition-all shadow-sm">
-<div class="w-12 h-12 rounded-2xl bg-white border border-champagne/30 flex items-center justify-center text-champagne-dark mb-6">
+<div class="pt-4 border-t border-ivory-border text-xs font-mono text-champagne-dark font-semibold flex items-center gap-1.5">
+<i class="w-3.5 h-3.5" data-lucide="zap"></i> Zero-Delay Performance
+</div>
+</div>
+</div>
+
+<!-- Bento Box 4 (Col Span 2) -->
+<div class="card-3d-wrap md:col-span-2">
+<div class="card-3d h-full p-8 sm:p-10 rounded-3xl bg-ivory-warm border border-ivory-border hover:border-champagne transition-all shadow-sm flex flex-col justify-between group">
+<div>
+<div class="w-12 h-12 rounded-2xl bg-white border border-champagne/30 text-champagne-dark flex items-center justify-center mb-6 shadow-xs group-hover:bg-champagne group-hover:text-obsidian transition-colors">
 <i class="w-6 h-6" data-lucide="sparkles"></i>
 </div>
-<h4 class="font-heading text-xl font-bold text-obsidian mb-2">Sensory Magic</h4>
-<p class="text-xs text-zinc-600 leading-relaxed font-normal">
-  Creating emotional crescendo through synchronized sound, light, fragrance, and reveal moments.
+<h3 class="font-heading text-2xl font-bold text-obsidian mb-3">Sensory Experience Curation</h3>
+<p class="text-zinc-700 text-sm leading-relaxed font-normal mb-4 max-w-xl">
+  Creating emotional impact through synchronized audio, immersive lighting, stage effects, and memorable reveal moments tailored to your guests.
 </p>
+</div>
+<div class="pt-4 border-t border-ivory-border text-xs font-mono text-champagne-dark font-semibold flex items-center gap-1.5">
+<i class="w-3.5 h-3.5" data-lucide="flame"></i> Emotional &amp; Visual Resonance
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -982,49 +1052,87 @@ Turnkey Site Coordination
 <!-- ========================================================================= -->
 <section class="py-24 bg-white border-b border-ivory-border" id="chronicles">
 <div class="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
-<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
 <div>
-<span class="font-mono text-xs text-champagne-dark uppercase tracking-widest font-bold block mb-2">FEATURED PORTFOLIO</span>
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-champagne/10 border border-champagne/30 text-champagne-dark text-xs font-mono tracking-wider uppercase font-semibold mb-3">
+<i class="w-3.5 h-3.5 text-champagne-dark" data-lucide="trophy"></i>
+<span>FEATURED PORTFOLIO</span>
+</div>
 <h2 class="font-heading text-3xl sm:text-5xl font-black text-obsidian tracking-tight">
   Visual Gallery Archive
 </h2>
 </div>
-<div class="flex flex-wrap items-center gap-2">
-<span class="px-4 py-2 rounded-full text-xs font-mono font-bold bg-obsidian text-white cursor-pointer shadow-sm">All Archive</span>
-<span class="px-4 py-2 rounded-full text-xs font-mono font-medium bg-ivory-warm text-zinc-700 border border-ivory-border hover:border-champagne cursor-pointer">Royal Unions</span>
-<span class="px-4 py-2 rounded-full text-xs font-mono font-medium bg-ivory-warm text-zinc-700 border border-ivory-border hover:border-champagne cursor-pointer">Summits</span>
-<span class="px-4 py-2 rounded-full text-xs font-mono font-medium bg-ivory-warm text-zinc-700 border border-ivory-border hover:border-champagne cursor-pointer">Galas</span>
+<p class="text-zinc-600 text-sm sm:text-base max-w-md leading-relaxed font-normal">
+  Hover over any project below to focus on its story. Explore our signature productions across royal weddings, corporate summits, and grand galas.
+</p>
 </div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<div class="group relative rounded-3xl overflow-hidden border border-ivory-border shadow-sm h-96 bg-obsidian">
+
+<!-- Aceternity Focus Cards Bento Grid -->
+<div class="focus-card-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Item 1: Large Hero Bento Card (Span 2 cols) -->
+<div class="focus-card-item lg:col-span-2 relative rounded-3xl overflow-hidden border border-ivory-border shadow-md h-96 bg-obsidian group cursor-pointer">
 <img alt="Palace Mandap Scenography" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida/AEtjO1XktSnYwFFI6h5FcGLo1sBAUEkWJkyjGKCj6dfT2_IyRnk4IGvrE6OmcDGqDa15upEgrVUBurCPYqzn7DY-9EohhduMEjHQ_7Gf6h1fUJsF8CfpX1Gy4H3mFuznUuLJeAXVcUUWlPYQYRbFWtNMHSqBcr6qrDRd_MT5DMSm7oTahTZockX4PsultR1FtfLd2u49yDqWxrpBBHLpwukoMqyLI-UBmB895InnUonHBw0S8zSljIR4EzFMvw"/>
-<div class="absolute inset-0 bg-gradient-to-t from-obsidian via-black/30 to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/40 to-transparent"></div>
+<div class="absolute top-5 left-5">
+<span class="px-3.5 py-1.5 rounded-full bg-obsidian/80 backdrop-blur-md text-champagne-light border border-champagne/40 font-mono text-[10px] uppercase font-bold tracking-wider">
+  ROYAL WEDDING
+</span>
+</div>
 <div class="absolute bottom-6 left-6 right-6 text-white">
-<span class="font-mono text-[10px] uppercase text-champagne font-bold block mb-1">Royal Heritage</span>
-<h4 class="font-heading text-xl font-bold">Palace Mandap Scenography</h4>
+<h3 class="font-heading text-2xl sm:text-3xl font-black mb-2">Palace Mandap Scenography</h3>
+<p class="text-xs text-zinc-300 font-light max-w-lg">Bespoke structural mandap rigging, kinetic lighting, and luxury floral curation at Taj Falaknuma Palace.</p>
 </div>
 </div>
-<div class="group relative rounded-3xl overflow-hidden border border-ivory-border shadow-sm h-96 bg-obsidian">
+
+<!-- Item 2: Standard Bento Card -->
+<div class="focus-card-item relative rounded-3xl overflow-hidden border border-ivory-border shadow-md h-96 bg-obsidian group cursor-pointer">
 <img alt="Maison Éclat Flagship Unveil" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida/AEtjO1Ug0RjgOGg1McFgo4BQVT_7xrbqDlgAY87Je9Io4o-cKshG4OFEU7NfwJwAjEIcCLQBGWVSKFT_myHsZK31GhyM8DT6MKqk1ljqDYNGSHgt3eTRDvp9NpTqTSjM6h6ye8u4GWM7CqR0nbeeKnnGUM_Hg45YsUfYy0lLoBxTfkvgcaxT9AJU8J4pa8-kBz8CbnePazcpOdamCJSQM2ElB3I9oVHzOitAG8UGgQJoCG63Gtoe8O338tG4bg"/>
-<div class="absolute inset-0 bg-gradient-to-t from-obsidian via-black/30 to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/40 to-transparent"></div>
+<div class="absolute top-5 left-5">
+<span class="px-3.5 py-1.5 rounded-full bg-obsidian/80 backdrop-blur-md text-champagne-light border border-champagne/40 font-mono text-[10px] uppercase font-bold tracking-wider">
+  BRAND LAUNCH
+</span>
+</div>
 <div class="absolute bottom-6 left-6 right-6 text-white">
-<span class="font-mono text-[10px] uppercase text-champagne font-bold block mb-1">Retail Debut</span>
-<h4 class="font-heading text-xl font-bold">Maison Éclat Flagship Unveil</h4>
+<h3 class="font-heading text-xl font-bold mb-1">Maison Éclat Flagship Unveil</h3>
+<p class="text-xs text-zinc-300 font-light">Red carpet launch with projection mapping &amp; influencer press meet.</p>
 </div>
 </div>
-<div class="group relative rounded-3xl overflow-hidden border border-ivory-border shadow-sm h-96 bg-obsidian">
+
+<!-- Item 3: Standard Bento Card -->
+<div class="focus-card-item relative rounded-3xl overflow-hidden border border-ivory-border shadow-md h-96 bg-obsidian group cursor-pointer">
 <img alt="Nocturne Opulence Anniversary" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida/AEtjO1Xqgf4mptAIgY2Q6M2c2F4CWZYJfyI-KUg-_utu25mIwrzp0UdO51l02zUY-rzbMrVrfa0pAkd0LJ6_oKyEIgWVHgfSEu7SUCa25_8wEmTSn0QSyNbyNzdRrbg_olLUtdN5gC-TGGBSrVAhEQxg466n-a6dN1JHv_BFyInfpU0aL3zkULUNbbJWkLHYj2_1Yoz1vqTDpyAVD9xCZ0tF1pUw2Lg57Ve2fn5eTU0Y5mGnXLZB2o3IbWMK"/>
-<div class="absolute inset-0 bg-gradient-to-t from-obsidian via-black/30 to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/40 to-transparent"></div>
+<div class="absolute top-5 left-5">
+<span class="px-3.5 py-1.5 rounded-full bg-obsidian/80 backdrop-blur-md text-champagne-light border border-champagne/40 font-mono text-[10px] uppercase font-bold tracking-wider">
+  PRIVATE GALA
+</span>
+</div>
 <div class="absolute bottom-6 left-6 right-6 text-white">
-<span class="font-mono text-[10px] uppercase text-champagne font-bold block mb-1">VIP Gala Banquet</span>
-<h4 class="font-heading text-xl font-bold">Nocturne Opulence Anniversary</h4>
+<h3 class="font-heading text-xl font-bold mb-1">Nocturne Opulence Soiree</h3>
+<p class="text-xs text-zinc-300 font-light">Intimate candlelit banquet &amp; symphonic live orchestra performance.</p>
+</div>
+</div>
+
+<!-- Item 4: Large Hero Bento Card (Span 2 cols) -->
+<div class="focus-card-item lg:col-span-2 relative rounded-3xl overflow-hidden border border-ivory-border shadow-md h-96 bg-obsidian group cursor-pointer">
+<img alt="Global Corporate Summit" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida/AEtjO1VjNZ8aMIbsZhmOrLi8QC1GDfCSTLABPfRxPPo1siFd4WjIHyuOP8zN-qHby5nqY8TaCggs2nQ1nOUMuWVX7DZPcCrdaXBYljmWAVdHioa8QiiaKMvYh4tPpa4UzmQHxsQWEjt3aVEuqJLI-UYaV44mgJQwW-aghjzla0AAGpG6Nib9PPOi12mWmLo4BbjXG5b0J8tT3oPsgchPGhCVonbwVVXiPq4nENum7toavJO_v6SdExHxsfLtPw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/40 to-transparent"></div>
+<div class="absolute top-5 left-5">
+<span class="px-3.5 py-1.5 rounded-full bg-obsidian/80 backdrop-blur-md text-champagne-light border border-champagne/40 font-mono text-[10px] uppercase font-bold tracking-wider">
+  CORPORATE SUMMIT
+</span>
+</div>
+<div class="absolute bottom-6 left-6 right-6 text-white">
+<h3 class="font-heading text-2xl sm:text-3xl font-black mb-2">Apex Leadership Keynote Arena</h3>
+<p class="text-xs text-zinc-300 font-light max-w-lg">Curved 4K ultra-wide LED stage with zero-latency live broadcast for 2,500 international delegates.</p>
 </div>
 </div>
 </div>
-<div class="mt-12 flex justify-center">
-<a class="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-champagne-dark hover:text-obsidian transition-colors" href="#contact">
-<span>Commission Custom Staging</span>
+
+<div class="mt-16 flex justify-center">
+<a class="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-obsidian text-white hover:bg-champagne hover:text-obsidian font-heading text-xs font-bold uppercase tracking-widest transition-all shadow-md" href="#contact">
+<span>Inquire Custom Production</span>
 <i class="w-4 h-4" data-lucide="arrow-right"></i>
 </a>
 </div>
