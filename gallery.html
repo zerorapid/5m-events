@@ -421,9 +421,7 @@
     font-weight: 600; margin-bottom: 12px;
     display: inline-flex; align-items: center; gap: 12px;
   }
-  .section-label::before, .section-label::after {
-    content: ''; width: 30px; height: 1px; background: var(--gold);
-  }
+  .section-label::before, .section-label::after { display: none !important; }
   .section-header h2 {
     font-size: clamp(32px, 4vw, 44px);
     margin-bottom: 14px; font-weight: 400; color: var(--black);
