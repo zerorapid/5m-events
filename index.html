@@ -959,7 +959,7 @@
   }
   .cta::before{
     content:'';position:absolute;inset:0;
-    background-image:url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1600&auto=format&fit=crop');
+    background-image:url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1600&auto=format&fit=crop&q=75');
     background-size:cover;background-position:center;
     opacity:0.15;
   }
@@ -1165,6 +1165,14 @@
   ]
 }
 </script>
+  <!-- Speed Optimizations & Preconnects -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://images.unsplash.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 </head>
 <body>
 
@@ -1178,7 +1186,7 @@
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="index.html" class="logo">
-      <img src="logo.svg" alt="5M Events Logo" style="height:58px;width:auto;display:block">
+      <img loading="lazy" decoding="async" src="logo.svg" alt="5M Events Logo" style="height:58px;width:auto;display:block">
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html" class="active">Home</a></li>
@@ -1205,10 +1213,8 @@
 <!-- Hero (Fullscreen Video Background Header) -->
 <section class="hero" id="home">
   <!-- Concert & Event Video Background -->
-  <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&auto=format&fit=crop">
-    <source src="https://videos.pexels.com/video-files/2022395/2022395-hd_1920_1080_30fps.mp4" type="video/mp4">
-    <source src="https://videos.pexels.com/video-files/4761426/4761426-uhd_2560_1440_25fps.mp4" type="video/mp4">
-    <source src="https://assets.mixkit.co/videos/preview/mixkit-stage-lights-shining-at-a-concert-41315-large.mp4" type="video/mp4">
+  <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&auto=format&fit=crop&q=75">
+    <source src="assets/videos/hero.mp4" type="video/mp4">
   </video>
 
   <!-- Dark translucent overlay so video shines through -->
@@ -1265,9 +1271,9 @@
         </div>
       </div>
       <div class="story-images reveal">
-        <div class="story-img"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&auto=format&fit=crop" alt="Luxury Event"></div>
-        <div class="story-img"><img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=600&auto=format&fit=crop" alt="Event Planning"></div>
-        <div class="story-img"><img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&auto=format&fit=crop" alt="Team Work"></div>
+        <div class="story-img"><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&auto=format&fit=crop&q=75" alt="Luxury Event"></div>
+        <div class="story-img"><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=600&auto=format&fit=crop&q=75" alt="Event Planning"></div>
+        <div class="story-img"><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&auto=format&fit=crop&q=75" alt="Team Work"></div>
       </div>
     </div>
   </div>
@@ -1285,7 +1291,7 @@
     <div class="bento-grid">
       <div class="bento-card large reveal">
         <div class="bento-image">
-          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&auto=format&fit=crop" alt="Weddings">
+          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&auto=format&fit=crop&q=75" alt="Weddings">
         </div>
         <div class="bento-content">
           <span class="bento-tag" style="color:var(--gold-light)">01. CELEBRATIONS</span>
@@ -1391,7 +1397,7 @@
             </ul>
           </div>
           <div class="tab-panel-image">
-            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&auto=format&fit=crop" alt="Discovery">
+            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&auto=format&fit=crop&q=75" alt="Discovery">
           </div>
         </div>
         
@@ -1407,7 +1413,7 @@
             </ul>
           </div>
           <div class="tab-panel-image">
-            <img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=800&auto=format&fit=crop" alt="Design">
+            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=800&auto=format&fit=crop&q=75" alt="Design">
           </div>
         </div>
         
@@ -1423,7 +1429,7 @@
             </ul>
           </div>
           <div class="tab-panel-image">
-            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&auto=format&fit=crop" alt="Execution">
+            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&auto=format&fit=crop&q=75" alt="Execution">
           </div>
         </div>
       </div>
@@ -1442,42 +1448,42 @@
   </div>
   <div class="gallery-scroll" id="galleryScroll">
     <div class="gallery-slide">
-      <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&auto=format&fit=crop" alt="Wedding">
+      <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&auto=format&fit=crop&q=75" alt="Wedding">
       <div class="gallery-slide-overlay">
         <h3>Royal Wedding</h3>
         <p>Udaipur Palace • 500 Guests</p>
       </div>
     </div>
     <div class="gallery-slide">
-      <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&auto=format&fit=crop" alt="Corporate">
+      <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&auto=format&fit=crop&q=75" alt="Corporate">
       <div class="gallery-slide-overlay">
         <h3>Tech Summit 2026</h3>
         <p>Corporate Conference</p>
       </div>
     </div>
     <div class="gallery-slide">
-      <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&auto=format&fit=crop" alt="Concert">
+      <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&auto=format&fit=crop&q=75" alt="Concert">
       <div class="gallery-slide-overlay">
         <h3>Summer Festival</h3>
         <p>Live Production</p>
       </div>
     </div>
     <div class="gallery-slide">
-      <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&auto=format&fit=crop" alt="Launch">
+      <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&auto=format&fit=crop&q=75" alt="Launch">
       <div class="gallery-slide-overlay">
         <h3>Luxury Brand Launch</h3>
         <p>Product Reveal</p>
       </div>
     </div>
     <div class="gallery-slide">
-      <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=800&auto=format&fit=crop" alt="Gala">
+      <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=800&auto=format&fit=crop&q=75" alt="Gala">
       <div class="gallery-slide-overlay">
         <h3>Charity Gala</h3>
         <p>Annual Fundraiser</p>
       </div>
     </div>
     <div class="gallery-slide">
-      <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&auto=format&fit=crop" alt="Event">
+      <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&auto=format&fit=crop&q=75" alt="Event">
       <div class="gallery-slide-overlay">
         <h3>Private Celebration</h3>
         <p>Intimate Gathering</p>
@@ -1545,7 +1551,7 @@
             <p class="testimonial-quote">5M Events transformed our vision into an experience that exceeded every expectation. Their attention to detail, creative vision, and flawless execution made our corporate launch truly unforgettable.</p>
             <div class="testimonial-author">
               <div class="testimonial-avatar">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop" alt="Client">
+                <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=75" alt="Client">
               </div>
               <div class="testimonial-info">
                 <h4>Rajesh Malhotra</h4>
@@ -1566,7 +1572,7 @@
             <p class="testimonial-quote">From the first meeting to the final farewell, 5M Events treated our wedding like it was their own. Every detail was perfect — we couldn't have asked for a more magical day.</p>
             <div class="testimonial-author">
               <div class="testimonial-avatar">
-                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&auto=format&fit=crop" alt="Client">
+                <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&auto=format&fit=crop&q=75" alt="Client">
               </div>
               <div class="testimonial-info">
                 <h4>Priya & Arjun Kapoor</h4>
@@ -1587,7 +1593,7 @@
             <p class="testimonial-quote">The team at 5M Events doesn't just plan events — they create moments that last forever. Their creative vision and operational precision are truly world-class.</p>
             <div class="testimonial-author">
               <div class="testimonial-avatar">
-                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&auto=format&fit=crop" alt="Client">
+                <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&auto=format&fit=crop&q=75" alt="Client">
               </div>
               <div class="testimonial-info">
                 <h4>Vikram Singh</h4>
@@ -1713,7 +1719,7 @@
     <div class="blog-grid">
       <article class="blog-card reveal">
         <div class="blog-image">
-          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=700&auto=format&fit=crop" alt="Blog">
+          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=700&auto=format&fit=crop&q=75" alt="Blog">
           <span class="blog-category">Planning</span>
         </div>
         <div class="blog-content">
@@ -1732,7 +1738,7 @@
       
       <article class="blog-card reveal" style="transition-delay:0.1s">
         <div class="blog-image">
-          <img src="https://images.unsplash.com/photo-1515187029135-18ee4032c99b?w=700&auto=format&fit=crop" alt="Blog">
+          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1515187029135-18ee4032c99b?w=700&auto=format&fit=crop&q=75" alt="Blog">
           <span class="blog-category">Behind the Scenes</span>
         </div>
         <div class="blog-content">
@@ -1751,7 +1757,7 @@
       
       <article class="blog-card reveal" style="transition-delay:0.2s">
         <div class="blog-image">
-          <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=700&auto=format&fit=crop" alt="Blog">
+          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=700&auto=format&fit=crop&q=75" alt="Blog">
           <span class="blog-category">Technology</span>
         </div>
         <div class="blog-content">
@@ -1776,7 +1782,7 @@
   <div class="container">
     <div class="newsletter-split reveal">
       <div class="newsletter-image">
-        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1000&auto=format&fit=crop" alt="Newsletter">
+        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1000&auto=format&fit=crop&q=75" alt="Newsletter">
       </div>
       <div class="newsletter-content">
         <div class="section-label" style="color:var(--gold-light)">Stay Inspired</div>
@@ -1832,7 +1838,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="index.html" class="logo" style="margin-bottom:16px">
-          <img src="logo.svg" alt="5M Events Logo" style="height:75px;width:auto;display:block">
+          <img loading="lazy" decoding="async" src="logo.svg" alt="5M Events Logo" style="height:75px;width:auto;display:block">
         </a>
         <p>A full-scale event management and creative production company that transforms ideas into unforgettable experiences. From corporate summits to celebrity concerts and private celebrations.</p>
         <div class="footer-social">

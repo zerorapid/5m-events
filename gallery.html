@@ -506,7 +506,7 @@
   }
   .cta-section::before {
     content: ''; position: absolute; inset: 0;
-    background-image: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1600&auto=format&fit=crop');
+    background-image: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1600&auto=format&fit=crop&q=75');
     background-size: cover; background-position: center;
     opacity: 0.18;
   }
@@ -659,6 +659,14 @@
   "name": "5M Events Portfolio Gallery"
 }
 </script>
+  <!-- Speed Optimizations & Preconnects -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://images.unsplash.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 </head>
 <body>
 
@@ -672,7 +680,7 @@
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="index.html" class="logo">
-      <img src="logo.svg" alt="5M Events Logo" style="height:58px;width:auto;display:block">
+      <img loading="lazy" decoding="async" src="logo.svg" alt="5M Events Logo" style="height:58px;width:auto;display:block">
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html">Home</a></li>
@@ -726,7 +734,7 @@
         
         <!-- Row 1 -->
         <div class="gallery-item span-2-col span-2-row reveal" data-category="wedding" onclick="openLightbox(0)">
-          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&auto=format&fit=crop" alt="Royal Wedding">
+          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&auto=format&fit=crop&q=75" alt="Royal Wedding">
           <div class="gallery-overlay">
             <div class="gallery-category">Wedding</div>
             <h3 class="gallery-title">Royal Palace Destination Wedding</h3>
@@ -739,7 +747,7 @@
         </div>
 
         <div class="gallery-item reveal" data-category="corporate" onclick="openLightbox(1)">
-          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&auto=format&fit=crop" alt="Tech Summit">
+          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&auto=format&fit=crop&q=75" alt="Tech Summit">
           <div class="gallery-overlay">
             <div class="gallery-category">Corporate</div>
             <h3 class="gallery-title">Global Tech Summit 2026</h3>
@@ -751,7 +759,7 @@
         </div>
 
         <div class="gallery-item reveal" data-category="concert" onclick="openLightbox(2)">
-          <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&auto=format&fit=crop" alt="Music Festival">
+          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&auto=format&fit=crop&q=75" alt="Music Festival">
           <div class="gallery-overlay">
             <div class="gallery-category">Concert</div>
             <h3 class="gallery-title">Summer Arena Music Fest</h3>
@@ -764,7 +772,7 @@
 
         <!-- Row 2 -->
         <div class="gallery-item reveal" data-category="launch" onclick="openLightbox(3)">
-          <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&auto=format&fit=crop" alt="Luxury Launch">
+          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&auto=format&fit=crop&q=75" alt="Luxury Launch">
           <div class="gallery-overlay">
             <div class="gallery-category">Brand Launch</div>
             <h3 class="gallery-title">Automotive Flagship Reveal</h3>
@@ -776,7 +784,7 @@
         </div>
 
         <div class="gallery-item reveal" data-category="private" onclick="openLightbox(4)">
-          <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=800&auto=format&fit=crop" alt="Private Gala">
+          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=800&auto=format&fit=crop&q=75" alt="Private Gala">
           <div class="gallery-overlay">
             <div class="gallery-category">Private Event</div>
             <h3 class="gallery-title">Philanthropy Charity Gala</h3>
@@ -788,7 +796,7 @@
         </div>
 
         <div class="gallery-item span-2-col reveal" data-category="wedding" onclick="openLightbox(5)">
-          <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1200&auto=format&fit=crop" alt="Destination Wedding">
+          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1200&auto=format&fit=crop&q=75" alt="Destination Wedding">
           <div class="gallery-overlay">
             <div class="gallery-category">Wedding</div>
             <h3 class="gallery-title">Sunset Coastal Destination</h3>
@@ -801,7 +809,7 @@
 
         <!-- Row 3 -->
         <div class="gallery-item span-2-col reveal" data-category="corporate" onclick="openLightbox(6)">
-          <img src="https://images.unsplash.com/photo-1515187029135-18ee4032c99b?w=1200&auto=format&fit=crop" alt="Annual Conference">
+          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1515187029135-18ee4032c99b?w=1200&auto=format&fit=crop&q=75" alt="Annual Conference">
           <div class="gallery-overlay">
             <div class="gallery-category">Corporate</div>
             <h3 class="gallery-title">Annual Leadership Keynote</h3>
@@ -813,7 +821,7 @@
         </div>
 
         <div class="gallery-item reveal" data-category="concert" onclick="openLightbox(7)">
-          <img src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=800&auto=format&fit=crop" alt="Concert">
+          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=800&auto=format&fit=crop&q=75" alt="Concert">
           <div class="gallery-overlay">
             <div class="gallery-category">Concert</div>
             <h3 class="gallery-title">Stadium Rock Experience</h3>
@@ -825,7 +833,7 @@
         </div>
 
         <div class="gallery-item reveal" data-category="private" onclick="openLightbox(8)">
-          <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&auto=format&fit=crop" alt="Private Celebration">
+          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&auto=format&fit=crop&q=75" alt="Private Celebration">
           <div class="gallery-overlay">
             <div class="gallery-category">Private Event</div>
             <h3 class="gallery-title">Exclusive Milestone Soirée</h3>
@@ -852,7 +860,7 @@
       <div class="blog-grid">
         <article class="blog-card reveal">
           <div class="blog-image">
-            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=700&auto=format&fit=crop" alt="Blog Post">
+            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=700&auto=format&fit=crop&q=75" alt="Blog Post">
             <span class="blog-category">Planning</span>
           </div>
           <div class="blog-content">
@@ -871,7 +879,7 @@
 
         <article class="blog-card reveal" style="transition-delay:0.1s">
           <div class="blog-image">
-            <img src="https://images.unsplash.com/photo-1515187029135-18ee4032c99b?w=700&auto=format&fit=crop" alt="Blog Post">
+            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1515187029135-18ee4032c99b?w=700&auto=format&fit=crop&q=75" alt="Blog Post">
             <span class="blog-category">Behind the Scenes</span>
           </div>
           <div class="blog-content">
@@ -890,7 +898,7 @@
 
         <article class="blog-card reveal" style="transition-delay:0.2s">
           <div class="blog-image">
-            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=700&auto=format&fit=crop" alt="Blog Post">
+            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=700&auto=format&fit=crop&q=75" alt="Blog Post">
             <span class="blog-category">Technology</span>
           </div>
           <div class="blog-content">
@@ -943,7 +951,7 @@
     <i data-lucide="chevron-right" style="width:28px;height:28px"></i>
   </button>
   <div class="lightbox-content">
-    <img src="" alt="" class="lightbox-image" id="lightboxImage">
+    <img loading="lazy" decoding="async" src="" alt="" class="lightbox-image" id="lightboxImage">
   </div>
   <div class="lightbox-caption" id="lightboxCaption">
     <h3></h3>
@@ -957,7 +965,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="index.html" class="logo" style="margin-bottom:16px">
-          <img src="logo.svg" alt="5M Events Logo" style="height:75px;width:auto;display:block">
+          <img loading="lazy" decoding="async" src="logo.svg" alt="5M Events Logo" style="height:75px;width:auto;display:block">
         </a>
         <p>5M Events is a full-scale event management and creative production company that transforms ideas into unforgettable experiences. From corporate summits to celebrity concerts and private celebrations.</p>
         <div class="footer-social">
@@ -1113,15 +1121,15 @@
 
   // Lightbox Data
   const galleryData = [
-    { src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1600&auto=format&fit=crop', title: 'Royal Palace Destination Wedding', desc: 'Udaipur • 500 VIP Guests • 3-Day Multi-Venue Production' },
-    { src: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&auto=format&fit=crop', title: 'Global Tech Summit 2026', desc: 'Corporate Conference • 1000+ Keynote Attendees & Live Broadcast' },
-    { src: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1600&auto=format&fit=crop', title: 'Summer Arena Music Fest', desc: 'Live Concert Production • Intelligent Lighting & Line Arrays' },
-    { src: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=1600&auto=format&fit=crop', title: 'Automotive Flagship Reveal', desc: 'Brand Activation • 3D Projection Mapping & VIP Lounge' },
-    { src: 'https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=1600&auto=format&fit=crop', title: 'Philanthropy Charity Gala', desc: 'Annual Fundraiser • High Table Service & Live Orchestra' },
-    { src: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1600&auto=format&fit=crop', title: 'Sunset Coastal Destination', desc: 'Goa Beachfront • Floral Mandap & Acoustic Sound' },
-    { src: 'https://images.unsplash.com/photo-1515187029135-18ee4032c99b?w=1600&auto=format&fit=crop', title: 'Annual Leadership Keynote', desc: 'Corporate Summit • Curved LED Backdrop & Teleprompters' },
-    { src: 'https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=1600&auto=format&fit=crop', title: 'Stadium Rock Experience', desc: 'Arena Festival • Pyrotechnics & Laser Light Show' },
-    { src: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1600&auto=format&fit=crop', title: 'Exclusive Milestone Soirée', desc: 'Private Gathering • Custom Floral Architecture' }
+    { src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1600&auto=format&fit=crop&q=75', title: 'Royal Palace Destination Wedding', desc: 'Udaipur • 500 VIP Guests • 3-Day Multi-Venue Production' },
+    { src: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&auto=format&fit=crop&q=75', title: 'Global Tech Summit 2026', desc: 'Corporate Conference • 1000+ Keynote Attendees & Live Broadcast' },
+    { src: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1600&auto=format&fit=crop&q=75', title: 'Summer Arena Music Fest', desc: 'Live Concert Production • Intelligent Lighting & Line Arrays' },
+    { src: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=1600&auto=format&fit=crop&q=75', title: 'Automotive Flagship Reveal', desc: 'Brand Activation • 3D Projection Mapping & VIP Lounge' },
+    { src: 'https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=1600&auto=format&fit=crop&q=75', title: 'Philanthropy Charity Gala', desc: 'Annual Fundraiser • High Table Service & Live Orchestra' },
+    { src: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1600&auto=format&fit=crop&q=75', title: 'Sunset Coastal Destination', desc: 'Goa Beachfront • Floral Mandap & Acoustic Sound' },
+    { src: 'https://images.unsplash.com/photo-1515187029135-18ee4032c99b?w=1600&auto=format&fit=crop&q=75', title: 'Annual Leadership Keynote', desc: 'Corporate Summit • Curved LED Backdrop & Teleprompters' },
+    { src: 'https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=1600&auto=format&fit=crop&q=75', title: 'Stadium Rock Experience', desc: 'Arena Festival • Pyrotechnics & Laser Light Show' },
+    { src: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1600&auto=format&fit=crop&q=75', title: 'Exclusive Milestone Soirée', desc: 'Private Gathering • Custom Floral Architecture' }
   ];
 
   let currentImageIndex = 0;
