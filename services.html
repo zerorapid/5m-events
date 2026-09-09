@@ -359,68 +359,209 @@
     .included-grid { grid-template-columns: 1fr; }
   }
 
-  /* Process Timeline */
-  .process-section { padding: 0 0 80px; }
+  /* Process Alternating Timeline */
+  .process-section {
+    padding: 120px 0;
+    background: #FAF8F5;
+    position: relative;
+    border-top: 1px solid rgba(10, 10, 10, 0.06);
+    border-bottom: 1px solid rgba(10, 10, 10, 0.06);
+  }
   .process-header {
-    text-align: center; max-width: 720px; margin: 0 auto 56px;
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 56px;
   }
   .process-header .section-label {
-    font-size: 11px; letter-spacing: 3px;
-    text-transform: uppercase; color: var(--gold);
-    font-weight: 600; margin-bottom: 14px;
-    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
   }
-  
   .process-header h2 {
     font-size: clamp(30px, 3.8vw, 44px);
-    margin-bottom: 16px; font-weight: 400; color: var(--black);
+    margin-bottom: 16px;
+    font-weight: 400;
+    color: var(--black);
   }
-  .process-header h2 em { font-style: italic; color: var(--gold); }
-  .process-header p { font-size: 16px; color: var(--gray); }
-  .process-steps {
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 24px; position: relative;
+  .process-header h2 em {
+    font-style: italic;
+    color: var(--gold);
   }
-  .process-steps::before {
-    content: ''; position: absolute;
-    top: 44px; left: 12%; right: 12%;
-    height: 1px; background: var(--beige);
-    z-index: 0;
+  .process-header p {
+    font-size: 16px;
+    color: var(--gray);
   }
-  .process-step {
-    text-align: center; position: relative; z-index: 1;
-    padding: 0 12px;
+
+  .timeline-alternating {
+    position: relative;
+    max-width: 1040px;
+    margin: 40px auto 0;
+    padding: 20px 0;
   }
-  .step-number {
-    width: 88px; height: 88px;
+  .timeline-central-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: linear-gradient(180deg, var(--gold) 0%, rgba(212, 175, 55, 0.3) 100%);
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+  .timeline-row {
+    display: flex;
+    position: relative;
+    margin-bottom: 60px;
+    z-index: 2;
+  }
+  .timeline-row:last-child {
+    margin-bottom: 0;
+  }
+  .timeline-row.right {
+    justify-content: flex-end;
+  }
+  .timeline-row.right .timeline-card {
+    width: 44%;
+    margin-left: auto;
+  }
+  .timeline-row.left {
+    justify-content: flex-start;
+  }
+  .timeline-row.left .timeline-card {
+    width: 44%;
+    margin-right: auto;
+  }
+  .timeline-node {
+    position: absolute;
+    left: 50%;
+    top: 24px;
+    transform: translate(-50%, -50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
     background: var(--white);
     border: 2px solid var(--gold);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 24px;
-    font-family: var(--serif);
-    font-size: 30px; color: var(--gold);
-    font-weight: 500;
-    transition: all 0.4s ease;
-    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    box-shadow: 0 4px 16px rgba(212, 175, 55, 0.25);
+    transition: all 0.3s ease;
   }
-  .process-step:hover .step-number {
-    background: var(--gold); color: var(--white);
-    transform: scale(1.08); box-shadow: 0 10px 30px rgba(184,148,95,0.3);
+  .timeline-node span {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--black);
+    font-family: var(--sans);
   }
-  .process-step h4 {
-    font-size: 19px; margin-bottom: 10px;
-    font-weight: 500; color: var(--black);
+  .timeline-row:hover .timeline-node {
+    background: var(--gold);
+    transform: translate(-50%, -50%) scale(1.15);
   }
-  .process-step p {
-    font-size: 14px; line-height: 1.65; color: var(--gray);
+  .timeline-row:hover .timeline-node span {
+    color: var(--white);
   }
-  @media (max-width: 900px) {
-    .process-steps { grid-template-columns: repeat(2, 1fr); gap: 36px; }
-    .process-steps::before { display: none; }
+  .timeline-card {
+    background: var(--white);
+    border: 1px solid rgba(10, 10, 10, 0.08);
+    border-radius: var(--radius-lg);
+    padding: 36px 32px;
+    box-shadow: 0 10px 30px rgba(10, 10, 10, 0.04);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
   }
-  @media (max-width: 600px) {
-    .process-steps { grid-template-columns: 1fr; }
+  .timeline-row.right .timeline-card::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 16px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 10px solid var(--white);
+  }
+  .timeline-row.left .timeline-card::before {
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: 16px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 10px solid var(--white);
+  }
+  .timeline-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(10, 10, 10, 0.08);
+    border-color: rgba(212, 175, 55, 0.4);
+  }
+  .timeline-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .timeline-badge {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    background: rgba(212, 175, 55, 0.1);
+    padding: 4px 10px;
+    border-radius: 100px;
+  }
+  .timeline-card-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 12px;
+    line-height: 1.35;
+  }
+  .timeline-card-desc {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  @media (max-width: 868px) {
+    .process-section {
+      padding: 80px 0;
+    }
+    .timeline-central-line {
+      left: 24px;
+    }
+    .timeline-row {
+      margin-bottom: 40px;
+    }
+    .timeline-row.left,
+    .timeline-row.right {
+      justify-content: flex-end;
+    }
+    .timeline-row.left .timeline-card,
+    .timeline-row.right .timeline-card {
+      width: calc(100% - 64px);
+      margin-left: auto;
+      margin-right: 0;
+    }
+    .timeline-node {
+      left: 24px;
+    }
+    .timeline-row.left .timeline-card::before {
+      right: auto;
+      left: -10px;
+      border-left: none;
+      border-right: 10px solid var(--white);
+    }
   }
 
   /* Why Choose Us */
@@ -1701,33 +1842,71 @@
   </section>
 
   <!-- Process Timeline -->
-  <section class="process-section">
+  <section class="process-section" id="process">
     <div class="container">
       <div class="process-header reveal">
         <div class="section-label">Our Process</div>
         <h2>How we bring your <em>vision</em> to life.</h2>
-        <p>A proven four-step framework that ensures every event is delivered with precision, creativity, and care.</p>
+        <p>A proven four-act framework that ensures every event is delivered with precision, creativity, and care.</p>
       </div>
-      <div class="process-steps">
-        <div class="process-step reveal">
-          <div class="step-number">01</div>
-          <h4>Discovery</h4>
-          <p>We listen, understand your goals, audience, and vision through detailed initial consultations.</p>
+
+      <div class="timeline-alternating">
+        <div class="timeline-central-line"></div>
+
+        <!-- Step 01 (Right) -->
+        <div class="timeline-row right reveal">
+          <div class="timeline-node">
+            <span>01</span>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-card-header">
+              <span class="timeline-badge">ACT 01 • CONSULTATION</span>
+            </div>
+            <h3 class="timeline-card-title">Discovery</h3>
+            <p class="timeline-card-desc">We listen and understand your goals, audience, and vision through detailed initial consultations and feasibility analysis.</p>
+          </div>
         </div>
-        <div class="process-step reveal" style="transition-delay:0.1s">
-          <div class="step-number">02</div>
-          <h4>Design</h4>
-          <p>Our team crafts mood boards, 3D spatial layouts, and detailed concept decks aligned with your brand.</p>
+
+        <!-- Step 02 (Left) -->
+        <div class="timeline-row left reveal" style="transition-delay:0.1s">
+          <div class="timeline-node">
+            <span>02</span>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-card-header">
+              <span class="timeline-badge">ACT 02 • CREATIVE</span>
+            </div>
+            <h3 class="timeline-card-title">Design</h3>
+            <p class="timeline-card-desc">Our team crafts mood boards, 3D spatial layouts, and detailed concept decks aligned with your brand aesthetics.</p>
+          </div>
         </div>
-        <div class="process-step reveal" style="transition-delay:0.2s">
-          <div class="step-number">03</div>
-          <h4>Production</h4>
-          <p>Vendor contracting, municipal permits, technical AV setup, and dry rehearsals — every detail orchestrated.</p>
+
+        <!-- Step 03 (Right) -->
+        <div class="timeline-row right reveal" style="transition-delay:0.2s">
+          <div class="timeline-node">
+            <span>03</span>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-card-header">
+              <span class="timeline-badge">ACT 03 • PRODUCTION</span>
+            </div>
+            <h3 class="timeline-card-title">Technical Production</h3>
+            <p class="timeline-card-desc">Sound, lighting, LED screens, staging, and live streaming — engineered for high-impact performance and zero downtime.</p>
+          </div>
         </div>
-        <div class="process-step reveal" style="transition-delay:0.3s">
-          <div class="step-number">04</div>
-          <h4>Execution</h4>
-          <p>On-ground showcalling, guest hospitality, and post-event content delivery — flawless from start to finish.</p>
+
+        <!-- Step 04 (Left) -->
+        <div class="timeline-row left reveal" style="transition-delay:0.3s">
+          <div class="timeline-node">
+            <span>04</span>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-card-header">
+              <span class="timeline-badge">ACT 04 • SHOWCALLING</span>
+            </div>
+            <h3 class="timeline-card-title">On-Ground Execution</h3>
+            <p class="timeline-card-desc">Registration desks, guest hospitality, and live showcalling — seamless orchestration from guest arrival to wrap-up.</p>
+          </div>
         </div>
       </div>
     </div>
