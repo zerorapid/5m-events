@@ -575,107 +575,240 @@
     font-size:14px;color:var(--gray);
   }
   
-  /* Values Timeline */
-  .timeline{
-    position:relative;
-    padding-left:60px;
+  /* Journey Grid */
+  .journey-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+    margin-top: 56px;
   }
-  .timeline::before{
-    content:'';position:absolute;
-    left:20px;top:0;bottom:0;
-    width:1px;background:var(--beige);
+  .journey-card {
+    background: var(--white);
+    border: 1px solid rgba(10, 10, 10, 0.08);
+    border-top: 3px solid var(--gold);
+    border-radius: var(--radius-lg);
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
   }
-  .timeline-item{
-    position:relative;
-    padding-bottom:60px;
+  .journey-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(10, 10, 10, 0.08);
+    border-top-color: var(--black);
   }
-  .timeline-item:last-child{padding-bottom:0}
-  .timeline-dot{
-    position:absolute;left:-52px;top:0;
-    width:40px;height:40px;border-radius:50%;
-    background:var(--white);
-    border:2px solid var(--gold);
-    display:flex;align-items:center;justify-content:center;
-    color:var(--gold);
-    z-index:2;
+  .journey-card-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 16px;
   }
-  .timeline-year{
-    font-size:12px;letter-spacing:3px;
-    text-transform:uppercase;color:var(--gold);
-    font-weight:600;margin-bottom:12px;
+  .journey-year {
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--black);
+    letter-spacing: -0.5px;
+    line-height: 1;
+    font-family: var(--serif);
   }
-  .timeline-item h3{
-    font-size:28px;margin-bottom:12px;
-    color:var(--black);
+  .journey-badge {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    background: rgba(212, 175, 55, 0.1);
+    padding: 4px 10px;
+    border-radius: 100px;
   }
-  .timeline-item p{
-    font-size:16px;color:var(--gray);
-    line-height:1.8;max-width:600px;
+  .journey-divider {
+    height: 1px;
+    background: rgba(10, 10, 10, 0.06);
+    margin-bottom: 20px;
+    width: 100%;
   }
-  
+  .journey-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 12px;
+    line-height: 1.35;
+  }
+  .journey-desc {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.7;
+    margin: 0;
+  }
+
   /* Newsletter Split */
-  .newsletter-split{
-    display:grid;grid-template-columns:1fr 1fr;
-    gap:0;
-    background:var(--black);
-    border-radius:var(--radius-xl);
-    overflow:hidden;
-    min-height:480px;
+  .newsletter-split {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 0;
+    background: var(--black);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    min-height: 520px;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
   }
-  .newsletter-image{position:relative;overflow:hidden}
-  .newsletter-image img{
-    width:100%;height:100%;object-fit:cover;
-    transition:transform .8s ease;
+  .newsletter-image {
+    position: relative;
+    overflow: hidden;
   }
-  .newsletter-split:hover .newsletter-image img{transform:scale(1.05)}
-  .newsletter-content{
-    padding:80px 60px;
-    display:flex;flex-direction:column;justify-content:center;
-    color:var(--white);
+  .newsletter-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
   }
-  .newsletter-content h2{
-    font-size:clamp(32px,3.5vw,44px);
-    margin-bottom:20px;color:var(--white);
-    font-weight:400;
+  .newsletter-split:hover .newsletter-image img {
+    transform: scale(1.04);
   }
-  .newsletter-content h2 em{font-style:italic;color:var(--gold)}
-  .newsletter-content p{
-    color:rgba(245,241,232,0.7);
-    margin-bottom:32px;font-size:16px;
+  .newsletter-content {
+    padding: 72px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--white);
   }
-  .newsletter-form{
-    display:flex;flex-direction:column;gap:16px;
-    max-width:400px;
+  .newsletter-content h2 {
+    font-size: clamp(34px, 3.8vw, 48px);
+    color: var(--white);
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 6px;
   }
-  .newsletter-input-group{
-    display:flex;background:rgba(255,255,255,0.08);
-    border:1px solid rgba(255,255,255,0.15);
-    border-radius:100px;
-    transition:all .3s ease;
-    overflow:hidden;
+  .newsletter-subtitle {
+    font-size: 20px;
+    color: var(--gold);
+    font-weight: 400;
+    font-family: var(--serif);
+    font-style: italic;
+    margin-bottom: 20px;
   }
-  .newsletter-input-group:focus-within{
-    border-color:var(--gold);
-    background:rgba(255,255,255,0.12);
+  .newsletter-subtitle em {
+    font-style: normal;
+    font-weight: 600;
   }
-  .newsletter-input-group input{
-    flex:1;padding:16px 24px;
-    background:transparent;border:none;
-    color:var(--white);font-family:var(--sans);
-    font-size:14px;outline:none;
+  .newsletter-desc {
+    color: rgba(245, 241, 232, 0.75);
+    margin-bottom: 36px;
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 480px;
   }
-  .newsletter-input-group input::placeholder{color:rgba(255,255,255,0.5)}
-  .newsletter-input-group button{
-    padding:16px 28px;background:var(--gold);
-    color:var(--black);border:none;cursor:pointer;
-    font-family:var(--sans);font-size:12px;
-    font-weight:600;letter-spacing:2px;
-    text-transform:uppercase;
-    transition:all .3s ease;
-    display:flex;align-items:center;gap:8px;
+  .newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 460px;
+    width: 100%;
   }
-  .newsletter-input-group button:hover{background:var(--gold-light)}
-  .newsletter-note{font-size:12px;color:rgba(245,241,232,0.5);margin-top:8px}
+  .newsletter-input-group {
+    display: flex;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 100px;
+    padding: 6px 6px 6px 20px;
+    transition: all 0.3s ease;
+  }
+  .newsletter-input-group:focus-within {
+    border-color: var(--gold);
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+  }
+  .newsletter-input-group input {
+    flex: 1;
+    padding: 10px 12px;
+    background: transparent;
+    border: none;
+    color: var(--white);
+    font-family: var(--sans);
+    font-size: 15px;
+    outline: none;
+  }
+  .newsletter-input-group input::placeholder {
+    color: rgba(245, 241, 232, 0.45);
+  }
+  .newsletter-input-group button {
+    padding: 14px 28px;
+    background: var(--gold);
+    color: var(--black);
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+  }
+  .newsletter-input-group button:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+  }
+  .newsletter-note {
+    font-size: 12px;
+    color: rgba(245, 241, 232, 0.5);
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 1024px) {
+    .journey-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+  }
+  @media (max-width: 992px) {
+    .newsletter-split {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+    .newsletter-image {
+      height: 280px;
+    }
+    .newsletter-content {
+      padding: 48px 32px;
+    }
+  }
+  @media (max-width: 640px) {
+    .journey-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .journey-card {
+      padding: 28px 24px;
+    }
+  }
+  @media (max-width: 576px) {
+    .newsletter-content {
+      padding: 40px 20px;
+    }
+    .newsletter-input-group {
+      flex-direction: column;
+      border-radius: 16px;
+      padding: 12px;
+      gap: 12px;
+    }
+    .newsletter-input-group input {
+      padding: 8px 12px;
+    }
+    .newsletter-input-group button {
+      width: 100%;
+      justify-content: center;
+      border-radius: 100px;
+      padding: 14px;
+    }
+  }
   
   /* Clientele Section (White Bg) */
   .clients-grid {
@@ -1314,7 +1447,7 @@
 </section>
 
 <!-- Journey Timeline -->
-<section class="section section-cream">
+<section class="section section-cream" id="journey">
   <div class="container">
     <div class="section-header reveal">
       <div class="section-label">Our Journey</div>
@@ -1322,41 +1455,45 @@
       <p class="section-subtitle">A brief look at how BKU has grown from a bold idea into a trusted name in event production.</p>
     </div>
     
-    <div class="timeline reveal">
-      <div class="timeline-item">
-        <div class="timeline-dot">
-          <i data-lucide="star" style="width:18px;height:18px"></i>
+    <div class="journey-grid">
+      <div class="journey-card reveal">
+        <div class="journey-card-top">
+          <div class="journey-year">2024</div>
+          <div class="journey-badge">The Beginning</div>
         </div>
-        <div class="timeline-year">2024 — The Beginning</div>
-        <h3>BKU is founded.</h3>
-        <p>Started with a small crew and a big vision — to craft events that feel as intentional as they look spectacular. Our first project: an intimate destination wedding in Rajasthan.</p>
+        <div class="journey-divider"></div>
+        <h3 class="journey-title">BKU is founded.</h3>
+        <p class="journey-desc">Started with a small crew and a big vision — to craft events that feel as intentional as they look spectacular. Our first project: an intimate destination wedding in Rajasthan.</p>
       </div>
       
-      <div class="timeline-item">
-        <div class="timeline-dot">
-          <i data-lucide="trending-up" style="width:18px;height:18px"></i>
+      <div class="journey-card reveal" style="transition-delay:0.1s">
+        <div class="journey-card-top">
+          <div class="journey-year">2024</div>
+          <div class="journey-badge">First Milestone</div>
         </div>
-        <div class="timeline-year">2024 — First Milestone</div>
-        <h3>50 events in our first year.</h3>
-        <p>From intimate gatherings to corporate summits, we proved that scale doesn't have to come at the cost of soul. Our client roster began to grow through word-of-mouth alone.</p>
+        <div class="journey-divider"></div>
+        <h3 class="journey-title">50 events in our first year.</h3>
+        <p class="journey-desc">From intimate gatherings to corporate summits, we proved that scale doesn't have to come at the cost of soul. Our client roster began to grow through word-of-mouth alone.</p>
       </div>
       
-      <div class="timeline-item">
-        <div class="timeline-dot">
-          <i data-lucide="users" style="width:18px;height:18px"></i>
+      <div class="journey-card reveal" style="transition-delay:0.2s">
+        <div class="journey-card-top">
+          <div class="journey-year">2025</div>
+          <div class="journey-badge">The Crew Grows</div>
         </div>
-        <div class="timeline-year">2025 — The Crew Grows</div>
-        <h3>Expanding the team.</h3>
-        <p>We brought on specialists in PR, technical production, and content — building a multidisciplinary crew capable of handling every aspect of an event in-house.</p>
+        <div class="journey-divider"></div>
+        <h3 class="journey-title">Expanding the team.</h3>
+        <p class="journey-desc">We brought on specialists in PR, technical production, and content — building a multidisciplinary crew capable of handling every aspect of an event in-house.</p>
       </div>
       
-      <div class="timeline-item">
-        <div class="timeline-dot">
-          <i data-lucide="globe" style="width:18px;height:18px"></i>
+      <div class="journey-card reveal" style="transition-delay:0.3s">
+        <div class="journey-card-top">
+          <div class="journey-year">2026</div>
+          <div class="journey-badge">Today</div>
         </div>
-        <div class="timeline-year">2026 — Today</div>
-        <h3>Nationwide, and growing.</h3>
-        <p>With 250+ events delivered, 180+ happy clients, and a network of 95+ trusted vendors, BKU is now a name associated with craft, care, and unforgettable experiences across India.</p>
+        <div class="journey-divider"></div>
+        <h3 class="journey-title">Nationwide, and growing.</h3>
+        <p class="journey-desc">With 250+ events delivered, 180+ happy clients, and a network of 95+ trusted vendors, BKU is now a name associated with craft, care, and unforgettable experiences across India.</p>
       </div>
     </div>
   </div>
@@ -1367,15 +1504,16 @@
   <div class="container">
     <div class="newsletter-split reveal">
       <div class="newsletter-image">
-        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1000&auto=format&fit=crop" alt="Newsletter">
+        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1000&auto=format&fit=crop" alt="BKU Luxury Event">
       </div>
       <div class="newsletter-content">
-        <div class="section-label" style="color:var(--gold)">Stay Inspired</div>
-        <h2>Join the <em>BKU</em> community.</h2>
-        <p>Subscribe to receive the latest insights, event trends, and creative inspiration delivered to your inbox. No spam — just stories worth reading.</p>
-        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+        <div class="section-label" style="color:var(--gold);margin-bottom:12px">Newsletter</div>
+        <h2>Stay Inspired</h2>
+        <p class="newsletter-subtitle">Join the <em>BKU</em> community.</p>
+        <p class="newsletter-desc">Subscribe to receive the latest insights, event trends, and creative inspiration delivered to your inbox. No spam — just stories worth reading.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to BKU!');">
           <div class="newsletter-input-group">
-            <input type="email" placeholder="Your email address" required>
+            <input type="email" placeholder="Your email address" required aria-label="Your email address">
             <button type="submit">
               <span>Subscribe</span>
               <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
