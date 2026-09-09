@@ -53,7 +53,7 @@
   img{max-width:100%;display:block}
   a{color:inherit;text-decoration:none;transition:all .35s ease}
   
-  h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.15;letter-spacing:-0.01em}
+  h1,h2,h3,h4{color:#156B9B;font-family:var(--serif);font-weight:500;line-height:1.15;letter-spacing:-0.01em}
   p{font-size:16px;line-height:1.75;color:var(--gray)}
   
   .container{max-width:1360px;margin:0 auto;padding:0 60px}
@@ -162,7 +162,7 @@
   .breadcrumb-sep{color:var(--gold)}
   .breadcrumb-current{color:var(--black);font-weight:500}
 
-  .page-hero h1{
+  .page-hero h1{color:#156B9B;
     font-size:clamp(44px,5.5vw,72px);
     font-weight:400;line-height:1.08;
     margin-bottom:24px;color:#156B9B;
@@ -383,6 +383,13 @@
     .form-row{grid-template-columns:1fr;gap:16px}
     .contact-form{padding:24px 18px}
   }
+
+  .section-black h1, .section-black h2, .section-black h3, .section-black .section-title, .section-black p,
+  footer h5, .newsletter-content h2, .newsletter-content p, .cta-section h2 { color: var(--white) !important; }
+  .section-black .section-title { color: var(--white) !important; }
+  footer h5 { color: var(--white) !important; }
+  .newsletter-content h2 { color: var(--white) !important; }
+
 </style>
 <meta property="og:title" content="Contact Us — 5M Events | Get in Touch" />
 <meta property="og:description" content="Get in touch with 5M Events for event inquiries, bookings, or career opportunities. Contact our team in Mumbai, India." />
