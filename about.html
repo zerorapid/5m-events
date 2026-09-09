@@ -575,98 +575,158 @@
     font-size:14px;color:var(--gray);
   }
   
-  /* Editorial Journey Timeline Section */
+  /* Alternating Timeline (Gitline Reference Layout, BKU Luxury Styling) */
   .journey-section {
     padding: 120px 0;
     background: #FAF8F5;
     position: relative;
-    border-top: 1px solid rgba(10,10,10,0.06);
-    border-bottom: 1px solid rgba(10,10,10,0.06);
+    border-top: 1px solid rgba(10, 10, 10, 0.06);
+    border-bottom: 1px solid rgba(10, 10, 10, 0.06);
   }
-  .journey-editorial-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    margin-top: 64px;
+  .timeline-alternating {
     position: relative;
+    max-width: 1040px;
+    margin: 64px auto 0;
+    padding: 20px 0;
   }
-  .journey-editorial-grid::before {
-    content: '';
+  /* Central vertical line */
+  .timeline-central-line {
     position: absolute;
-    top: 24px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--gold) 0%, rgba(212,175,55,0.2) 100%);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: linear-gradient(180deg, var(--gold) 0%, rgba(212, 175, 55, 0.3) 100%);
+    transform: translateX(-50%);
     z-index: 1;
   }
-  .journey-col {
-    padding: 0 32px 0 0;
-    margin-right: 32px;
-    border-right: 1px solid rgba(10, 10, 10, 0.08);
-    position: relative;
-    z-index: 2;
+  .timeline-row {
     display: flex;
-    flex-direction: column;
+    position: relative;
+    margin-bottom: 60px;
+    z-index: 2;
   }
-  .journey-col:last-child {
-    border-right: none;
-    padding-right: 0;
-    margin-right: 0;
+  .timeline-row:last-child {
+    margin-bottom: 0;
   }
-  .journey-node {
-    width: 48px;
-    height: 48px;
+  /* Right milestone row */
+  .timeline-row.right {
+    justify-content: flex-end;
+  }
+  .timeline-row.right .timeline-card {
+    width: 44%;
+    margin-left: auto;
+  }
+  /* Left milestone row */
+  .timeline-row.left {
+    justify-content: flex-start;
+  }
+  .timeline-row.left .timeline-card {
+    width: 44%;
+    margin-right: auto;
+  }
+  /* Central Node Dot */
+  .timeline-node {
+    position: absolute;
+    left: 50%;
+    top: 24px;
+    transform: translate(-50%, -50%);
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     background: var(--white);
     border: 2px solid var(--gold);
-    color: var(--black);
-    font-size: 13px;
-    font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 28px;
-    box-shadow: 0 4px 14px rgba(212,175,55,0.2);
-    font-family: var(--sans);
+    z-index: 3;
+    box-shadow: 0 4px 16px rgba(212, 175, 55, 0.25);
     transition: all 0.3s ease;
   }
-  .journey-col:hover .journey-node {
+  .timeline-node span {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--black);
+    font-family: var(--sans);
+  }
+  .timeline-row:hover .timeline-node {
     background: var(--gold);
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+  .timeline-row:hover .timeline-node span {
     color: var(--white);
-    transform: scale(1.1);
   }
-  .journey-year-header {
+  /* Card Styling */
+  .timeline-card {
+    background: var(--white);
+    border: 1px solid rgba(10, 10, 10, 0.08);
+    border-radius: var(--radius-lg);
+    padding: 36px 32px;
+    box-shadow: 0 10px 30px rgba(10, 10, 10, 0.04);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+  }
+  /* Subtle connector arrow indicator */
+  .timeline-row.right .timeline-card::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 16px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 10px solid var(--white);
+  }
+  .timeline-row.left .timeline-card::before {
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: 16px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 10px solid var(--white);
+  }
+  .timeline-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(10, 10, 10, 0.08);
+    border-color: rgba(212, 175, 55, 0.4);
+  }
+  .timeline-card-header {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: 12px;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
   }
-  .journey-year-num {
-    font-size: 40px;
+  .timeline-year {
+    font-size: 28px;
     font-weight: 700;
     color: var(--black);
     font-family: var(--serif);
     line-height: 1;
-    letter-spacing: -1px;
   }
-  .journey-tag-text {
+  .timeline-badge {
     font-size: 11px;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     color: var(--gold);
     font-weight: 600;
+    background: rgba(212, 175, 55, 0.1);
+    padding: 4px 10px;
+    border-radius: 100px;
   }
-  .journey-col h3 {
-    font-size: 19px;
+  .timeline-card-title {
+    font-size: 20px;
     font-weight: 600;
     color: var(--black);
-    margin-bottom: 14px;
+    margin-bottom: 12px;
     line-height: 1.35;
   }
-  .journey-col p {
+  .timeline-card-desc {
     font-size: 14px;
-    color: #555555;
+    color: var(--gray);
     line-height: 1.75;
     margin: 0;
   }
@@ -795,29 +855,38 @@
     line-height: 1.5;
   }
 
-  @media (max-width: 1100px) {
-    .journey-editorial-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 40px 0;
-    }
-    .journey-editorial-grid::before {
-      display: none;
-    }
-    .journey-col {
-      border-right: none;
-      padding-right: 24px;
-      margin-right: 0;
-      border-bottom: 1px solid rgba(10, 10, 10, 0.08);
-      padding-bottom: 32px;
-    }
-    .journey-col:nth-child(2n) {
-      padding-right: 0;
-    }
-  }
-  @media (max-width: 992px) {
+  /* Responsive Timeline */
+  @media (max-width: 868px) {
     .journey-section {
       padding: 80px 0;
     }
+    .timeline-central-line {
+      left: 24px;
+    }
+    .timeline-row {
+      margin-bottom: 40px;
+    }
+    .timeline-row.left,
+    .timeline-row.right {
+      justify-content: flex-end;
+    }
+    .timeline-row.left .timeline-card,
+    .timeline-row.right .timeline-card {
+      width: calc(100% - 64px);
+      margin-left: auto;
+      margin-right: 0;
+    }
+    .timeline-node {
+      left: 24px;
+    }
+    .timeline-row.left .timeline-card::before {
+      right: auto;
+      left: -10px;
+      border-left: none;
+      border-right: 10px solid var(--white);
+    }
+  }
+  @media (max-width: 992px) {
     .newsletter-section {
       padding: 80px 0 100px;
     }
@@ -833,13 +902,6 @@
     }
   }
   @media (max-width: 640px) {
-    .journey-editorial-grid {
-      grid-template-columns: 1fr;
-      gap: 32px;
-    }
-    .journey-col {
-      padding-right: 0;
-    }
     .newsletter-content {
       padding: 40px 24px;
     }
@@ -857,6 +919,14 @@
       justify-content: center;
       border-radius: 100px;
       padding: 14px;
+    }
+  }
+  @media (max-width: 576px) {
+    .timeline-card {
+      padding: 24px 20px;
+    }
+    .timeline-year {
+      font-size: 24px;
     }
   }
   
@@ -1499,51 +1569,73 @@
 <!-- Journey Timeline -->
 <section class="journey-section" id="journey">
   <div class="container">
-    <div class="section-header reveal">
-      <div class="section-label">Our Journey</div>
+    <div class="section-header center reveal">
+      <div class="section-label center">Our Journey</div>
       <h2 class="section-title">Milestones along the way.</h2>
-      <p class="section-subtitle">A brief look at how BKU has grown from a bold idea into a trusted name in event production.</p>
+      <p class="section-subtitle center">A brief look at how BKU has grown from a bold idea into a trusted name in event production.</p>
     </div>
     
-    <div class="journey-editorial-grid">
-      <div class="journey-col reveal">
-        <div class="journey-node">01</div>
-        <div class="journey-year-header">
-          <div class="journey-year-num">2024</div>
-          <span class="journey-tag-text">The Beginning</span>
+    <div class="timeline-alternating">
+      <div class="timeline-central-line"></div>
+      
+      <!-- Milestone 1 (Right) -->
+      <div class="timeline-row right reveal">
+        <div class="timeline-node">
+          <span>01</span>
         </div>
-        <h3>BKU is founded.</h3>
-        <p>Started with a small crew and a big vision — to craft events that feel as intentional as they look spectacular. Our first project: an intimate destination wedding in Rajasthan.</p>
+        <div class="timeline-card">
+          <div class="timeline-card-header">
+            <span class="timeline-year">2024</span>
+            <span class="timeline-badge">The Beginning</span>
+          </div>
+          <h3 class="timeline-card-title">BKU is founded.</h3>
+          <p class="timeline-card-desc">Started with a small crew and a big vision — to craft events that feel as intentional as they look spectacular. Our first project: an intimate destination wedding in Rajasthan.</p>
+        </div>
       </div>
       
-      <div class="journey-col reveal" style="transition-delay:0.1s">
-        <div class="journey-node">02</div>
-        <div class="journey-year-header">
-          <div class="journey-year-num">2024</div>
-          <span class="journey-tag-text">First Milestone</span>
+      <!-- Milestone 2 (Left) -->
+      <div class="timeline-row left reveal" style="transition-delay:0.1s">
+        <div class="timeline-node">
+          <span>02</span>
         </div>
-        <h3>50 events in our first year.</h3>
-        <p>From intimate gatherings to corporate summits, we proved that scale doesn't have to come at the cost of soul. Our client roster began to grow through word-of-mouth alone.</p>
+        <div class="timeline-card">
+          <div class="timeline-card-header">
+            <span class="timeline-year">2024</span>
+            <span class="timeline-badge">First Milestone</span>
+          </div>
+          <h3 class="timeline-card-title">50 events in our first year.</h3>
+          <p class="timeline-card-desc">From intimate gatherings to corporate summits, we proved that scale doesn't have to come at the cost of soul. Our client roster began to grow through word-of-mouth alone.</p>
+        </div>
       </div>
       
-      <div class="journey-col reveal" style="transition-delay:0.2s">
-        <div class="journey-node">03</div>
-        <div class="journey-year-header">
-          <div class="journey-year-num">2025</div>
-          <span class="journey-tag-text">The Crew Grows</span>
+      <!-- Milestone 3 (Right) -->
+      <div class="timeline-row right reveal" style="transition-delay:0.2s">
+        <div class="timeline-node">
+          <span>03</span>
         </div>
-        <h3>Expanding the team.</h3>
-        <p>We brought on specialists in PR, technical production, and content — building a multidisciplinary crew capable of handling every aspect of an event in-house.</p>
+        <div class="timeline-card">
+          <div class="timeline-card-header">
+            <span class="timeline-year">2025</span>
+            <span class="timeline-badge">The Crew Grows</span>
+          </div>
+          <h3 class="timeline-card-title">Expanding the team.</h3>
+          <p class="timeline-card-desc">We brought on specialists in PR, technical production, and content — building a multidisciplinary crew capable of handling every aspect of an event in-house.</p>
+        </div>
       </div>
       
-      <div class="journey-col reveal" style="transition-delay:0.3s">
-        <div class="journey-node">04</div>
-        <div class="journey-year-header">
-          <div class="journey-year-num">2026</div>
-          <span class="journey-tag-text">Today</span>
+      <!-- Milestone 4 (Left) -->
+      <div class="timeline-row left reveal" style="transition-delay:0.3s">
+        <div class="timeline-node">
+          <span>04</span>
         </div>
-        <h3>Nationwide, and growing.</h3>
-        <p>With 250+ events delivered, 180+ happy clients, and a network of 95+ trusted vendors, BKU is now a name associated with craft, care, and unforgettable experiences across India.</p>
+        <div class="timeline-card">
+          <div class="timeline-card-header">
+            <span class="timeline-year">2026</span>
+            <span class="timeline-badge">Today</span>
+          </div>
+          <h3 class="timeline-card-title">Nationwide, and growing.</h3>
+          <p class="timeline-card-desc">With 250+ events delivered, 180+ happy clients, and a network of 95+ trusted vendors, BKU is now a name associated with craft, care, and unforgettable experiences across India.</p>
+        </div>
       </div>
     </div>
   </div>
